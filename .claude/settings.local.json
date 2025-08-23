@@ -22,8 +22,12 @@
       "Bash(cp:*)",
       "WebFetch(domain:www.dcceew.gov.au)",
       "WebFetch(domain:www.energy.gov.au)",
-      "WebFetch(domain:developers.google.com)"
+      "WebFetch(domain:developers.google.com)",
+      "WebFetch(domain:bsm.org.au)",
+      "Bash(npm run dev:*)",
+      "Bash(touch:*)"
     ],
-    "deny": []
+    "deny": [],
+    "defaultMode": "acceptEdits"
   }
 }

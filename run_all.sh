@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Cosmic Renewable Energy - Run Development Server
-# This script starts the Next.js application with integrated API routes
+# Bengali Society of Melbourne (BSM) - Run Development Server
+# This script starts the Next.js application for BSM website
 
-echo "🚀 Starting Cosmic Renewable Energy development server..."
+echo "🌟 Starting Bengali Society of Melbourne (BSM) development server..."
 
 # Function to check if a command exists
 command_exists() {
@@ -90,9 +90,10 @@ if ! kill -0 $FRONTEND_PID 2>/dev/null; then
 fi
 
 echo ""
-echo "🌟 Cosmic Renewable Energy development server is running!"
-echo "   🌐 Application: http://localhost:$FRONTEND_PORT"
-echo "   🔌 API Routes:  http://localhost:$FRONTEND_PORT/api/*"
+echo "🌟 Bengali Society of Melbourne (BSM) website is running!"
+echo "   🌐 Website: http://localhost:$FRONTEND_PORT"
+echo "   🔌 API Routes: http://localhost:$FRONTEND_PORT/api/*"
+echo "   📱 Mobile View: http://localhost:$FRONTEND_PORT (responsive)"
 echo ""
 echo "📋 Server Status:"
 echo "   ✅ Next.js server (PID: $FRONTEND_PID)"

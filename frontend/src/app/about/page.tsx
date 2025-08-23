@@ -7,49 +7,14 @@ import { motion } from 'framer-motion'
 export default function About() {
   return (
     <div>
-      {/* Contact Banner */}
-      <section className="py-4 bg-gradient-to-r from-orange-500 to-red-500">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="text-center"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6">
-              <div className="text-white font-bold text-lg sm:text-xl">
-                🚀 Australia's #1 Solar & Battery Experts
-              </div>
-              <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
-                <a 
-                  href="tel:1300090984"
-                  className="bg-white text-orange-600 px-4 py-2 rounded-full font-bold text-sm sm:text-base hover:bg-orange-50 transition-colors shadow-lg flex items-center gap-2"
-                >
-                  📞 1300 09 09 84
-                </a>
-                <a 
-                  href="tel:+61422786100"
-                  className="bg-white text-red-600 px-4 py-2 rounded-full font-bold text-sm sm:text-base hover:bg-red-50 transition-colors shadow-lg flex items-center gap-2"
-                >
-                  📱 +61 422 786 100
-                </a>
-              </div>
-              <div className="text-white font-semibold text-sm sm:text-base">
-                Call Now for Instant Quote!
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-gradient-to-br from-green-50 to-emerald-100">
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50">
         <div className="absolute inset-0">
           <Image
-            src="/solarroof6.jpg"
-            alt="Cosmic Renewable Energy Team"
+            src="/communityphotos/20221008_131557-scaled.jpg"
+            alt="Bengali Society of Melbourne Community"
             fill
-            className="object-cover opacity-30"
+            className="object-cover opacity-40"
             priority
           />
         </div>
@@ -61,21 +26,24 @@ export default function About() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-green-800 mb-4 sm:mb-6 leading-tight">
-              About Cosmic
-              <span className="block text-green-600">
-                Renewable Energy
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-red-800 mb-4 sm:mb-6 leading-tight">
+              About Bengali Society 
+              <span className="block text-orange-600">
+                of Melbourne
               </span>
             </h1>
-            <p className="text-lg sm:text-xl text-green-700 leading-relaxed">
-              Australia's trusted solar and battery specialists, dedicated to powering homes 
-              and businesses with clean, renewable energy solutions.
+            <p className="text-lg sm:text-xl text-red-700 leading-relaxed mb-4">
+              Melbourne's premier Bengali cultural organization since 2012, preserving our rich heritage 
+              and connecting the Bengali community across Victoria.
+            </p>
+            <p className="text-orange-600 font-medium" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+              বেঙ্গলি সোসাইটি অফ মেলবোর্ন - ২০১২ সাল থেকে
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Company Overview */}
+      {/* Our Story */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -86,34 +54,35 @@ export default function About() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
-                Leading Solar Innovation
+                Our Story | আমাদের গল্প
               </h2>
               <p className="text-base sm:text-lg text-gray-600 mb-4 sm:mb-6 leading-relaxed">
-                With over 10 years of experience in the renewable energy sector, Cosmic Renewable Energy 
-                has established itself as one of Australia's most trusted solar and battery installation companies.
+                Bengali Society of Melbourne (BSM), a not-for-profit organisation, is a platform of Bengali community 
+                mostly from the sub-continent. Since its inception in 2012, we set forth with the aim to make our 
+                newer generations familiar with our rich cultural heritage.
               </p>
               <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed">
-                We've helped over 5,000 Australian families and businesses achieve energy independence 
-                through our premium solar panel and battery storage solutions, backed by industry-leading warranties 
-                and exceptional customer service.
+                At the same time, we always want to make BSM an integral part of the multicultural communities of Victoria. 
+                With a motto 'to encourage cultural diversity as well as to take pride in own culture' we have been 
+                successfully holding several community events every year.
               </p>
 
               <div className="grid grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
-                <div className="text-center bg-green-50 rounded-lg p-4 sm:p-6">
-                  <div className="text-2xl sm:text-3xl font-bold text-green-600 mb-1 sm:mb-2">10+</div>
-                  <div className="text-gray-700 text-sm sm:text-base">Years Experience</div>
+                <div className="text-center bg-red-50 rounded-lg p-4 sm:p-6">
+                  <div className="text-2xl sm:text-3xl font-bold text-red-600 mb-1 sm:mb-2">12+</div>
+                  <div className="text-gray-700 text-sm sm:text-base">Years Serving</div>
                 </div>
-                <div className="text-center bg-green-50 rounded-lg p-4 sm:p-6">
-                  <div className="text-2xl sm:text-3xl font-bold text-green-600 mb-1 sm:mb-2">5000+</div>
-                  <div className="text-gray-700 text-sm sm:text-base">Happy Customers</div>
+                <div className="text-center bg-red-50 rounded-lg p-4 sm:p-6">
+                  <div className="text-2xl sm:text-3xl font-bold text-red-600 mb-1 sm:mb-2">1000+</div>
+                  <div className="text-gray-700 text-sm sm:text-base">Community Members</div>
                 </div>
               </div>
 
               <Link 
-                href="/quote" 
-                className="w-full sm:w-auto bg-green-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold hover:bg-green-700 transition-colors text-center block sm:inline-block"
+                href="/membership" 
+                className="w-full sm:w-auto bg-red-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold hover:bg-red-700 transition-colors text-center block sm:inline-block"
               >
-                Get Your Quote Today
+                Join Our Community
               </Link>
             </motion.div>
 
@@ -125,13 +94,12 @@ export default function About() {
               className="relative"
             >
               <div className="bg-white rounded-lg shadow-xl p-8">
-                <div className="h-64 rounded-lg overflow-hidden flex items-center justify-center bg-gray-50">
+                <div className="h-64 rounded-lg overflow-hidden">
                   <Image
-                    src="/company-logo.png"
-                    alt="Cosmic Renewable Energy Company Logo"
-                    width={200}
-                    height={200}
-                    className="object-contain max-h-full"
+                    src="/bsmpooja/2-scaled.jpg"
+                    alt="Bengali Society of Melbourne Cultural Event"
+                    fill
+                    className="object-cover"
                   />
                 </div>
               </div>
@@ -151,29 +119,32 @@ export default function About() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Our Mission & Values
+              Our Mission & Values | আমাদের লক্ষ্য ও মূল্যবোধ
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We're committed to making clean energy accessible, affordable, and reliable for all Australians.
+              We're committed to preserving Bengali culture while embracing the multicultural spirit of Australia.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                title: 'Quality First',
-                icon: '🏆',
-                description: 'We use only premium components and maintain the highest installation standards, backed by comprehensive warranties.'
+                title: 'Cultural Preservation',
+                titleBengali: 'সাংস্কৃতিক রক্ষণাবেক্ষণ',
+                icon: '🏛️',
+                description: 'Preserving and promoting Bengali traditions, language, and customs for future generations through festivals and cultural programs.'
               },
               {
-                title: 'Customer Focus',
-                icon: '❤️',
-                description: 'Every project is tailored to your specific needs, with ongoing support throughout your solar journey.'
+                title: 'Community Building',
+                titleBengali: 'কমিউনিটি গঠন',
+                icon: '🤝',
+                description: 'Creating a strong, supportive network of Bengali families in Melbourne, fostering friendships and cultural connections.'
               },
               {
-                title: 'Innovation',
-                icon: '💡',
-                description: 'We stay at the forefront of solar technology to deliver the most efficient and reliable systems.'
+                title: 'Multicultural Integration',
+                titleBengali: 'বহুসাংস্কৃতিক একীকরণ',
+                icon: '🌏',
+                description: 'Being an integral part of Victoria\'s multicultural community while celebrating our unique Bengali identity and heritage.'
               }
             ].map((value, index) => (
               <motion.div
@@ -184,10 +155,13 @@ export default function About() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
               >
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
                   <span className="text-3xl">{value.icon}</span>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">{value.title}</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">{value.title}</h3>
+                <p className="text-orange-600 font-medium mb-4" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                  {value.titleBengali}
+                </p>
                 <p className="text-gray-600 leading-relaxed">{value.description}</p>
               </motion.div>
             ))}
@@ -195,7 +169,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Why Choose Cosmic Renewable Energy */}
+      {/* Our Leadership */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
@@ -206,82 +180,61 @@ export default function About() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Why Choose Cosmic Renewable Energy?
+              Our Leadership | আমাদের নেতৃত্ব
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We combine industry expertise with exceptional customer service to deliver 
-              solar solutions that exceed expectations.
+              Dedicated community leaders working together to strengthen our Bengali cultural presence in Melbourne.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {[
               {
-                title: 'Expert Installation',
-                icon: '⚡',
-                description: 'CEC-accredited professionals with years of experience in premium solar installations.',
-                features: ['Clean Energy Council Certified', 'Fully Insured & Licensed', 'Safety-First Approach']
+                name: 'Anup Singha',
+                role: 'President',
+                roleBengali: 'সভাপতি',
+                phone: '0403 617 375',
+                description: 'Leading BSM with vision and dedication to preserve Bengali culture in Melbourne.'
               },
               {
-                title: 'Premium Products',
-                icon: '🔋',
-                description: 'We partner with industry-leading manufacturers to provide the highest quality components.',
-                features: ['Tier 1 Solar Panels', 'Premium Battery Systems', 'German Engineering']
-              },
-              {
-                title: 'Comprehensive Warranty',
-                icon: '🛡️',
-                description: '5-year workmanship warranty with ongoing support and maintenance services.',
-                features: ['5-Year Workmanship', '25-Year Panel Warranty', '10-Year Battery Warranty']
-              },
-              {
-                title: 'Transparent Pricing',
-                icon: '💰',
-                description: 'No hidden fees, no surprises. Clear, upfront pricing with detailed quotations.',
-                features: ['Fixed Price Quotes', 'No Hidden Costs', 'Government Rebate Assistance']
-              },
-              {
-                title: 'Local Support',
-                icon: '🤝',
-                description: 'Australian-owned and operated with local support teams across the country.',
-                features: ['Australian Owned', 'Local Support Teams', 'Community Focused']
-              },
-              {
-                title: 'Proven Results',
-                icon: '📈',
-                description: 'Track record of delivering exceptional results with thousands of satisfied customers.',
-                features: ['5000+ Installations', '5-Star Customer Rating', 'Proven ROI Results']
+                name: 'Pabitra Barman',
+                role: 'Vice President',
+                roleBengali: 'সহ-সভাপতি',
+                phone: '0413 406 344',
+                description: 'Supporting community initiatives and helping organize cultural events and programs.'
               }
-            ].map((feature, index) => (
+            ].map((leader, index) => (
               <motion.div
                 key={index}
-                className="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow duration-300"
+                className="bg-gray-50 rounded-xl p-8 text-center"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
               >
-                <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mb-6">
-                  <span className="text-2xl">{feature.icon}</span>
+                <div className="w-24 h-24 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-white text-3xl font-bold">{leader.name.split(' ').map(n => n[0]).join('')}</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                <p className="text-gray-600 mb-4 leading-relaxed">{feature.description}</p>
-                <ul className="space-y-2">
-                  {feature.features.map((item, i) => (
-                    <li key={i} className="flex items-center text-sm text-gray-600">
-                      <span className="text-green-600 font-bold mr-2">✓</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                <h3 className="text-2xl font-bold text-gray-900 mb-1">{leader.name}</h3>
+                <p className="text-red-600 font-semibold mb-1">{leader.role}</p>
+                <p className="text-orange-600 font-medium mb-4" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                  {leader.roleBengali}
+                </p>
+                <p className="text-gray-600 mb-4">{leader.description}</p>
+                <a 
+                  href={`tel:${leader.phone}`} 
+                  className="inline-flex items-center text-red-600 hover:text-red-700 font-semibold"
+                >
+                  📞 {leader.phone}
+                </a>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Our Work Gallery */}
-      <section className="py-20 bg-white">
+      {/* BSM Executive Committee 2025-2027 */}
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="text-center mb-16"
@@ -291,50 +244,80 @@ export default function About() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Our Quality Work Speaks for Itself
+              BSM Executive Committee
+              <span className="block text-red-600 text-2xl mt-2">2025-2027</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Every installation is a testament to our commitment to quality, precision, and customer satisfaction. 
-              Browse our portfolio of successful projects across Australia.
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+              বিএসএম কার্যনির্বাহী কমিটি ২০২৫-২০২৭
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {[
-              { image: '/solarroof.jpg', title: 'Residential Install', size: '6.6kW' },
-              { image: '/solarroof2.jpg', title: 'Premium System', size: '10kW' },
-              { image: '/solarroof3.jpg', title: 'Modern Home', size: '8.8kW' },
-              { image: '/solarroof4.jpg', title: 'Commercial', size: '50kW' },
-              { image: '/solarroof5.jpg', title: 'Tile Roof', size: '7.2kW' },
-              { image: '/solarroof6.jpg', title: 'Multi-Level', size: '12kW' },
-              { image: '/solarroof7.jpg', title: 'Warehouse', size: '100kW' },
-              { image: '/solarroof8.jpg', title: 'Premium Home', size: '9.9kW' },
-              { image: '/solarroof9.jpg', title: 'Family Home', size: '8.5kW' },
-              { image: '/solarroof10.jpg', title: 'Suburban Install', size: '7.8kW' },
-              { image: '/solarroof11.jpg', title: 'Rooftop System', size: '11kW' },
-              { image: '/batteryImage1.jpg', title: 'Battery Storage', size: '13.5kWh' }
-            ].map((project, index) => (
+              {
+                name: 'Anindita Sarkar',
+                photo: '/members/anindita-279x300.jpg',
+                position: 'Executive Member'
+              },
+              {
+                name: 'Anup Singha',
+                photo: '/members/Anup-Singha-279x300.jpg',
+                position: 'President'
+              },
+              {
+                name: 'Jony Saha',
+                photo: '/members/js1-300x289.jpg',
+                position: 'General Secretary'
+              },
+              {
+                name: 'Mihir Das',
+                photo: '/members/mihirdas-266x300.jpeg',
+                position: 'Executive Member'
+              },
+              {
+                name: 'Pabitra Barman',
+                photo: '/members/Untitled-5-279x300.jpg',
+                position: 'Vice President'
+              },
+              {
+                name: 'Pradip Saha',
+                photo: '/members/pradip-saha.jpg',
+                position: 'Executive Member'
+              },
+              {
+                name: 'Ratul Biswas',
+                photo: '/members/ratul-biswas.jpg',
+                position: 'Executive Member'
+              },
+              {
+                name: 'Subhagata Saha',
+                photo: '/members/Subhagata-Saha_BSM-279x300.jpg',
+                position: 'Executive Member'
+              },
+              {
+                name: 'Tapas Barman',
+                photo: '/members/kartik-300x235.jpg',
+                position: 'Public Relation Officer'
+              }
+            ].map((member, index) => (
               <motion.div
                 key={index}
-                className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+                className="bg-white rounded-xl p-6 shadow-lg text-center hover:shadow-xl transition-shadow duration-300"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.05 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
               >
-                <div className="relative h-32 sm:h-40 lg:h-48 overflow-hidden">
+                <div className="relative w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden">
                   <Image
-                    src={project.image}
-                    alt={project.title}
+                    src={member.photo}
+                    alt={member.name}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute bottom-1 sm:bottom-2 left-1 sm:left-2 right-1 sm:right-2 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <h3 className="text-xs sm:text-sm font-semibold line-clamp-1">{project.title}</h3>
-                    <p className="text-xs text-green-300">{project.size} System</p>
-                  </div>
                 </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-1">{member.name}</h3>
+                <p className="text-red-600 font-medium text-sm">{member.position}</p>
               </motion.div>
             ))}
           </div>
@@ -346,31 +329,16 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="bg-gray-50 rounded-xl p-8 max-w-3xl mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-green-600 mb-2">5000+</div>
-                  <div className="text-gray-700">Projects Completed</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-green-600 mb-2">100%</div>
-                  <div className="text-gray-700">Customer Satisfaction</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-green-600 mb-2">10+</div>
-                  <div className="text-gray-700">Years Experience</div>
-                </div>
-              </div>
-              <p className="text-gray-600 text-center">
-                Every project is completed to the highest standards with ongoing support and monitoring.
-              </p>
-            </div>
+            <p className="text-gray-600 max-w-3xl mx-auto">
+              Our dedicated Executive Committee members work tirelessly to preserve Bengali culture, 
+              organize community events, and strengthen the bonds within Melbourne's Bengali community.
+            </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Certifications & Accreditations */}
-      <section className="py-16 bg-green-600">
+      {/* Community Activities */}
+      <section className="py-20 bg-red-600">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="text-center mb-12"
@@ -380,33 +348,44 @@ export default function About() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Certifications & Accreditations
+              Community Activities | কমিউনিটি কার্যক্রম
             </h2>
-            <p className="text-xl text-green-100 max-w-3xl mx-auto">
-              We maintain the highest industry standards through continuous training and certification.
+            <p className="text-xl text-red-100 max-w-3xl mx-auto">
+              Beyond cultural festivals, we actively engage in community service and social initiatives.
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
-              { name: 'Clean Energy Council', abbr: 'CEC', description: 'Accredited Installer' },
-              { name: 'NETCC', abbr: 'NETCC', description: 'Approved Retailer' },
-              { name: 'ISO Certified', abbr: 'ISO', description: 'Quality Management' },
-              { name: 'Electrical Work Board', abbr: 'EWB', description: 'Licensed Electrical' }
-            ].map((cert, index) => (
+              { 
+                name: 'Blood Donation', 
+                nameBengali: 'রক্তদান', 
+                icon: '❤️', 
+                description: 'Regular blood donation drives to support the Australian healthcare system.' 
+              },
+              { 
+                name: 'Tree Plantation', 
+                nameBengali: 'বৃক্ষরোপণ', 
+                icon: '🌱', 
+                description: 'Environmental initiatives including tree planting and sustainability programs.' 
+              }
+            ].map((activity, index) => (
               <motion.div
                 key={index}
-                className="bg-white/10 backdrop-blur-lg rounded-lg p-6 text-center"
+                className="bg-white/10 backdrop-blur-lg rounded-lg p-8 text-center"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
               >
-                <div className="h-16 bg-white rounded-lg flex items-center justify-center mb-4">
-                  <span className="text-green-600 font-bold text-xl">{cert.abbr}</span>
+                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-3xl">{activity.icon}</span>
                 </div>
-                <h3 className="text-white font-semibold mb-1">{cert.name}</h3>
-                <p className="text-green-100 text-sm">{cert.description}</p>
+                <h3 className="text-white font-bold text-xl mb-2">{activity.name}</h3>
+                <p className="text-red-200 font-medium mb-4" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                  {activity.nameBengali}
+                </p>
+                <p className="text-red-100">{activity.description}</p>
               </motion.div>
             ))}
           </div>
@@ -423,24 +402,24 @@ export default function About() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Ready to Work with Australia's Solar Experts?
+              Join Our Bengali Community | আমাদের বাঙালি কমিউনিটিতে যোগ দিন
             </h2>
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              Experience the difference of working with a trusted solar energy partner. 
-              Get your personalized quote today and start saving.
+              Become part of Melbourne's vibrant Bengali community. Experience traditional festivals, 
+              cultural events, and meaningful connections.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
-                href="/quote" 
-                className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors inline-block"
+                href="/membership" 
+                className="bg-red-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-red-700 transition-colors inline-block"
               >
-                Get Free Quote
+                Become a Member
               </Link>
               <Link 
                 href="/contact" 
-                className="border-2 border-green-600 text-green-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-600 hover:text-white transition-colors inline-block"
+                className="border-2 border-red-600 text-red-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-red-600 hover:text-white transition-colors inline-block"
               >
-                Contact Our Team
+                Contact Us
               </Link>
             </div>
           </motion.div>

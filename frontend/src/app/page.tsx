@@ -3,48 +3,30 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import RebateBanner from '@/components/RebateBanner'
-import CustomerReviews from '@/components/CustomerReviews'
 
 export default function Home() {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Cosmic Renewable Energy",
-    "description": "Australia's leading solar battery installation specialists. Premium solar battery systems with government rebates up to $8,000.",
-    "url": "https://cosmicrenewable.com.au",
-    "telephone": "1300090984",
+    "@type": "Organization",
+    "name": "Bengali Society of Melbourne",
+    "alternateName": "BSM",
+    "description": "Bengali Society of Melbourne (BSM) - Melbourne's premier Bengali cultural organization since 2012. Community platform for Bengali cultural heritage and festivals.",
+    "url": "https://bsm.org.au",
+    "telephone": "0403617375",
+    "email": "info@bsm.org.au",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "12 Galli Court",
-      "addressLocality": "Hillside",
+      "addressLocality": "Melbourne",
       "addressRegion": "Victoria",
-      "postalCode": "3037",
       "addressCountry": "AU"
     },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": -37.7299,
-      "longitude": 144.7435
-    },
-    "openingHours": [
-      "Mo-Fr 08:00-18:00",
-      "Sa 09:00-16:00"
-    ],
-    "priceRange": "$$",
-    "areaServed": "Australia",
-    "serviceType": ["Solar Battery Installation", "Solar Panel Installation", "Hot Water Heat Pump", "HVAC Systems", "Solar Maintenance"],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "927"
-    },
+    "foundingDate": "2012",
+    "areaServed": "Victoria, Australia",
+    "memberOf": "Multicultural Communities of Victoria",
     "sameAs": [
-      "https://www.facebook.com/cosmicrenewableenergy",
-      "https://www.instagram.com/cosmicrenewableenergy/",
-      "https://x.com/CosmicRenewable",
-      "https://www.linkedin.com/in/cosmic-renewable-energy-46899a379"
-    ]
+      "https://www.facebook.com/bsm2022"
+    ],
+    "events": ["Durgotsav", "Kalipuja", "Saraswati Puja", "Pohela Boishakh", "Christmas", "New Year"]
   }
 
   return (
@@ -53,11 +35,9 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      {/* Government Rebate Banner */}
-      <RebateBanner />
       
-      {/* Contact Banner */}
-      <section className="py-4 bg-gradient-to-r from-orange-500 to-red-500">
+      {/* Welcome Banner */}
+      <section className="py-4 bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="text-center"
@@ -67,24 +47,24 @@ export default function Home() {
           >
             <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6">
               <div className="text-white font-bold text-lg sm:text-xl">
-                🚀 Australia's #1 Solar & Battery Experts
+                🌟 স্বাগতম Bengali Society of Melbourne 🌟
               </div>
               <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
                 <a 
-                  href="tel:1300090984"
-                  className="bg-white text-orange-600 px-4 py-2 rounded-full font-bold text-sm sm:text-base hover:bg-orange-50 transition-colors shadow-lg flex items-center gap-2"
-                >
-                  📞 1300 09 09 84
-                </a>
-                <a 
-                  href="tel:+61422786100"
+                  href="tel:0403617375"
                   className="bg-white text-red-600 px-4 py-2 rounded-full font-bold text-sm sm:text-base hover:bg-red-50 transition-colors shadow-lg flex items-center gap-2"
                 >
-                  📱 +61 422 786 100
+                  📞 President: 0403 617 375
+                </a>
+                <a 
+                  href="tel:0413406344"
+                  className="bg-white text-orange-600 px-4 py-2 rounded-full font-bold text-sm sm:text-base hover:bg-orange-50 transition-colors shadow-lg flex items-center gap-2"
+                >
+                  📱 VP: 0413 406 344
                 </a>
               </div>
               <div className="text-white font-semibold text-sm sm:text-base">
-                Call Now for Instant Quote!
+                Join Our Cultural Community!
               </div>
             </div>
           </motion.div>
@@ -92,13 +72,13 @@ export default function Home() {
       </section>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-green-50 to-emerald-100">
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50">
         <div className="absolute inset-0">
           <Image
-            src="/solarroof9.jpg"
-            alt="Premium solar battery system installation on Australian home roof - Cosmic Renewable Energy"
+            src="/bsmpooja/Durga-Puja-2025-1654-x-841-mm-Horizontal-Jul27-scaled.jpg"
+            alt="Bengali Society of Melbourne - Durga Puja Festival Celebration"
             fill
-            className="object-cover opacity-20"
+            className="object-cover opacity-30"
             priority
           />
         </div>
@@ -106,34 +86,33 @@ export default function Home() {
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl">
             <motion.h1 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-green-800 mb-4 sm:mb-6 leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-red-800 mb-4 sm:mb-6 leading-tight"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Premium Solar Battery Systems
-              <span className="block text-green-600">
-                Australia Wide Installation
+              Bengali Society of Melbourne
+              <span className="block text-orange-600 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                বেঙ্গলি সোসাইটি অফ মেলবোর্ন
               </span>
             </motion.h1>
             
             <motion.div 
-              className="bg-green-600 text-white text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold px-4 sm:px-6 py-3 sm:py-4 rounded-lg mb-4 sm:mb-6 inline-block"
+              className="bg-red-600 text-white text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold px-4 sm:px-6 py-3 sm:py-4 rounded-lg mb-4 sm:mb-6 inline-block"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Starting from $2,480
+              Since 2012 | ২০১২ সাল থেকে
             </motion.div>
 
             <motion.p 
-              className="text-lg sm:text-xl text-green-700 mb-6 sm:mb-8 leading-relaxed"
+              className="text-lg sm:text-xl text-red-700 mb-6 sm:mb-8 leading-relaxed"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Australia's leading solar battery installation specialists. Save up to $8,000 with government rebates 
-              on premium home battery systems. Professional installation across Melbourne, Sydney, Brisbane and nationwide.
+              Melbourne's premier Bengali cultural organization dedicated to preserving our rich heritage and connecting the Bengali community across Victoria. Join us for traditional festivals, cultural events, and community service.
             </motion.p>
             
             <motion.div 
@@ -144,19 +123,19 @@ export default function Home() {
             >
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Link 
-                  href="/quote" 
-                  className="w-full sm:w-auto bg-green-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold hover:bg-green-700 transition-all duration-200 text-center block sm:inline-block shadow-xl"
+                  href="/membership" 
+                  className="w-full sm:w-auto bg-red-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold hover:bg-red-700 transition-all duration-200 text-center block sm:inline-block shadow-xl"
                 >
-                  Book Free Consultation
+                  Join Our Community | যোগ দিন
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                <a 
-                  href="tel:1300090984" 
-                  className="w-full sm:w-auto border-2 border-green-600 text-green-600 px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold hover:bg-green-600 hover:text-white transition-all duration-200 text-center block sm:inline-block"
+                <Link 
+                  href="/events" 
+                  className="w-full sm:w-auto border-2 border-red-600 text-red-600 px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold hover:bg-red-600 hover:text-white transition-all duration-200 text-center block sm:inline-block"
                 >
-                  📞 Call Now: 1300 09 09 84
-                </a>
+                  View Events | অনুষ্ঠান দেখুন
+                </Link>
               </motion.div>
             </motion.div>
 
@@ -168,28 +147,28 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               <div className="text-center">
-                <div className="text-xl sm:text-2xl md:text-3xl font-bold text-green-600">10+</div>
-                <div className="text-green-700 text-xs sm:text-sm">Years Experience</div>
+                <div className="text-xl sm:text-2xl md:text-3xl font-bold text-red-600">12+</div>
+                <div className="text-red-700 text-xs sm:text-sm">Years Serving</div>
               </div>
               <div className="text-center">
-                <div className="text-xl sm:text-2xl md:text-3xl font-bold text-green-600">5000+</div>
-                <div className="text-green-700 text-xs sm:text-sm">Homes Powered</div>
+                <div className="text-xl sm:text-2xl md:text-3xl font-bold text-red-600">1000+</div>
+                <div className="text-red-700 text-xs sm:text-sm">Community Members</div>
               </div>
               <div className="text-center">
-                <div className="text-xl sm:text-2xl md:text-3xl font-bold text-green-600">5 Years</div>
-                <div className="text-green-700 text-xs sm:text-sm">Warranty</div>
+                <div className="text-xl sm:text-2xl md:text-3xl font-bold text-red-600">50+</div>
+                <div className="text-red-700 text-xs sm:text-sm">Events Annually</div>
               </div>
               <div className="text-center">
-                <div className="text-xl sm:text-2xl md:text-3xl font-bold text-green-600">90%</div>
-                <div className="text-green-700 text-xs sm:text-sm">Bill Reduction</div>
+                <div className="text-xl sm:text-2xl md:text-3xl font-bold text-red-600">100%</div>
+                <div className="text-red-700 text-xs sm:text-sm">Cultural Heritage</div>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Special Offer Banner */}
-      <section className="py-12 bg-gradient-to-r from-green-500 to-emerald-600">
+      {/* Upcoming Events Banner */}
+      <section className="py-12 bg-gradient-to-r from-amber-500 via-orange-500 to-red-500">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center"
@@ -201,56 +180,56 @@ export default function Home() {
             <div className="bg-white rounded-2xl shadow-2xl p-4 sm:p-8 max-w-4xl mx-auto">
               <div className="mb-4">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-                  ⚡ EXCLUSIVE LIMITED TIME OFFER ⚡
+                  🎉 Upcoming Festivals | আসন্ন উৎসব 🎉
                 </h2>
                 <p className="text-lg text-gray-600">
-                  Don't miss out on our latest solar and battery package deals!
+                  Join us for our traditional Bengali festivals and community celebrations!
                 </p>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div className="relative rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src="/survey1.png"
-                    alt="Cosmic Renewable Energy Offer Survey 1"
+                    src="/bsmpooja/2-scaled.jpg"
+                    alt="Bengali Society of Melbourne Community Event"
                     width={600}
-                    height={800}
-                    className="w-full h-auto object-contain"
+                    height={400}
+                    className="w-full h-auto object-cover"
                     priority
                   />
                 </div>
                 <div className="relative rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src="/survey2.png"
-                    alt="Cosmic Renewable Energy Offer Survey 2"
+                    src="/communityphotos/20221007_224153-scaled.jpg"
+                    alt="Bengali Cultural Celebration Melbourne"
                     width={600}
-                    height={800}
-                    className="w-full h-auto object-contain"
+                    height={400}
+                    className="w-full h-auto object-cover"
                   />
                 </div>
               </div>
               
               <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
                 <Link 
-                  href="/quote" 
-                  className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-green-700 transition-colors shadow-xl"
+                  href="/events" 
+                  className="bg-red-600 text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-red-700 transition-colors shadow-xl"
                 >
-                  Claim This Offer Now
+                  View All Events | সব অনুষ্ঠান
                 </Link>
-                <a 
-                  href="tel:1300090984" 
-                  className="border-2 border-green-600 text-green-600 px-8 py-4 rounded-lg text-lg font-bold hover:bg-green-600 hover:text-white transition-colors"
+                <Link 
+                  href="/membership" 
+                  className="border-2 border-red-600 text-red-600 px-8 py-4 rounded-lg text-lg font-bold hover:bg-red-600 hover:text-white transition-colors"
                 >
-                  📞 Call for Details
-                </a>
+                  Join BSM | যোগ দিন
+                </Link>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Government Battery Rebate Section */}
-      <section className="py-16 bg-green-600">
+      {/* About BSM Section */}
+      <section className="py-16 bg-red-600">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="text-center"
@@ -260,30 +239,29 @@ export default function Home() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Solar Battery Rebates Australia - Save $8,000
+              About BSM | আমাদের সম্পর্কে
             </h2>
-            <p className="text-xl text-green-100 mb-8 max-w-3xl mx-auto">
-              Take advantage of the $2.3 Billion Australian Government Home Battery Program. 
-              Save up to $8,000 on premium solar battery systems with professional installation across Australia.
+            <p className="text-xl text-red-100 mb-8 max-w-3xl mx-auto">
+              Bengali Society of Melbourne (BSM), a not-for-profit organisation, is a platform of Bengali community mostly from the sub-continent. Since its inception in 2012, we set forth with the aim to make our newer generations familiar with our rich cultural heritage.
             </p>
             <div className="bg-white/10 backdrop-blur-lg rounded-xl p-8 max-w-2xl mx-auto">
-              <h3 className="text-2xl font-bold text-white mb-4">How It Works</h3>
-              <ul className="text-left text-green-100 space-y-3">
+              <h3 className="text-2xl font-bold text-white mb-4">Our Mission | আমাদের লক্ষ্য</h3>
+              <ul className="text-left text-red-100 space-y-3">
                 <li className="flex items-start">
-                  <span className="text-green-300 font-bold mr-3">1.</span>
-                  Choose from approved battery systems
+                  <span className="text-red-300 font-bold mr-3">1.</span>
+                  Encourage cultural diversity while taking pride in our own culture
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-300 font-bold mr-3">2.</span>
-                  Get up to 30% government discount
+                  <span className="text-red-300 font-bold mr-3">2.</span>
+                  Make BSM an integral part of multicultural communities of Victoria
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-300 font-bold mr-3">3.</span>
-                  Professional installation included
+                  <span className="text-red-300 font-bold mr-3">3.</span>
+                  Organize traditional Bengali festivals and celebrations
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-300 font-bold mr-3">4.</span>
-                  Start saving on energy bills immediately
+                  <span className="text-red-300 font-bold mr-3">4.</span>
+                  Engage in community service like blood donation and tree plantation
                 </li>
               </ul>
             </div>
@@ -291,7 +269,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Carousel Section */}
+      {/* Bengali Festivals Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
@@ -302,46 +280,51 @@ export default function Home() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Our Services
+              Our Festivals | আমাদের উৎসব
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive solar and energy solutions for your home and business.
+              Traditional Bengali festivals celebrating our rich cultural heritage throughout the year.
             </p>
           </motion.div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6 lg:gap-8">
             {[
               {
-                title: 'Solar Batteries',
-                icon: '🔋',
-                description: 'Store excess energy for use day and night',
-                image: '/batteryImage3.jpg'
+                title: 'Durgotsav',
+                titleBengali: 'দুর্গোৎসব',
+                icon: '🪔',
+                description: 'The grand festival of Goddess Durga',
+                image: '/communityphotos/20221007_224153-scaled.jpg'
               },
               {
-                title: 'Solar Panels',
-                icon: '☀️',
-                description: 'Premium solar panels for maximum efficiency',
-                image: '/solarroof8.jpg'
+                title: 'Kalipuja',
+                titleBengali: 'কালীপূজা',
+                icon: '🕉️',
+                description: 'Worship of Goddess Kali with Deepavali',
+                image: '/communityphotos/20221008_115837-scaled.jpg'
               },
               {
-                title: 'Hot Water Heat Pump',
-                icon: '🌡️',
-                description: 'Energy-efficient heating and cooling',
-                image: '/inverterimage2.jpg'
+                title: 'Saraswati Puja',
+                titleBengali: 'সরস্বতী পূজা',
+                icon: '📚',
+                description: 'Celebrating the goddess of knowledge',
+                image: '/communityphotos/20231029_125732-scaled.jpg'
               },
               {
-                title: 'HVAC Systems',
-                icon: '❄️',
-                description: 'Climate control solutions',
-                image: '/solarroof10.jpg'
+                title: 'Pohela Boishakh',
+                titleBengali: 'পহেলা বৈশাখ',
+                icon: '🌸',
+                description: 'Bengali New Year celebration',
+                image: '/communityphotos/IMG-1305-scaled.jpg'
               },
               {
-                title: 'Servicing',
-                icon: '🔧',
-                description: 'Maintenance and support services',
-                image: '/solarroof11.jpg'
+                title: 'Christmas & New Year',
+                titleBengali: 'বড়দিন ও নববর্ষ',
+                icon: '🎄',
+                description: 'Multicultural celebration',
+                image: '/communityphotos/20231111_225013-scaled.jpg'
               }
-            ].map((service, index) => (
+            ].map((festival, index) => (
               <motion.div
                 key={index}
                 className="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
@@ -353,18 +336,21 @@ export default function Home() {
               >
                 <div className="relative h-32 sm:h-40 lg:h-48 overflow-hidden">
                   <Image
-                    src={service.image}
-                    alt={service.title}
+                    src={festival.image}
+                    alt={festival.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute inset-0 bg-green-600/80 flex items-center justify-center">
-                    <span className="text-2xl sm:text-3xl lg:text-4xl">{service.icon}</span>
+                  <div className="absolute inset-0 bg-red-600/80 flex items-center justify-center">
+                    <span className="text-2xl sm:text-3xl lg:text-4xl">{festival.icon}</span>
                   </div>
                 </div>
                 <div className="p-4 sm:p-5 lg:p-6">
-                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">{service.title}</h3>
-                  <p className="text-gray-600 text-sm">{service.description}</p>
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">{festival.title}</h3>
+                  <p className="text-orange-600 font-medium text-sm mb-2" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                    {festival.titleBengali}
+                  </p>
+                  <p className="text-gray-600 text-sm">{festival.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -372,7 +358,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Brand Showcase */}
+      {/* Community Gallery */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
@@ -383,488 +369,38 @@ export default function Home() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Industry Leading Battery Brands
+              Community Gallery | কমিউনিটি গ্যালারি
             </h2>
             <p className="text-xl text-gray-600">
-              We partner with the world's most trusted battery manufacturers
+              Memories from our cultural celebrations and community events
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { name: 'Tesla', logo: '🔋' },
-              { name: 'Eveready', logo: '⚡' },
-              { name: 'AlphaESS', logo: '🌟' },
-              { name: 'Hive Energy', logo: '🏠' },
-              { name: 'Ambrion', logo: '💎' }
-            ].map((brand, index) => (
+              { image: '/communityphotos/20221008_131557-scaled.jpg', title: 'Durga Puja 2022' },
+              { image: '/communityphotos/20221008_1438212-scaled.jpg', title: 'Cultural Performance' },
+              { image: '/communityphotos/PA094485-scaled.jpg', title: 'Community Gathering' },
+              { image: '/communityphotos/IMG-1544.jpg', title: 'Festival Celebration' }
+            ].map((photo, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-lg p-6 text-center shadow-md hover:shadow-lg transition-shadow duration-300"
+                className="group relative aspect-square rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
               >
-                <div className="text-4xl mb-2">{brand.logo}</div>
-                <h3 className="font-semibold text-gray-900">{brand.name}</h3>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Why Choose Cosmic Renewable Energy?
-            </h2>
-          </motion.div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                title: '5000+ Installations',
-                description: 'Trusted by thousands of satisfied customers across Australia'
-              },
-              {
-                title: 'Safety First',
-                description: 'Fully licensed, insured, and safety-certified installations'
-              },
-              {
-                title: '5-Star Reviews',
-                description: 'Consistently rated as the top solar installer in the region'
-              },
-              {
-                title: 'Best Prices',
-                description: 'Competitive pricing with transparent, no-hidden-fees quotes'
-              }
-            ].map((feature, index) => (
-              <motion.div
-                key={index}
-                className="text-center p-6 bg-green-50 rounded-lg"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-              >
-                <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white text-2xl">✓</span>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Customer Reviews */}
-      <CustomerReviews />
-
-      {/* Our Work Portfolio */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Our Completed Projects
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              See the quality of our work across thousands of successful solar installations. 
-              From residential rooftops to commercial systems, we deliver excellence every time.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            {[
-              {
-                image: '/solarroof.jpg',
-                title: 'Residential Solar Installation',
-                description: '6.6kW system with premium panels',
-                location: 'Melbourne, VIC'
-              },
-              {
-                image: '/solarroof2.jpg',
-                title: 'Large Scale Residential',
-                description: '10kW system with battery storage',
-                location: 'Sydney, NSW'
-              },
-              {
-                image: '/solarroof3.jpg',
-                title: 'Modern Home Solar',
-                description: '8.8kW high-efficiency installation',
-                location: 'Brisbane, QLD'
-              },
-              {
-                image: '/solarroof4.jpg',
-                title: 'Commercial Solar Project',
-                description: '50kW commercial installation',
-                location: 'Perth, WA'
-              },
-              {
-                image: '/solarroof5.jpg',
-                title: 'Tile Roof Installation',
-                description: '7.2kW system with micro-inverters',
-                location: 'Adelaide, SA'
-              },
-              {
-                image: '/solarroof6.jpg',
-                title: 'Multi-Story Installation',
-                description: '12kW split-level system',
-                location: 'Canberra, ACT'
-              },
-              {
-                image: '/solarroof7.jpg',
-                title: 'Warehouse Solar System',
-                description: '100kW commercial installation',
-                location: 'Gold Coast, QLD'
-              },
-              {
-                image: '/solarroof8.jpg',
-                title: 'Premium Residential',
-                description: '9.9kW with battery backup',
-                location: 'Newcastle, NSW'
-              },
-              {
-                image: '/batteryImage1.jpg',
-                title: 'Tesla Battery Installation',
-                description: '13.5kWh Powerwall system',
-                location: 'Geelong, VIC'
-              },
-              {
-                image: '/batteryImage2.jpg',
-                title: 'Home Battery Storage',
-                description: '10kWh backup power system',
-                location: 'Hobart, TAS'
-              },
-              {
-                image: '/batteryImage3.jpg',
-                title: 'Premium Battery Setup',
-                description: '20kWh commercial storage',
-                location: 'Darwin, NT'
-              },
-              {
-                image: '/inverterImage1.jpg',
-                title: 'Inverter Installation',
-                description: 'Premium German inverters',
-                location: 'Wollongong, NSW'
-              }
-            ].map((project, index) => (
-              <motion.div
-                key={index}
-                className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-              >
-                <div className="relative h-48 sm:h-56 lg:h-64 overflow-hidden">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                  <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 text-white">
-                    <div className="bg-green-600 text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-semibold mb-1 sm:mb-2 inline-block">
-                      Completed
-                    </div>
-                    <h3 className="text-base sm:text-lg font-bold mb-1 line-clamp-2">{project.title}</h3>
-                    <p className="text-green-200 text-sm line-clamp-1">{project.description}</p>
-                    <p className="text-green-300 text-xs mt-1 line-clamp-1">📍 {project.location}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div 
-            className="text-center mt-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="bg-green-50 rounded-xl p-8 max-w-2xl mx-auto">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                Ready to Join Our Success Stories?
-              </h3>
-              <p className="text-gray-600 mb-6">
-                Over 5,000 satisfied customers have trusted us with their solar installations. 
-                Let us design the perfect system for your property.
-              </p>
-              <Link 
-                href="/quote" 
-                className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors inline-block shadow-xl"
-              >
-                Get Your Free Quote
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Benefits Showcase */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Why Solar Increases Your Property Value
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Solar installations don't just save you money on electricity bills - they significantly increase your property value and appeal to future buyers.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
-            {[
-              {
-                title: "Property Value Increase",
-                percentage: "+15%",
-                description: "Solar homes sell for an average of 15% more than comparable non-solar properties",
-                image: "/solarroof3.jpg",
-                features: [
-                  "Immediate increase in home valuation",
-                  "Higher resale value and faster sales",
-                  "Attractive to environmentally conscious buyers",
-                  "Premium market positioning"
-                ]
-              },
-              {
-                title: "Energy Bill Savings",
-                percentage: "90%",
-                description: "Reduce your electricity bills by up to 90% with our premium solar systems",
-                image: "/solarroof5.jpg",
-                features: [
-                  "Immediate reduction in monthly bills",
-                  "Protection against rising energy costs",
-                  "Feed-in tariffs for excess power",
-                  "Return on investment within 3-5 years"
-                ]
-              }
-            ].map((benefit, index) => (
-              <motion.div
-                key={index}
-                className="group"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-              >
-                <div className="relative h-64 sm:h-80 rounded-2xl overflow-hidden mb-6 shadow-xl">
-                  <Image
-                    src={benefit.image}
-                    alt={benefit.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                  <div className="absolute top-6 left-6">
-                    <div className="bg-green-600 text-white text-4xl sm:text-5xl font-bold px-4 py-2 rounded-lg">
-                      {benefit.percentage}
-                    </div>
-                  </div>
-                  <div className="absolute bottom-6 left-6 right-6 text-white">
-                    <h3 className="text-2xl sm:text-3xl font-bold mb-2">{benefit.title}</h3>
-                    <p className="text-green-200 text-lg">{benefit.description}</p>
-                  </div>
-                </div>
-                
-                <div className="space-y-3">
-                  {benefit.features.map((feature, i) => (
-                    <div key={i} className="flex items-start">
-                      <span className="text-green-600 font-bold mr-3 mt-1">✓</span>
-                      <span className="text-gray-700">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Additional Benefits Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            {[
-              {
-                title: "Environmental Impact",
-                metric: "25 Tons",
-                description: "CO2 reduced per year with average system",
-                image: "/solarroof7.jpg",
-                icon: "🌱"
-              },
-              {
-                title: "Energy Independence",
-                metric: "100%",
-                description: "Self-sufficient during daylight hours",
-                image: "/batteryImage2.jpg",
-                icon: "⚡"
-              },
-              {
-                title: "Government Incentives",
-                metric: "$8,000",
-                description: "Average rebates and incentives available",
-                image: "/inverterImage1.jpg",
-                icon: "💰"
-              }
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-              >
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                  <div className="absolute top-4 right-4">
-                    <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center">
-                      <span className="text-2xl">{item.icon}</span>
-                    </div>
-                  </div>
-                  <div className="absolute bottom-4 left-4 right-4 text-white">
-                    <div className="text-3xl font-bold text-green-300 mb-1">{item.metric}</div>
-                    <h3 className="text-lg font-semibold mb-1">{item.title}</h3>
-                    <p className="text-green-200 text-sm">{item.description}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Call to Action */}
-          <motion.div 
-            className="text-center mt-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8 sm:p-12">
-              <h3 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-                Start Increasing Your Property Value Today
-              </h3>
-              <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-                Join thousands of homeowners who have increased their property value while saving on energy costs.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link 
-                  href="/quote" 
-                  className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors inline-block shadow-xl"
-                >
-                  Get Free Property Assessment
-                </Link>
-                <Link 
-                  href="/contact" 
-                  className="border-2 border-green-600 text-green-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-600 hover:text-white transition-colors inline-block"
-                >
-                  Calculate My Savings
-                </Link>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Latest Solar News */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Latest Solar News
-            </h2>
-            <p className="text-xl text-gray-600">
-              Stay informed with the latest developments in solar technology
-            </p>
-          </motion.div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: '$2.3 Billion Cheaper Home Batteries Program Now Live',
-                description: 'Government launches massive battery rebate program offering up to 30% discounts on home battery systems.',
-                image: '/batteryImage3.jpg',
-                date: 'August 2025',
-                link: 'https://www.dcceew.gov.au/energy/programs/cheaper-home-batteries'
-              },
-              {
-                title: 'How Solar Households Can Maximize Government Benefits',
-                description: 'Complete guide to accessing federal and state solar incentives, rebates, and the new battery program.',
-                image: '/solarroof8.jpg',
-                date: 'August 2025',
-                link: 'https://www.energy.gov.au/solar/switch-solar-power/solar-households'
-              },
-              {
-                title: 'Battery Storage Revolution: 5kWh to 100kWh Systems Eligible',
-                description: 'New program covers batteries from small residential to large commercial installations with CEC approval.',
-                image: '/batteryImage2.jpg',
-                date: 'August 2025',
-                link: 'https://www.dcceew.gov.au/energy/programs/cheaper-home-batteries'
-              }
-            ].map((article, index) => (
-              <motion.div
-                key={index}
-                className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-              >
-                <div className="relative h-48">
-                  <Image
-                    src={article.image}
-                    alt={article.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="text-sm text-green-600 font-medium mb-2">{article.date}</div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{article.title}</h3>
-                  <p className="text-gray-600 mb-4">{article.description}</p>
-                  <a 
-                    href={article.link} 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-green-600 font-medium hover:text-green-700 transition-colors"
-                  >
-                    Read More →
-                  </a>
+                <Image
+                  src={photo.image}
+                  alt={photo.title}
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute bottom-2 left-2 right-2 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <p className="text-sm font-medium">{photo.title}</p>
                 </div>
               </motion.div>
             ))}
@@ -873,7 +409,7 @@ export default function Home() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 bg-green-600">
+      <section className="py-16 bg-red-600">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -882,23 +418,23 @@ export default function Home() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Ready to Start Your Solar Journey?
+              Join Our Cultural Community | আমাদের সাংস্কৃতিক সম্প্রদায়ে যোগ দিন
             </h2>
-            <p className="text-xl text-green-100 mb-8 max-w-2xl mx-auto">
-              Get a personalized quote and discover how much you can save with solar and battery systems.
+            <p className="text-xl text-red-100 mb-8 max-w-2xl mx-auto">
+              Be part of Melbourne's vibrant Bengali community. Experience traditional festivals, cultural events, and meaningful connections.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
-                href="/quote" 
-                className="bg-white text-green-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-50 transition-colors inline-block"
+                href="/membership" 
+                className="bg-white text-red-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-red-50 transition-colors inline-block"
               >
-                Get Free Quote
+                Become a Member | সদস্য হন
               </Link>
               <a 
-                href="tel:1300090984" 
-                className="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-green-600 transition-colors inline-block"
+                href="tel:0403617375" 
+                className="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-red-600 transition-colors inline-block"
               >
-                📞 Call 1300 09 09 84
+                📞 Call 0403 617 375
               </a>
             </div>
           </motion.div>

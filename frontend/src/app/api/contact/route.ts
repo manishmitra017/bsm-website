@@ -1,77 +1,43 @@
 import { NextRequest, NextResponse } from 'next/server'
-import nodemailer from 'nodemailer'
-
-interface ContactFormData {
-  name: string
-  email: string
-  phone?: string
-  suburb?: string
-  serviceInterest?: string
-  message?: string
-}
-
-async function sendEmail(subject: string, content: string) {
-  try {
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_SERVER || 'smtp.gmail.com',
-      port: 587,
-      secure: false,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASSWORD,
-      },
-    })
-
-    await transporter.sendMail({
-      from: process.env.SMTP_USER,
-      to: 'ceejay@cosmicrenewableenergy.com.au',
-      subject: subject,
-      text: content,
-      html: content.replace(/\n/g, '<br>'),
-    })
-
-    return true
-  } catch (error) {
-    console.error('Failed to send email:', error)
-    return false
-  }
-}
 
 export async function POST(request: NextRequest) {
   try {
-    const data: ContactFormData = await request.json()
+    const body = await request.json()
+    const { name, email, phone, message, interest } = body
 
-    const subject = `New Contact Form Submission from ${data.name}`
-    
-    const content = `
-New contact form submission received:
-
-Name: ${data.name}
-Email: ${data.email}
-Phone: ${data.phone || 'Not provided'}
-Suburb: ${data.suburb || 'Not provided'}
-Service Interest: ${data.serviceInterest || 'Not specified'}
-Message: ${data.message || 'No message provided'}
-
-This email was sent from the Cosmic Renewable Energy website contact form.
-`
-
-    const emailSent = await sendEmail(subject, content)
-
-    if (!emailSent) {
+    // Basic validation
+    if (!name || !email || !message) {
       return NextResponse.json(
-        { error: 'Failed to send email notification' },
-        { status: 500 }
+        { error: 'Name, email, and message are required' },
+        { status: 400 }
       )
     }
 
-    return NextResponse.json({
-      message: 'Contact form submitted successfully',
-      data: data
+    // Here you would typically:
+    // 1. Send an email to BSM leadership
+    // 2. Store the inquiry in a database
+    // 3. Send a confirmation email to the user
+    
+    // For now, we'll just log the inquiry and return success
+    console.log('BSM Contact Form Submission:', {
+      name,
+      email,
+      phone,
+      interest,
+      message,
+      timestamp: new Date().toISOString()
     })
 
+    return NextResponse.json(
+      { 
+        success: true, 
+        message: 'Thank you for contacting Bengali Society of Melbourne. We will get back to you soon!' 
+      },
+      { status: 200 }
+    )
+
   } catch (error) {
-    console.error('Error processing contact form:', error)
+    console.error('Contact form error:', error)
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

@@ -9,25 +9,31 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+// Bengali font support
+const bengaliFont = Inter({
+  subsets: ["latin"],
+  variable: "--font-bengali",
+});
+
 export const metadata: Metadata = {
-  title: "Solar Battery Systems Australia | Cosmic Renewable Energy | Government Rebates Available",
-  description: "Australia's leading solar battery specialists. Save up to $8,000 with government rebates on premium solar battery systems. Free quotes, professional installation, 5-year warranty. Serving Melbourne, Sydney, Brisbane nationwide.",
-  keywords: "solar battery Australia, solar battery installation cost, Tesla Powerwall 3 Australia, government battery rebate 2025, solar battery Melbourne Sydney Brisbane, home battery systems, LG Chem battery, BYD battery, solar energy storage, battery backup power, solar battery rebate NSW Victoria, Powerwall installation Australia, solar battery price, off grid solar battery, residential battery storage, solar battery financing, CEC approved battery installer",
-  authors: [{ name: "Cosmic Renewable Energy" }],
-  creator: "Cosmic Renewable Energy",
-  publisher: "Cosmic Renewable Energy",
+  title: "Bengali Society of Melbourne | BSM | বাংলা সমাজ মেলবোর্ন | Bengali Cultural Community Victoria",
+  description: "Bengali Society of Melbourne (BSM) - Melbourne's premier Bengali cultural organization since 2012. Join us for Durgotsav, Kalipuja, Saraswati Puja, Pohela Boishakh and more Bengali festivals. Community events, volunteering, and cultural preservation in Victoria.",
+  keywords: "Bengali Society Melbourne, BSM, বাংলা সমাজ মেলবোর্ন, Bengali community Melbourne, Durgotsav Melbourne, Kalipuja Melbourne, Saraswati Puja Melbourne, Pohela Boishakh Melbourne, Bengali cultural events Victoria, Bengali festivals Australia, Bengali community Victoria, multicultural Melbourne",
+  authors: [{ name: "Bengali Society of Melbourne" }],
+  creator: "Bengali Society of Melbourne",
+  publisher: "Bengali Society of Melbourne",
   robots: "index, follow",
   openGraph: {
-    title: "Solar Battery Systems Australia | Government Rebates Up To $8,000",
-    description: "Premium solar battery systems with professional installation across Australia. Government rebates available. Free consultation and 5-year warranty included.",
-    url: "https://cosmicrenewable.com.au",
-    siteName: "Cosmic Renewable Energy",
+    title: "Bengali Society of Melbourne | BSM | Bengali Cultural Community",
+    description: "Melbourne's premier Bengali cultural organization since 2012. Join us for traditional festivals, community events and cultural preservation in Victoria.",
+    url: "https://bsm.org.au",
+    siteName: "Bengali Society of Melbourne",
     images: [
       {
-        url: "/company-logo.png",
+        url: "/bsm-logo.png",
         width: 1200,
         height: 630,
-        alt: "Cosmic Renewable Energy - Solar Battery Systems Australia",
+        alt: "Bengali Society of Melbourne - BSM Logo",
       },
     ],
     locale: "en_AU",
@@ -35,19 +41,19 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Solar Battery Systems Australia | Cosmic Renewable Energy",
-    description: "Premium solar battery systems with government rebates up to $8,000. Professional installation across Australia.",
-    creator: "@CosmicRenewable",
-    images: ["/company-logo.png"],
+    title: "Bengali Society of Melbourne | BSM Bengali Community",
+    description: "Melbourne's premier Bengali cultural organization. Traditional festivals, community events and cultural preservation.",
+    creator: "@BSMMelbourne",
+    images: ["/bsm-logo.png"],
   },
   icons: {
-    icon: '/company-logo.png',
-    shortcut: '/company-logo.png',
-    apple: '/company-logo.png',
+    icon: '/bsm-logo.png',
+    shortcut: '/bsm-logo.png',
+    apple: '/bsm-logo.png',
   },
-  metadataBase: new URL('https://cosmicrenewable.com.au'),
+  metadataBase: new URL('https://bsm.org.au'),
   alternates: {
-    canonical: "https://cosmicrenewable.com.au",
+    canonical: "https://bsm.org.au",
   },
 };
 
@@ -58,12 +64,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-AU">
-      <body className={`${inter.className} antialiased`}>
-        <Script
-          id="google-maps"
-          strategy="lazyOnload"
-          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet"
         />
+      </head>
+      <body className={`${inter.className} ${bengaliFont.variable} antialiased`}>
         <Header />
         <main className="pt-16 sm:pt-20 min-h-screen" role="main">
           {children}
