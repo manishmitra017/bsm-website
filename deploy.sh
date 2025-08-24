@@ -8,6 +8,26 @@ set -e  # Exit on any error
 echo "🚀 BSM Website Deployment Script"
 echo "================================="
 
+# Load environment variables
+if [ -f .env ]; then
+    echo "📋 Loading environment variables from .env"
+    export $(grep -v '^#' .env | xargs)
+elif [ -f .env.local ]; then
+    echo "📋 Loading environment variables from .env.local"
+    export $(grep -v '^#' .env.local | xargs)
+else
+    echo "⚠️  No .env or .env.local file found"
+    echo "   Make sure your NEXT_PUBLIC_GOOGLE_MAPS_API_KEY is set"
+fi
+
+# Check Google Maps API key
+if [ -z "$NEXT_PUBLIC_GOOGLE_MAPS_API_KEY" ]; then
+    echo "❌ NEXT_PUBLIC_GOOGLE_MAPS_API_KEY is not set!"
+    echo "   Please create a .env file with your Google Maps API key:"
+    echo "   NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your-api-key-here"
+    exit 1
+fi
+
 # Production deployment confirmation
 echo "🔴 PRODUCTION DEPLOYMENT - This will deploy to https://bsmmelbourne.org"
 read -p "Are you sure you want to deploy to production? (y/N): " -n 1 -r
@@ -39,6 +59,10 @@ if [ ! -d "node_modules" ]; then
     echo "📦 Installing frontend dependencies..."
     npm install
 fi
+# Clean build to avoid any cached issues
+rm -rf .next
+# Set NODE_ENV to production for deployment build
+export NODE_ENV=production
 npm run build
 
 # Deploy using CDK

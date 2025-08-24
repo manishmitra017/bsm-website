@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable standalone output for Docker deployment
+  // Re-enable standalone output for Docker deployment
   output: 'standalone',
+  
+  // Disable static optimization for problematic pages during build
+  trailingSlash: false,
   
   // Enable experimental features (Next.js 15 has server actions enabled by default)
   experimental: {

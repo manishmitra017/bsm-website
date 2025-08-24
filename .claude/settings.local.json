@@ -36,7 +36,9 @@
       "Bash(aws route53 change-resource-record-sets:*)",
       "Bash(aws route53 get-change:*)",
       "Bash(cdk init:*)",
-      "Bash(cdk:*)"
+      "Bash(cdk:*)",
+      "Bash(grep:*)",
+      "Bash(./check-env.sh)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"

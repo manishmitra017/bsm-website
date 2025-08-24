@@ -271,8 +271,8 @@ export default function Membership() {
                     >
                       <div className="flex items-center justify-between">
                         <div>
-                          <h4 className="font-semibold">Single Membership</h4>
-                          <p className="text-sm text-gray-600">$160 per year</p>
+                          <h4 className="font-semibold text-gray-900">Single Membership</h4>
+                          <p className="text-sm text-gray-700">$160 per year</p>
                         </div>
                         <input
                           type="radio"
@@ -294,8 +294,8 @@ export default function Membership() {
                     >
                       <div className="flex items-center justify-between">
                         <div>
-                          <h4 className="font-semibold">Family Membership</h4>
-                          <p className="text-sm text-gray-600">$300 per year</p>
+                          <h4 className="font-semibold text-gray-900">Family Membership</h4>
+                          <p className="text-sm text-gray-700">$300 per year</p>
                         </div>
                         <input
                           type="radio"
@@ -321,7 +321,7 @@ export default function Membership() {
                       id="fullName"
                       name="fullName"
                       required
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 placeholder-gray-500"
                       placeholder="Enter your full name"
                     />
                   </div>
@@ -334,7 +334,7 @@ export default function Membership() {
                       id="email"
                       name="email"
                       required
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 placeholder-gray-500"
                       placeholder="Enter your email address"
                     />
                   </div>
@@ -352,17 +352,12 @@ export default function Membership() {
                     required
                     value={selectedAddress}
                     onChange={(e) => setSelectedAddress(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 placeholder-gray-500"
                     placeholder="Start typing your address for suggestions..."
                   />
                   <p className="text-xs text-gray-500 mt-1">
                     🌏 Address autocomplete powered by Google Places (Australia)
                   </p>
-                  {process.env.NODE_ENV === 'development' && (
-                    <p className="text-xs text-blue-500 mt-1">
-                      API Key: {process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ? 'Configured' : 'Missing'}
-                    </p>
-                  )}
                 </div>
 
                 <div>
@@ -374,7 +369,7 @@ export default function Membership() {
                     id="phone"
                     name="phone"
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 placeholder-gray-500"
                     placeholder="Enter your phone or mobile number"
                   />
                 </div>
@@ -416,9 +411,9 @@ export default function Membership() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                     <div>
                       <p className="text-gray-600 mb-1">Bank Details:</p>
-                      <p className="font-medium">BSB: <span className="text-red-600">033070</span></p>
-                      <p className="font-medium">Account: <span className="text-red-600">371537</span></p>
-                      <p className="font-medium">Name: Bengali Society Of Melbourne</p>
+                      <p className="font-medium text-gray-900">BSB: <span className="text-red-600">033070</span></p>
+                      <p className="font-medium text-gray-900">Account: <span className="text-red-600">371537</span></p>
+                      <p className="font-medium text-gray-900">Name: Bengali Society Of Melbourne</p>
                     </div>
                     <div>
                       <p className="text-gray-600 mb-1">Membership Fee:</p>

@@ -11,6 +11,27 @@
 
 echo "🌟 Starting Bengali Society of Melbourne (BSM) development server..."
 
+# Load environment variables
+echo "📋 Loading environment variables..."
+if [ -f .env.local ]; then
+    echo "   ✅ Loading from .env.local"
+    export $(grep -v '^#' .env.local | xargs)
+elif [ -f .env ]; then
+    echo "   ✅ Loading from .env"
+    export $(grep -v '^#' .env | xargs)
+else
+    echo "   ⚠️  No .env.local or .env file found"
+    echo "      Environment variables may not be loaded"
+fi
+
+# Verify key environment variables
+if [ -n "$NEXT_PUBLIC_GOOGLE_MAPS_API_KEY" ] && [ "$NEXT_PUBLIC_GOOGLE_MAPS_API_KEY" != "your-google-maps-api-key-here" ]; then
+    echo "   ✅ Google Maps API Key: Configured"
+else
+    echo "   ❌ Google Maps API Key: Not configured or using placeholder"
+    echo "      Please set NEXT_PUBLIC_GOOGLE_MAPS_API_KEY in .env.local"
+fi
+
 # Function to check if a command exists
 command_exists() {
     command -v "$1" >/dev/null 2>&1

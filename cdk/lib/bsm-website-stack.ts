@@ -48,6 +48,7 @@ export class BsmWebsiteStack extends cdk.Stack {
           NEXT_PUBLIC_SITE_URL: 'https://bsmmelbourne.org',
           NEXT_PUBLIC_SITE_NAME: 'Bengali Society of Melbourne',
           NEXT_PUBLIC_CONTACT_EMAIL: 'info@bsm.org.au',
+          NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '',
           PORT: '3000',
         },
       },
