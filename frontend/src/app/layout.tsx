@@ -71,6 +71,11 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} ${bengaliFont.variable} antialiased`}>
+        <Script
+          id="google-maps"
+          strategy="lazyOnload"
+          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
+        />
         <Header />
         <main className="pt-16 sm:pt-20 min-h-screen" role="main">
           {children}

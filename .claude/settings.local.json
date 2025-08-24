@@ -25,7 +25,8 @@
       "WebFetch(domain:developers.google.com)",
       "WebFetch(domain:bsm.org.au)",
       "Bash(npm run dev:*)",
-      "Bash(touch:*)"
+      "Bash(touch:*)",
+      "WebFetch(domain:localhost)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"

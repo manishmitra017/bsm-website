@@ -3,10 +3,21 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
+import { useGooglePlaces } from '@/hooks/useGooglePlaces'
+import GoogleMap from '@/components/GoogleMap'
 
 export default function Membership() {
   const [membershipType, setMembershipType] = useState('single')
+  const [selectedAddress, setSelectedAddress] = useState('')
+
+  const handlePlaceSelect = useCallback((place: any) => {
+    if (place.formatted_address) {
+      setSelectedAddress(place.formatted_address)
+    }
+  }, [])
+
+  const addressInputRef = useGooglePlaces(handlePlaceSelect)
 
   return (
     <div>
@@ -316,14 +327,25 @@ export default function Membership() {
                   <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-2">
                     Postal Address *
                   </label>
-                  <textarea
+                  <input
+                    ref={addressInputRef}
+                    type="text"
                     id="address"
                     name="address"
-                    rows={3}
                     required
+                    value={selectedAddress}
+                    onChange={(e) => setSelectedAddress(e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
-                    placeholder="Enter your complete postal address"
-                  ></textarea>
+                    placeholder="Start typing your address for suggestions..."
+                  />
+                  <p className="text-xs text-gray-500 mt-1">
+                    🌏 Address autocomplete powered by Google Places (Australia)
+                  </p>
+                  {process.env.NODE_ENV === 'development' && (
+                    <p className="text-xs text-blue-500 mt-1">
+                      API Key: {process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ? 'Configured' : 'Missing'}
+                    </p>
+                  )}
                 </div>
 
                 <div>
@@ -449,6 +471,8 @@ export default function Membership() {
                   <span className="text-red-600 text-xl">🏢</span>
                   <div>
                     <p className="font-semibold text-gray-900">Bengali Society of Melbourne</p>
+                    <p className="text-gray-600">7 Littlecroft Street</p>
+                    <p className="text-gray-600">Point Cook, VIC 3030</p>
                     <p className="text-gray-600">Melbourne, Victoria, Australia</p>
                   </div>
                 </div>
@@ -506,22 +530,26 @@ export default function Membership() {
               transition={{ duration: 0.8 }}
             >
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Find Us on Map</h3>
-              <div className="h-64 bg-gray-200 rounded-lg flex items-center justify-center">
-                <div className="text-center text-gray-500">
-                  <p className="mb-2">🗺️</p>
-                  <p className="text-sm">
-                    Google Maps integration available<br />
-                    with API key configuration
-                  </p>
-                  <p className="text-xs mt-2">
-                    Located in Melbourne, Victoria
-                  </p>
-                </div>
+              <div className="h-80 rounded-lg overflow-hidden shadow-inner">
+                <GoogleMap 
+                  address="7 Littlecroft Street, Point Cook, VIC 3030, Australia"
+                  zoom={16}
+                  className="w-full h-full"
+                />
               </div>
-              <div className="mt-4 text-center">
-                <p className="text-sm text-gray-600">
-                  Configure <code className="bg-gray-100 px-2 py-1 rounded text-xs">NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> in .env.local to enable map display
-                </p>
+              <div className="mt-4 bg-red-50 p-4 rounded-lg">
+                <div className="flex items-start space-x-2">
+                  <span className="text-red-600 text-lg">📍</span>
+                  <div>
+                    <p className="font-semibold text-red-800">BSM Office Location</p>
+                    <p className="text-red-600 text-sm">
+                      7 Littlecroft Street, Point Cook, VIC 3030
+                    </p>
+                    <p className="text-xs text-red-500 mt-1">
+                      Click and drag to explore the map
+                    </p>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>
