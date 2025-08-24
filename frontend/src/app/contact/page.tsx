@@ -49,7 +49,7 @@ export default function Contact() {
       } else {
         setSubmitMessage('There was an error sending your message. Please try again.')
       }
-    } catch (error) {
+    } catch {
       setSubmitMessage('There was an error sending your message. Please try again.')
     }
 

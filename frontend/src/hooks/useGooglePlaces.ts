@@ -1,51 +1,14 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-
-interface GooglePlace {
-  formatted_address?: string
-  geometry?: {
-    location: {
-      lat: () => number
-      lng: () => number
-    }
-  }
-  place_id?: string
-}
-
-interface GoogleAutocompleteOptions {
-  componentRestrictions?: { country: string }
-  fields?: string[]
-  types?: string[]
-}
-
-declare global {
-  interface Window {
-    google?: {
-      maps?: {
-        places?: {
-          Autocomplete: new (
-            input: HTMLInputElement,
-            options?: GoogleAutocompleteOptions
-          ) => {
-            addListener: (event: string, callback: () => void) => void
-            getPlace: () => GooglePlace
-          }
-        }
-        event?: {
-          clearInstanceListeners: (instance: unknown) => void
-        }
-      }
-    }
-  }
-}
+import { GooglePlace, GoogleAutocompleteOptions } from '@/types/google-maps'
 
 export const useGooglePlaces = (
   onPlaceSelect: (place: GooglePlace) => void,
   options: GoogleAutocompleteOptions = {}
 ) => {
   const inputRef = useRef<HTMLInputElement>(null)
-  const autocompleteRef = useRef<InstanceType<typeof window.google.maps.places.Autocomplete> | null>(null)
+  const autocompleteRef = useRef<unknown>(null)
 
   useEffect(() => {
     if (!inputRef.current) return
@@ -59,14 +22,21 @@ export const useGooglePlaces = (
             types: ['address']
           }
 
+          if (!window.google?.maps?.places?.Autocomplete) return
+          
           autocompleteRef.current = new window.google.maps.places.Autocomplete(
             inputRef.current,
             { ...defaultOptions, ...options }
           )
 
-          autocompleteRef.current.addListener('place_changed', () => {
+          const autocomplete = autocompleteRef.current as { 
+            addListener: (event: string, callback: () => void) => void
+            getPlace: () => GooglePlace 
+          }
+
+          autocomplete.addListener('place_changed', () => {
             try {
-              const place = autocompleteRef.current?.getPlace()
+              const place = autocomplete.getPlace()
               if (place && place.formatted_address) {
                 onPlaceSelect(place)
               }
@@ -125,7 +95,7 @@ export const useGooglePlaces = (
     })
 
     return () => {
-      if (autocompleteRef.current && window.google) {
+      if (autocompleteRef.current && window.google?.maps?.event) {
         try {
           window.google.maps.event.clearInstanceListeners(autocompleteRef.current)
         } catch (error) {

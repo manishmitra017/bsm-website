@@ -65,8 +65,8 @@ body {
 }
 
 /* Custom breakpoint for extra small screens */
-@screen xs {
-  /* This will be defined in tailwind config if needed */
+@media (max-width: 475px) {
+  /* Extra small screen styles */
 }
 
 /* Ensure images don't overflow on mobile */

@@ -6,12 +6,13 @@ import { motion } from 'framer-motion'
 import { useState, useCallback } from 'react'
 import { useGooglePlaces } from '@/hooks/useGooglePlaces'
 import GoogleMap from '@/components/GoogleMap'
+import { GooglePlace } from '@/types/google-maps'
 
 export default function Membership() {
   const [membershipType, setMembershipType] = useState('single')
   const [selectedAddress, setSelectedAddress] = useState('')
 
-  const handlePlaceSelect = useCallback((place: any) => {
+  const handlePlaceSelect = useCallback((place: GooglePlace) => {
     if (place.formatted_address) {
       setSelectedAddress(place.formatted_address)
     }
@@ -73,11 +74,17 @@ export default function Membership() {
 
           <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
             <motion.div
-              className="bg-red-50 rounded-xl p-8 border-2 border-red-200 hover:border-red-400 transition-colors"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              className="bg-red-50 rounded-xl p-8 border-2 border-red-200 hover:border-red-400 transition-all duration-300 cursor-pointer hover:shadow-lg"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              onClick={() => {
+                setMembershipType('single')
+                document.getElementById('membership-form')?.scrollIntoView({ 
+                  behavior: 'smooth',
+                  block: 'start'
+                })
+              }}
             >
               <div className="text-center">
                 <div className="w-16 h-16 bg-red-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
@@ -89,20 +96,29 @@ export default function Membership() {
                 </p>
                 <div className="text-4xl font-bold text-red-600 mb-4">$160</div>
                 <p className="text-gray-600 mb-4">Annual membership for one adult only</p>
-                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-3">
                   <p className="text-yellow-800 text-sm font-medium">
                     Single membership is strictly for one adult only
                   </p>
+                </div>
+                <div className="bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-semibold">
+                  Click to Select & Apply
                 </div>
               </div>
             </motion.div>
 
             <motion.div
-              className="bg-orange-50 rounded-xl p-8 border-2 border-orange-200 hover:border-orange-400 transition-colors"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              className="bg-orange-50 rounded-xl p-8 border-2 border-orange-200 hover:border-orange-400 transition-all duration-300 cursor-pointer hover:shadow-lg"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              onClick={() => {
+                setMembershipType('family')
+                document.getElementById('membership-form')?.scrollIntoView({ 
+                  behavior: 'smooth',
+                  block: 'start'
+                })
+              }}
             >
               <div className="text-center">
                 <div className="w-16 h-16 bg-orange-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
@@ -114,10 +130,13 @@ export default function Membership() {
                 </p>
                 <div className="text-4xl font-bold text-orange-600 mb-4">$300</div>
                 <p className="text-gray-600 mb-4">Annual membership for entire family</p>
-                <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+                <div className="bg-green-50 border border-green-200 rounded-lg p-3 mb-3">
                   <p className="text-green-800 text-sm font-medium">
                     Best value for families with multiple members
                   </p>
+                </div>
+                <div className="bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-semibold">
+                  Click to Select & Apply
                 </div>
               </div>
             </motion.div>
@@ -130,10 +149,9 @@ export default function Membership() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               Membership Benefits
@@ -187,11 +205,10 @@ export default function Membership() {
             ].map((benefit, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
                 whileHover={{ y: -5 }}
               >
                 <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -209,7 +226,7 @@ export default function Membership() {
       </section>
 
       {/* Membership Form */}
-      <section className="py-20 bg-white">
+      <section id="membership-form" className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="text-center mb-16"

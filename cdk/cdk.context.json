@@ -1,0 +1,11 @@
+{
+  "availability-zones:account=147845228831:region=ap-southeast-2": [
+    "ap-southeast-2a",
+    "ap-southeast-2b",
+    "ap-southeast-2c"
+  ],
+  "hosted-zone:account=147845228831:domainName=bsmmelbourne.org:region=ap-southeast-2": {
+    "Id": "/hostedzone/Z09208943K8LPYIP5AKL7",
+    "Name": "bsmmelbourne.org."
+  }
+}

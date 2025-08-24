@@ -205,7 +205,10 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
                   <div className="absolute bottom-4 left-4 text-white">
                     <h3 className="text-xl font-bold">Durga Puja 2025</h3>
-                    <p className="text-sm opacity-90">Coming Soon!</p>
+                    <p className="text-sm opacity-90">September 26-28, 2025</p>
+                  </div>
+                  <div className="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                    Sep 26-28
                   </div>
                 </div>
                 <div className="relative rounded-xl overflow-hidden shadow-lg">
@@ -219,7 +222,10 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
                   <div className="absolute bottom-4 left-4 text-white">
                     <h3 className="text-xl font-bold">Kali Puja & Deepavali</h3>
-                    <p className="text-sm opacity-90">Festival of Lights</p>
+                    <p className="text-sm opacity-90">October 20, 2025</p>
+                  </div>
+                  <div className="absolute top-4 right-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                    Oct 20
                   </div>
                 </div>
               </div>

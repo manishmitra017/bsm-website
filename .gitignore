@@ -68,4 +68,15 @@ package-lock.json
 # Editor/IDE specific
 .claude/
 
+# Environment Variables
 .env.local
+.env
+
+# CDK
+cdk.out/
+*.d.ts
+!jest.config.d.ts
+.cdk.staging/
+
+# AWS
+.aws/

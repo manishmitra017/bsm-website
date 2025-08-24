@@ -22,19 +22,19 @@ export default function Header() {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <Link href="/" className="flex items-center space-x-2 sm:space-x-3">
+            <Link href="/" className="flex items-center space-x-3 sm:space-x-4">
               <Image
                 src="/bsm-logo.png"
                 alt="Bengali Society of Melbourne"
                 width={80}
                 height={80}
-                className="w-auto h-14 sm:h-16 lg:h-20"
+                className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 flex-shrink-0"
               />
-              <div className="flex flex-col">
-                <span className="text-xs sm:text-lg lg:text-xl font-bold text-gray-800">
+              <div className="flex flex-col min-w-0">
+                <span className="text-sm sm:text-lg lg:text-xl font-bold text-gray-800 leading-tight">
                   Bengali Society of Melbourne
                 </span>
-                <span className="text-xs text-gray-600 hidden sm:block" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                <span className="text-xs sm:text-sm text-gray-600 leading-tight" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
                   বেঙ্গলি সোসাইটি অফ মেলবোর্ন
                 </span>
               </div>

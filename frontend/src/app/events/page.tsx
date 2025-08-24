@@ -109,6 +109,209 @@ export default function Events() {
         </div>
       </section>
 
+      {/* Upcoming Events 2025 */}
+      <section className="py-20 bg-gradient-to-r from-purple-600 via-red-600 to-orange-600">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Upcoming Events 2025
+              <span className="block text-yellow-200 text-2xl mt-2" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                আসন্ন অনুষ্ঠান ২০২৫
+              </span>
+            </h2>
+            <p className="text-xl text-red-100 max-w-3xl mx-auto">
+              Mark your calendars! Join us for Melbourne's most spectacular Bengali cultural celebrations
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {/* Durga Puja 2025 */}
+            <motion.div
+              className="bg-white/95 backdrop-blur-lg rounded-2xl overflow-hidden shadow-2xl"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src="/upcoming-events/Durga-Puja-2025-1654-x-841-mm-Horizontal-Jul27-scaled.jpg"
+                  alt="Durga Puja 2025 - BSM Melbourne"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-red-600/80 to-transparent"></div>
+                <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md rounded-full p-3">
+                  <span className="text-3xl">🪔</span>
+                </div>
+                <div className="absolute bottom-4 right-4 bg-red-600 text-white px-4 py-2 rounded-full font-bold">
+                  Sep 26-28
+                </div>
+              </div>
+              
+              <div className="p-8">
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-1">Durga Puja 2025</h3>
+                    <p className="text-red-600 font-medium" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                      দুর্গা পূজা ২০২৫
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-lg font-bold text-red-600">September 26-28</p>
+                    <p className="text-sm text-gray-600">2025</p>
+                  </div>
+                </div>
+
+                <div className="space-y-4 mb-6">
+                  <div className="flex items-start space-x-3">
+                    <span className="text-red-600 text-lg">📍</span>
+                    <div>
+                      <p className="font-semibold text-gray-900">Werribee Functions & Events Centre</p>
+                      <p className="text-gray-600 text-sm">2-10 Bulban Rd, Werribee, VIC 3030</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <span className="text-red-600 text-lg">🎭</span>
+                    <div>
+                      <p className="text-gray-700">
+                        The biggest annual festival celebrated by the Bengali-speaking community, honoring 
+                        the triumph of Goddess Durga over evil and showcasing Bengali culture through devotion, 
+                        music, dance, rituals, and delicious food.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link 
+                    href="/events/durgotsav" 
+                    className="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors text-center"
+                  >
+                    Learn More
+                  </Link>
+                  <Link 
+                    href="/contact" 
+                    className="border-2 border-red-600 text-red-600 px-6 py-3 rounded-lg font-semibold hover:bg-red-50 transition-colors text-center"
+                  >
+                    Get Involved
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Kalipuja & Diwali 2025 */}
+            <motion.div
+              className="bg-white/95 backdrop-blur-lg rounded-2xl overflow-hidden shadow-2xl"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src="/kalipooja-2023/1-min.jpg"
+                  alt="Kalipuja & Diwali 2025 - BSM Melbourne"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-purple-600/80 to-transparent"></div>
+                <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md rounded-full p-3">
+                  <span className="text-3xl">🕉️</span>
+                </div>
+                <div className="absolute bottom-4 right-4 bg-purple-600 text-white px-4 py-2 rounded-full font-bold">
+                  Oct 20
+                </div>
+              </div>
+              
+              <div className="p-8">
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-1">Kalipuja & Diwali 2025</h3>
+                    <p className="text-purple-600 font-medium" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                      কালী পূজা ও দীপাবলি ২০২৫
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-lg font-bold text-purple-600">October 20</p>
+                    <p className="text-sm text-gray-600">6:00 PM - 11:30 PM</p>
+                  </div>
+                </div>
+
+                <div className="space-y-4 mb-6">
+                  <div className="flex items-start space-x-3">
+                    <span className="text-purple-600 text-lg">📍</span>
+                    <div>
+                      <p className="font-semibold text-gray-900">Werribee Masonic Centre</p>
+                      <p className="text-gray-600 text-sm">223 Watton St, Werribee, VIC 3030</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <span className="text-purple-600 text-lg">💫</span>
+                    <div>
+                      <p className="text-gray-700">
+                        The Festival of Light symbolizes the spiritual victory of light over darkness, 
+                        good over evil, and knowledge over ignorance. A time to destroy dark desires 
+                        and embrace goodwill.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link 
+                    href="/events/kalipuja-deepavali" 
+                    className="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors text-center"
+                  >
+                    Learn More
+                  </Link>
+                  <Link 
+                    href="/contact" 
+                    className="border-2 border-purple-600 text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-purple-50 transition-colors text-center"
+                  >
+                    Get Involved
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Event Highlights */}
+          <motion.div 
+            className="mt-16 bg-white/10 backdrop-blur-lg rounded-2xl p-8 text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h3 className="text-2xl font-bold text-white mb-6">What to Expect</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white">
+              <div className="text-center">
+                <div className="text-4xl mb-3">🎵</div>
+                <h4 className="font-semibold mb-2">Cultural Performances</h4>
+                <p className="text-red-100 text-sm">Traditional music, dance, and theatrical performances</p>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl mb-3">🍛</div>
+                <h4 className="font-semibold mb-2">Authentic Bengali Food</h4>
+                <p className="text-red-100 text-sm">Delicious traditional Bengali cuisine and sweets</p>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl mb-3">🎨</div>
+                <h4 className="font-semibold mb-2">Beautiful Decorations</h4>
+                <p className="text-red-100 text-sm">Stunning pandals and traditional decorative arts</p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Festival Navigation */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">

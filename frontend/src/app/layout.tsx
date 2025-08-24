@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Noto_Sans_Bengali } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -10,9 +10,10 @@ const inter = Inter({
 });
 
 // Bengali font support
-const bengaliFont = Inter({
-  subsets: ["latin"],
+const bengaliFont = Noto_Sans_Bengali({
+  subsets: ["bengali"],
   variable: "--font-bengali",
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -64,12 +65,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-AU">
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700;800&display=swap"
-          rel="stylesheet"
-        />
-      </head>
       <body className={`${inter.className} ${bengaliFont.variable} antialiased`}>
         <Script
           id="google-maps"

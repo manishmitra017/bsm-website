@@ -26,7 +26,17 @@
       "WebFetch(domain:bsm.org.au)",
       "Bash(npm run dev:*)",
       "Bash(touch:*)",
-      "WebFetch(domain:localhost)"
+      "WebFetch(domain:localhost)",
+      "Bash(npx sst:*)",
+      "Bash(docker build:*)",
+      "Bash(./deploy.sh:*)",
+      "Bash(STAGE=production ./deploy.sh)",
+      "Bash(aws route53 list-hosted-zones:*)",
+      "Bash(aws elbv2 describe-load-balancers:*)",
+      "Bash(aws route53 change-resource-record-sets:*)",
+      "Bash(aws route53 get-change:*)",
+      "Bash(cdk init:*)",
+      "Bash(cdk:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"

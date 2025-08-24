@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import '@/types/google-maps'
 
 interface GoogleMapProps {
   address: string
@@ -8,35 +9,22 @@ interface GoogleMapProps {
   zoom?: number
 }
 
-declare global {
-  interface Window {
-    google?: {
-      maps?: {
-        Map: new (element: HTMLElement, options: any) => any
-        Marker: new (options: any) => any
-        Geocoder: new () => {
-          geocode: (request: any, callback: (results: any[], status: string) => void) => void
-        }
-        LatLng: new (lat: number, lng: number) => any
-      }
-    }
-  }
-}
-
 export default function GoogleMap({ address, className = '', zoom = 15 }: GoogleMapProps) {
   const mapRef = useRef<HTMLDivElement>(null)
-  const mapInstanceRef = useRef<any>(null)
+  const mapInstanceRef = useRef<unknown>(null)
 
   useEffect(() => {
     const initMap = () => {
       if (!window.google || !mapRef.current) return
 
       try {
+        if (!window.google?.maps?.Geocoder) return
         const geocoder = new window.google.maps.Geocoder()
         
         geocoder.geocode({ address }, (results, status) => {
-          if (status === 'OK' && results && results[0]) {
-            const location = results[0].geometry.location
+          if (status === 'OK' && results && results.length > 0) {
+            const result = results[0] as { geometry: { location: unknown } }
+            const location = result.geometry.location
             
             const mapOptions = {
               zoom,
@@ -91,6 +79,7 @@ export default function GoogleMap({ address, className = '', zoom = 15 }: Google
               ]
             }
 
+            if (!window.google?.maps?.Map || !window.google?.maps?.Marker || !mapRef.current) return
             mapInstanceRef.current = new window.google.maps.Map(mapRef.current, mapOptions)
 
             new window.google.maps.Marker({
@@ -101,6 +90,7 @@ export default function GoogleMap({ address, className = '', zoom = 15 }: Google
           } else {
             console.log('Geocoding failed:', status)
             // Fallback to Point Cook coordinates (approximate)
+            if (!window.google?.maps?.LatLng) return
             const pointCookLocation = new window.google.maps.LatLng(-37.8904, 144.7602)
             
             const mapOptions = {
@@ -114,6 +104,7 @@ export default function GoogleMap({ address, className = '', zoom = 15 }: Google
               draggable: true
             }
 
+            if (!window.google?.maps?.Map || !window.google?.maps?.Marker || !mapRef.current) return
             mapInstanceRef.current = new window.google.maps.Map(mapRef.current, mapOptions)
             
             new window.google.maps.Marker({

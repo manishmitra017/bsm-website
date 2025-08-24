@@ -1,160 +1,161 @@
-# Bangiya Sanskritik Manch Melbourne (BSM)
+# BSM Website - Bengali Society of Melbourne
 
-A modern, responsive website for Bangiya Sanskritik Manch Melbourne (BSM) - a non-profit organization dedicated to preserving and promoting Bengali culture in Melbourne, Australia. Built with Next.js and TypeScript.
+A beautiful, responsive website for the Bengali Society of Melbourne built with Next.js and deployed on AWS.
 
-## Project Structure
+## 🌐 Live Website
+**https://bsmmelbourne.org**
+
+## 🏗️ Project Structure
 
 ```
 bsm/
-├── frontend/                 # Next.js frontend application
-│   ├── src/
-│   │   ├── app/             # App router pages
-│   │   │   ├── about/       # About page
-│   │   │   ├── contact/     # Contact page
-│   │   │   ├── events/      # Events pages (Durga Puja, Kali Puja, etc.)
-│   │   │   └── api/         # API routes
-│   │   ├── components/      # Reusable components (Header, Footer)
-│   │   └── public/          # Static assets (images, logos)
-│   └── package.json
-├── context_portal/          # Context management system (ConPort)
-│   ├── alembic/            # Database migrations
-│   └── logs/               # Application logs
-├── run_all.sh              # Development server startup script
-├── deploy.sh               # Production deployment script
-├── ecosystem.config.js     # PM2 configuration
-└── README.md
+├── frontend/          # Next.js application
+│   ├── src/app/      # App router pages
+│   ├── src/components/ # React components
+│   ├── public/       # Static assets and images
+│   └── Dockerfile    # Container configuration
+├── cdk/              # AWS CDK infrastructure
+│   ├── lib/          # CDK stack definitions
+│   └── bin/          # CDK app entry point
+└── deploy.sh         # Deployment script
 ```
 
-## Features
-
-- **Modern Design**: Clean, professional design for cultural organization
-- **Responsive Layout**: Fully responsive design that works on all devices
-- **Event Pages**: Dedicated pages for cultural events (Durga Puja, Kali Puja, Saraswati Puja, etc.)
-- **Photo Gallery**: Showcase of community events and activities
-- **Contact Forms**: Integrated contact form for inquiries
-- **SEO Optimized**: Proper meta tags and semantic HTML structure
-- **Bengali Culture Focus**: Content tailored to Bengali cultural preservation
-
-## Tech Stack
-
-### Frontend
-- **Next.js 14** with App Router
-- **TypeScript** for type safety
-- **Tailwind CSS** for styling
-- **React** for UI components
-- **Lucide React** for icons
-
-### Context Management
-- **ConPort** for project context and decision tracking
-- **SQLite** database with Alembic migrations
-- **Full-text search** capabilities for decisions and custom data
-
-## Quick Start
+## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 18+ and npm
+- AWS CLI configured with appropriate permissions
+- Docker Desktop running
+- Node.js 20+ installed
+- AWS CDK CLI installed globally: `npm install -g aws-cdk`
 
-### Run Development Server
-
-**Option 1: Using the run script (Recommended)**
-```bash
-./run_all.sh
-```
-
-**Option 2: Manual setup**
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-The development server will start on http://localhost:3000 (or next available port).
-
-### Available Scripts
-
-- `./run_all.sh` - Start development server with port management
-- `npm run dev` - Start Next.js development server
-- `npm run build` - Build the frontend for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
-
-## Pages
-
-- `/` - Homepage with hero section, upcoming events, and about section
-- `/about` - Organization information and mission
-- `/events` - Main events page with cultural celebrations
-- `/events/durgotsav` - Durga Puja celebrations
-- `/events/kalipuja-deepavali` - Kali Puja and Diwali celebrations
-- `/events/saraswati-puja` - Saraswati Puja celebrations
-- `/events/pohela-boishakh` - Bengali New Year celebrations
-- `/events/christmas-new-year` - Christmas and New Year events
-- `/contact` - Contact form and organization details
-
-## API Endpoints
-
-- `POST /api/contact` - Submit contact form
-- Additional API routes can be added as needed
-
-## Customization
-
-### Adding Photos
-Replace placeholder content with actual photos:
-1. Add images to `frontend/public/` directory (organized in subfolders)
-2. Update image references in React components
-3. Replace placeholder gradient backgrounds with actual images
-
-### Content Updates
-- Update event information in respective event pages
-- Modify organization details in `/about` page
-- Customize contact information in `/contact` page
-- Add new event pages as needed
-
-### Styling
-- Tailwind CSS classes can be modified throughout components
-- Color scheme uses cultural-appropriate colors - update in components as needed
-
-## Deployment
-
-### Production Deployment (PM2 + nginx)
+### Deploy to Production
 ```bash
 ./deploy.sh
 ```
 
-### Manual Deployment
+This will build and deploy your website to https://bsmmelbourne.org
+
+## 📋 Features
+
+### ✅ Current Features (Frontend)
+- **Responsive Design**: Mobile-first Bengali cultural theme
+- **Event Management**: Durga Puja, Kali Puja, Saraswati Puja, Pohela Boishakh
+- **Photo Gallery**: Community photos with lightbox functionality
+- **Membership System**: Google Maps integration, multiple membership types
+- **Volunteering**: Blood donation and tree plantation sections
+- **Contact Form**: SES-powered email with auto-reply
+- **Donations**: Bank details and tax-deductible information
+- **Bilingual Support**: English and Bengali content
+
+### 🔄 Future Features (Backend)
+- User authentication and profiles
+- Event registration and management
+- Payment processing for donations
+- Member management system
+- CMS for content management
+- Admin dashboard
+
+## 🛠️ Technology Stack
+
+### Frontend
+- **Framework**: Next.js 15 with React 19
+- **Styling**: Tailwind CSS 4
+- **Animations**: Framer Motion
+- **Maps**: Google Maps API
+- **Fonts**: Noto Sans Bengali
+- **Deployment**: AWS ECS with Docker
+
+### Infrastructure
+- **Framework**: Next.js 15 with React 19 and TypeScript
+- **Styling**: Tailwind CSS 4 with Bengali cultural theme
+- **Deployment**: AWS CDK with:
+  - ECS Fargate containers
+  - Application Load Balancer
+  - Route53 DNS management
+  - Auto-managed SSL certificates
+  - Auto-scaling (1-5 instances)
+
+## 🌐 Live Website
+**https://bsmmelbourne.org**
+
+## 📦 Environment Variables
+
+Key environment variables (see `.env.example` for complete list):
+
+```bash
+# Frontend
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your-api-key
+NEXT_PUBLIC_SITE_URL=https://bsmmelbourne.org
+NEXT_PUBLIC_CONTACT_EMAIL=info@bsm.org.au
+
+# AWS
+AWS_ACCESS_KEY_ID=your-access-key
+AWS_SECRET_ACCESS_KEY=your-secret-key
+AWS_REGION=ap-southeast-2
+
+# Backend (Future)
+DATABASE_URL=your-database-url
+API_BASE_URL=http://localhost:8000
+```
+
+## 🚀 Deployment
+
+### Prerequisites
+- AWS Account with proper permissions
+- Docker installed and running
+- AWS CLI configured
+- Domain configured in Route 53
+
+### Deployment Commands
+```bash
+# From project root
+./deploy.sh dev        # Deploy to development
+./deploy.sh production # Deploy to production
+
+# Or from frontend directory
+npm run deploy:dev
+npm run deploy:prod
+```
+
+### Infrastructure Components
+- **ECS Service**: Auto-scaling containerized application
+- **VPC**: Secure networking with public/private subnets
+- **Load Balancer**: SSL termination and traffic distribution
+- **CloudFront**: Global CDN for performance
+- **Lambda**: Serverless contact form handler
+- **SES**: Professional email delivery
+
+## 🔧 Development
+
+### Frontend Development
 ```bash
 cd frontend
 npm install
-npm run build
-npm start
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run lint         # Run ESLint
 ```
 
-### Environment Variables
-
-Create `.env.local` file in frontend directory if needed:
+### Docker Development
+```bash
+cd frontend
+npm run docker:build # Build Docker image
+npm run docker:run   # Run container locally
 ```
-# Optional: Custom port for development
-PORT=3000
-```
 
-## Context Portal (ConPort)
+## 📞 Support
 
-The project includes a context management system for:
-- Architectural decision tracking
-- Progress logging
-- System pattern documentation
-- Custom data storage
-- Full-text search capabilities
+### Technical Support
+- **Repository**: Create issues on GitHub
+- **AWS Issues**: Use AWS Support Center
+- **Deployment**: Check CloudWatch logs
 
-Migrations are managed through Alembic in the `context_portal/` directory.
+### Content Updates
+- **BSM Committee**: info@bsm.org.au
+- **Technical Changes**: Through GitHub issues
 
-## Contributing
+---
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
-## License
-
-This project is proprietary software for Bangiya Sanskritik Manch Melbourne.
+**Last Updated**: August 2025  
+**Version**: 2.0.0  
+**License**: Private - Bengali Society of Melbourne
