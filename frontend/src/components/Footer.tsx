@@ -81,6 +81,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/volunteering" className="text-gray-300 hover:text-red-400">
+                  Volunteering
+                </Link>
+              </li>
+              <li>
                 <Link href="/donation" className="text-gray-300 hover:text-red-400">
                   Support BSM
                 </Link>
