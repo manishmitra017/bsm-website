@@ -227,6 +227,60 @@ export default function Events() {
         </div>
       </section>
 
+      {/* Photo Gallery Preview */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Our Memories | আমাদের স্মৃতি
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+              Explore our vibrant community celebrations through photos and memories
+            </p>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+              {[
+                '/durgapooja-2023/20231029_161210-1024x768.jpg',
+                '/kalipooja-2023/1-min.jpg',
+                '/communityphotos/20221007_224153-scaled.jpg',
+                '/communityphotos/IMG-1305-scaled.jpg'
+              ].map((photo, index) => (
+                <motion.div
+                  key={index}
+                  className="relative group overflow-hidden rounded-lg shadow-lg"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                >
+                  <div className="relative h-32 md:h-40 overflow-hidden">
+                    <Image
+                      src={photo}
+                      alt={`BSM Event Preview ${index + 1}`}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <Link 
+              href="/gallery" 
+              className="inline-flex items-center bg-red-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-red-700 transition-colors"
+            >
+              View Complete Gallery →
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Upcoming Events CTA */}
       <section className="py-16 bg-red-600">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">

@@ -35,27 +35,27 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Our Festivals</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/events" className="text-gray-300 hover:text-red-400">
+                <Link href="/events/durgotsav" className="text-gray-300 hover:text-red-400">
                   Durgotsav | দুর্গোৎসব
                 </Link>
               </li>
               <li>
-                <Link href="/events" className="text-gray-300 hover:text-red-400">
+                <Link href="/events/kalipuja-deepavali" className="text-gray-300 hover:text-red-400">
                   Kalipuja | কালীপূজা
                 </Link>
               </li>
               <li>
-                <Link href="/events" className="text-gray-300 hover:text-red-400">
+                <Link href="/events/saraswati-puja" className="text-gray-300 hover:text-red-400">
                   Saraswati Puja | সরস্বতী পূজা
                 </Link>
               </li>
               <li>
-                <Link href="/events" className="text-gray-300 hover:text-red-400">
+                <Link href="/events/pohela-boishakh" className="text-gray-300 hover:text-red-400">
                   Pohela Boishakh | পহেলা বৈশাখ
                 </Link>
               </li>
               <li>
-                <Link href="/events" className="text-gray-300 hover:text-red-400">
+                <Link href="/events/christmas-new-year" className="text-gray-300 hover:text-red-400">
                   Christmas & New Year
                 </Link>
               </li>

@@ -94,12 +94,13 @@ export default function About() {
               className="relative"
             >
               <div className="bg-white rounded-lg shadow-xl p-8">
-                <div className="h-64 rounded-lg overflow-hidden">
+                <div className="h-64 rounded-lg overflow-hidden relative">
                   <Image
-                    src="/bsmpooja/2-scaled.jpg"
+                    src="/communityphotos/20221007_224153-scaled.jpg"
                     alt="Bengali Society of Melbourne Cultural Event"
                     fill
                     className="object-cover"
+                    priority
                   />
                 </div>
               </div>

@@ -2,6 +2,12 @@
 
 # Bengali Society of Melbourne (BSM) - Run Development Server
 # This script starts the Next.js application for BSM website
+#
+# Usage:
+#   ./run_all.sh          - Start the development server
+#   ./run_all.sh restart  - Force kill existing processes and restart
+#
+# The script automatically kills any existing processes on port 3000 before starting
 
 echo "🌟 Starting Bengali Society of Melbourne (BSM) development server..."
 
@@ -41,12 +47,43 @@ fi
 
 echo "✅ Prerequisites check passed"
 
-# Check and find available ports
+# Kill any existing processes on port 3000
+echo "🔪 Killing any existing processes on port 3000..."
+if port_in_use 3000; then
+    echo "   🛑 Found existing process on port 3000, terminating..."
+    
+    # Kill by port using lsof
+    PID=$(lsof -ti:3000)
+    if [ ! -z "$PID" ]; then
+        kill -TERM $PID 2>/dev/null
+        sleep 2
+        
+        # Force kill if still running
+        if kill -0 $PID 2>/dev/null; then
+            kill -9 $PID 2>/dev/null
+        fi
+        echo "   ✅ Terminated process $PID on port 3000"
+    fi
+    
+    # Also kill any Next.js related processes
+    if command_exists pkill; then
+        pkill -f "next-server" 2>/dev/null
+        pkill -f "next dev" 2>/dev/null
+        pkill -f "node.*next" 2>/dev/null
+        echo "   ✅ Cleaned up any remaining Next.js processes"
+    fi
+    
+    # Wait a moment for cleanup
+    sleep 1
+fi
+
+# Set frontend port (now should be available)
 FRONTEND_PORT=3000
 
+# Double-check port is now available
 if port_in_use $FRONTEND_PORT; then
     NEW_FRONTEND_PORT=$(find_available_port $FRONTEND_PORT)
-    echo "⚠️  Port $FRONTEND_PORT is in use. Using port $NEW_FRONTEND_PORT for frontend."
+    echo "⚠️  Port $FRONTEND_PORT is still in use. Using port $NEW_FRONTEND_PORT for frontend."
     FRONTEND_PORT=$NEW_FRONTEND_PORT
 fi
 

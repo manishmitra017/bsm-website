@@ -51,16 +51,21 @@ export default function Home() {
               </div>
               <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
                 <a 
-                  href="tel:0403617375"
-                  className="bg-white text-red-600 px-4 py-2 rounded-full font-bold text-sm sm:text-base hover:bg-red-50 transition-colors shadow-lg flex items-center gap-2"
+                  href="mailto:info@bsm.org.au"
+                  className="bg-white text-blue-600 px-4 py-2 rounded-full font-bold text-sm sm:text-base hover:bg-blue-50 transition-colors shadow-lg flex items-center gap-2"
                 >
-                  📞 President: 0403 617 375
+                  ✉️ info@bsm.org.au
                 </a>
                 <a 
-                  href="tel:0413406344"
-                  className="bg-white text-orange-600 px-4 py-2 rounded-full font-bold text-sm sm:text-base hover:bg-orange-50 transition-colors shadow-lg flex items-center gap-2"
+                  href="https://www.facebook.com/bsm2022"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white text-blue-600 px-4 py-2 rounded-full font-bold text-sm sm:text-base hover:bg-blue-50 transition-colors shadow-lg flex items-center gap-2"
                 >
-                  📱 VP: 0413 406 344
+                  <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
+                  </svg>
+                  Facebook
                 </a>
               </div>
               <div className="text-white font-semibold text-sm sm:text-base">
@@ -190,22 +195,32 @@ export default function Home() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div className="relative rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src="/bsmpooja/2-scaled.jpg"
-                    alt="Bengali Society of Melbourne Community Event"
+                    src="/upcoming-events/Durga-Puja-2025-1654-x-841-mm-Horizontal-Jul27-scaled.jpg"
+                    alt="Durga Puja 2025 - Bengali Society of Melbourne"
                     width={600}
                     height={400}
                     className="w-full h-auto object-cover"
                     priority
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <h3 className="text-xl font-bold">Durga Puja 2025</h3>
+                    <p className="text-sm opacity-90">Coming Soon!</p>
+                  </div>
                 </div>
                 <div className="relative rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src="/communityphotos/20221007_224153-scaled.jpg"
-                    alt="Bengali Cultural Celebration Melbourne"
+                    src="/kalipooja-2023/1-min.jpg"
+                    alt="Kali Puja & Deepavali - BSM Celebration"
                     width={600}
                     height={400}
                     className="w-full h-auto object-cover"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <h3 className="text-xl font-bold">Kali Puja & Deepavali</h3>
+                    <p className="text-sm opacity-90">Festival of Lights</p>
+                  </div>
                 </div>
               </div>
               
