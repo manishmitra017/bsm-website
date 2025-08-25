@@ -75,7 +75,7 @@ export class BsmWebsiteStack extends cdk.Stack {
     });
 
     // Add SES permissions to the task role
-    fargateService.taskDefinition.taskRole.addToPolicy(
+    (fargateService.taskDefinition.taskRole as iam.Role).addToPolicy(
       new iam.PolicyStatement({
         effect: iam.Effect.ALLOW,
         actions: [
