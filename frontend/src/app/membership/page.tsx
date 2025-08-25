@@ -10,13 +10,74 @@ import { GooglePlace } from '@/types/google-maps'
 
 export default function Membership() {
   const [membershipType, setMembershipType] = useState('single')
-  const [selectedAddress, setSelectedAddress] = useState('')
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    adultMembers: '',
+    children: ''
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState('')
 
   const handlePlaceSelect = useCallback((place: GooglePlace) => {
-    if (place.formatted_address) {
-      setSelectedAddress(place.formatted_address)
-    }
+    // Google Places will handle the input value directly
   }, [])
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitMessage('')
+
+    // Get the actual value from the address input field
+    const addressValue = addressInputRef.current?.value || ''
+
+    try {
+      const formDataToSend = new FormData()
+      formDataToSend.append('access_key', '7d4e4c8b-e886-49df-ba29-d859ddcc7e55')
+      formDataToSend.append('fullName', formData.fullName)
+      formDataToSend.append('email', formData.email)
+      formDataToSend.append('phone', formData.phone)
+      formDataToSend.append('address', addressValue)
+      formDataToSend.append('membershipType', membershipType)
+      formDataToSend.append('adultMembers', formData.adultMembers)
+      formDataToSend.append('children', formData.children)
+      formDataToSend.append('subject', `New Membership Application - ${formData.fullName} (${membershipType})`)
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formDataToSend
+      })
+
+      if (response.ok) {
+        setSubmitMessage('Thank you for your membership application! We will process your application and contact you soon.')
+        setFormData({
+          fullName: '',
+          email: '',
+          phone: '',
+          adultMembers: '',
+          children: ''
+        })
+        // Clear the address input field
+        if (addressInputRef.current) {
+          addressInputRef.current.value = ''
+        }
+      } else {
+        setSubmitMessage('There was an error submitting your application. Please try again.')
+      }
+    } catch {
+      setSubmitMessage('There was an error submitting your application. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   const addressInputRef = useGooglePlaces(handlePlaceSelect)
 
@@ -254,7 +315,7 @@ export default function Membership() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Membership Type Selection */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-4">
@@ -321,7 +382,9 @@ export default function Membership() {
                       id="fullName"
                       name="fullName"
                       required
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 placeholder-gray-500"
+                      value={formData.fullName}
+                      onChange={handleInputChange}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 text-gray-900 placeholder-gray-500"
                       placeholder="Enter your full name"
                     />
                   </div>
@@ -334,7 +397,9 @@ export default function Membership() {
                       id="email"
                       name="email"
                       required
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 placeholder-gray-500"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 text-gray-900 placeholder-gray-500"
                       placeholder="Enter your email address"
                     />
                   </div>
@@ -350,9 +415,7 @@ export default function Membership() {
                     id="address"
                     name="address"
                     required
-                    value={selectedAddress}
-                    onChange={(e) => setSelectedAddress(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 placeholder-gray-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 text-gray-900 placeholder-gray-500"
                     placeholder="Start typing your address for suggestions..."
                   />
                   <p className="text-xs text-gray-500 mt-1">
@@ -369,7 +432,9 @@ export default function Membership() {
                     id="phone"
                     name="phone"
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 placeholder-gray-500"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 text-gray-900 placeholder-gray-500"
                     placeholder="Enter your phone or mobile number"
                   />
                 </div>
@@ -386,7 +451,9 @@ export default function Membership() {
                         name="adultMembers"
                         min="1"
                         required={membershipType === 'family'}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                        value={formData.adultMembers}
+                        onChange={handleInputChange}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 text-gray-900"
                         placeholder="Number of adults"
                       />
                     </div>
@@ -399,7 +466,9 @@ export default function Membership() {
                         id="children"
                         name="children"
                         min="0"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                        value={formData.children}
+                        onChange={handleInputChange}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 text-gray-900"
                         placeholder="Number of children (optional)"
                       />
                     </div>
@@ -434,9 +503,10 @@ export default function Membership() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button
                     type="submit"
-                    className="flex-1 bg-red-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-red-700 transition-colors"
+                    disabled={isSubmitting}
+                    className="flex-1 bg-red-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Submit Membership Application
+                    {isSubmitting ? 'Submitting Application...' : 'Submit Membership Application'}
                   </button>
                   <button
                     type="reset"
@@ -445,6 +515,16 @@ export default function Membership() {
                     Clear Form
                   </button>
                 </div>
+
+                {submitMessage && (
+                  <div className={`p-4 rounded-lg text-center ${
+                    submitMessage.includes('Thank you') 
+                      ? 'bg-green-100 text-green-700' 
+                      : 'bg-red-100 text-red-700'
+                  }`}>
+                    {submitMessage}
+                  </div>
+                )}
               </form>
             </motion.div>
           </div>

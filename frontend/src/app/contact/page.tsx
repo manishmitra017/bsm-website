@@ -29,15 +29,18 @@ export default function Contact() {
     setSubmitMessage('')
 
     try {
-      const response = await fetch('/api/send-email', {
+      const formDataToSend = new FormData()
+      formDataToSend.append('access_key', '7d4e4c8b-e886-49df-ba29-d859ddcc7e55')
+      formDataToSend.append('name', formData.name)
+      formDataToSend.append('email', formData.email)
+      formDataToSend.append('phone', formData.phone)
+      formDataToSend.append('interest', formData.interest)
+      formDataToSend.append('message', formData.message)
+      formDataToSend.append('subject', 'New Contact Form Submission - Bengali Society of Melbourne')
+
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          formType: 'contact',
-          ...formData
-        }),
+        body: formDataToSend
       })
 
       if (response.ok) {
@@ -54,9 +57,9 @@ export default function Contact() {
       }
     } catch {
       setSubmitMessage('There was an error sending your message. Please try again.')
+    } finally {
+      setIsSubmitting(false)
     }
-
-    setIsSubmitting(false)
   }
 
   return (
