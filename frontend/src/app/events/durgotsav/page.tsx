@@ -4,14 +4,60 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 
-export default function Durgotsav() {
+import Head from 'next/head'
+
+function AnimatedDurgotsav() {
+  // JSON-LD structured data for SEO
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "Durgotsav 2025 - Durga Puja Melbourne",
+    "description": "Melbourne's grandest Durga Puja celebration by Bengali Society of Melbourne (BSM). Experience authentic Bengali culture, traditional rituals, cultural performances, and community festivities.",
+    "startDate": "2025-09-28",
+    "endDate": "2025-10-02",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "location": {
+      "@type": "Place",
+      "name": "Bengali Society of Melbourne",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "7 Littlecroft Street",
+        "addressLocality": "Point Cook",
+        "addressRegion": "Victoria",
+        "postalCode": "3030",
+        "addressCountry": "Australia"
+      }
+    },
+    "image": [
+      "https://bsmmelbourne.org/upcoming-events/Durga-Puja-2025-1654-x-841-mm-Horizontal-Jul27-scaled.jpg"
+    ],
+    "organizer": {
+      "@type": "Organization",
+      "name": "Bengali Society of Melbourne",
+      "url": "https://bsmmelbourne.org"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "AUD",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+
   return (
     <div>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </Head>
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50">
         <div className="absolute inset-0">
           <Image
-            src="/bsmpooja/Durga-Puja-2025-1654-x-841-mm-Horizontal-Jul27-scaled.jpg"
+            src="/upcoming-events/Durga-Puja-2025-1654-x-841-mm-Horizontal-Jul27-scaled.jpg"
             alt="Durgotsav - Bengali Society of Melbourne"
             fill
             className="object-cover opacity-40"
@@ -340,3 +386,5 @@ export default function Durgotsav() {
     </div>
   )
 }
+
+export default AnimatedDurgotsav

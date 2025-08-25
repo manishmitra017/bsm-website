@@ -16,33 +16,33 @@ export default function Header() {
       className="bg-white/95 backdrop-blur-md shadow-lg fixed w-full top-0 z-50"
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 sm:h-20 gap-4">
+        <div className="flex justify-between items-center h-16 sm:h-20 w-full">
           <motion.div 
-            className="flex-shrink-0 flex items-center"
+            className="flex-shrink-0 flex items-center min-w-0"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <Link href="/" className="flex items-center space-x-3 sm:space-x-4">
+            <Link href="/" className="flex items-center space-x-2 sm:space-x-3">
               <Image
                 src="/bsm-logo.png"
                 alt="Bengali Society of Melbourne"
-                width={80}
-                height={80}
-                className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 flex-shrink-0"
+                width={60}
+                height={60}
+                className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 flex-shrink-0"
               />
               <div className="flex flex-col min-w-0">
-                <span className="text-sm sm:text-lg lg:text-xl font-bold text-gray-800 leading-tight">
+                <span className="text-xs sm:text-sm lg:text-lg font-bold text-gray-800 leading-tight truncate">
                   Bengali Society of Melbourne
                 </span>
-                <span className="text-xs sm:text-sm text-gray-600 leading-tight" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                <span className="text-xs text-gray-600 leading-tight truncate" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
                   বেঙ্গলি সোসাইটি অফ মেলবোর্ন
                 </span>
               </div>
             </Link>
           </motion.div>
           
-          <div className="hidden md:flex flex-1 justify-end">
-            <div className="flex items-center space-x-6">
+          <div className="hidden md:flex flex-1 justify-end max-w-none">
+            <div className="flex items-center space-x-3 lg:space-x-4">
               {[
                 { href: '/about', label: 'About BSM' },
                 { href: '/events', label: 'Events' },
@@ -59,7 +59,7 @@ export default function Header() {
                 >
                   <Link 
                     href={item.href} 
-                    className="text-gray-700 hover:text-red-600 px-3 py-2 text-sm font-medium transition-colors duration-200 relative group"
+                    className="text-gray-700 hover:text-red-600 px-2 py-2 text-xs lg:text-sm font-medium transition-colors duration-200 relative group whitespace-nowrap"
                   >
                     {item.label}
                     <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-red-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
@@ -68,10 +68,10 @@ export default function Header() {
               ))}
               
               {/* Social Media Links */}
-              <div className="flex items-center space-x-2 mr-4">
+              <div className="flex items-center space-x-1">
                 <a href="https://www.facebook.com/bsm2022" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition-colors p-1">
                   <span className="sr-only">Facebook</span>
-                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
                     <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
                   </svg>
                 </a>

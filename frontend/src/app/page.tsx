@@ -80,7 +80,7 @@ export default function Home() {
       <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50">
         <div className="absolute inset-0">
           <Image
-            src="/bsmpooja/Durga-Puja-2025-1654-x-841-mm-Horizontal-Jul27-scaled.jpg"
+            src="/upcoming-events/Durga-Puja-2025-1654-x-841-mm-Horizontal-Jul27-scaled.jpg"
             alt="Bengali Society of Melbourne - Durga Puja Festival Celebration"
             fill
             className="object-cover opacity-30"

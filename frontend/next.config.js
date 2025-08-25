@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Re-enable standalone output for Docker deployment
-  output: 'standalone',
+  // Enable standalone output for Docker deployment in production
+  output: process.env.NODE_ENV === 'production' && process.env.BUILD_STANDALONE === 'true' ? 'standalone' : undefined,
   
   // Disable static optimization for problematic pages during build
   trailingSlash: false,
@@ -23,13 +23,18 @@ const nextConfig = {
         hostname: '*.googleusercontent.com',
       },
     ],
-    // For production deployment
-    unoptimized: process.env.NODE_ENV === 'production',
+    // Enable image optimization for better performance
+    unoptimized: false,
   },
   
   // Environment variables - Next.js automatically loads .env files from parent directories
   env: {
     CUSTOM_KEY: 'BSM_WEBSITE',
+    NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+    AWS_REGION: process.env.AWS_REGION,
+    AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,
+    AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
+    SES_FROM_EMAIL: process.env.SES_FROM_EMAIL,
   },
   
   // Security headers
@@ -49,6 +54,10 @@ const nextConfig = {
           {
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://maps.googleapis.com https://maps.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://maps.googleapis.com;",
           },
         ],
       },

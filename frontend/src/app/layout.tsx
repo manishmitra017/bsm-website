@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Noto_Sans_Bengali } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import GoogleMapsScript from "@/components/GoogleMapsScript";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,9 +17,9 @@ const bengaliFont = Noto_Sans_Bengali({
 });
 
 export const metadata: Metadata = {
-  title: "Bengali Society of Melbourne | BSM | বাংলা সমাজ মেলবোর্ন | Bengali Cultural Community Victoria",
-  description: "Bengali Society of Melbourne (BSM) - Melbourne's premier Bengali cultural organization since 2012. Join us for Durgotsav, Kalipuja, Saraswati Puja, Pohela Boishakh and more Bengali festivals. Community events, volunteering, and cultural preservation in Victoria.",
-  keywords: "Bengali Society Melbourne, BSM, বাংলা সমাজ মেলবোর্ন, Bengali community Melbourne, Durgotsav Melbourne, Kalipuja Melbourne, Saraswati Puja Melbourne, Pohela Boishakh Melbourne, Bengali cultural events Victoria, Bengali festivals Australia, Bengali community Victoria, multicultural Melbourne",
+  title: "Bengali Society of Melbourne | BSM | Durga Puja Melbourne 2025 | বাংলা সমাজ মেলবোর্ন",
+  description: "Bengali Society of Melbourne (BSM) - Melbourne's premier Bengali cultural organization since 2012. Experience authentic Durgotsav (Durga Puja), Kalipuja, Saraswati Puja, Pohela Boishakh and Bengali festivals in Victoria. Join Melbourne's largest Bengali community for cultural events, volunteering, and heritage preservation.",
+  keywords: "Bengali Society Melbourne, BSM, Durgotsav Melbourne, Durga Puja Melbourne 2025, বাংলা সমাজ মেলবোর্ন, দুর্গোৎসব, Bengali community Melbourne, Durgotsav Melbourne, Kalipuja Melbourne, Saraswati Puja Melbourne, Pohela Boishakh Melbourne, Bengali cultural events Victoria, Bengali festivals Australia, Melbourne Durga Puja, BSM Durgotsav, Bengali community Victoria, multicultural Melbourne, Indian festivals Melbourne, Point Cook Bengali community",
   authors: [{ name: "Bengali Society of Melbourne" }],
   creator: "Bengali Society of Melbourne",
   publisher: "Bengali Society of Melbourne",
@@ -66,11 +66,7 @@ export default function RootLayout({
   return (
     <html lang="en-AU">
       <body className={`${inter.className} ${bengaliFont.variable} antialiased`}>
-        <Script
-          id="google-maps"
-          strategy="lazyOnload"
-          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
-        />
+        <GoogleMapsScript />
         <Header />
         <main className="pt-16 sm:pt-20 min-h-screen" role="main">
           {children}

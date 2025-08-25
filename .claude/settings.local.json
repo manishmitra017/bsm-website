@@ -38,7 +38,9 @@
       "Bash(cdk init:*)",
       "Bash(cdk:*)",
       "Bash(grep:*)",
-      "Bash(./check-env.sh)"
+      "Bash(./check-env.sh)",
+      "Bash(npm start)",
+      "Bash(curl:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"

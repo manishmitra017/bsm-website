@@ -11,19 +11,19 @@ export default function Volunteering() {
 
   // All volunteering photos
   const allPhotos = [
-    '/volunteering/1.jpg',
-    '/volunteering/2.jpg',
-    '/volunteering/3.jpg',
-    '/volunteering/4.jpg',
-    '/volunteering/5.jpg',
-    '/volunteering/6.jpg',
-    '/volunteering/7.jpg',
-    '/volunteering/8.jpg',
-    '/volunteering/20220731_110928-768x1024.jpg',
-    '/volunteering/20220731_113206-768x1024.jpg',
-    '/volunteering/20240728_104604-768x1024.jpg',
-    '/volunteering/20240728_105939-1024x768.jpg',
-    '/volunteering/20240728_112319-1024x768.jpg'
+    '/Volunteering/1.jpg',
+    '/Volunteering/2.jpg',
+    '/Volunteering/3.jpg',
+    '/Volunteering/4.jpg',
+    '/Volunteering/5.jpg',
+    '/Volunteering/6.jpg',
+    '/Volunteering/7.jpg',
+    '/Volunteering/8.jpg',
+    '/Volunteering/20220731_110928-768x1024.jpg',
+    '/Volunteering/20220731_113206-768x1024.jpg',
+    '/Volunteering/20240728_104604-768x1024.jpg',
+    '/Volunteering/20240728_105939-1024x768.jpg',
+    '/Volunteering/20240728_112319-1024x768.jpg'
   ]
 
   const openLightbox = (imageSrc: string) => {
@@ -59,7 +59,7 @@ export default function Volunteering() {
       <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-gradient-to-br from-green-50 via-blue-50 to-red-50">
         <div className="absolute inset-0">
           <Image
-            src="/volunteering/20240728_112319-1024x768.jpg"
+            src="/Volunteering/20240728_112319-1024x768.jpg"
             alt="BSM Volunteering - Community Service Activities"
             fill
             className="object-cover opacity-30"
@@ -143,7 +143,7 @@ export default function Volunteering() {
             >
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/volunteering/20240728_104604-768x1024.jpg"
+                  src="/Volunteering/20240728_104604-768x1024.jpg"
                   alt="BSM volunteers participating in community service"
                   fill
                   className="object-cover"
@@ -231,10 +231,10 @@ export default function Volunteering() {
               >
                 <div className="grid grid-cols-2 gap-4">
                   {[
-                    '/volunteering/1.jpg',
-                    '/volunteering/2.jpg',
-                    '/volunteering/3.jpg',
-                    '/volunteering/4.jpg'
+                    '/Volunteering/1.jpg',
+                    '/Volunteering/2.jpg',
+                    '/Volunteering/3.jpg',
+                    '/Volunteering/4.jpg'
                   ].map((photo, index) => (
                     <motion.div
                       key={index}
@@ -313,10 +313,10 @@ export default function Volunteering() {
               >
                 <div className="grid grid-cols-2 gap-4">
                   {[
-                    '/volunteering/20220731_110928-768x1024.jpg',
-                    '/volunteering/20220731_113206-768x1024.jpg',
-                    '/volunteering/20240728_105939-1024x768.jpg',
-                    '/volunteering/20240728_112319-1024x768.jpg'
+                    '/Volunteering/20220731_110928-768x1024.jpg',
+                    '/Volunteering/20220731_113206-768x1024.jpg',
+                    '/Volunteering/20240728_105939-1024x768.jpg',
+                    '/Volunteering/20240728_112319-1024x768.jpg'
                   ].map((photo, index) => (
                     <motion.div
                       key={index}
@@ -439,12 +439,12 @@ export default function Volunteering() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              '/volunteering/5.jpg',
-              '/volunteering/6.jpg',
-              '/volunteering/7.jpg',
-              '/volunteering/8.jpg',
-              '/volunteering/20240728_104604-768x1024.jpg',
-              '/volunteering/20240728_105939-1024x768.jpg'
+              '/Volunteering/5.jpg',
+              '/Volunteering/6.jpg',
+              '/Volunteering/7.jpg',
+              '/Volunteering/8.jpg',
+              '/Volunteering/20240728_104604-768x1024.jpg',
+              '/Volunteering/20240728_105939-1024x768.jpg'
             ].map((photo, index) => (
               <motion.div
                 key={index}

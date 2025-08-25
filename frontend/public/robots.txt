@@ -1,0 +1,28 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://bsmmelbourne.org/sitemap.xml
+
+# Crawl-delay for bots
+Crawl-delay: 1
+
+# Allow all images
+User-agent: Googlebot-Image
+Allow: /
+
+# Priority pages for SEO
+Allow: /events/durgotsav
+Allow: /events/kalipuja-deepavali  
+Allow: /events/saraswati-puja
+Allow: /events/pohela-boishakh
+Allow: /about
+Allow: /gallery
+Allow: /membership
+Allow: /contact
+
+# Block admin paths if any exist in future
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/

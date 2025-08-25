@@ -61,8 +61,9 @@ if [ ! -d "node_modules" ]; then
 fi
 # Clean build to avoid any cached issues
 rm -rf .next
-# Set NODE_ENV to production for deployment build
+# Set NODE_ENV to production and enable standalone for deployment build
 export NODE_ENV=production
+export BUILD_STANDALONE=true
 npm run build
 
 # Deploy using CDK

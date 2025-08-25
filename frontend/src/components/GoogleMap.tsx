@@ -14,8 +14,13 @@ export default function GoogleMap({ address, className = '', zoom = 15 }: Google
   const mapInstanceRef = useRef<unknown>(null)
 
   useEffect(() => {
+    console.log('GoogleMap component mounted, API Key:', process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ? 'Available' : 'Missing');
+    
     const initMap = () => {
-      if (!window.google || !mapRef.current) return
+      if (!window.google || !mapRef.current) {
+        console.log('Google Maps API not ready:', { google: !!window.google, mapRef: !!mapRef.current });
+        return;
+      }
 
       try {
         if (!window.google?.maps?.Geocoder) return
@@ -116,31 +121,32 @@ export default function GoogleMap({ address, className = '', zoom = 15 }: Google
         })
       } catch (error) {
         console.log('Map initialization error:', error)
-        // Show a fallback message in the map container
-        if (mapRef.current) {
-          mapRef.current.innerHTML = `
-            <div class="flex items-center justify-center h-full bg-gray-100 text-gray-500">
-              <div class="text-center">
-                <p class="text-lg mb-2">🗺️</p>
-                <p class="text-sm">Map temporarily unavailable</p>
-                <p class="text-xs">7 Littlecroft Street, Point Cook, VIC 3030</p>
-              </div>
-            </div>
-          `
-        }
       }
     }
 
     // Wait for Google Maps to load
     const waitForGoogle = () => {
       return new Promise<void>((resolve) => {
+        console.log('Checking Google Maps API...', { google: !!window.google, maps: !!window.google?.maps, places: !!window.google?.maps?.places });
+        
         if (window.google && window.google.maps) {
+          console.log('Google Maps API ready immediately');
           resolve()
         } else {
+          console.log('Waiting for Google Maps API to load...');
+          let attempts = 0;
           const checkInterval = setInterval(() => {
+            attempts++;
+            console.log(`Checking Google Maps API... Attempt ${attempts}`, { google: !!window.google, maps: !!window.google?.maps, places: !!window.google?.maps?.places });
+            
             if (window.google && window.google.maps) {
               clearInterval(checkInterval)
+              console.log('Google Maps API loaded after', attempts, 'attempts');
               resolve()
+            } else if (attempts > 50) { // Stop after 5 seconds
+              clearInterval(checkInterval)
+              console.error('Google Maps API failed to load after 5 seconds');
+              resolve() // Resolve anyway to avoid hanging
             }
           }, 100)
         }

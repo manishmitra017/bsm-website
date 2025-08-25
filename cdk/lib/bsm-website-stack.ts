@@ -6,6 +6,7 @@ import * as route53 from 'aws-cdk-lib/aws-route53';
 import * as route53Targets from 'aws-cdk-lib/aws-route53-targets';
 import * as acm from 'aws-cdk-lib/aws-certificatemanager';
 import * as ecr from 'aws-cdk-lib/aws-ecr';
+import * as iam from 'aws-cdk-lib/aws-iam';
 import { Construct } from 'constructs';
 
 export class BsmWebsiteStack extends cdk.Stack {
@@ -50,6 +51,11 @@ export class BsmWebsiteStack extends cdk.Stack {
           NEXT_PUBLIC_CONTACT_EMAIL: 'info@bsm.org.au',
           NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '',
           PORT: '3000',
+          // AWS SES Configuration
+          AWS_REGION: 'ap-southeast-2',
+          AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID || '',
+          AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY || '',
+          SES_FROM_EMAIL: 'noreply@bsmmelbourne.org',
         },
       },
       memoryLimitMiB: 1024,
@@ -60,7 +66,27 @@ export class BsmWebsiteStack extends cdk.Stack {
       domainName: 'bsmmelbourne.org',
       certificate: certificate,
       redirectHTTP: true, // Redirect HTTP to HTTPS
+      // Explicitly set platform architecture to x86_64
+      platformVersion: ecs.FargatePlatformVersion.VERSION1_4,
+      runtimePlatform: {
+        cpuArchitecture: ecs.CpuArchitecture.X86_64,
+        operatingSystemFamily: ecs.OperatingSystemFamily.LINUX,
+      },
     });
+
+    // Add SES permissions to the task role
+    fargateService.taskDefinition.taskRole.addToPolicy(
+      new iam.PolicyStatement({
+        effect: iam.Effect.ALLOW,
+        actions: [
+          'ses:SendEmail',
+          'ses:SendRawEmail',
+        ],
+        resources: [
+          `arn:aws:ses:${this.region}:${this.account}:identity/*`,
+        ],
+      })
+    );
 
     // Configure health check
     fargateService.targetGroup.configureHealthCheck({
