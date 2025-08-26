@@ -42,6 +42,12 @@ export class BsmWebsiteStack extends cdk.Stack {
       taskImageOptions: {
         image: ecs.ContainerImage.fromAsset('../frontend', {
           file: 'Dockerfile',
+          buildArgs: {
+            NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '',
+            NEXT_PUBLIC_SITE_URL: 'https://bsmmelbourne.org',
+            NEXT_PUBLIC_SITE_NAME: 'Bengali Society of Melbourne',
+            NEXT_PUBLIC_CONTACT_EMAIL: 'info@bsm.org.au',
+          },
         }),
         containerPort: 3000,
         environment: {
