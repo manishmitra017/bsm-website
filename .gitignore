@@ -72,6 +72,9 @@ package-lock.json
 .env.local
 .env
 
+# Deployment script with secrets
+deploy.sh
+
 # CDK
 cdk.out/
 *.d.ts

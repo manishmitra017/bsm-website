@@ -40,7 +40,8 @@
       "Bash(grep:*)",
       "Bash(./check-env.sh)",
       "Bash(npm start)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(PORT=3002 npm start)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"

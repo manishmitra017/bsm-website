@@ -28,12 +28,61 @@ bsm/
 - Node.js 20+ installed
 - AWS CDK CLI installed globally: `npm install -g aws-cdk`
 
-### Deploy to Production
+### Local Development
 ```bash
-./deploy.sh
+# Setup environment variables
+cp frontend/.env.example frontend/.env.local
+# Edit frontend/.env.local with your API keys
+
+# Install dependencies and run
+cd frontend
+npm install
+npm run dev
 ```
 
+Visit http://localhost:3000
+
+### Deploy to Production
+
+1. **First time setup:**
+   ```bash
+   # Copy deployment template
+   cp deploy.sh.template deploy.sh
+   
+   # Edit deploy.sh and replace these with your actual values:
+   # NEXT_PUBLIC_GOOGLE_MAPS_API_KEY="your_google_maps_api_key"
+   # AWS_ACCESS_KEY_ID="your_aws_access_key"
+   # AWS_SECRET_ACCESS_KEY="your_aws_secret_key"
+   ```
+
+2. **Deploy:**
+   ```bash
+   chmod +x deploy.sh
+   ./deploy.sh
+   ```
+
 This will build and deploy your website to https://bsmmelbourne.org
+
+## 🔑 Environment Variables
+
+### Required API Keys
+
+1. **Google Maps API** (for address autocomplete):
+   - Go to [Google Cloud Console](https://console.cloud.google.com/apis/credentials)
+   - Enable: Maps JavaScript API, Places API, Geocoding API
+   - Create API key and restrict to your domains:
+     - `localhost:*` (development)
+     - `bsmmelbourne.org` (production)
+
+2. **AWS Credentials** (for deployment):
+   - Set up AWS CLI: `aws configure`
+   - Or use environment variables in deploy.sh
+
+### Environment Files
+- `frontend/.env.local` - Local development (gitignored)
+- `frontend/.env.example` - Template showing required variables
+- `deploy.sh` - Production deployment with embedded keys (gitignored)
+- `deploy.sh.template` - Safe template for sharing
 
 ## 📋 Features
 
@@ -43,7 +92,7 @@ This will build and deploy your website to https://bsmmelbourne.org
 - **Photo Gallery**: Community photos with lightbox functionality
 - **Membership System**: Google Maps integration, multiple membership types
 - **Volunteering**: Blood donation and tree plantation sections
-- **Contact Form**: SES-powered email with auto-reply
+- **Contact Forms**: Web3Forms integration for contact and membership forms
 - **Donations**: Bank details and tax-deductible information
 - **Bilingual Support**: English and Bengali content
 

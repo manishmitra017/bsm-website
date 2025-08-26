@@ -10,6 +10,7 @@ import { GooglePlace } from '@/types/google-maps'
 
 export default function Membership() {
   const [membershipType, setMembershipType] = useState('single')
+  const [selectedAddress, setSelectedAddress] = useState('')
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -21,7 +22,9 @@ export default function Membership() {
   const [submitMessage, setSubmitMessage] = useState('')
 
   const handlePlaceSelect = useCallback((place: GooglePlace) => {
-    // Google Places will handle the input value directly
+    if (place.formatted_address) {
+      setSelectedAddress(place.formatted_address)
+    }
   }, [])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,8 +39,8 @@ export default function Membership() {
     setIsSubmitting(true)
     setSubmitMessage('')
 
-    // Get the actual value from the address input field
-    const addressValue = addressInputRef.current?.value || ''
+    // Use the selected address from state
+    const addressValue = selectedAddress
 
     try {
       const formDataToSend = new FormData()
@@ -65,10 +68,8 @@ export default function Membership() {
           adultMembers: '',
           children: ''
         })
-        // Clear the address input field
-        if (addressInputRef.current) {
-          addressInputRef.current.value = ''
-        }
+        // Clear the address
+        setSelectedAddress('')
       } else {
         setSubmitMessage('There was an error submitting your application. Please try again.')
       }
@@ -80,6 +81,7 @@ export default function Membership() {
   }
 
   const addressInputRef = useGooglePlaces(handlePlaceSelect)
+
 
   return (
     <div>
@@ -415,6 +417,8 @@ export default function Membership() {
                     id="address"
                     name="address"
                     required
+                    value={selectedAddress}
+                    onChange={(e) => setSelectedAddress(e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 text-gray-900 placeholder-gray-500"
                     placeholder="Start typing your address for suggestions..."
                   />
