@@ -96,7 +96,7 @@ export default function KalipujaDeepavali() {
             >
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/communityphotos/20221008_131557-scaled.jpg"
+                  src="/kalipooja-2023/1-min.jpg"
                   alt="Kalipuja & Deepavali Celebration"
                   fill
                   className="object-cover"

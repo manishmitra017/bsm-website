@@ -134,7 +134,7 @@ export default function Events() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {/* Durga Puja 2025 */}
             <motion.div
-              className="bg-white/95 backdrop-blur-lg rounded-2xl overflow-hidden shadow-2xl"
+              className="bg-white/95 backdrop-blur-lg rounded-2xl shadow-2xl"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -191,25 +191,29 @@ export default function Events() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <Link 
-                    href="/events/durgotsav" 
+                  <Link
+                    href="/events/durgotsav"
                     className="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors text-center"
                   >
                     Learn More
                   </Link>
-                  <Link 
-                    href="/contact" 
-                    className="border-2 border-red-600 text-red-600 px-6 py-3 rounded-lg font-semibold hover:bg-red-50 transition-colors text-center"
-                  >
-                    Get Involved
-                  </Link>
+                  <AddToCalendar
+                    event={{
+                      title: 'Durga Puja 2025 - Bengali Society of Melbourne',
+                      description: 'The biggest annual festival celebrated by the Bengali-speaking community, honoring the triumph of Goddess Durga over evil and showcasing Bengali culture through devotion, music, dance, rituals, and delicious food.',
+                      startDate: '2025-09-26T18:00:00+10:00',
+                      endDate: '2025-09-28T22:00:00+10:00',
+                      location: 'Werribee Functions & Events Centre, 2-10 Bulban Rd, Werribee, VIC 3030'
+                    }}
+                    buttonClassName="border-2 border-red-600 text-red-600 px-6 py-3 rounded-lg font-semibold hover:bg-red-50 transition-colors text-center"
+                  />
                 </div>
               </div>
             </motion.div>
 
             {/* Kalipuja & Diwali 2025 */}
             <motion.div
-              className="bg-white/95 backdrop-blur-lg rounded-2xl overflow-hidden shadow-2xl"
+              className="bg-white/95 backdrop-blur-lg rounded-2xl shadow-2xl"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -266,50 +270,94 @@ export default function Events() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <Link 
-                    href="/events/kalipuja-deepavali" 
+                  <Link
+                    href="/events/kalipuja-deepavali"
                     className="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors text-center"
                   >
                     Learn More
                   </Link>
-                  <Link 
-                    href="/contact" 
-                    className="border-2 border-purple-600 text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-purple-50 transition-colors text-center"
-                  >
-                    Get Involved
-                  </Link>
+                  <AddToCalendar
+                    event={{
+                      title: 'Kalipuja & Diwali 2025 - Bengali Society of Melbourne',
+                      description: 'The Festival of Light symbolizes the spiritual victory of light over darkness, good over evil, and knowledge over ignorance. A time to destroy dark desires and embrace goodwill.',
+                      startDate: '2025-10-20T18:00:00+11:00',
+                      endDate: '2025-10-20T23:30:00+11:00',
+                      location: 'Werribee Masonic Centre, 223 Watton St, Werribee, VIC 3030'
+                    }}
+                    buttonClassName="border-2 border-purple-600 text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-purple-50 transition-colors text-center"
+                  />
                 </div>
               </div>
             </motion.div>
           </div>
 
-          {/* Event Highlights */}
+        </div>
+      </section>
+
+      {/* What to Expect */}
+      <section className="py-20 bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
-            className="mt-16 bg-white/10 backdrop-blur-lg rounded-2xl p-8 text-center"
+            className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h3 className="text-2xl font-bold text-white mb-6">What to Expect</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white">
-              <div className="text-center">
-                <div className="text-4xl mb-3">🎵</div>
-                <h4 className="font-semibold mb-2">Cultural Performances</h4>
-                <p className="text-red-100 text-sm">Traditional music, dance, and theatrical performances</p>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl mb-3">🍛</div>
-                <h4 className="font-semibold mb-2">Authentic Bengali Food</h4>
-                <p className="text-red-100 text-sm">Delicious traditional Bengali cuisine and sweets</p>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl mb-3">🎨</div>
-                <h4 className="font-semibold mb-2">Beautiful Decorations</h4>
-                <p className="text-red-100 text-sm">Stunning pandals and traditional decorative arts</p>
-              </div>
-            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              What to Expect
+              <span className="block text-orange-600 text-2xl mt-2" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                আপনার প্রত্যাশা
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Experience the rich tapestry of Bengali culture through our authentic celebrations
+            </p>
           </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <motion.div 
+              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+            >
+              <div className="text-6xl mb-6">🎵</div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Cultural Performances</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Traditional music, dance, and theatrical performances that showcase the artistic heritage of Bengal
+              </p>
+            </motion.div>
+
+            <motion.div 
+              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <div className="text-6xl mb-6">🍛</div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Authentic Bengali Food</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Delicious traditional Bengali cuisine and sweets prepared by our community members with authentic recipes
+              </p>
+            </motion.div>
+
+            <motion.div 
+              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <div className="text-6xl mb-6">🎨</div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Beautiful Decorations</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Stunning pandals and traditional decorative arts that transform venues into spiritual and cultural spaces
+              </p>
+            </motion.div>
+          </div>
         </div>
       </section>
 

@@ -23,8 +23,8 @@ const nextConfig = {
         hostname: '*.googleusercontent.com',
       },
     ],
-    // Enable image optimization for better performance
-    unoptimized: false,
+    // Disable image optimization in standalone mode for Docker
+    unoptimized: process.env.BUILD_STANDALONE === 'true',
   },
   
   // Environment variables - Next.js automatically loads .env files from parent directories

@@ -182,7 +182,7 @@ function AnimatedDurgotsav() {
                         endDate: "2025-09-28T23:30:00+10:00",
                         location: "Werribee Functions & Events Centre, 2-10 Bulban Rd, Werribee, VIC 3030, Australia"
                       }}
-                      className="w-auto"
+                      buttonClassName="border-2 border-red-600 text-red-600 px-6 py-3 rounded-lg font-semibold hover:bg-red-600 hover:text-white transition-colors text-center flex items-center space-x-2"
                     />
                   </div>
                 </div>

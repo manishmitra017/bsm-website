@@ -12,10 +12,10 @@ interface Event {
 
 interface AddToCalendarProps {
   event: Event
-  className?: string
+  buttonClassName?: string
 }
 
-export default function AddToCalendar({ event, className = "" }: AddToCalendarProps) {
+export default function AddToCalendar({ event, buttonClassName = "" }: AddToCalendarProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   const formatDateForGoogle = (date: string) => {
@@ -101,10 +101,10 @@ export default function AddToCalendar({ event, className = "" }: AddToCalendarPr
   ]
 
   return (
-    <div className={`relative ${className}`}>
+    <div className="relative z-10">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-orange-700 transition-colors flex items-center space-x-2"
+        className={buttonClassName || "bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-orange-700 transition-colors flex items-center space-x-2"}
       >
         <span>📅</span>
         <span>Add to Calendar</span>
@@ -112,11 +112,11 @@ export default function AddToCalendar({ event, className = "" }: AddToCalendarPr
 
       {isOpen && (
         <>
-          <div 
-            className="fixed inset-0 z-[9998]" 
+          <div
+            className="fixed inset-0 z-[9998]"
             onClick={() => setIsOpen(false)}
           ></div>
-          <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-white rounded-lg shadow-xl border z-[9999] min-w-48 max-w-xs">
+          <div className="absolute top-full left-0 mt-2 bg-white rounded-lg shadow-xl border z-[9999] min-w-48 max-w-xs">
             <div className="py-2">
               {calendarOptions.map((option, index) => (
                 <button
