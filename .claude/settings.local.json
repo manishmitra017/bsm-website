@@ -41,7 +41,11 @@
       "Bash(./check-env.sh)",
       "Bash(npm start)",
       "Bash(curl:*)",
-      "Bash(PORT=3002 npm start)"
+      "Bash(PORT=3002 npm start)",
+      "Bash(aws cloudformation describe-stacks:*)",
+      "Bash(aws cloudformation describe-stack-resources:*)",
+      "Bash(aws cloudformation wait:*)",
+      "Bash(./update-dns.sh:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"

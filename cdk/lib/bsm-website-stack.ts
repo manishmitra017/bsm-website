@@ -25,6 +25,17 @@ export class BsmWebsiteStack extends cdk.Stack {
       clusterName: 'bsm-website-cluster',
     });
 
+    // Get existing hosted zone
+    const hostedZone = route53.HostedZone.fromLookup(this, 'HostedZone', {
+      domainName: 'bsm.org.au',
+    });
+
+    // Create SSL certificate
+    const certificate = new acm.Certificate(this, 'Certificate', {
+      domainName: 'bsm.org.au',
+      validation: acm.CertificateValidation.fromDns(hostedZone),
+    });
+
     // Create Fargate service with Application Load Balancer
     const fargateService = new ecsPatterns.ApplicationLoadBalancedFargateService(this, 'BsmWebsite', {
       cluster,
@@ -57,6 +68,10 @@ export class BsmWebsiteStack extends cdk.Stack {
       cpu: 512,
       desiredCount: 2,
       publicLoadBalancer: true,
+      domainZone: hostedZone,
+      domainName: 'bsm.org.au',
+      certificate: certificate,
+      redirectHTTP: true, // Redirect HTTP to HTTPS
       // Explicitly set platform architecture to x86_64
       platformVersion: ecs.FargatePlatformVersion.VERSION1_4,
       runtimePlatform: {
