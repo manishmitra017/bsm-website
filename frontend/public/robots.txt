@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://bsmmelbourne.org/sitemap.xml
+Sitemap: https://bsm.org.au/sitemap.xml
 
 # Crawl-delay for bots
 Crawl-delay: 1

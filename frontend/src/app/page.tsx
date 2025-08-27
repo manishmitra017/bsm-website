@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import CountdownTimer from '@/components/CountdownTimer'
 
 export default function Home() {
   const structuredData = {
@@ -290,6 +291,25 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Durga Puja Countdown */}
+      <section className="py-16 bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="max-w-2xl mx-auto"
+          >
+            <CountdownTimer 
+              targetDate="2025-09-26T18:00:00+10:00"
+              eventName="Durgotsav 2025"
+              eventNameBengali="দুর্গোৎসব ২০২৫"
+            />
+          </motion.div>
+        </div>
+      </section>
+
       {/* Bengali Festivals Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -315,65 +335,71 @@ export default function Home() {
                 titleBengali: 'দুর্গোৎসব',
                 icon: '🪔',
                 description: 'The grand festival of Goddess Durga',
-                image: '/communityphotos/20221007_224153-scaled.jpg'
+                image: '/communityphotos/20221007_224153-scaled.jpg',
+                href: '/events/durgotsav'
               },
               {
                 title: 'Kalipuja',
                 titleBengali: 'কালীপূজা',
                 icon: '🕉️',
                 description: 'Worship of Goddess Kali with Deepavali',
-                image: '/communityphotos/20221008_115837-scaled.jpg'
+                image: '/communityphotos/20221008_115837-scaled.jpg',
+                href: '/events/kalipuja-deepavali'
               },
               {
                 title: 'Saraswati Puja',
                 titleBengali: 'সরস্বতী পূজা',
                 icon: '📚',
                 description: 'Celebrating the goddess of knowledge',
-                image: '/communityphotos/20231029_125732-scaled.jpg'
+                image: '/communityphotos/20231029_125732-scaled.jpg',
+                href: '/events/saraswati-puja'
               },
               {
                 title: 'Pohela Boishakh',
                 titleBengali: 'পহেলা বৈশাখ',
                 icon: '🌸',
                 description: 'Bengali New Year celebration',
-                image: '/communityphotos/IMG-1305-scaled.jpg'
+                image: '/communityphotos/IMG-1305-scaled.jpg',
+                href: '/events/pohela-boishakh'
               },
               {
                 title: 'Christmas & New Year',
                 titleBengali: 'বড়দিন ও নববর্ষ',
                 icon: '🎄',
                 description: 'Multicultural celebration',
-                image: '/communityphotos/20231111_225013-scaled.jpg'
+                image: '/communityphotos/20231111_225013-scaled.jpg',
+                href: '/events/christmas-new-year'
               }
             ].map((festival, index) => (
-              <motion.div
-                key={index}
-                className="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-              >
-                <div className="relative h-32 sm:h-40 lg:h-48 overflow-hidden">
-                  <Image
-                    src={festival.image}
-                    alt={festival.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-red-600/80 flex items-center justify-center">
-                    <span className="text-2xl sm:text-3xl lg:text-4xl">{festival.icon}</span>
+              <Link key={index} href={festival.href}>
+                <motion.div
+                  className="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  whileHover={{ y: -5 }}
+                >
+                  <div className="relative h-32 sm:h-40 lg:h-48 overflow-hidden">
+                    <Image
+                      src={festival.image}
+                      alt={festival.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-red-600/80 flex items-center justify-center">
+                      <span className="text-2xl sm:text-3xl lg:text-4xl">{festival.icon}</span>
+                    </div>
                   </div>
-                </div>
-                <div className="p-4 sm:p-5 lg:p-6">
-                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">{festival.title}</h3>
-                  <p className="text-orange-600 font-medium text-sm mb-2" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
-                    {festival.titleBengali}
-                  </p>
-                  <p className="text-gray-600 text-sm">{festival.description}</p>
-                </div>
-              </motion.div>
+                  <div className="p-4 sm:p-5 lg:p-6">
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">{festival.title}</h3>
+                    <p className="text-orange-600 font-medium text-sm mb-2" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                      {festival.titleBengali}
+                    </p>
+                    <p className="text-gray-600 text-sm">{festival.description}</p>
+                  </div>
+                </motion.div>
+              </Link>
             ))}
           </div>
         </div>

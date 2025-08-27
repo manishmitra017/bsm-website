@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import AddToCalendar from '@/components/AddToCalendar'
 
 import Head from 'next/head'
 
@@ -30,12 +31,12 @@ function AnimatedDurgotsav() {
       }
     },
     "image": [
-      "https://bsmmelbourne.org/upcoming-events/Durga-Puja-2025-1654-x-841-mm-Horizontal-Jul27-scaled.jpg"
+      "https://bsm.org.au/upcoming-events/Durga-Puja-2025-1654-x-841-mm-Horizontal-Jul27-scaled.jpg"
     ],
     "organizer": {
       "@type": "Organization",
       "name": "Bengali Society of Melbourne",
-      "url": "https://bsmmelbourne.org"
+      "url": "https://bsm.org.au"
     },
     "offers": {
       "@type": "Offer",
@@ -92,7 +93,102 @@ function AnimatedDurgotsav() {
             <p className="text-lg sm:text-xl text-orange-600 mt-2" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
               বিজয়ের উৎসব - মা দুর্গার আগমন
             </p>
+            
           </motion.div>
+        </div>
+      </section>
+
+      {/* Event Details Panel */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              className="bg-white rounded-2xl shadow-xl overflow-visible"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="p-8">
+                <div className="flex items-start justify-between mb-6">
+                  <div>
+                    <h3 className="text-3xl font-bold text-gray-900 mb-2">Durgotsav 2025</h3>
+                    <p className="text-red-600 font-medium text-lg" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                      দুর্গোৎসব ২০২৫
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-xl font-bold text-red-600">September 26-28</p>
+                    <p className="text-sm text-gray-600">2025</p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-3">
+                      <span className="text-red-600 text-lg">📅</span>
+                      <div>
+                        <p className="font-semibold text-gray-900">Dates</p>
+                        <p className="text-gray-600">September 26-28, 2025</p>
+                        <p className="text-sm text-gray-500">Friday - Sunday</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <span className="text-red-600 text-lg">⏰</span>
+                      <div>
+                        <p className="font-semibold text-gray-900">Timings</p>
+                        <p className="text-gray-600">6:00 PM - 11:30 PM</p>
+                        <p className="text-sm text-gray-500">All three days</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-3">
+                      <span className="text-red-600 text-lg">📍</span>
+                      <div>
+                        <p className="font-semibold text-gray-900">Location</p>
+                        <p className="text-gray-600">Werribee Functions & Events Centre</p>
+                        <p className="text-sm text-gray-500">2-10 Bulban Rd, Werribee, VIC 3030</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <span className="text-red-600 text-lg">🎭</span>
+                      <div>
+                        <p className="font-semibold text-gray-900">Experience</p>
+                        <p className="text-gray-600">Traditional rituals, cultural performances, community feast</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="border-t pt-6 mt-6">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-4 text-center">
+                    Save the Date
+                    <span className="block text-sm text-gray-600 font-normal">Add this event to your calendar</span>
+                  </h4>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Link 
+                      href="/contact" 
+                      className="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors text-center"
+                    >
+                      Get Involved
+                    </Link>
+                    <AddToCalendar 
+                      event={{
+                        title: "Durgotsav 2025 - BSM Melbourne",
+                        description: "Join us for the grand Durga Puja celebration featuring traditional rituals, cultural performances, community feast, and immersion ceremony. Celebrate the victory of good over evil with Melbourne's Bengali community.",
+                        startDate: "2025-09-26T18:00:00+10:00",
+                        endDate: "2025-09-28T23:30:00+10:00",
+                        location: "Werribee Functions & Events Centre, 2-10 Bulban Rd, Werribee, VIC 3030, Australia"
+                      }}
+                      className="w-auto"
+                    />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 

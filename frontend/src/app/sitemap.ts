@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://bsmmelbourne.org'
+  const baseUrl = 'https://bsm.org.au'
   
   return [
     {

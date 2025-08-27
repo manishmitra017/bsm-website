@@ -25,17 +25,6 @@ export class BsmWebsiteStack extends cdk.Stack {
       clusterName: 'bsm-website-cluster',
     });
 
-    // Get existing hosted zone
-    const hostedZone = route53.HostedZone.fromLookup(this, 'HostedZone', {
-      domainName: 'bsmmelbourne.org',
-    });
-
-    // Create SSL certificate
-    const certificate = new acm.Certificate(this, 'Certificate', {
-      domainName: 'bsmmelbourne.org',
-      validation: acm.CertificateValidation.fromDns(hostedZone),
-    });
-
     // Create Fargate service with Application Load Balancer
     const fargateService = new ecsPatterns.ApplicationLoadBalancedFargateService(this, 'BsmWebsite', {
       cluster,
@@ -44,7 +33,7 @@ export class BsmWebsiteStack extends cdk.Stack {
           file: 'Dockerfile',
           buildArgs: {
             NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '',
-            NEXT_PUBLIC_SITE_URL: 'https://bsmmelbourne.org',
+            NEXT_PUBLIC_SITE_URL: 'https://bsm.org.au',
             NEXT_PUBLIC_SITE_NAME: 'Bengali Society of Melbourne',
             NEXT_PUBLIC_CONTACT_EMAIL: 'info@bsm.org.au',
           },
@@ -52,7 +41,7 @@ export class BsmWebsiteStack extends cdk.Stack {
         containerPort: 3000,
         environment: {
           NODE_ENV: 'production',
-          NEXT_PUBLIC_SITE_URL: 'https://bsmmelbourne.org',
+          NEXT_PUBLIC_SITE_URL: 'https://bsm.org.au',
           NEXT_PUBLIC_SITE_NAME: 'Bengali Society of Melbourne',
           NEXT_PUBLIC_CONTACT_EMAIL: 'info@bsm.org.au',
           NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '',
@@ -61,17 +50,13 @@ export class BsmWebsiteStack extends cdk.Stack {
           AWS_REGION: 'ap-southeast-2',
           AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID || '',
           AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY || '',
-          SES_FROM_EMAIL: 'noreply@bsmmelbourne.org',
+          SES_FROM_EMAIL: 'noreply@bsm.org.au',
         },
       },
       memoryLimitMiB: 1024,
       cpu: 512,
       desiredCount: 2,
       publicLoadBalancer: true,
-      domainZone: hostedZone,
-      domainName: 'bsmmelbourne.org',
-      certificate: certificate,
-      redirectHTTP: true, // Redirect HTTP to HTTPS
       // Explicitly set platform architecture to x86_64
       platformVersion: ecs.FargatePlatformVersion.VERSION1_4,
       runtimePlatform: {
@@ -117,13 +102,19 @@ export class BsmWebsiteStack extends cdk.Stack {
     // Output the load balancer URL
     new cdk.CfnOutput(this, 'LoadBalancerDNS', {
       value: fargateService.loadBalancer.loadBalancerDnsName,
-      description: 'Load Balancer DNS Name',
+      description: 'New Load Balancer DNS Name - Update bsm.org.au A record to point to this',
+    });
+
+    // Output the load balancer hosted zone ID for alias record
+    new cdk.CfnOutput(this, 'LoadBalancerHostedZoneId', {
+      value: fargateService.loadBalancer.loadBalancerCanonicalHostedZoneId,
+      description: 'Load Balancer Hosted Zone ID for Route53 alias record',
     });
 
     // Output the domain URL
     new cdk.CfnOutput(this, 'WebsiteURL', {
-      value: `https://bsmmelbourne.org`,
-      description: 'BSM Website URL',
+      value: `https://bsm.org.au`,
+      description: 'BSM Website URL (after DNS update)',
     });
   }
 }
