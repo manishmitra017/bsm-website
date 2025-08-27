@@ -3,7 +3,7 @@
 A beautiful, responsive website for the Bengali Society of Melbourne built with Next.js and deployed on AWS.
 
 ## 🌐 Live Website
-**https://bsmmelbourne.org**
+**https://bsm.org.au**
 
 ## 🏗️ Project Structure
 
@@ -61,7 +61,7 @@ Visit http://localhost:3000
    ./deploy.sh
    ```
 
-This will build and deploy your website to https://bsmmelbourne.org
+This will build and deploy your website to https://bsm.org.au
 
 ## 🔑 Environment Variables
 
@@ -72,7 +72,7 @@ This will build and deploy your website to https://bsmmelbourne.org
    - Enable: Maps JavaScript API, Places API, Geocoding API
    - Create API key and restrict to your domains:
      - `localhost:*` (development)
-     - `bsmmelbourne.org` (production)
+     - `bsm.org.au` (production)
 
 2. **AWS Credentials** (for deployment):
    - Set up AWS CLI: `aws configure`
@@ -125,7 +125,7 @@ This will build and deploy your website to https://bsmmelbourne.org
   - Auto-scaling (1-5 instances)
 
 ## 🌐 Live Website
-**https://bsmmelbourne.org**
+**https://bsm.org.au**
 
 ## 📦 Environment Variables
 
@@ -134,7 +134,7 @@ Key environment variables (see `.env.example` for complete list):
 ```bash
 # Frontend
 NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your-api-key
-NEXT_PUBLIC_SITE_URL=https://bsmmelbourne.org
+NEXT_PUBLIC_SITE_URL=https://bsm.org.au
 NEXT_PUBLIC_CONTACT_EMAIL=info@bsm.org.au
 
 # AWS

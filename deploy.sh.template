@@ -36,7 +36,7 @@ if [ -z "$NEXT_PUBLIC_GOOGLE_MAPS_API_KEY" ] || [ "$NEXT_PUBLIC_GOOGLE_MAPS_API_
 fi
 
 # Production deployment confirmation
-echo "🔴 PRODUCTION DEPLOYMENT - This will deploy to https://bsmmelbourne.org"
+echo "🔴 PRODUCTION DEPLOYMENT - This will deploy to https://bsm.org.au"
 read -p "Are you sure you want to deploy to production? (y/N): " -n 1 -r
 echo
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
@@ -95,17 +95,17 @@ echo ""
 # Display deployment information
 echo "📋 Deployment Information:"
 echo "========================="
-echo "🌐 Website URL: https://bsmmelbourne.org"
+echo "🌐 Website URL: https://bsm.org.au"
 echo "🔒 SSL Certificate: Auto-managed by AWS Certificate Manager"
 echo "🌍 CDN: Application Load Balancer with auto-scaling ECS Fargate"
 echo "📊 Monitoring: CloudWatch logs and metrics enabled"
 echo "🎯 Health Checks: Configured for high availability"
 
 echo ""
-echo "🎉 BSM Website is now live at https://bsmmelbourne.org!"
+echo "🎉 BSM Website is now live at https://bsm.org.au!"
 echo ""
 echo "Next steps:"
-echo "- Visit https://bsmmelbourne.org to verify deployment"
+echo "- Visit https://bsm.org.au to verify deployment"
 echo "- Website includes Bengali cultural content and photo galleries"
 echo "- Auto-scaling is configured (1-5 instances based on traffic)"
 echo "- Monitor via AWS Console: ECS → bsm-website-cluster"
