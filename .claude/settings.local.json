@@ -45,7 +45,10 @@
       "Bash(aws cloudformation describe-stacks:*)",
       "Bash(aws cloudformation describe-stack-resources:*)",
       "Bash(aws cloudformation wait:*)",
-      "Bash(./update-dns.sh:*)"
+      "Bash(./update-dns.sh:*)",
+      "Bash(aws cloudformation:*)",
+      "Bash(aws acm describe-certificate:*)",
+      "Bash(aws acm list-certificates:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"
