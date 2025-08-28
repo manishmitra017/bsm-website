@@ -44,7 +44,7 @@ export default function Membership() {
 
     try {
       const formDataToSend = new FormData()
-      formDataToSend.append('access_key', '7d4e4c8b-e886-49df-ba29-d859ddcc7e55')
+      formDataToSend.append('access_key', '6a108641-d443-4d19-ba6a-a210acdc4567')
       formDataToSend.append('fullName', formData.fullName)
       formDataToSend.append('email', formData.email)
       formDataToSend.append('phone', formData.phone)
@@ -611,6 +611,17 @@ export default function Membership() {
                     <p className="text-gray-600">
                       <a href="https://www.facebook.com/bsm2022" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:underline">
                         facebook.com/bsm2022
+                      </a>
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <span className="text-red-600 text-xl">📷</span>
+                  <div>
+                    <p className="font-semibold text-gray-900">Instagram</p>
+                    <p className="text-gray-600">
+                      <a href="https://www.instagram.com/bsm_aus?igsh=MW5kaDM0NzcyMG9ndg==" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:underline">
+                        instagram.com/bsm_aus
                       </a>
                     </p>
                   </div>
