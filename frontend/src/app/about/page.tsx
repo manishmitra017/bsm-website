@@ -257,8 +257,8 @@ export default function About() {
             {[
               {
                 name: 'Anindita Sarkar',
-                photo: '/members/anindita-279x300.jpg',
-                position: 'Executive Member'
+                photo: '/members/Anindita-Sarkar.png',
+                position: 'Cultural Secretary'
               },
               {
                 name: 'Anup Singha',
@@ -277,7 +277,7 @@ export default function About() {
               },
               {
                 name: 'Pabitra Barman',
-                photo: '/members/Untitled-5-279x300.jpg',
+                photo: '/members/pavithra-Barman.png',
                 position: 'Vice President'
               },
               {
@@ -297,7 +297,7 @@ export default function About() {
               },
               {
                 name: 'Tapas Barman',
-                photo: '/members/kartik-300x235.jpg',
+                photo: '/members/tapas-barman.jpg',
                 position: 'Public Relation Officer'
               }
             ].map((member, index) => (

@@ -235,7 +235,7 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
                   <div className="absolute bottom-4 left-4 text-white">
                     <h3 className="text-xl font-bold">Kali Puja & Deepavali</h3>
-                    <p className="text-sm opacity-90">October 20, 2025</p>
+                    <p className="text-sm opacity-90">October 19, 2025</p>
                   </div>
                   <div className="absolute top-4 right-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-bold">
                     Oct 20

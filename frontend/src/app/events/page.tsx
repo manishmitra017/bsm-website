@@ -244,7 +244,7 @@ export default function Events() {
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="text-lg font-bold text-purple-600">October 20</p>
+                    <p className="text-lg font-bold text-purple-600">October 19</p>
                     <p className="text-sm text-gray-600">6:00 PM - 11:30 PM</p>
                   </div>
                 </div>
