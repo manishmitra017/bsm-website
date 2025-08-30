@@ -271,9 +271,14 @@ export default function About() {
                 position: 'General Secretary'
               },
               {
+                name: 'Karthik Barman',
+                photo: '/members/kartik-barman.jpg',
+                position: 'Treasurer'
+              },
+              {
                 name: 'Mihir Das',
                 photo: '/members/mihirdas-266x300.jpeg',
-                position: 'Executive Member'
+                position: 'Joint Treasurer'
               },
               {
                 name: 'Pabitra Barman',
@@ -283,17 +288,17 @@ export default function About() {
               {
                 name: 'Pradip Saha',
                 photo: '/members/pradip-saha.jpg',
-                position: 'Executive Member'
+                position: 'Joint Secretary'
               },
               {
                 name: 'Ratul Biswas',
                 photo: '/members/ratul-biswas.jpg',
-                position: 'Executive Member'
+                position: 'Event Manager'
               },
               {
                 name: 'Subhagata Saha',
                 photo: '/members/Subhagata-Saha_BSM-279x300.jpg',
-                position: 'Executive Member'
+                position: 'Executive Committee Adviser'
               },
               {
                 name: 'Tapas Barman',

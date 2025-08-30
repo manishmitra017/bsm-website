@@ -152,7 +152,7 @@ export default function Events() {
                   <span className="text-3xl">🪔</span>
                 </div>
                 <div className="absolute bottom-4 right-4 bg-red-600 text-white px-4 py-2 rounded-full font-bold">
-                  Sep 26-28
+                  Sep 27-28
                 </div>
               </div>
               
@@ -165,7 +165,7 @@ export default function Events() {
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="text-lg font-bold text-red-600">September 26-28</p>
+                    <p className="text-lg font-bold text-red-600">September 27-28</p>
                     <p className="text-sm text-gray-600">2025</p>
                   </div>
                 </div>
@@ -201,7 +201,7 @@ export default function Events() {
                     event={{
                       title: 'Durga Puja 2025 - Bengali Society of Melbourne',
                       description: 'The biggest annual festival celebrated by the Bengali-speaking community, honoring the triumph of Goddess Durga over evil and showcasing Bengali culture through devotion, music, dance, rituals, and delicious food.',
-                      startDate: '2025-09-26T18:00:00+10:00',
+                      startDate: '2025-09-27T18:00:00+10:00',
                       endDate: '2025-09-28T22:00:00+10:00',
                       location: 'Werribee Functions & Events Centre, 2-10 Bulban Rd, Werribee, VIC 3030'
                     }}
@@ -231,7 +231,7 @@ export default function Events() {
                   <span className="text-3xl">🕉️</span>
                 </div>
                 <div className="absolute bottom-4 right-4 bg-purple-600 text-white px-4 py-2 rounded-full font-bold">
-                  Oct 20
+                  Oct 19
                 </div>
               </div>
               
