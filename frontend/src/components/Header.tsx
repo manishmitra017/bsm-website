@@ -48,6 +48,7 @@ export default function Header() {
                 { href: '/events', label: 'Events' },
                 { href: '/gallery', label: 'Gallery' },
                 { href: '/volunteering', label: 'Volunteering' },
+                { href: '/sponsorship', label: 'Sponsorship' },
                 { href: '/membership', label: 'Membership' },
                 { href: '/donation', label: 'Donation' },
                 { href: '/contact', label: 'Contact' }
@@ -143,6 +144,13 @@ export default function Header() {
                 onClick={() => setIsOpen(false)}
               >
                 Volunteering
+              </Link>
+              <Link 
+                href="/sponsorship" 
+                className="block text-gray-700 hover:text-red-600 hover:bg-red-50 px-3 py-3 text-base font-medium rounded-md transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                Sponsorship
               </Link>
               <Link 
                 href="/membership" 

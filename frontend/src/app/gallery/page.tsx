@@ -15,6 +15,7 @@ export default function Gallery() {
     '/durgapooja-2023/20231029_122948-768x1024.jpg',
     '/durgapooja-2023/20231029_161210-1024x768.jpg', 
     '/durgapooja-2023/20231029_162550-1024x768.jpg',
+    '/durgapooja-2023/2-scaled.jpg',
     '/upcoming-events/Durga-Puja-2025-1654-x-841-mm-Horizontal-Jul27-scaled.jpg',
     // Kali Puja photos
     '/kalipooja-2023/1-min.jpg',
@@ -27,6 +28,31 @@ export default function Gallery() {
     '/kalipooja-2023/8-min-1.jpg',
     '/kalipooja-2023/9-min-1.jpg',
     '/kalipooja-2023/10-min-1.jpg',
+    // Saraswati Puja photos
+    '/saraswatipooja/484723908_674928888396859_4255503182297146288_n.jpg',
+    '/saraswatipooja/482245011_674928638396884_430187257159668509_n.jpg',
+    '/saraswatipooja/482246795_674928861730195_7681626211387078032_n.jpg',
+    '/saraswatipooja/484902584_674928981730183_4879967772399001889_n.jpg',
+    '/saraswatipooja/485008173_674928991730182_2174511964673968281_n.jpg',
+    // Pohela Boishakh photos
+    '/pahelaboishak/484347968_674863851736696_6373890908421337640_n.jpg',
+    '/pahelaboishak/482987675_674770235079391_8646617153893484712_n.jpg',
+    '/pahelaboishak/484150150_674770198412728_2551067466827483558_n.jpg',
+    '/pahelaboishak/484954444_674770388412709_8188530502447723768_n.jpg',
+    '/pahelaboishak/484802793_674770178412730_8432989062571235324_n.jpg',
+    // Volunteering photos
+    '/Volunteering/20240728_105939-1024x768.jpg',
+    '/Volunteering/20240728_104604-768x1024.jpg',
+    '/Volunteering/20220731_113206-768x1024.jpg',
+    '/Volunteering/20220731_110928-768x1024.jpg',
+    '/Volunteering/1.jpg',
+    '/Volunteering/2.jpg',
+    '/Volunteering/3.jpg',
+    '/Volunteering/4.jpg',
+    '/Volunteering/5.jpg',
+    '/Volunteering/6.jpg',
+    '/Volunteering/7.jpg',
+    '/Volunteering/8.jpg',
     // Community photos
     '/communityphotos/20221007_224153-scaled.jpg',
     '/communityphotos/20221008_115837-scaled.jpg',
@@ -35,7 +61,10 @@ export default function Gallery() {
     '/communityphotos/20231111_225013-scaled.jpg',
     '/communityphotos/IMG-1305-scaled.jpg',
     '/communityphotos/IMG-1544.jpg',
-    '/communityphotos/PA094485-scaled.jpg'
+    '/communityphotos/PA094485-scaled.jpg',
+    '/communityphotos/IMG-1546.jpg',
+    '/communityphotos/IMG-1549.jpg',
+    '/communityphotos/PA094531-scaled.jpg'
   ]
 
   const openLightbox = (imageSrc: string) => {
@@ -132,6 +161,7 @@ export default function Gallery() {
                 '/durgapooja-2023/20231029_122948-768x1024.jpg',
                 '/durgapooja-2023/20231029_161210-1024x768.jpg', 
                 '/durgapooja-2023/20231029_162550-1024x768.jpg',
+                '/durgapooja-2023/2-scaled.jpg',
                 '/upcoming-events/Durga-Puja-2025-1654-x-841-mm-Horizontal-Jul27-scaled.jpg'
               ].map((photo, index) => (
                 <motion.div
@@ -254,6 +284,151 @@ export default function Gallery() {
                     <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <span className="text-white text-4xl">🔍</span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Saraswati Puja Gallery */}
+          <div className="mb-16">
+            <motion.h3 
+              className="text-2xl md:text-3xl font-bold text-yellow-600 mb-8 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              Saraswati Puja | সরস্বতী পূজা
+            </motion.h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+              {[
+                '/saraswatipooja/484723908_674928888396859_4255503182297146288_n.jpg',
+                '/saraswatipooja/482245011_674928638396884_430187257159668509_n.jpg',
+                '/saraswatipooja/482246795_674928861730195_7681626211387078032_n.jpg',
+                '/saraswatipooja/484902584_674928981730183_4879967772399001889_n.jpg',
+                '/saraswatipooja/485008173_674928991730182_2174511964673968281_n.jpg'
+              ].map((photo, index) => (
+                <motion.div
+                  key={index}
+                  className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ y: -5 }}
+                  onClick={() => openLightbox(photo)}
+                >
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={photo}
+                      alt={`Saraswati Puja Celebration ${index + 1}`}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <span className="text-white text-3xl">🔍</span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Pohela Boishakh Gallery */}
+          <div className="mb-16">
+            <motion.h3 
+              className="text-2xl md:text-3xl font-bold text-pink-600 mb-8 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              Pohela Boishakh | পহেলা বৈশাখ
+            </motion.h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+              {[
+                '/pahelaboishak/484347968_674863851736696_6373890908421337640_n.jpg',
+                '/pahelaboishak/482987675_674770235079391_8646617153893484712_n.jpg',
+                '/pahelaboishak/484150150_674770198412728_2551067466827483558_n.jpg',
+                '/pahelaboishak/484954444_674770388412709_8188530502447723768_n.jpg',
+                '/pahelaboishak/484802793_674770178412730_8432989062571235324_n.jpg'
+              ].map((photo, index) => (
+                <motion.div
+                  key={index}
+                  className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ y: -5 }}
+                  onClick={() => openLightbox(photo)}
+                >
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={photo}
+                      alt={`Pohela Boishakh Celebration ${index + 1}`}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <span className="text-white text-3xl">🔍</span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Volunteering Gallery */}
+          <div className="mb-16">
+            <motion.h3 
+              className="text-2xl md:text-3xl font-bold text-blue-600 mb-8 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              Community Volunteering | কমিউনিটি স্বেচ্ছাসেবা
+            </motion.h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {[
+                '/Volunteering/20240728_105939-1024x768.jpg',
+                '/Volunteering/20240728_104604-768x1024.jpg',
+                '/Volunteering/20220731_113206-768x1024.jpg',
+                '/Volunteering/20220731_110928-768x1024.jpg',
+                '/Volunteering/1.jpg',
+                '/Volunteering/2.jpg',
+                '/Volunteering/3.jpg',
+                '/Volunteering/4.jpg',
+                '/Volunteering/5.jpg',
+                '/Volunteering/6.jpg',
+                '/Volunteering/7.jpg',
+                '/Volunteering/8.jpg'
+              ].map((photo, index) => (
+                <motion.div
+                  key={index}
+                  className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ y: -5 }}
+                  onClick={() => openLightbox(photo)}
+                >
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={photo}
+                      alt={`Community Volunteering ${index + 1}`}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <span className="text-white text-3xl">🔍</span>
                     </div>
                   </div>
                 </motion.div>

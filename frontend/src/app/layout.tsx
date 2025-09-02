@@ -66,6 +66,8 @@ export default function RootLayout({
   return (
     <html lang="en-AU">
       <body className={`${inter.className} ${bengaliFont.variable} antialiased`}>
+        <div id="fb-root"></div>
+        <script async defer crossOrigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v23.0"></script>
         <GoogleMapsScript />
         <Header />
         <main className="pt-16 sm:pt-20 min-h-screen" role="main">
