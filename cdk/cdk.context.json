@@ -11,5 +11,10 @@
   "hosted-zone:account=147845228831:domainName=bsm.org.au:region=ap-southeast-2": {
     "Id": "/hostedzone/Z07446303DHP3XQ3YM1OE",
     "Name": "bsm.org.au."
-  }
+  },
+  "availability-zones:account=066043264852:region=ap-southeast-2": [
+    "ap-southeast-2a",
+    "ap-southeast-2b",
+    "ap-southeast-2c"
+  ]
 }
