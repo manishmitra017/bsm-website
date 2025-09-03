@@ -87,10 +87,11 @@ export default function Header() {
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                className="flex-shrink-0"
               >
                 <Link 
                   href="/membership" 
-                  className="bg-gradient-to-r from-red-600 to-orange-600 text-white px-4 lg:px-6 py-2 lg:py-3 rounded-full text-xs lg:text-sm font-medium hover:from-red-700 hover:to-orange-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+                  className="bg-gradient-to-r from-red-600 to-orange-600 text-white px-4 lg:px-6 py-2 lg:py-3 rounded-full text-xs lg:text-sm font-medium hover:from-red-700 hover:to-orange-700 transition-all duration-200 shadow-lg hover:shadow-xl whitespace-nowrap inline-block"
                 >
                   Join Us
                 </Link>
@@ -189,11 +190,11 @@ export default function Header() {
                   📞 President: 0403 617 375
                 </a>
                 <a 
-                  href="tel:0413406344" 
+                  href="tel:0450801113" 
                   className="block bg-orange-100 text-orange-600 px-3 py-2 rounded-md text-center font-semibold hover:bg-orange-200 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
-                  📱 VP: 0413 406 344
+                  📱 General Secretary: 0450 801 113
                 </a>
                 <a 
                   href="mailto:info@bsm.org.au" 

@@ -198,11 +198,11 @@ export default function About() {
                 description: 'Leading BSM with vision and dedication to preserve Bengali culture in Melbourne.'
               },
               {
-                name: 'Pabitra Barman',
-                role: 'Vice President',
-                roleBengali: 'সহ-সভাপতি',
-                phone: '0413 406 344',
-                description: 'Supporting community initiatives and helping organize cultural events and programs.'
+                name: 'Jony Saha',
+                role: 'General Secretary',
+                roleBengali: 'সাধারণ সম্পাদক',
+                phone: '0450 801 113',
+                description: 'Managing administrative affairs and coordinating community activities and communications.'
               }
             ].map((leader, index) => (
               <motion.div
