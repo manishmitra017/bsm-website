@@ -4,8 +4,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import CountdownTimer from '@/components/CountdownTimer'
+import { useState } from 'react'
 
 export default function Home() {
+  const [selectedImage, setSelectedImage] = useState<{image: string, title: string} | null>(null)
+  
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -460,12 +463,13 @@ export default function Home() {
             ].map((photo, index) => (
               <motion.div
                 key={index}
-                className="group relative aspect-square rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+                className="group relative aspect-square rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
+                onClick={() => setSelectedImage({ image: photo.image, title: photo.title })}
               >
                 <Image
                   src={photo.image}
@@ -477,9 +481,112 @@ export default function Home() {
                 <div className="absolute bottom-2 left-2 right-2 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <p className="text-sm font-medium">{photo.title}</p>
                 </div>
+                <div className="absolute top-2 right-2 bg-white/90 text-gray-800 px-2 py-1 rounded-full text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  🔍 Click to view
+                </div>
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Our Proud Sponsors Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
+              Our Proud Sponsors | আমাদের গর্বিত স্পনসর
+            </h2>
+            <p className="text-xl text-gray-600 mb-6 max-w-4xl mx-auto leading-relaxed">
+              We extend our heartfelt gratitude to our valued sponsors who make our community events and cultural celebrations possible. Their generous support helps us preserve Bengali heritage and strengthen our community bonds across Melbourne.
+            </p>
+            <p className="text-lg text-gray-500 max-w-3xl mx-auto" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+              আমাদের সম্প্রদায়িক অনুষ্ঠান ও সাংস্কৃতিক উৎসব সম্ভব করে তোলার জন্য আমাদের মূল্যবান স্পনসরদের প্রতি আন্তরিক কৃতজ্ঞতা।
+            </p>
+          </motion.div>
+
+          {/* Full Sponsor Images */}
+          <div className="space-y-12">
+            {[
+              { 
+                image: '/sponsors/findmyrealestate.jpeg', 
+                name: 'Find My Real Estate',
+                tagline: 'Your trusted real estate partner in Melbourne'
+              },
+              { 
+                image: '/sponsors/Ratul-Biswas-Finance-Broker.jpeg', 
+                name: 'Ratul Biswas Finance Broker',
+                tagline: 'Professional finance and mortgage solutions'
+              },
+              { 
+                image: '/sponsors/asa-wealth-management.jpeg', 
+                name: 'ASA Wealth Management',
+                tagline: 'Professional wealth management and financial advisory services'
+              }
+            ].map((sponsor, index) => (
+              <motion.div
+                key={index}
+                className="group cursor-pointer"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: index * 0.3 }}
+                onClick={() => setSelectedImage({ image: sponsor.image, title: sponsor.name })}
+              >
+                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100">
+                  <div className="relative group-hover:bg-gray-50 transition-colors duration-300">
+                    <div className="relative h-64 sm:h-80 md:h-96 flex items-center justify-center p-8">
+                      <Image
+                        src={sponsor.image}
+                        alt={sponsor.name}
+                        fill
+                        className="object-contain group-hover:scale-[1.02] transition-transform duration-500"
+                        priority={index === 0}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute top-2 right-2 bg-white/90 text-gray-800 px-2 py-1 rounded-full text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        🔍 Click to view
+                      </div>
+                    </div>
+                    <div className="p-6 text-center bg-gradient-to-r from-red-50 to-orange-50">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2">{sponsor.name}</h3>
+                      <p className="text-gray-600 font-medium">{sponsor.tagline}</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Call to Action */}
+          <motion.div
+            className="text-center mt-20"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            <div className="bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500 rounded-2xl p-8 text-white shadow-2xl max-w-3xl mx-auto">
+              <h3 className="text-3xl font-bold mb-4">
+                🤝 Join Our Sponsor Family | আমাদের স্পনসর পরিবারে যোগ দিন
+              </h3>
+              <p className="text-xl mb-6 text-red-50">
+                Partner with BSM to showcase your business to Melbourne's vibrant Bengali community and support our cultural heritage preservation efforts.
+              </p>
+              <Link 
+                href="/sponsorship" 
+                className="bg-white text-red-600 px-10 py-4 rounded-xl text-xl font-bold hover:bg-red-50 transition-colors inline-block shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+              >
+                Become a Sponsor Today | আজই স্পনসর হন
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -594,6 +701,44 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      {/* Image Lightbox Modal */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <motion.div
+            className="relative bg-white rounded-xl p-4 max-w-6xl max-h-[95vh] overflow-hidden"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 z-10 bg-red-600 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-red-700 transition-colors text-xl font-bold shadow-lg"
+            >
+              ✕
+            </button>
+            <div className="text-center mb-4">
+              <h3 className="text-2xl font-bold text-gray-900">{selectedImage.title}</h3>
+            </div>
+            <div className="relative w-full h-[70vh] flex items-center justify-center">
+              <Image
+                src={selectedImage.image}
+                alt={selectedImage.title}
+                fill
+                className="object-contain rounded-lg"
+                priority
+              />
+            </div>
+            <div className="text-center mt-4 text-gray-500 text-sm">
+              Click outside or press the ✕ to close
+            </div>
+          </motion.div>
+        </div>
+      )}
     </div>
   )
 }
