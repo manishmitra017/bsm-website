@@ -48,7 +48,10 @@
       "Bash(./update-dns.sh:*)",
       "Bash(aws cloudformation:*)",
       "Bash(aws acm describe-certificate:*)",
-      "Bash(aws acm list-certificates:*)"
+      "Bash(aws acm list-certificates:*)",
+      "Bash(export:*)",
+      "Bash(export AWS_ACCESS_KEY_ID=\"AKIAQ6YD4H5KHZOPJG2Q\")",
+      "Bash(export AWS_SECRET_ACCESS_KEY=\"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\")"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"
