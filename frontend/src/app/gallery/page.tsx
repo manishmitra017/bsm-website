@@ -16,6 +16,7 @@ export default function Gallery() {
     '/durgapooja-2023/20231029_161210-1024x768.jpg', 
     '/durgapooja-2023/20231029_162550-1024x768.jpg',
     '/durgapooja-2023/2-scaled.jpg',
+    '/durgapooja-2023/20231029_115058-1024x768.jpg',
     '/upcoming-events/Durga-Puja-2025-1654-x-841-mm-Horizontal-Jul27-scaled.jpg',
     // Kali Puja photos
     '/kalipooja-2023/1-min.jpg',

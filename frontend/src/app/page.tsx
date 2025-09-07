@@ -232,7 +232,7 @@ export default function Home() {
                     <p className="text-sm opacity-90">September 26-28, 2025</p>
                   </div>
                   <div className="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold">
-                    Sep 26-28
+                    Sep 27-28
                   </div>
                 </div>
                 <div className="relative rounded-xl overflow-hidden shadow-lg">
