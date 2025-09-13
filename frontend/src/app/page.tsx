@@ -4,6 +4,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import CountdownTimer from '@/components/CountdownTimer'
+import SponsorCarousel from '@/components/SponsorCarousel'
+import SponsorSpotlight from '@/components/SponsorSpotlight'
+import SponsorBanner from '@/components/SponsorBanner'
 import { useState } from 'react'
 
 export default function Home() {
@@ -273,6 +276,20 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Sponsor Banner - Strategic Placement 1 */}
+      <section className="py-8 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <SponsorBanner position="top" />
+          </motion.div>
+        </div>
+      </section>
+
       {/* About BSM Section */}
       <section className="py-16 bg-red-600">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -490,7 +507,35 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Our Proud Sponsors Section */}
+      {/* Interactive Sponsor Carousel Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <SponsorCarousel />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Sponsor Spotlight Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <SponsorSpotlight />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Our Proud Sponsors Section - Enhanced */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
@@ -501,72 +546,153 @@ export default function Home() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
-              Our Proud Sponsors | আমাদের গর্বিত স্পনসর
+              Our Valued Partners | আমাদের মূল্যবান অংশীদার
             </h2>
             <p className="text-xl text-gray-600 mb-6 max-w-4xl mx-auto leading-relaxed">
-              We extend our heartfelt gratitude to our valued sponsors who make our community events and cultural celebrations possible. Their generous support helps us preserve Bengali heritage and strengthen our community bonds across Melbourne.
-            </p>
-            <p className="text-lg text-gray-500 max-w-3xl mx-auto" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
-              আমাদের সম্প্রদায়িক অনুষ্ঠান ও সাংস্কৃতিক উৎসব সম্ভব করে তোলার জন্য আমাদের মূল্যবান স্পনসরদের প্রতি আন্তরিক কৃতজ্ঞতা।
+              These businesses don't just sponsor events - they invest in our community's future. Their partnership enables us to keep our cultural traditions alive while building a stronger, more connected Bengali community in Melbourne.
             </p>
           </motion.div>
 
-          {/* Full Sponsor Images */}
-          <div className="space-y-12">
+          {/* Sponsor Grid with Enhanced Features */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {[
               { 
                 image: '/sponsors/findmyrealestate.jpeg', 
                 name: 'Find My Real Estate',
-                tagline: 'Your trusted real estate partner in Melbourne'
+                tagline: 'Your trusted real estate partner',
+                tier: 'Platinum Partner',
+                benefits: ['Free property appraisal', 'Reduced commission rates'],
+                website: 'https://www.findmyrealestate.com.au'
               },
               { 
                 image: '/sponsors/Ratul-Biswas-Finance-Broker.jpeg', 
-                name: 'Ratul Biswas Finance Broker',
-                tagline: 'Professional finance and mortgage solutions'
+                name: 'Ratul Biswas Finance',
+                tagline: 'Expert mortgage solutions',
+                tier: 'Platinum Partner',
+                benefits: ['Free consultation', 'Exclusive rates for BSM'],
+                website: 'https://www.a-f-s.au'
               },
               { 
                 image: '/sponsors/asa-wealth-management.jpeg', 
                 name: 'ASA Wealth Management',
-                tagline: 'Professional wealth management and financial advisory services'
+                tagline: 'Financial planning excellence',
+                tier: 'Gold Partner',
+                benefits: ['Free portfolio review', 'Financial seminars'],
+                website: 'https://asawealth.com.au'
+              },
+              { 
+                image: '/sponsors/solar-1.jpeg', 
+                name: 'Cosmic Renewable Energy',
+                tagline: 'Sustainable solar energy solutions',
+                tier: 'Silver Partner',
+                benefits: ['10% discount on installations'],
+                website: 'https://www.cosmicrenewableenergy.com.au'
+              },
+              { 
+                image: '/sponsors/solar-2.jpeg', 
+                name: 'Cosmic Renewable Energy',
+                tagline: 'Leading solar installations',
+                tier: 'Silver Partner',
+                benefits: ['Free energy consultation'],
+                website: 'https://www.cosmicrenewableenergy.com.au'
+              },
+              { 
+                image: '/sponsors/solar-3.jpeg', 
+                name: 'Cosmic Renewable Energy',
+                tagline: 'Complete solar solutions',
+                tier: 'Bronze Partner',
+                benefits: ['Special BSM rates'],
+                website: 'https://www.cosmicrenewableenergy.com.au'
               }
             ].map((sponsor, index) => (
               <motion.div
                 key={index}
-                className="group cursor-pointer"
-                initial={{ opacity: 0, y: 50 }}
+                className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.3 }}
-                onClick={() => setSelectedImage({ image: sponsor.image, title: sponsor.name })}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                whileHover={{ y: -5 }}
               >
-                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100">
-                  <div className="relative group-hover:bg-gray-50 transition-colors duration-300">
-                    <div className="relative h-64 sm:h-80 md:h-96 flex items-center justify-center p-8">
-                      <Image
-                        src={sponsor.image}
-                        alt={sponsor.name}
-                        fill
-                        className="object-contain group-hover:scale-[1.02] transition-transform duration-500"
-                        priority={index === 0}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <div className="absolute top-2 right-2 bg-white/90 text-gray-800 px-2 py-1 rounded-full text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        🔍 Click to view
-                      </div>
-                    </div>
-                    <div className="p-6 text-center bg-gradient-to-r from-red-50 to-orange-50">
-                      <h3 className="text-2xl font-bold text-gray-900 mb-2">{sponsor.name}</h3>
-                      <p className="text-gray-600 font-medium">{sponsor.tagline}</p>
-                    </div>
+                <div className={`h-2 bg-gradient-to-r ${
+                  sponsor.tier.includes('Platinum') ? 'from-gray-400 to-gray-600' :
+                  sponsor.tier.includes('Gold') ? 'from-yellow-400 to-yellow-600' :
+                  sponsor.tier.includes('Silver') ? 'from-gray-300 to-gray-500' :
+                  'from-orange-400 to-orange-600'
+                }`}></div>
+                
+                <div className="relative h-48 bg-gray-50 p-4">
+                  <Image
+                    src={sponsor.image}
+                    alt={sponsor.name}
+                    fill
+                    className="object-contain p-4"
+                  />
+                  <div className="absolute top-2 right-2 bg-white/90 px-3 py-1 rounded-full text-xs font-bold text-gray-800">
+                    {sponsor.tier}
                   </div>
+                </div>
+                
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{sponsor.name}</h3>
+                  <p className="text-gray-600 mb-4">{sponsor.tagline}</p>
+                  
+                  {sponsor.benefits && (
+                    <div className="mb-4">
+                      <p className="text-sm font-semibold text-green-700 mb-2">BSM Member Benefits:</p>
+                      <ul className="text-sm text-gray-600 space-y-1">
+                        {sponsor.benefits.map((benefit, idx) => (
+                          <li key={idx} className="flex items-start">
+                            <span className="text-green-600 mr-2">✓</span>
+                            <span>{benefit}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  
+                  {sponsor.website && sponsor.website !== '#' && (
+                    <a
+                      href={sponsor.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-red-700 transition-colors"
+                    >
+                      Learn More →
+                    </a>
+                  )}
                 </div>
               </motion.div>
             ))}
           </div>
 
+          {/* Sponsor Benefits Banner */}
+          <motion.div
+            className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+              <div>
+                <div className="text-4xl font-bold mb-2">1000+</div>
+                <p className="text-blue-100">Active Community Members</p>
+              </div>
+              <div>
+                <div className="text-4xl font-bold mb-2">50+</div>
+                <p className="text-blue-100">Annual Events & Programs</p>
+              </div>
+              <div>
+                <div className="text-4xl font-bold mb-2">100%</div>
+                <p className="text-blue-100">Community Impact</p>
+              </div>
+            </div>
+          </motion.div>
+
           {/* Call to Action */}
           <motion.div
-            className="text-center mt-20"
+            className="text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -579,12 +705,20 @@ export default function Home() {
               <p className="text-xl mb-6 text-red-50">
                 Partner with BSM to showcase your business to Melbourne's vibrant Bengali community and support our cultural heritage preservation efforts.
               </p>
-              <Link 
-                href="/sponsorship" 
-                className="bg-white text-red-600 px-10 py-4 rounded-xl text-xl font-bold hover:bg-red-50 transition-colors inline-block shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
-              >
-                Become a Sponsor Today | আজই স্পনসর হন
-              </Link>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link 
+                  href="/sponsorship" 
+                  className="bg-white text-red-600 px-8 py-4 rounded-xl text-lg font-bold hover:bg-red-50 transition-colors inline-block shadow-lg"
+                >
+                  Explore Sponsorship Options
+                </Link>
+                <a 
+                  href="mailto:info@bsm.org.au?subject=Sponsorship%20Inquiry" 
+                  className="border-2 border-white text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-white hover:text-red-600 transition-colors inline-block"
+                >
+                  Contact Us Today
+                </a>
+              </div>
             </div>
           </motion.div>
         </div>
