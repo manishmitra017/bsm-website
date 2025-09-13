@@ -232,7 +232,7 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
                   <div className="absolute bottom-4 left-4 text-white">
                     <h3 className="text-xl font-bold">Durga Puja 2025</h3>
-                    <p className="text-sm opacity-90">September 26-28, 2025</p>
+                    <p className="text-sm opacity-90">September 27-28, 2025</p>
                   </div>
                   <div className="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold">
                     Sep 27-28
@@ -342,10 +342,98 @@ export default function Home() {
             className="max-w-2xl mx-auto"
           >
             <CountdownTimer 
-              targetDate="2025-09-26T18:00:00+10:00"
+              targetDate="2025-09-27T18:00:00+10:00"
               eventName="Durgotsav 2025"
               eventNameBengali="দুর্গোৎসব ২০২৫"
             />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Durga Puja 2025 Itinerary - Prominent Display */}
+      <section className="py-20 bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center"
+          >
+            {/* Header */}
+            <div className="mb-12">
+              <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+                🎉 Durgotsav 2025 Itinerary 🎉
+              </h2>
+              <p className="text-xl md:text-2xl text-white/90 mb-4" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                দুর্গোৎসব ২০২৫ কার্যক্রম
+              </p>
+              <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto">
+                Join us for Melbourne's grandest Bengali cultural celebration! Two days of traditional festivities, cultural performances, and community bonding.
+              </p>
+            </div>
+
+            {/* Itinerary Image */}
+            <motion.div
+              className="relative max-w-4xl mx-auto mb-8"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <div 
+                className="relative bg-white rounded-2xl shadow-2xl p-4 cursor-pointer group hover:shadow-3xl transition-all duration-300"
+                onClick={() => setSelectedImage({ 
+                  image: '/durga pooja-itenary/iternary-pooja.jpeg', 
+                  title: 'Durgotsav 2025 Complete Itinerary' 
+                })}
+              >
+                <div className="relative h-[400px] md:h-[600px] lg:h-[700px] rounded-xl overflow-hidden">
+                  <Image
+                    src="/durga pooja-itenary/iternary-pooja.jpeg"
+                    alt="Durgotsav 2025 Complete Itinerary - Bengali Society of Melbourne"
+                    fill
+                    className="object-contain group-hover:scale-105 transition-transform duration-500"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute top-4 right-4 bg-red-600 text-white px-4 py-2 rounded-full text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
+                    🔍 Click to view full size
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Call to Action */}
+            <motion.div
+              className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                📅 September 27-28, 2025 | Melbourne
+              </h3>
+              <p className="text-white/90 text-lg mb-6">
+                Two days of authentic Bengali culture, delicious traditional food, mesmerizing performances, and spiritual celebrations. 
+                Don't miss Melbourne's most anticipated cultural event of the year!
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link 
+                  href="/events/durgotsav" 
+                  className="bg-white text-red-600 px-8 py-4 rounded-xl text-lg font-bold hover:bg-red-50 transition-colors shadow-lg"
+                >
+                  View Full Event Details →
+                </Link>
+                <Link 
+                  href="/membership" 
+                  className="border-2 border-white text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-white hover:text-red-600 transition-colors"
+                >
+                  Join BSM Community
+                </Link>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>

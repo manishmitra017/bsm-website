@@ -134,7 +134,7 @@ export default function SponsorshipPage() {
     {
       event: 'Durga Puja Festival',
       eventBengali: 'দুর্গা পূজা উৎসব',
-      description: 'Our largest annual celebration attracting 1000+ attendees over 3 days',
+      description: 'Our largest annual celebration attracting 1000+ attendees over 2 days',
       impact: 'Cultural preservation, community bonding, youth engagement',
       image: '/durgapooja-2023/2-scaled.jpg'
     },

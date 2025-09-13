@@ -4,10 +4,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import AddToCalendar from '@/components/AddToCalendar'
+import { useState } from 'react'
 
 import Head from 'next/head'
 
 function AnimatedDurgotsav() {
+  const [selectedImage, setSelectedImage] = useState<{image: string, title: string} | null>(null)
   // JSON-LD structured data for SEO
   const jsonLd = {
     "@context": "https://schema.org",
@@ -118,7 +120,7 @@ function AnimatedDurgotsav() {
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="text-xl font-bold text-red-600">September 26-28</p>
+                    <p className="text-xl font-bold text-red-600">September 27-28</p>
                     <p className="text-sm text-gray-600">2025</p>
                   </div>
                 </div>
@@ -129,16 +131,16 @@ function AnimatedDurgotsav() {
                       <span className="text-red-600 text-lg">📅</span>
                       <div>
                         <p className="font-semibold text-gray-900">Dates</p>
-                        <p className="text-gray-600">September 26-28, 2025</p>
-                        <p className="text-sm text-gray-500">Friday - Sunday</p>
+                        <p className="text-gray-600">September 27-28, 2025</p>
+                        <p className="text-sm text-gray-500">Saturday - Sunday</p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-3">
                       <span className="text-red-600 text-lg">⏰</span>
                       <div>
                         <p className="font-semibold text-gray-900">Timings</p>
-                        <p className="text-gray-600">6:00 PM - 11:30 PM</p>
-                        <p className="text-sm text-gray-500">All three days</p>
+                        <p className="text-gray-600">10:00 AM - 11:30 PM</p>
+                        <p className="text-sm text-gray-500">Both days</p>
                       </div>
                     </div>
                   </div>
@@ -178,7 +180,7 @@ function AnimatedDurgotsav() {
                       event={{
                         title: "Durgotsav 2025 - BSM Melbourne",
                         description: "Join us for the grand Durga Puja celebration featuring traditional rituals, cultural performances, community feast, and immersion ceremony. Celebrate the victory of good over evil with Melbourne's Bengali community.",
-                        startDate: "2025-09-26T18:00:00+10:00",
+                        startDate: "2025-09-27T10:00:00+10:00",
                         endDate: "2025-09-28T23:30:00+10:00",
                         location: "Werribee Functions & Events Centre, 2-10 Bulban Rd, Werribee, VIC 3030, Australia"
                       }}
@@ -189,6 +191,105 @@ function AnimatedDurgotsav() {
               </div>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Durga Puja 2025 Itinerary */}
+      <section className="py-20 bg-gradient-to-br from-red-600 via-orange-500 to-yellow-500">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center"
+          >
+            {/* Header */}
+            <div className="mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                📋 Complete Event Itinerary 📋
+              </h2>
+              <p className="text-xl md:text-2xl text-white/90 mb-4" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                সম্পূর্ণ অনুষ্ঠানের কার্যক্রম
+              </p>
+              <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto">
+                Detailed schedule for two days of Durgotsav 2025 - Click to view the complete itinerary
+              </p>
+            </div>
+
+            {/* Itinerary Image */}
+            <motion.div
+              className="relative max-w-5xl mx-auto"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <div 
+                className="relative bg-white rounded-2xl shadow-2xl p-6 cursor-pointer group hover:shadow-3xl transition-all duration-300"
+                onClick={() => setSelectedImage({ 
+                  image: '/durga pooja-itenary/iternary-pooja.jpeg', 
+                  title: 'Durgotsav 2025 Complete Event Itinerary' 
+                })}
+              >
+                <div className="relative h-[500px] md:h-[700px] lg:h-[800px] rounded-xl overflow-hidden">
+                  <Image
+                    src="/durga pooja-itenary/iternary-pooja.jpeg"
+                    alt="Durgotsav 2025 Complete Event Itinerary - 2 Days Schedule"
+                    fill
+                    className="object-contain group-hover:scale-105 transition-transform duration-500"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute top-4 right-4 bg-red-600 text-white px-6 py-3 rounded-full text-lg font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
+                    🔍 Click for Full Size View
+                  </div>
+                </div>
+                
+                {/* Event Summary Overlay */}
+                <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-sm rounded-xl p-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-center">
+                    <div>
+                      <h4 className="font-bold text-orange-600 text-lg">Day 1 - Saturday</h4>
+                      <p className="text-gray-700 font-medium">Sep 27, 2025</p>
+                      <p className="text-sm text-gray-600">Opening & Main Celebrations</p>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-red-600 text-lg">Day 2 - Sunday</h4>
+                      <p className="text-gray-700 font-medium">Sep 28, 2025</p>
+                      <p className="text-sm text-gray-600">Grand Finale</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Important Notice */}
+            <motion.div
+              className="mt-8 bg-white/10 backdrop-blur-sm rounded-xl p-6 max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <span className="text-2xl">📌</span>
+                <h3 className="text-xl font-bold text-white">Important Information</h3>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-white/90">
+                <div>
+                  <h4 className="font-semibold mb-2">📍 Venue Details</h4>
+                  <p className="text-sm">Werribee Functions & Events Centre</p>
+                  <p className="text-sm">2-10 Bulban Rd, Werribee, VIC 3030</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-2">🕰️ Event Timings</h4>
+                  <p className="text-sm">Both days: 10:00 AM - 11:30 PM</p>
+                  <p className="text-sm">Gates open 30 minutes early</p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
@@ -479,6 +580,44 @@ function AnimatedDurgotsav() {
           </motion.div>
         </div>
       </section>
+
+      {/* Image Lightbox Modal */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <motion.div
+            className="relative bg-white rounded-xl p-4 max-w-7xl max-h-[95vh] overflow-hidden"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 z-10 bg-red-600 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-red-700 transition-colors text-xl font-bold shadow-lg"
+            >
+              ✕
+            </button>
+            <div className="text-center mb-4">
+              <h3 className="text-2xl font-bold text-gray-900">{selectedImage.title}</h3>
+            </div>
+            <div className="relative w-full h-[80vh] flex items-center justify-center">
+              <Image
+                src={selectedImage.image}
+                alt={selectedImage.title}
+                fill
+                className="object-contain rounded-lg"
+                priority
+              />
+            </div>
+            <div className="text-center mt-4 text-gray-500 text-sm">
+              Click outside or press the ✕ to close
+            </div>
+          </motion.div>
+        </div>
+      )}
     </div>
   )
 }
