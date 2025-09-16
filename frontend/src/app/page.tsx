@@ -240,8 +240,8 @@ export default function Home() {
                 </div>
                 <div className="relative rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src="/kalipooja-2023/1-min.jpg"
-                    alt="Kali Puja & Deepavali - BSM Celebration"
+                    src="/kalipooja-2025/kaalipooja-2025.jpeg"
+                    alt="Kali Puja & Deepavali 2025 - BSM Celebration"
                     width={600}
                     height={400}
                     className="w-full h-auto object-cover"
@@ -249,7 +249,7 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
                   <div className="absolute bottom-4 left-4 text-white">
                     <h3 className="text-xl font-bold">Kali Puja & Deepavali</h3>
-                    <p className="text-sm opacity-90">October 19, 2025</p>
+                    <p className="text-sm opacity-90">October 19, 2025 | 6PM - 11PM</p>
                   </div>
                   <div className="absolute top-4 right-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-bold">
                     Oct 19
@@ -592,6 +592,31 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+
+          {/* Gallery Button */}
+          <motion.div
+            className="text-center mt-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <Link
+              href="/gallery"
+              className="inline-flex items-center bg-red-600 text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-red-700 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
+            >
+              <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              View Full Gallery | সম্পূর্ণ গ্যালারি
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+            <p className="text-gray-600 mt-3 text-sm">
+              Explore hundreds of photos from our community events and celebrations
+            </p>
+          </motion.div>
         </div>
       </section>
 
@@ -644,53 +669,53 @@ export default function Home() {
           {/* Sponsor Grid with Enhanced Features */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {[
-              { 
-                image: '/sponsors/findmyrealestate.jpeg', 
+              {
+                image: '/sponsors/findmyrealestate.jpeg',
                 name: 'Find My Real Estate',
                 tagline: 'Your trusted real estate partner',
                 tier: 'Platinum Partner',
                 benefits: ['Free property appraisal', 'Reduced commission rates'],
                 website: 'https://www.findmyrealestate.com.au'
               },
-              { 
-                image: '/sponsors/Ratul-Biswas-Finance-Broker.jpeg', 
+              {
+                image: '/sponsors/Ratul-Biswas-Finance-Broker.jpeg',
                 name: 'Ratul Biswas Finance',
                 tagline: 'Expert mortgage solutions',
                 tier: 'Platinum Partner',
                 benefits: ['Free consultation', 'Exclusive rates for BSM'],
                 website: 'https://www.a-f-s.au'
               },
-              { 
-                image: '/sponsors/asa-wealth-management.jpeg', 
+              {
+                image: '/sponsors/asa-wealth-management.jpeg',
                 name: 'ASA Wealth Management',
                 tagline: 'Financial planning excellence',
                 tier: 'Gold Partner',
                 benefits: ['Free portfolio review', 'Financial seminars'],
                 website: 'https://asawealth.com.au'
               },
-              { 
-                image: '/sponsors/solar-1.jpeg', 
+              {
+                image: '/sponsors/solar-1.jpeg',
                 name: 'Cosmic Renewable Energy',
                 tagline: 'Sustainable solar energy solutions',
-                tier: 'Silver Partner',
-                benefits: ['10% discount on installations'],
+                tier: 'Gold Partner',
+                benefits: ['10% discount on installations', 'Free energy consultation'],
                 website: 'https://www.cosmicrenewableenergy.com.au'
               },
-              { 
-                image: '/sponsors/solar-2.jpeg', 
-                name: 'Cosmic Renewable Energy',
-                tagline: 'Leading solar installations',
+              {
+                image: '/sponsors/choicerealesate.jpeg',
+                name: 'Choice Estate Agent',
+                tagline: 'Your first choice for real estate',
                 tier: 'Silver Partner',
-                benefits: ['Free energy consultation'],
-                website: 'https://www.cosmicrenewableenergy.com.au'
+                benefits: ['Special property management rates', 'Priority listings'],
+                website: 'https://choiceestateagent.com.au'
               },
-              { 
-                image: '/sponsors/solar-3.jpeg', 
-                name: 'Cosmic Renewable Energy',
-                tagline: 'Complete solar solutions',
-                tier: 'Bronze Partner',
-                benefits: ['Special BSM rates'],
-                website: 'https://www.cosmicrenewableenergy.com.au'
+              {
+                image: '/sponsors/equitywise-swetha.png',
+                name: 'EquityWise Real Estate',
+                tagline: 'Professional property services',
+                tier: 'Silver Partner',
+                benefits: ['Exclusive consultation', 'Reduced commission'],
+                website: 'https://www.equitywisere.com.au'
               }
             ].map((sponsor, index) => (
               <motion.div

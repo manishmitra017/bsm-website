@@ -7,6 +7,7 @@ import { motion } from 'framer-motion'
 interface SponsorSpotlight {
   name: string
   logo: string
+  logos?: string[]  // For multiple images
   businessType: string
   yearEstablished?: string
   specialization: string[]
@@ -103,25 +104,151 @@ const spotlightSponsors: SponsorSpotlight[] = [
       '🎓 Financial planning seminars for BSM',
       '💼 Superannuation optimization consultation'
     ]
+  },
+  {
+    name: 'Cosmic Renewable Energy',
+    logo: '/sponsors/solar-1.jpeg',
+    logos: [
+      '/sponsors/solar-1.jpeg',
+      '/sponsors/solar-2.jpeg',
+      '/sponsors/solar-3.jpeg',
+      '/sponsors/solar-4.jpeg',
+      '/sponsors/solar-6.PNG'
+    ],
+    businessType: 'Solar Energy Solutions',
+    specialization: [
+      'Solar Panel Installation',
+      'Battery Storage Systems',
+      'Energy Efficiency Consulting',
+      'Solar Maintenance Services'
+    ],
+    whyBSM: 'We support BSM\'s vision of building a sustainable community. Together, we can create a greener future while celebrating cultural heritage.',
+    communityImpact: 'Installed solar systems for 30+ community members, reducing energy costs by up to 70%',
+    testimonial: '"BSM brings the community together, and we\'re proud to bring sustainable energy solutions to these families, helping them save money while protecting the environment."',
+    website: 'https://www.cosmicrenewableenergy.com.au',
+    phone: '1300 SOLAR',
+    email: 'info@cosmicrenewableenergy.com.au',
+    offers: [
+      '☀️ 10% discount on solar installations for BSM members',
+      '🔋 Free battery storage consultation',
+      '📊 Complimentary energy audit',
+      '🛠️ Extended warranty on all installations'
+    ]
+  },
+  {
+    name: 'Choice Estate Agent',
+    logo: '/sponsors/choicerealesate.jpeg',
+    businessType: 'Real Estate Services',
+    specialization: [
+      'Property Sales',
+      'Property Management',
+      'Investment Consultation',
+      'Rental Services'
+    ],
+    whyBSM: 'As part of the community, we understand the importance of finding the right home for Bengali families. BSM represents the heart of our community.',
+    communityImpact: 'Successfully managed over 100 properties for community members with personalized service',
+    testimonial: '"Your first choice should always be someone who understands your needs. We\'re proud to serve the BSM community with dedication and cultural understanding."',
+    contactPerson: 'Ali Afzal - Director',
+    website: 'https://choiceestateagent.com.au',
+    phone: '0430 857 642',
+    email: 'alia@choiceestateagent.com.au',
+    offers: [
+      '🏠 Special property management rates for BSM members',
+      '📱 Priority property listings',
+      '💼 Free rental appraisals',
+      '🤝 Personalized consultation in Bengali'
+    ]
+  },
+  {
+    name: 'EquityWise Real Estate',
+    logo: '/sponsors/equitywise-swetha.png',
+    logos: [
+      '/sponsors/equitywise-swetha.png',
+      '/sponsors/equitywiserealestate.jpeg'
+    ],
+    businessType: 'Real Estate & Property Services',
+    specialization: [
+      'Residential Sales',
+      'Property Investment Advisory',
+      'First Home Buyers Support',
+      'Property Development Consultation'
+    ],
+    whyBSM: 'We believe in empowering the Bengali community through smart property investments. BSM\'s cultural initiatives strengthen the foundation of our community.',
+    communityImpact: 'Helped 40+ Bengali families achieve property ownership in prime Melbourne locations',
+    testimonial: '"At EquityWise, we don\'t just sell properties; we help build communities. Supporting BSM allows us to give back to the community that trusts us with their dreams."',
+    contactPerson: 'Sweta - Director | OIEC',
+    website: 'https://www.equitywisere.com.au',
+    phone: '0466 523 258',
+    email: 'sweta@equitywisere.com.au',
+    socialMedia: {
+      facebook: 'https://facebook.com/equitywiserealestate',
+      linkedin: 'https://linkedin.com/company/equitywiserealestate'
+    },
+    offers: [
+      '🎯 Exclusive real estate consultation for BSM members',
+      '📈 Free property investment seminars',
+      '🏡 Reduced commission rates',
+      '📋 Complimentary property reports'
+    ]
   }
 ]
 
 export default function SponsorSpotlight() {
   const [currentSponsor, setCurrentSponsor] = useState(0)
   const [isVisible, setIsVisible] = useState(true)
+  const [isPaused, setIsPaused] = useState(false)
+  const [showImageModal, setShowImageModal] = useState(false)
+  const [currentImageIndex, setCurrentImageIndex] = useState<{[key: number]: number}>({})
+  const [modalImageIndex, setModalImageIndex] = useState(0)
 
   // Rotate spotlight every week (simulated with faster rotation for demo)
   useEffect(() => {
+    if (!isPaused) {
+      const interval = setInterval(() => {
+        setIsVisible(false)
+        setTimeout(() => {
+          setCurrentSponsor((prev) => (prev + 1) % spotlightSponsors.length)
+          setIsVisible(true)
+        }, 500)
+      }, 30000) // Change every 30 seconds (would be weekly in production)
+
+      return () => clearInterval(interval)
+    }
+  }, [isPaused])
+
+  // Auto-rotate images for sponsors with multiple images
+  useEffect(() => {
     const interval = setInterval(() => {
-      setIsVisible(false)
-      setTimeout(() => {
-        setCurrentSponsor((prev) => (prev + 1) % spotlightSponsors.length)
-        setIsVisible(true)
-      }, 500)
-    }, 30000) // Change every 30 seconds (would be weekly in production)
+      setCurrentImageIndex(prev => {
+        const newIndex = {...prev}
+        spotlightSponsors.forEach((sponsor, idx) => {
+          if (sponsor.logos && sponsor.logos.length > 1) {
+            const currentIdx = prev[idx] || 0
+            newIndex[idx] = (currentIdx + 1) % sponsor.logos.length
+          }
+        })
+        return newIndex
+      })
+    }, 4000) // Change image every 4 seconds
 
     return () => clearInterval(interval)
   }, [])
+
+  const handlePrevious = () => {
+    setIsVisible(false)
+    setTimeout(() => {
+      setCurrentSponsor((prev) => (prev - 1 + spotlightSponsors.length) % spotlightSponsors.length)
+      setIsVisible(true)
+    }, 300)
+  }
+
+  const handleNext = () => {
+    setIsVisible(false)
+    setTimeout(() => {
+      setCurrentSponsor((prev) => (prev + 1) % spotlightSponsors.length)
+      setIsVisible(true)
+    }, 300)
+  }
 
   const sponsor = spotlightSponsors[currentSponsor]
 
@@ -130,7 +257,9 @@ export default function SponsorSpotlight() {
       initial={{ opacity: 0 }}
       animate={{ opacity: isVisible ? 1 : 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50 rounded-2xl shadow-2xl overflow-hidden"
+      className="bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50 rounded-2xl shadow-2xl overflow-hidden relative"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
     >
       {/* Header Banner */}
       <div className="bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500 p-6">
@@ -152,18 +281,91 @@ export default function SponsorSpotlight() {
       </div>
 
       {/* Main Content */}
-      <div className="p-8">
+      <div className="p-8 relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left Column - Business Info */}
           <div>
             <div className="bg-white rounded-xl p-6 shadow-lg mb-6">
-              <div className="relative h-32 mb-6">
+              <div
+                className="relative h-32 mb-6 cursor-pointer group"
+                onClick={() => {
+                  const images = sponsor.logos || [sponsor.logo]
+                  const currentImg = sponsor.logos ? (currentImageIndex[currentSponsor] || 0) : 0
+                  setModalImageIndex(currentImg)
+                  setShowImageModal(true)
+                }}
+              >
                 <Image
-                  src={sponsor.logo}
+                  src={sponsor.logos
+                    ? sponsor.logos[currentImageIndex[currentSponsor] || 0]
+                    : sponsor.logo}
                   alt={sponsor.name}
                   fill
-                  className="object-contain"
+                  className="object-contain group-hover:scale-105 transition-transform duration-300"
                 />
+                <div className="absolute top-2 right-2 bg-white/90 text-gray-800 px-2 py-1 rounded-full text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  🔍 Click to expand
+                </div>
+
+                {/* Image Navigation for multiple images */}
+                {sponsor.logos && sponsor.logos.length > 1 && (
+                  <>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        setCurrentImageIndex(prev => ({
+                          ...prev,
+                          [currentSponsor]: (prev[currentSponsor] || 0) === 0
+                            ? sponsor.logos!.length - 1
+                            : (prev[currentSponsor] || 0) - 1
+                        }))
+                      }}
+                      className="absolute left-1 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-1 rounded-full shadow-lg hover:shadow-xl transition-all opacity-0 group-hover:opacity-100"
+                      aria-label="Previous image"
+                    >
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                      </svg>
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        setCurrentImageIndex(prev => ({
+                          ...prev,
+                          [currentSponsor]: ((prev[currentSponsor] || 0) + 1) % sponsor.logos!.length
+                        }))
+                      }}
+                      className="absolute right-1 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-1 rounded-full shadow-lg hover:shadow-xl transition-all opacity-0 group-hover:opacity-100"
+                      aria-label="Next image"
+                    >
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+
+                    {/* Image dots indicator */}
+                    <div className="absolute bottom-1 left-1/2 -translate-x-1/2 flex gap-1">
+                      {sponsor.logos.map((_, index) => (
+                        <button
+                          key={index}
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            setCurrentImageIndex(prev => ({
+                              ...prev,
+                              [currentSponsor]: index
+                            }))
+                          }}
+                          className={`w-1.5 h-1.5 rounded-full transition-all ${
+                            index === (currentImageIndex[currentSponsor] || 0)
+                              ? 'bg-red-600 w-3'
+                              : 'bg-gray-400 hover:bg-gray-500'
+                          }`}
+                          aria-label={`Go to image ${index + 1}`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">
                 {sponsor.name}
@@ -330,7 +532,132 @@ export default function SponsorSpotlight() {
             )}
           </div>
         </div>
+
+        {/* Navigation Buttons */}
+        <button
+          onClick={handlePrevious}
+          className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl transition-all"
+          aria-label="Previous sponsor"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button
+          onClick={handleNext}
+          className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl transition-all"
+          aria-label="Next sponsor"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
       </div>
+
+      {/* Dots Indicator */}
+      <div className="flex justify-center gap-2 pb-6">
+        {spotlightSponsors.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => {
+              setIsVisible(false)
+              setTimeout(() => {
+                setCurrentSponsor(index)
+                setIsVisible(true)
+              }, 300)
+            }}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              index === currentSponsor
+                ? 'bg-red-600 w-8'
+                : 'bg-gray-300 hover:bg-gray-400'
+            }`}
+            aria-label={`Go to sponsor ${index + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* Fullscreen Image Modal */}
+      {showImageModal && (() => {
+        const images = sponsor.logos || [sponsor.logo]
+        const handlePrevImage = () => {
+          setModalImageIndex((prev) => (prev - 1 + images.length) % images.length)
+        }
+        const handleNextImage = () => {
+          setModalImageIndex((prev) => (prev + 1) % images.length)
+        }
+
+        return (
+          <div
+            className="fixed inset-0 bg-black/95 backdrop-blur-sm z-[60] flex items-center justify-center p-4"
+            onClick={() => setShowImageModal(false)}
+          >
+            <div
+              className="relative bg-white rounded-xl p-4 max-w-5xl max-h-[90vh] w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setShowImageModal(false)}
+                className="absolute top-4 right-4 z-10 bg-red-600 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-red-700 transition-colors text-xl font-bold shadow-lg"
+              >
+                ✕
+              </button>
+
+              <h3 className="text-2xl font-bold text-gray-900 text-center mb-4">
+                {sponsor.name} {images.length > 1 && `(${modalImageIndex + 1} of ${images.length})`}
+              </h3>
+
+              <div className="relative w-full h-[70vh] flex items-center justify-center bg-gray-50 rounded-lg">
+                <Image
+                  src={images[modalImageIndex]}
+                  alt={sponsor.name}
+                  fill
+                  className="object-contain p-4"
+                />
+
+                {/* Navigation for multiple images */}
+                {images.length > 1 && (
+                  <>
+                    <button
+                      onClick={handlePrevImage}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl transition-all"
+                      aria-label="Previous image"
+                    >
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                      </svg>
+                    </button>
+                    <button
+                      onClick={handleNextImage}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl transition-all"
+                      aria-label="Next image"
+                    >
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+
+                    {/* Dots indicator */}
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                      {images.map((_, index) => (
+                        <button
+                          key={index}
+                          onClick={() => setModalImageIndex(index)}
+                          className={`w-3 h-3 rounded-full transition-all ${
+                            index === modalImageIndex
+                              ? 'bg-red-600 w-8'
+                              : 'bg-gray-400 hover:bg-gray-500'
+                          }`}
+                          aria-label={`Go to image ${index + 1}`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+        )
+      })()}
     </motion.div>
   )
 }

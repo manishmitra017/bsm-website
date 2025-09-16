@@ -11,7 +11,7 @@ export default function KalipujaDeepavali() {
       <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50">
         <div className="absolute inset-0">
           <Image
-            src="/communityphotos/20221008_115837-scaled.jpg"
+            src="/kalipooja-2023/1-min.jpg"
             alt="Kalipuja & Deepavali - Bengali Society of Melbourne"
             fill
             className="object-cover opacity-40"
@@ -46,6 +46,83 @@ export default function KalipujaDeepavali() {
             <p className="text-lg sm:text-xl text-pink-600 mt-2" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
               আলোর উৎসব
             </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Event Details Banner */}
+      <section className="py-16 bg-gradient-to-r from-purple-600 to-pink-600">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="bg-white rounded-2xl shadow-2xl overflow-hidden"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-2">
+              <div className="relative h-96 lg:h-auto">
+                <Image
+                  src="/kalipooja-2025/kaalipooja-2025.jpeg"
+                  alt="Kali Puja & Deepavali 2025 Event Flyer"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-8 lg:p-12">
+                <h3 className="text-3xl font-bold text-purple-800 mb-6">
+                  Event Details 2025
+                  <span className="block text-pink-600 text-xl mt-2" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                    অনুষ্ঠানের বিবরণ ২০২৫
+                  </span>
+                </h3>
+                <div className="space-y-4">
+                  <div className="flex items-start">
+                    <span className="text-2xl mr-4">📅</span>
+                    <div>
+                      <p className="font-bold text-gray-900">Date</p>
+                      <p className="text-gray-700">October 19, 2025</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <span className="text-2xl mr-4">🕐</span>
+                    <div>
+                      <p className="font-bold text-gray-900">Time</p>
+                      <p className="text-gray-700">6:00 PM - 11:00 PM</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <span className="text-2xl mr-4">📍</span>
+                    <div>
+                      <p className="font-bold text-gray-900">Venue</p>
+                      <p className="text-gray-700">Werribee Masonic Hall</p>
+                      <p className="text-gray-600">223 Watton St, Werribee VIC 3030</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <span className="text-2xl mr-4">🎉</span>
+                    <div>
+                      <p className="font-bold text-gray-900">Activities</p>
+                      <p className="text-gray-700">Kali Puja, Diya Lighting, Cultural Programs, Community Feast</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-8 flex flex-col sm:flex-row gap-4">
+                  <Link
+                    href="/membership"
+                    className="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors text-center"
+                  >
+                    Register Now
+                  </Link>
+                  <Link
+                    href="/events"
+                    className="border-2 border-purple-600 text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-purple-600 hover:text-white transition-colors text-center"
+                  >
+                    View All Events
+                  </Link>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -96,8 +173,8 @@ export default function KalipujaDeepavali() {
             >
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/kalipooja-2023/1-min.jpg"
-                  alt="Kalipuja & Deepavali Celebration"
+                  src="/kalipooja-2025/kaalipooja-2025.jpeg"
+                  alt="Kalipuja & Deepavali 2025 Celebration"
                   fill
                   className="object-cover"
                 />
