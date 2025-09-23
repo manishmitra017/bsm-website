@@ -69,7 +69,7 @@ jobs:
         CDK_DEFAULT_REGION: ${{ secrets.CDK_DEFAULT_REGION }}
       run: |
         cd cdk
-        cdk deploy BsmWebsiteProd --require-approval never
+        cdk deploy BsmWebsiteStackV2 --require-approval never
 
     - name: Deployment Summary
       run: |
