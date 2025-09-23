@@ -83,3 +83,4 @@ cdk.out/
 
 # AWS
 .aws/
+.claude/
