@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable standalone output for Docker deployment in production
-  output: process.env.NODE_ENV === 'production' && process.env.BUILD_STANDALONE === 'true' ? 'standalone' : undefined,
+  // Enable standalone output for Docker/Lambda deployment in production
+  output: process.env.NODE_ENV === 'production' && (process.env.BUILD_STANDALONE === 'true' || process.env.BUILD_LAMBDA === 'true') ? 'standalone' : undefined,
   
   // Disable static optimization for problematic pages during build
   trailingSlash: false,

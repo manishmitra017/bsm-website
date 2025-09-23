@@ -1,0 +1,32 @@
+FROM public.ecr.aws/lambda/nodejs:18
+
+# Copy package.json and package-lock.json
+COPY package*.json ./
+
+# Install dependencies
+RUN npm ci
+
+# Copy source code and configuration
+COPY . .
+
+# Set environment variables for Lambda build
+ENV NODE_ENV=production
+ENV BUILD_LAMBDA=true
+
+# Build the Next.js app
+RUN npm run build
+
+# Copy built assets to CDK asset output directory
+RUN mkdir -p /asset && \
+    cp -r .next/standalone/* /asset/ && \
+    cp -r .next/static /asset/.next/ && \
+    cp -r public /asset/ || true && \
+    cp lambda.js /asset/ && \
+    cp .next/standalone/package.json /asset/ || cp package.json /asset/
+
+# Install production dependencies in asset directory
+WORKDIR /asset
+RUN npm install --production --ignore-engines
+
+# Set the CMD to the handler (not used in CDK, just for completeness)
+CMD ["lambda.handler"]
