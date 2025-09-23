@@ -1,11 +1,9 @@
 #!/usr/bin/env node
 import * as cdk from 'aws-cdk-lib';
-import { BsmLambdaStack } from '../lib/bsm-lambda-stack';
+import { BsmWebsiteStack } from '../lib/bsm-website-stack';
 
 const app = new cdk.App();
-
-// Lambda-based serverless infrastructure
-new BsmLambdaStack(app, 'BsmLambdaStack', {
+new BsmWebsiteStack(app, 'BsmWebsiteStack', {
   env: {
     account: process.env.CDK_DEFAULT_ACCOUNT,
     region: 'ap-southeast-2' // Sydney region for Melbourne

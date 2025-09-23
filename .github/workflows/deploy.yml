@@ -1,4 +1,4 @@
-name: Deploy BSM Website (Lambda)
+name: Deploy BSM Website
 
 on:
   push:
@@ -18,24 +18,25 @@ jobs:
       with:
         node-version: '18'
 
-    # Docker no longer needed for Lambda deployment
-    
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v4
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ap-southeast-2
-    
+
     - name: Install frontend dependencies
       run: |
         cd frontend
         npm install
-    
-    - name: Build frontend for Lambda
+
+    - name: Build frontend
       env:
         NODE_ENV: production
-        BUILD_LAMBDA: true
+        BUILD_STANDALONE: true
         NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: ${{ secrets.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY }}
         NEXT_PUBLIC_SITE_URL: "https://bsm.org.au"
         NEXT_PUBLIC_SITE_NAME: "Bengali Society of Melbourne"
@@ -44,53 +45,35 @@ jobs:
         cd frontend
         rm -rf .next
         npm run build
-    
+
     - name: Install AWS CDK CLI
       run: npm install -g aws-cdk
-    
+
     - name: Install CDK dependencies
       run: |
         cd cdk
         npm install
-    
+
     - name: Build CDK project
       run: |
         cd cdk
         npm run build
-    
-    - name: Cleanup Old ECS Infrastructure
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        CDK_DEFAULT_ACCOUNT: "066043264852"
-        CDK_DEFAULT_REGION: "ap-southeast-2"
-      run: |
-        cd cdk
-        # Temporarily add old stack for cleanup
-        echo 'import { BsmWebsiteStack } from "../lib/bsm-website-stack";' >> bin/cdk.ts
-        echo 'new BsmWebsiteStack(app, "BsmWebsiteStack", { env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: "ap-southeast-2" } });' >> bin/cdk.ts
-        npm run build
-        cdk destroy BsmWebsiteStack --force || echo "Old stack already removed"
-        # Restore CDK configuration
-        git checkout bin/cdk.ts
-        npm run build
 
-    - name: Deploy Lambda Stack with CDK
+    - name: Deploy with CDK
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: ap-southeast-2
         NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: ${{ secrets.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY }}
-        CDK_DEFAULT_ACCOUNT: "066043264852"
-        CDK_DEFAULT_REGION: "ap-southeast-2"
+        CDK_DEFAULT_ACCOUNT: ${{ secrets.CDK_DEFAULT_ACCOUNT }}
+        CDK_DEFAULT_REGION: ${{ secrets.CDK_DEFAULT_REGION }}
       run: |
         cd cdk
-        cdk deploy BsmLambdaStack --require-approval never
-    
+        cdk deploy BsmWebsiteStack --require-approval never
+
     - name: Deployment Summary
       run: |
-        echo "✅ Lambda deployment completed successfully!"
+        echo "✅ Deployment completed successfully!"
         echo "🌐 Website URL: https://bsm.org.au"
         echo "🌍 WWW URL: https://www.bsm.org.au"
-        echo "⚡ Architecture: AWS Lambda + CloudFront"
-        echo "💰 Cost Optimized: Pay-per-request serverless"
         echo "📅 Deployed at: $(date)"
