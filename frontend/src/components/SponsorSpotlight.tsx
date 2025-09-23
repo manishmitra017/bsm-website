@@ -161,34 +161,76 @@ const spotlightSponsors: SponsorSpotlight[] = [
   },
   {
     name: 'EquityWise Real Estate',
-    logo: '/sponsors/equitywise-swetha.png',
+    logo: '/sponsors/equitywiserealestate.jpeg',
     logos: [
-      '/sponsors/equitywise-swetha.png',
-      '/sponsors/equitywiserealestate.jpeg'
+      '/sponsors/equitywiserealestate.jpeg',
+      '/sponsors/equitywiserealestate-another.jpeg',
+      '/sponsors/equitywise-logo.png',
+      '/sponsors/equitywise-swetha.png'
     ],
     businessType: 'Real Estate & Property Services',
     specialization: [
-      'Residential Sales',
-      'Property Investment Advisory',
-      'First Home Buyers Support',
-      'Property Development Consultation'
+      'Buying & Selling Properties',
+      'Property Management',
+      'Investment Advisory',
+      'In-depth Local Market Knowledge'
     ],
-    whyBSM: 'We believe in empowering the Bengali community through smart property investments. BSM\'s cultural initiatives strengthen the foundation of our community.',
-    communityImpact: 'Helped 40+ Bengali families achieve property ownership in prime Melbourne locations',
-    testimonial: '"At EquityWise, we don\'t just sell properties; we help build communities. Supporting BSM allows us to give back to the community that trusts us with their dreams."',
+    whyBSM: 'Equity Wise Real Estate are your trusted & local agents, helping our clients in making wise decisions when it comes to all things real estate. We believe in fair dealings, honest & genuine advice when it comes to your most precious asset – Real Estate.',
+    communityImpact: 'Make the most of our in-depth market knowledge of your local area coupled with a \'best practice\' approach in getting you outstanding results for the BSM community.',
+    testimonial: '"We believe in fair dealings, honest & genuine advice when it comes to your most precious asset – Real Estate. Supporting BSM allows us to give back to the community that trusts us with their dreams."',
     contactPerson: 'Sweta - Director | OIEC',
     website: 'https://www.equitywisere.com.au',
-    phone: '0466 523 258',
+    phone: '03 9674 5151',
     email: 'sweta@equitywisere.com.au',
     socialMedia: {
       facebook: 'https://facebook.com/equitywiserealestate',
       linkedin: 'https://linkedin.com/company/equitywiserealestate'
     },
     offers: [
-      '🎯 Exclusive real estate consultation for BSM members',
-      '📈 Free property investment seminars',
-      '🏡 Reduced commission rates',
-      '📋 Complimentary property reports'
+      '🎯 Trusted & local agents for BSM members',
+      '📈 Best practice approach for outstanding results',
+      '🏡 Fair dealings & honest advice',
+      '📋 Expert buying, selling & property management services'
+    ]
+  },
+  {
+    name: 'Aussie Home Loans - Subha Saha',
+    logo: '/sponsors/subha-aussie-home.png',
+    logos: [
+      '/sponsors/subha-aussie-home.png',
+      '/sponsors/aussie-home.png',
+      '/sponsors/aussie-home-another.png'
+    ],
+    businessType: 'Mortgage & Finance Services',
+    yearEstablished: '1992',
+    specialization: [
+      'First Home Buyers',
+      'Refinancing',
+      'Investment Loans',
+      'Construction Loans',
+      'Commercial Loans',
+      'Debt Consolidation',
+      'Pre-Approvals'
+    ],
+    whyBSM: 'As part of Australia\'s leading mortgage broker network, I\'m committed to helping the Bengali community achieve their property dreams. With access to 25+ lenders and thousands of loan options, I ensure BSM members get the best possible home loan solutions tailored to their needs.',
+    communityImpact: 'Helping Bengali families in Melbourne\'s Western Suburbs secure competitive home loans and achieve property ownership with personalized service and expert guidance.',
+    testimonial: '"It\'s important that your home loan application experience is as painless and stress-free as possible, while ensuring that you achieve the right home loan for your needs. Supporting BSM allows me to give back to my community."',
+    contactPerson: 'Subha Saha - Mobile Mortgage Broker | MFAA Accredited',
+    website: 'https://www.aussie.com.au/mortgage-broker/subha-saha/',
+    phone: '0413 811 354',
+    email: 'subha.saha@aussie.com.au',
+    socialMedia: {
+      facebook: 'https://www.facebook.com/100052679715994',
+      linkedin: 'https://www.linkedin.com/in/subha-saha-b9093594',
+      instagram: 'https://share.google/ru1rYEqCfmEhzpsOD'
+    },
+    offers: [
+      '💰 Compare 25+ lenders for the best rates',
+      '🏠 Free mortgage consultation for BSM members',
+      '📱 Mobile lending service - I come to you',
+      '💼 Expert guidance through the entire loan process',
+      '🎯 Specialized support for first home buyers',
+      '📊 Free borrowing power assessment'
     ]
   }
 ]

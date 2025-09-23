@@ -118,16 +118,42 @@ const sponsors: Sponsor[] = [
     logo: '/sponsors/equitywiserealestate.jpeg',
     logos: [
       '/sponsors/equitywiserealestate.jpeg',
+      '/sponsors/equitywiserealestate-another.jpeg',
+      '/sponsors/equitywise-logo.png',
       '/sponsors/equitywise-swetha.png'
     ],
     website: 'https://www.equitywisere.com.au',
-    description: 'Professional real estate services - Sweta, Director | OIEC, Manor Lakes',
+    description: 'Equity Wise Real Estate are your trusted & local agents, helping our clients in making wise decisions when it comes to all things real estate. Make the most of our in-depth market knowledge of your local area coupled with a \'best practice\' approach in getting you outstanding results. We believe in fair dealings, honest & genuine advice when it comes to your most precious asset – Real Estate. For all your buying, selling, property management needs, reach out to us today on 03 9674 5151!',
     tier: 'silver',
     featured: true,
-    specialOffer: 'Exclusive real estate consultation for BSM members',
+    specialOffer: 'Fair dealings, honest & genuine advice for BSM community',
     contactInfo: {
-      phone: '0466 523 258',
+      phone: '03 9674 5151',
       email: 'sweta@equitywisere.com.au'
+    }
+  },
+  {
+    id: 7,
+    name: 'Aussie Home Loans - Subha Saha',
+    logo: '/sponsors/subha-aussie-home.png',
+    logos: [
+      '/sponsors/subha-aussie-home.png',
+      '/sponsors/aussie-home.png',
+      '/sponsors/aussie-home-another.png'
+    ],
+    website: 'https://www.aussie.com.au/mortgage-broker/subha-saha/',
+    description: 'Subha Saha is your dedicated Aussie Home Loans mortgage broker servicing Melbourne\'s Western Suburbs. Access thousands of loan options from 25+ lenders with expert guidance. Specializing in first home buyers, refinancing, investment loans, construction loans, and commercial lending.',
+    tier: 'gold',
+    featured: true,
+    specialOffer: 'Free consultation and loan comparison for BSM members',
+    contactInfo: {
+      phone: '0413 811 354',
+      email: 'subha.saha@aussie.com.au'
+    },
+    socialMedia: {
+      facebook: 'https://www.facebook.com/100052679715994',
+      linkedin: 'https://www.linkedin.com/in/subha-saha-b9093594',
+      instagram: 'https://share.google/ru1rYEqCfmEhzpsOD'
     }
   }
 ]

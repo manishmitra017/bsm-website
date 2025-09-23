@@ -6,7 +6,6 @@ import { motion } from 'framer-motion'
 import CountdownTimer from '@/components/CountdownTimer'
 import SponsorCarousel from '@/components/SponsorCarousel'
 import SponsorSpotlight from '@/components/SponsorSpotlight'
-import SponsorBanner from '@/components/SponsorBanner'
 import { useState } from 'react'
 
 export default function Home() {
@@ -276,19 +275,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Sponsor Banner - Strategic Placement 1 */}
-      <section className="py-8 bg-gray-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <SponsorBanner position="top" />
-          </motion.div>
-        </div>
-      </section>
 
       {/* About BSM Section */}
       <section className="py-16 bg-red-600">
@@ -710,12 +696,22 @@ export default function Home() {
                 website: 'https://choiceestateagent.com.au'
               },
               {
-                image: '/sponsors/equitywise-swetha.png',
+                image: '/sponsors/equitywiserealestate.jpeg',
                 name: 'EquityWise Real Estate',
-                tagline: 'Professional property services',
+                tagline: 'Your trusted & local agents',
                 tier: 'Silver Partner',
-                benefits: ['Exclusive consultation', 'Reduced commission'],
-                website: 'https://www.equitywisere.com.au'
+                benefits: ['Fair dealings & honest advice', 'Best practice approach', 'In-depth market knowledge', 'Call 03 9674 5151'],
+                website: 'https://www.equitywisere.com.au',
+                description: 'Equity Wise Real Estate are your trusted & local agents, helping our clients in making wise decisions when it comes to all things real estate. Make the most of our in-depth market knowledge of your local area coupled with a \'best practice\' approach in getting you outstanding results. We believe in fair dealings, honest & genuine advice when it comes to your most precious asset – Real Estate. For all your buying, selling, property management needs, reach out to us today on 03 9674 5151!'
+              },
+              {
+                image: '/sponsors/subha-aussie-home.png',
+                name: 'Aussie Home Loans - Subha Saha',
+                tagline: 'Your trusted mortgage broker',
+                tier: 'Gold Partner',
+                benefits: ['Compare 25+ lenders', 'Free consultation', 'Mobile lending service', 'Call 0413 811 354'],
+                website: 'https://www.aussie.com.au/mortgage-broker/subha-saha/',
+                description: 'Subha Saha is your dedicated Aussie Home Loans mortgage broker, servicing Melbourne\'s Western Suburbs. With a Bachelor of Banking and Finance from Monash University and MFAA accreditation, Subha specializes in first home buyers, refinancing, investment loans, and commercial lending. Access thousands of loan options from 25+ lenders with expert guidance to make your home loan experience stress-free and achieve the right loan for your needs.'
               }
             ].map((sponsor, index) => (
               <motion.div
@@ -749,7 +745,13 @@ export default function Home() {
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{sponsor.name}</h3>
                   <p className="text-gray-600 mb-4">{sponsor.tagline}</p>
-                  
+
+                  {sponsor.description && (
+                    <p className="text-sm text-gray-700 mb-4 leading-relaxed">
+                      {sponsor.description}
+                    </p>
+                  )}
+
                   {sponsor.benefits && (
                     <div className="mb-4">
                       <p className="text-sm font-semibold text-green-700 mb-2">BSM Member Benefits:</p>
@@ -763,7 +765,7 @@ export default function Home() {
                       </ul>
                     </div>
                   )}
-                  
+
                   {sponsor.website && sponsor.website !== '#' && (
                     <a
                       href={sponsor.website}
