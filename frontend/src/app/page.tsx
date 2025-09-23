@@ -712,6 +712,15 @@ export default function Home() {
                 benefits: ['Compare 25+ lenders', 'Free consultation', 'Mobile lending service', 'Call 0413 811 354'],
                 website: 'https://www.aussie.com.au/mortgage-broker/subha-saha/',
                 description: 'Subha Saha is your dedicated Aussie Home Loans mortgage broker, servicing Melbourne\'s Western Suburbs. With a Bachelor of Banking and Finance from Monash University and MFAA accreditation, Subha specializes in first home buyers, refinancing, investment loans, and commercial lending. Access thousands of loan options from 25+ lenders with expert guidance to make your home loan experience stress-free and achieve the right loan for your needs.'
+              },
+              {
+                image: '/sponsors/BengalSolicitors.jpeg',
+                name: 'Bengal Solicitors',
+                tagline: 'Expert property law & conveyancing',
+                tier: 'Gold Partner',
+                benefits: ['Free initial consultation', 'Special conveyancing rates', 'Legal advice in Bengali', 'Call 0430 593 124'],
+                website: 'https://www.bengalsolicitors.com.au',
+                description: 'Bengal Solicitors is a boutique law firm located in Reservoir, Melbourne, specializing in property law and conveyancing. Rajot Roy, the principal lawyer, provides expert legal services with practical advice in plain language. The firm assists with all stages of property transactions, from purchasing to selling, ensuring clients receive regular communication and personalized service throughout the process.'
               }
             ].map((sponsor, index) => (
               <motion.div
@@ -723,13 +732,6 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 whileHover={{ y: -5 }}
               >
-                <div className={`h-2 bg-gradient-to-r ${
-                  sponsor.tier.includes('Platinum') ? 'from-gray-400 to-gray-600' :
-                  sponsor.tier.includes('Gold') ? 'from-yellow-400 to-yellow-600' :
-                  sponsor.tier.includes('Silver') ? 'from-gray-300 to-gray-500' :
-                  'from-orange-400 to-orange-600'
-                }`}></div>
-                
                 <div className="relative h-48 bg-gray-50 p-4">
                   <Image
                     src={sponsor.image}
@@ -737,9 +739,6 @@ export default function Home() {
                     fill
                     className="object-contain p-4"
                   />
-                  <div className="absolute top-2 right-2 bg-white/90 px-3 py-1 rounded-full text-xs font-bold text-gray-800">
-                    {sponsor.tier}
-                  </div>
                 </div>
                 
                 <div className="p-6">

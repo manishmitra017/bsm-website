@@ -232,6 +232,38 @@ const spotlightSponsors: SponsorSpotlight[] = [
       '🎯 Specialized support for first home buyers',
       '📊 Free borrowing power assessment'
     ]
+  },
+  {
+    name: 'Bengal Solicitors',
+    logo: '/sponsors/BengalSolicitors.jpeg',
+    businessType: 'Legal Services',
+    yearEstablished: '2020',
+    specialization: [
+      'Property Law & Conveyancing',
+      'Residential Property Transactions',
+      'Commercial Property',
+      'Contract Reviews',
+      'Legal Documentation',
+      'Property Settlements'
+    ],
+    whyBSM: 'As a boutique law firm serving the Melbourne community, we understand the importance of cultural organizations like BSM in preserving heritage and bringing families together. We\'re proud to support BSM\'s mission.',
+    communityImpact: 'Providing expert legal services to the Bengali community with practical advice in plain language, ensuring smooth property transactions for families establishing their homes in Melbourne.',
+    testimonial: '"We believe in making legal processes simple and stress-free for our clients. Supporting BSM allows us to give back to the community while helping families navigate property law with confidence."',
+    contactPerson: 'Rajot Roy - Principal Lawyer',
+    website: 'https://www.bengalsolicitors.com.au',
+    phone: '0430 593 124',
+    email: 'contact@bengalsolicitors.com.au',
+    socialMedia: {
+      facebook: 'https://www.facebook.com/p/Bengal-Solicitors-100079561011283/'
+    },
+    offers: [
+      '⚖️ Free initial consultation for BSM members',
+      '🏠 Special conveyancing rates',
+      '📝 Contract review services',
+      '🤝 Legal advice in Bengali language',
+      '📱 Flexible appointments including after-hours',
+      '💼 Fixed-fee structure for transparency'
+    ]
   }
 ]
 

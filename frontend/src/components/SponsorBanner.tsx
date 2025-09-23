@@ -50,6 +50,15 @@ const sponsorBanners: SponsorBanner[] = [
     message: '☀️ Go solar and save! Professional solar installations with BSM member discounts',
     ctaText: 'Get Solar Quote',
     bgColor: 'from-orange-600 to-yellow-600'
+  },
+  {
+    id: 5,
+    name: 'Bengal Solicitors',
+    logo: '/sponsors/BengalSolicitors.jpeg',
+    website: 'https://www.bengalsolicitors.com.au',
+    message: '⚖️ Expert property law & conveyancing services. Get practical legal advice in plain language',
+    ctaText: 'Book Free Consultation',
+    bgColor: 'from-indigo-600 to-blue-600'
   }
 ]
 
@@ -264,7 +273,8 @@ export function SponsorMini() {
     { name: 'Find My Real Estate', logo: '/sponsors/findmyrealestate.jpeg', website: 'https://www.findmyrealestate.com.au' },
     { name: 'Ratul Biswas Finance', logo: '/sponsors/Ratul-Biswas-Finance-Broker.jpeg', website: 'https://www.a-f-s.au' },
     { name: 'ASA Wealth Management', logo: '/sponsors/asa-wealth-management.jpeg', website: 'https://asawealth.com.au' },
-    { name: 'Cosmic Renewable Energy', logo: '/sponsors/solar-1.jpeg', website: 'https://www.cosmicrenewableenergy.com.au' }
+    { name: 'Cosmic Renewable Energy', logo: '/sponsors/solar-1.jpeg', website: 'https://www.cosmicrenewableenergy.com.au' },
+    { name: 'Bengal Solicitors', logo: '/sponsors/BengalSolicitors.jpeg', website: 'https://www.bengalsolicitors.com.au' }
   ]
 
   useEffect(() => {

@@ -155,6 +155,23 @@ const sponsors: Sponsor[] = [
       linkedin: 'https://www.linkedin.com/in/subha-saha-b9093594',
       instagram: 'https://share.google/ru1rYEqCfmEhzpsOD'
     }
+  },
+  {
+    id: 8,
+    name: 'Bengal Solicitors',
+    logo: '/sponsors/BengalSolicitors.jpeg',
+    website: 'https://www.bengalsolicitors.com.au',
+    description: 'Boutique law firm specializing in property law and conveyancing - Expert legal advice in plain language',
+    tier: 'gold',
+    featured: true,
+    specialOffer: 'Free initial consultation and special conveyancing rates for BSM members',
+    contactInfo: {
+      phone: '0430 593 124',
+      email: 'contact@bengalsolicitors.com.au'
+    },
+    socialMedia: {
+      facebook: 'https://www.facebook.com/p/Bengal-Solicitors-100079561011283/'
+    }
   }
 ]
 
