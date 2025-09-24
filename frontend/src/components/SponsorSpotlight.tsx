@@ -268,6 +268,10 @@ const spotlightSponsors: SponsorSpotlight[] = [
   {
     name: 'Werribee Mazda',
     logo: '/sponsors/weeribee-mazda.png',
+    logos: [
+      '/sponsors/weeribee-mazda.png',
+      '/sponsors/werribee-mazda-another.png'
+    ],
     businessType: 'Automotive Sales & Service',
     yearEstablished: '1987',
     specialization: [

@@ -177,6 +177,10 @@ const sponsors: Sponsor[] = [
     id: 9,
     name: 'Werribee Mazda',
     logo: '/sponsors/weeribee-mazda.png',
+    logos: [
+      '/sponsors/weeribee-mazda.png',
+      '/sponsors/werribee-mazda-another.png'
+    ],
     website: 'https://www.werribeemazda.com.au',
     description: 'Your trusted automotive partner in Melbourne\'s West - Exceptional service, reliable vehicles, and customer-first experience',
     tier: 'platinum',
