@@ -52,15 +52,15 @@ export class BsmS3Stack extends cdk.Stack {
       errorResponses: [
         {
           httpStatus: 404,
-          responseHttpStatus: 404,
-          responsePagePath: '/404.html',
-          ttl: cdk.Duration.minutes(30),
+          responseHttpStatus: 200,
+          responsePagePath: '/index.html',
+          ttl: cdk.Duration.minutes(5),
         },
         {
           httpStatus: 403,
-          responseHttpStatus: 404,
-          responsePagePath: '/404.html',
-          ttl: cdk.Duration.minutes(30),
+          responseHttpStatus: 200,
+          responsePagePath: '/index.html',
+          ttl: cdk.Duration.minutes(5),
         },
       ],
       defaultRootObject: 'index.html',
@@ -75,21 +75,22 @@ export class BsmS3Stack extends cdk.Stack {
       distributionPaths: ['/*'],
     });
 
-    // Create Route 53 alias records
-    new route53.ARecord(this, 'BsmAliasRecord', {
-      zone: hostedZone,
-      target: route53.RecordTarget.fromAlias(
-        new route53Targets.CloudFrontTarget(distribution)
-      ),
-    });
+    // Route 53 alias records already exist and are working
+    // Commenting out to avoid conflicts during deployment
+    // new route53.ARecord(this, 'BsmAliasRecord', {
+    //   zone: hostedZone,
+    //   target: route53.RecordTarget.fromAlias(
+    //     new route53Targets.CloudFrontTarget(distribution)
+    //   ),
+    // });
 
-    new route53.ARecord(this, 'BsmWWWAliasRecord', {
-      zone: hostedZone,
-      recordName: 'www',
-      target: route53.RecordTarget.fromAlias(
-        new route53Targets.CloudFrontTarget(distribution)
-      ),
-    });
+    // new route53.ARecord(this, 'BsmWWWAliasRecord', {
+    //   zone: hostedZone,
+    //   recordName: 'www',
+    //   target: route53.RecordTarget.fromAlias(
+    //     new route53Targets.CloudFrontTarget(distribution)
+    //   ),
+    // });
 
     // Outputs
     new cdk.CfnOutput(this, 'BucketName', {
