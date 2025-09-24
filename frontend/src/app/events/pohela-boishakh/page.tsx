@@ -14,7 +14,7 @@ export default function PohelaBoishakh() {
             src="/communityphotos/IMG-1305-scaled.jpg"
             alt="Pohela Boishakh - Bengali Society of Melbourne"
             fill
-            className="object-cover opacity-40"
+            className="object-contain sm:object-cover opacity-40"
             priority
           />
         </div>

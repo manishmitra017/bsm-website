@@ -63,7 +63,7 @@ function AnimatedDurgotsav() {
             src="/upcoming-events/Durga-Puja-2025-1654-x-841-mm-Horizontal-Jul27-scaled.jpg"
             alt="Durgotsav - Bengali Society of Melbourne"
             fill
-            className="object-cover opacity-40"
+            className="object-contain sm:object-cover opacity-40"
             priority
           />
         </div>

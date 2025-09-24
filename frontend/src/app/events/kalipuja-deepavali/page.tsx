@@ -14,7 +14,7 @@ export default function KalipujaDeepavali() {
             src="/kalipooja-2023/1-min.jpg"
             alt="Kalipuja & Deepavali - Bengali Society of Melbourne"
             fill
-            className="object-cover opacity-40"
+            className="object-contain sm:object-cover opacity-40"
             priority
           />
         </div>

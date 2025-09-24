@@ -14,7 +14,7 @@ export default function ChristmasNewYear() {
             src="/communityphotos/20231111_225013-scaled.jpg"
             alt="Christmas & New Year - Bengali Society of Melbourne"
             fill
-            className="object-cover opacity-40"
+            className="object-contain sm:object-cover opacity-40"
             priority
           />
         </div>

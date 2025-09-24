@@ -123,8 +123,8 @@ export default function Home() {
               </span>
             </motion.h1>
             
-            <motion.div 
-              className="bg-red-600 text-white text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold px-4 sm:px-6 py-3 sm:py-4 rounded-lg mb-4 sm:mb-6 inline-block"
+            <motion.div
+              className="text-red-600 text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-4 sm:mb-6 inline-block border-l-4 border-red-600 pl-4"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -132,8 +132,8 @@ export default function Home() {
               Since 2012 | ২০১২ সাল থেকে
             </motion.div>
 
-            <motion.p 
-              className="text-lg sm:text-xl text-red-700 mb-6 sm:mb-8 leading-relaxed"
+            <motion.p
+              className="text-base sm:text-lg lg:text-xl text-gray-700 mb-6 sm:mb-8 leading-relaxed font-medium"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}

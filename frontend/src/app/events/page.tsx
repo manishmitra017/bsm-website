@@ -85,7 +85,7 @@ export default function Events() {
             src="/upcoming-events/Durga-Puja-2025-1654-x-841-mm-Horizontal-Jul27-scaled.jpg"
             alt="Bengali Society of Melbourne Events"
             fill
-            className="object-cover opacity-30"
+            className="object-contain sm:object-cover opacity-30"
             priority
           />
         </div>

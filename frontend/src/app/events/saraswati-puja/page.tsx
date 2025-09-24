@@ -14,7 +14,7 @@ export default function SaraswatiPuja() {
             src="/communityphotos/20231029_125732-scaled.jpg"
             alt="Saraswati Puja - Bengali Society of Melbourne"
             fill
-            className="object-cover opacity-40"
+            className="object-contain sm:object-cover opacity-40"
             priority
           />
         </div>
