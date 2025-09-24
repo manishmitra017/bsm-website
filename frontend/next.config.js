@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable standalone output for Docker/Lambda deployment in production
-  output: process.env.NODE_ENV === 'production' && (process.env.BUILD_STANDALONE === 'true' || process.env.BUILD_LAMBDA === 'true') ? 'standalone' : undefined,
+  // Enable static export for S3 deployment or standalone for Lambda
+  output: process.env.BUILD_STATIC === 'true' ? 'export' :
+          (process.env.NODE_ENV === 'production' && (process.env.BUILD_STANDALONE === 'true' || process.env.BUILD_LAMBDA === 'true') ? 'standalone' : undefined),
   
   // Disable static optimization for problematic pages during build
   trailingSlash: false,
@@ -23,8 +24,8 @@ const nextConfig = {
         hostname: '*.googleusercontent.com',
       },
     ],
-    // Disable image optimization in standalone mode for Docker
-    unoptimized: process.env.BUILD_STANDALONE === 'true',
+    // Disable image optimization for static export and standalone mode
+    unoptimized: process.env.BUILD_STATIC === 'true' || process.env.BUILD_STANDALONE === 'true',
   },
   
   // Environment variables - Next.js automatically loads .env files from parent directories
@@ -36,42 +37,44 @@ const nextConfig = {
     AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
   },
   
-  // Security headers
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'strict-origin-when-cross-origin',
-          },
-          {
-            key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://maps.googleapis.com https://maps.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://maps.googleapis.com https://api.web3forms.com;",
-          },
-        ],
-      },
-    ];
-  },
-  
-  // Rewrites for API routes
-  async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: '/api/:path*',
-      },
-    ];
-  },
+  // Security headers (disabled for static export)
+  ...(process.env.BUILD_STATIC !== 'true' && {
+    async headers() {
+      return [
+        {
+          source: '/(.*)',
+          headers: [
+            {
+              key: 'X-Frame-Options',
+              value: 'DENY',
+            },
+            {
+              key: 'X-Content-Type-Options',
+              value: 'nosniff',
+            },
+            {
+              key: 'Referrer-Policy',
+              value: 'strict-origin-when-cross-origin',
+            },
+            {
+              key: 'Content-Security-Policy',
+              value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://maps.googleapis.com https://maps.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://maps.googleapis.com https://api.web3forms.com;",
+            },
+          ],
+        },
+      ];
+    },
+
+    // Rewrites for API routes
+    async rewrites() {
+      return [
+        {
+          source: '/api/:path*',
+          destination: '/api/:path*',
+        },
+      ];
+    },
+  }),
 };
 
 module.exports = nextConfig;

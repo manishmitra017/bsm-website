@@ -10,6 +10,9 @@ import { useState } from 'react'
 
 export default function Home() {
   const [selectedImage, setSelectedImage] = useState<{image: string, title: string} | null>(null)
+
+  // Disable animations in Lambda environment
+  const disableAnimations = process.env.NEXT_PUBLIC_DISABLE_ANIMATIONS === 'true'
   
   const structuredData = {
     "@context": "https://schema.org",
@@ -46,11 +49,11 @@ export default function Home() {
       {/* Welcome Banner */}
       <section className="py-4 bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             className="text-center"
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={disableAnimations ? false : { opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: disableAnimations ? 0 : 0.8 }}
           >
             <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6">
               <div className="text-white font-bold text-lg sm:text-xl">
@@ -108,11 +111,11 @@ export default function Home() {
 
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl">
-            <motion.h1 
+            <motion.h1
               className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-red-800 mb-4 sm:mb-6 leading-tight"
-              initial={{ opacity: 0, y: 30 }}
+              initial={disableAnimations ? false : { opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: disableAnimations ? 0 : 0.8 }}
             >
               Bengali Society of Melbourne
               <span className="block text-orange-600 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
