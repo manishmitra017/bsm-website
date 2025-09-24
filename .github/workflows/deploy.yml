@@ -33,17 +33,17 @@ jobs:
         cd frontend
         npm install
 
-    - name: Build frontend
+    - name: Build frontend for static export
       env:
         NODE_ENV: production
-        BUILD_STANDALONE: true
+        BUILD_STATIC: true
         NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: ${{ secrets.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY }}
         NEXT_PUBLIC_SITE_URL: "https://bsm.org.au"
         NEXT_PUBLIC_SITE_NAME: "Bengali Society of Melbourne"
         NEXT_PUBLIC_CONTACT_EMAIL: "info@bsm.org.au"
       run: |
         cd frontend
-        rm -rf .next
+        rm -rf .next out
         npm run build
 
     - name: Install AWS CDK CLI
@@ -59,7 +59,7 @@ jobs:
         cd cdk
         npm run build
 
-    - name: Deploy with CDK
+    - name: Deploy with CDK (S3 + CloudFront)
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -69,11 +69,15 @@ jobs:
         CDK_DEFAULT_REGION: ${{ secrets.CDK_DEFAULT_REGION }}
       run: |
         cd cdk
-        cdk deploy BsmWebsiteStackV2 --require-approval never
+        cdk deploy BsmWebsiteS3 --require-approval never
 
     - name: Deployment Summary
       run: |
-        echo "✅ Deployment completed successfully!"
+        echo "✅ S3 + CloudFront deployment completed successfully!"
         echo "🌐 Website URL: https://bsm.org.au"
         echo "🌍 WWW URL: https://www.bsm.org.au"
+        echo "☁️ CloudFront URL: https://d2p8r0wx1egzv5.cloudfront.net"
+        echo "📈 Architecture: S3 Static Hosting + Global CDN"
+        echo "💰 Cost Optimized: ~$1-5/month"
+        echo "⚡ Performance: No cold starts, instant loading"
         echo "📅 Deployed at: $(date)"
