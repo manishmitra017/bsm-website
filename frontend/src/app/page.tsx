@@ -724,6 +724,15 @@ export default function Home() {
                 benefits: ['Free initial consultation', 'Special conveyancing rates', 'Legal advice in Bengali', 'Call 0430 593 124'],
                 website: 'https://www.bengalsolicitors.com.au',
                 description: 'Bengal Solicitors is a boutique law firm located in Reservoir, Melbourne, specializing in property law and conveyancing. Rajot Roy, the principal lawyer, provides expert legal services with practical advice in plain language. The firm assists with all stages of property transactions, from purchasing to selling, ensuring clients receive regular communication and personalized service throughout the process.'
+              },
+              {
+                image: '/sponsors/weeribee-mazda.png',
+                name: 'Werribee Mazda',
+                tagline: 'Your trusted automotive partner in Melbourne\'s West',
+                tier: 'Platinum Partner',
+                benefits: ['$2000 accessories bonus on eligible vehicles', 'Exceptional service & reliable vehicles', 'Customer-first experience', 'Call 03 9974 5666'],
+                website: 'https://www.werribeemazda.com.au',
+                description: 'BSM extends its heartfelt gratitude to Werribee Mazda for their generous support of this year\'s Durga Puja celebrations. At Werribee Mazda, you\'ll find more than just cars – you\'ll discover a team dedicated to delivering exceptional service, reliable vehicles, and a customer-first experience. Right now, receive $2000 worth of accessories on eligible vehicle purchases and deliveries by 30th September 2025.'
               }
             ].map((sponsor, index) => (
               <motion.div

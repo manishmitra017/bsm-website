@@ -59,6 +59,15 @@ const sponsorBanners: SponsorBanner[] = [
     message: '⚖️ Expert property law & conveyancing services. Get practical legal advice in plain language',
     ctaText: 'Book Free Consultation',
     bgColor: 'from-indigo-600 to-blue-600'
+  },
+  {
+    id: 6,
+    name: 'Werribee Mazda',
+    logo: '/sponsors/weeribee-mazda.png',
+    website: 'https://www.werribeemazda.com.au',
+    message: '🚗 Exceptional automotive service in Melbourne\'s West - Get $2000 accessories bonus on eligible vehicles!',
+    ctaText: 'View Special Offer',
+    bgColor: 'from-red-600 to-gray-800'
   }
 ]
 
@@ -274,7 +283,8 @@ export function SponsorMini() {
     { name: 'Ratul Biswas Finance', logo: '/sponsors/Ratul-Biswas-Finance-Broker.jpeg', website: 'https://www.a-f-s.au' },
     { name: 'ASA Wealth Management', logo: '/sponsors/asa-wealth-management.jpeg', website: 'https://asawealth.com.au' },
     { name: 'Cosmic Renewable Energy', logo: '/sponsors/solar-1.jpeg', website: 'https://www.cosmicrenewableenergy.com.au' },
-    { name: 'Bengal Solicitors', logo: '/sponsors/BengalSolicitors.jpeg', website: 'https://www.bengalsolicitors.com.au' }
+    { name: 'Bengal Solicitors', logo: '/sponsors/BengalSolicitors.jpeg', website: 'https://www.bengalsolicitors.com.au' },
+    { name: 'Werribee Mazda', logo: '/sponsors/weeribee-mazda.png', website: 'https://www.werribeemazda.com.au' }
   ]
 
   useEffect(() => {

@@ -680,6 +680,16 @@ export default function SponsorshipPage() {
 
               <div className="p-8">
                 <div className="text-center mb-6">
+                  <div className="mb-4">
+                    <Image
+                      src="/sponsors/weeribee-mazda.png"
+                      alt="Werribee Mazda - $2000 Accessory Bonus"
+                      width={600}
+                      height={400}
+                      className="mx-auto rounded-lg shadow-lg"
+                      priority
+                    />
+                  </div>
                   <h3 className="text-3xl font-bold text-gray-900 mb-2">Werribee Mazda</h3>
                   <p className="text-gray-600">Your trusted automotive partner in Melbourne's West</p>
                 </div>

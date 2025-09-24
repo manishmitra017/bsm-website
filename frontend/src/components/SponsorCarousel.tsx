@@ -172,6 +172,20 @@ const sponsors: Sponsor[] = [
     socialMedia: {
       facebook: 'https://www.facebook.com/p/Bengal-Solicitors-100079561011283/'
     }
+  },
+  {
+    id: 9,
+    name: 'Werribee Mazda',
+    logo: '/sponsors/weeribee-mazda.png',
+    website: 'https://www.werribeemazda.com.au',
+    description: 'Your trusted automotive partner in Melbourne\'s West - Exceptional service, reliable vehicles, and customer-first experience',
+    tier: 'platinum',
+    featured: true,
+    specialOffer: '$2000 worth of accessories on eligible vehicle purchases and deliveries by 30th September 2025',
+    contactInfo: {
+      phone: '03 9974 5666',
+      email: 'service@werribeemazda.com.au'
+    }
   }
 ]
 

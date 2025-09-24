@@ -264,6 +264,34 @@ const spotlightSponsors: SponsorSpotlight[] = [
       '📱 Flexible appointments including after-hours',
       '💼 Fixed-fee structure for transparency'
     ]
+  },
+  {
+    name: 'Werribee Mazda',
+    logo: '/sponsors/weeribee-mazda.png',
+    businessType: 'Automotive Sales & Service',
+    yearEstablished: '1987',
+    specialization: [
+      'New & Used Vehicle Sales',
+      'Professional Service & Repairs',
+      'Genuine Parts & Accessories',
+      'Finance & Insurance Solutions',
+      'Fleet & Business Solutions'
+    ],
+    whyBSM: 'We are proud to support BSM as they bring together Melbourne\'s Bengali community through cultural celebrations. At Werribee Mazda, we believe in the importance of community connections and cultural preservation.',
+    communityImpact: 'Supporting Bengali families in Melbourne\'s West with reliable automotive solutions and exceptional customer service for over 35 years.',
+    testimonial: '"BSM extends its heartfelt gratitude to Werribee Mazda for their generous support of this year\'s Durga Puja celebrations. At Werribee Mazda, you\'ll find more than just cars – you\'ll discover a team dedicated to delivering exceptional service, reliable vehicles, and a customer-first experience."',
+    contactPerson: 'Sales Team',
+    website: 'https://www.werribeemazda.com.au',
+    phone: '03 9974 5666',
+    email: 'sales@werribeemazda.com.au',
+    offers: [
+      '🚗 $2000 worth of accessories on eligible vehicle purchases',
+      '🔧 Professional servicing with genuine Mazda parts',
+      '💰 Competitive finance rates and insurance options',
+      '🎯 Special rates for BSM community members',
+      '📅 Convenient service bookings Mon-Fri 8:30 AM - 6:00 PM',
+      '🏆 Award-winning customer service in Melbourne\'s West'
+    ]
   }
 ]
 
