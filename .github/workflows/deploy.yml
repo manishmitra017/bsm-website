@@ -67,19 +67,44 @@ jobs:
         cd cdk
         npm run build
 
-    - name: Deploy with CDK (S3 + CloudFront)
+    - name: Deploy infrastructure with CDK (S3 + CloudFront)
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: ap-southeast-2
-        NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: ${{ secrets.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY }}
         CDK_DEFAULT_ACCOUNT: ${{ secrets.CDK_DEFAULT_ACCOUNT }}
         CDK_DEFAULT_REGION: ${{ secrets.CDK_DEFAULT_REGION }}
       run: |
         cd cdk
-        echo "🚀 Starting CDK deployment..."
-        cdk deploy BsmWebsiteS3 --require-approval never --verbose
-        echo "📤 CDK deployment completed successfully!"
+        echo "🚀 Starting CDK infrastructure deployment..."
+        cdk deploy BsmWebsiteS3V2 --require-approval never --verbose
+        echo "📤 CDK infrastructure deployment completed successfully!"
+
+    - name: Get S3 bucket name and CloudFront distribution ID
+      id: get-aws-resources
+      run: |
+        BUCKET_NAME=$(aws s3 ls | grep bsm-website-static-v2 | awk '{print $3}')
+        DISTRIBUTION_ID=$(aws cloudfront list-distributions --query "DistributionList.Items[?Id=='ETISV7CREVNCP'].Id" --output text)
+        echo "bucket-name=$BUCKET_NAME" >> $GITHUB_OUTPUT
+        echo "distribution-id=$DISTRIBUTION_ID" >> $GITHUB_OUTPUT
+        echo "📦 S3 Bucket: $BUCKET_NAME"
+        echo "☁️ CloudFront Distribution: $DISTRIBUTION_ID"
+
+    - name: Sync files to S3
+      run: |
+        cd frontend
+        echo "📤 Uploading files to S3..."
+        aws s3 sync out/ s3://${{ steps.get-aws-resources.outputs.bucket-name }}/ --delete --exact-timestamps
+        echo "✅ Files uploaded successfully to S3"
+
+    - name: Invalidate CloudFront cache
+      run: |
+        echo "🔄 Creating CloudFront invalidation..."
+        INVALIDATION_ID=$(aws cloudfront create-invalidation --distribution-id ${{ steps.get-aws-resources.outputs.distribution-id }} --paths "/*" --query 'Invalidation.Id' --output text)
+        echo "⏳ Invalidation created: $INVALIDATION_ID"
+        echo "⏳ Waiting for invalidation to complete..."
+        aws cloudfront wait invalidation-completed --distribution-id ${{ steps.get-aws-resources.outputs.distribution-id }} --id $INVALIDATION_ID
+        echo "✅ CloudFront cache invalidated successfully"
 
     - name: Verify deployment
       run: |

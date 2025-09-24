@@ -5,10 +5,9 @@ import * as origins from 'aws-cdk-lib/aws-cloudfront-origins';
 import * as route53 from 'aws-cdk-lib/aws-route53';
 import * as route53Targets from 'aws-cdk-lib/aws-route53-targets';
 import * as acm from 'aws-cdk-lib/aws-certificatemanager';
-// Removed s3deployment import - handling file uploads via GitHub Actions instead
 import { Construct } from 'constructs';
 
-export class BsmS3Stack extends cdk.Stack {
+export class BsmS3V2Stack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
@@ -22,20 +21,19 @@ export class BsmS3Stack extends cdk.Stack {
 
     // Create S3 bucket for static website hosting (private, accessed via CloudFront)
     const websiteBucket = new s3.Bucket(this, 'BsmWebsiteBucket', {
-      bucketName: `bsm-website-static-${this.account}`,
+      bucketName: `bsm-website-static-v2-${this.account}`,
       publicReadAccess: false,
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
       removalPolicy: cdk.RemovalPolicy.RETAIN,
+      versioned: false, // No versioning needed for static content
     });
 
-    // Import existing SSL certificate (CloudFront requires us-east-1)
-    // We'll need to create a certificate in us-east-1 for CloudFront
-    const certificate = new acm.DnsValidatedCertificate(this, 'BsmCloudFrontCert', {
-      domainName: domainName,
-      subjectAlternativeNames: [`www.${domainName}`],
-      hostedZone: hostedZone,
-      region: 'us-east-1', // CloudFront requires certificates in us-east-1
-    });
+    // Import existing SSL certificate (already validated in us-east-1)
+    const certificate = acm.Certificate.fromCertificateArn(
+      this,
+      'BsmCloudFrontCert',
+      'arn:aws:acm:us-east-1:066043264852:certificate/2353c861-70de-4905-98e6-e483f219cc9c'
+    );
 
     // Create CloudFront function to handle clean URLs
     const urlRewriteFunction = new cloudfront.Function(this, 'BsmUrlRewriteFunction', {
@@ -68,7 +66,7 @@ function handler(event) {
     // Create CloudFront distribution
     const distribution = new cloudfront.Distribution(this, 'BsmDistribution', {
       defaultBehavior: {
-        origin: new origins.S3Origin(websiteBucket),
+        origin: origins.S3BucketOrigin.withOriginAccessControl(websiteBucket),
         viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
         allowedMethods: cloudfront.AllowedMethods.ALLOW_GET_HEAD_OPTIONS,
         cachedMethods: cloudfront.CachedMethods.CACHE_GET_HEAD_OPTIONS,
@@ -78,7 +76,8 @@ function handler(event) {
           eventType: cloudfront.FunctionEventType.VIEWER_REQUEST,
         }],
       },
-      domainNames: [domainName, `www.${domainName}`],
+      // Temporarily commented out - will add after old distribution is removed
+      // domainNames: [domainName, `www.${domainName}`],
       certificate: certificate,
       minimumProtocolVersion: cloudfront.SecurityPolicyProtocol.TLS_V1_2_2021,
       errorResponses: [
@@ -96,14 +95,13 @@ function handler(event) {
         },
       ],
       defaultRootObject: 'index.html',
-      priceClass: cloudfront.PriceClass.PRICE_CLASS_ALL,
+      priceClass: cloudfront.PriceClass.PRICE_CLASS_100,
     });
 
-    // File deployment handled by GitHub Actions pipeline
-    // This eliminates the stuck BucketDeployment custom resource issue
+    // NO BUCKET DEPLOYMENT - Files uploaded via GitHub Actions S3 sync
+    // This completely eliminates the custom resource stuck issues
 
-    // Route 53 alias records already exist and are working
-    // Commenting out to avoid conflicts during deployment
+    // Will add Route 53 records after migration
     // new route53.ARecord(this, 'BsmAliasRecord', {
     //   zone: hostedZone,
     //   target: route53.RecordTarget.fromAlias(
@@ -119,40 +117,35 @@ function handler(event) {
     //   ),
     // });
 
-    // Outputs
+    // Outputs for GitHub Actions
     new cdk.CfnOutput(this, 'BucketName', {
       value: websiteBucket.bucketName,
-      description: 'S3 Bucket Name',
-    });
-
-    new cdk.CfnOutput(this, 'BucketWebsiteURL', {
-      value: websiteBucket.bucketWebsiteUrl,
-      description: 'S3 Website URL',
-    });
-
-    new cdk.CfnOutput(this, 'CloudFrontURL', {
-      value: distribution.distributionDomainName,
-      description: 'CloudFront Distribution URL',
+      description: 'S3 Bucket Name for GitHub Actions',
     });
 
     new cdk.CfnOutput(this, 'CloudFrontDistributionId', {
       value: distribution.distributionId,
-      description: 'CloudFront Distribution ID',
+      description: 'CloudFront Distribution ID for cache invalidation',
+    });
+
+    new cdk.CfnOutput(this, 'CloudFrontDomainName', {
+      value: distribution.distributionDomainName,
+      description: 'CloudFront Distribution Domain Name',
     });
 
     new cdk.CfnOutput(this, 'WebsiteURL', {
       value: `https://${domainName}`,
-      description: 'Final Website URL (after DNS setup)',
+      description: 'Final Website URL',
     });
 
-    new cdk.CfnOutput(this, 'CostOptimization', {
-      value: 'S3 + CloudFront: Pay for storage (~$1-5/month) + CDN requests',
+    new cdk.CfnOutput(this, 'DeploymentMethod', {
+      value: 'GitHub Actions with S3 Sync (No Custom Resources)',
+      description: 'Deployment approach - eliminates stuck deployment issues',
+    });
+
+    new cdk.CfnOutput(this, 'CostOptimized', {
+      value: 'S3 + CloudFront: ~$1-5/month',
       description: 'Expected monthly cost',
-    });
-
-    new cdk.CfnOutput(this, 'PerformanceBenefits', {
-      value: 'Global CDN, instant loading, 99.9% uptime, no cold starts',
-      description: 'Key advantages over Lambda',
     });
   }
 }
