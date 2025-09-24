@@ -866,22 +866,12 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="bg-gray-50 p-6 rounded-xl shadow-lg">
-              <div 
-                className="fb-page" 
-                data-href="https://www.facebook.com/bsm2022/photos" 
-                data-tabs="timeline" 
-                data-width="500" 
-                data-height="" 
-                data-small-header="false" 
-                data-adapt-container-width="false" 
-                data-hide-cover="false" 
-                data-show-facepile="false"
-              >
-                <blockquote cite="https://www.facebook.com/bsm2022/photos" className="fb-xfbml-parse-ignore">
-                  <a href="https://www.facebook.com/bsm2022/photos">BSM-Bengali Society of Melbourne</a>
-                </blockquote>
-              </div>
+            <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-8 rounded-xl shadow-lg text-white text-center">
+              <h3 className="text-2xl font-bold mb-4">Stay Connected with BSM!</h3>
+              <p className="text-blue-100 mb-6">
+                Follow us on social media for the latest updates on our events, photo galleries, and community news.
+              </p>
+              <div className="text-4xl mb-4">📱</div>
             </div>
           </motion.div>
 
@@ -894,15 +884,15 @@ export default function Home() {
           >
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://www.facebook.com/bsm2022"
+                href="https://www.facebook.com/bsm2022/photos"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg flex items-center justify-center gap-2"
               >
-                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                Like Our Page | পেজ লাইক করুন
+                View All Photos | সব ছবি দেখুন
               </a>
               <a
                 href="https://www.instagram.com/bsm_aus?igsh=MW5kaDM0NzcyMG9ndg=="
