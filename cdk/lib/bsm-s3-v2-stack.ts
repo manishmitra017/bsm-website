@@ -76,8 +76,7 @@ function handler(event) {
           eventType: cloudfront.FunctionEventType.VIEWER_REQUEST,
         }],
       },
-      // Temporarily commented out - will add after old distribution is removed
-      // domainNames: [domainName, `www.${domainName}`],
+      domainNames: [domainName, `www.${domainName}`],
       certificate: certificate,
       minimumProtocolVersion: cloudfront.SecurityPolicyProtocol.TLS_V1_2_2021,
       errorResponses: [
