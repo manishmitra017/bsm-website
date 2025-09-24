@@ -642,6 +642,104 @@ export default function SponsorshipPage() {
         </section>
       )}
 
+      {/* Current Sponsors Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              Our Valued Sponsors
+              <span className="block text-xl md:text-2xl font-normal mt-2 text-red-600" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                আমাদের মূল্যবান স্পনসর
+              </span>
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              We are grateful to our sponsors who make our community events possible
+            </p>
+          </motion.div>
+
+          {/* Werribee Mazda Sponsor Card */}
+          <motion.div
+            className="max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+              <div className="bg-gradient-to-r from-red-600 to-orange-600 p-6">
+                <h3 className="text-2xl font-bold text-white text-center">
+                  🏆 Platinum Sponsor - Durga Puja 2025
+                </h3>
+              </div>
+
+              <div className="p-8">
+                <div className="text-center mb-6">
+                  <h3 className="text-3xl font-bold text-gray-900 mb-2">Werribee Mazda</h3>
+                  <p className="text-gray-600">Your trusted automotive partner in Melbourne's West</p>
+                </div>
+
+                <div className="prose prose-lg max-w-none text-gray-700 mb-8">
+                  <p className="mb-4">
+                    BSM extends its heartfelt gratitude to Werribee Mazda for their generous support of this year's Durga Puja celebrations. 🪔💐
+                  </p>
+                  <p className="mb-4">
+                    At Werribee Mazda, you'll find more than just cars – you'll discover a team dedicated to delivering exceptional service, reliable vehicles, and a customer-first experience. 🚗✨
+                  </p>
+
+                  <div className="bg-red-50 border-2 border-red-500 rounded-xl p-6 my-6">
+                    <h4 className="text-xl font-bold text-red-600 mb-3">🔥 Special Offer</h4>
+                    <p className="text-gray-800">
+                      Right now, Werribee Mazda is running an exclusive campaign – receive <strong>$2000 worth of accessories*</strong> on eligible vehicle purchases and deliveries by 30th September 2025.
+                    </p>
+                    <p className="text-sm text-gray-600 mt-2 italic">(*Terms & Conditions apply)</p>
+                  </div>
+
+                  <p className="mb-4">
+                    For all your motoring needs, visit the friendly team at Werribee Mazda today and experience the difference. 🌟
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                  <div className="bg-gray-50 rounded-lg p-4">
+                    <h4 className="font-bold text-gray-900 mb-2">📍 Visit Us</h4>
+                    <p className="text-gray-700">28-40 Heaths Road</p>
+                    <p className="text-gray-700">Hoppers Crossing VIC 3029</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-4">
+                    <h4 className="font-bold text-gray-900 mb-2">📞 Contact</h4>
+                    <p className="text-gray-700">Phone: (03) 9974 5666</p>
+                    <p className="text-gray-700">Mon-Fri: 8:30 AM - 6:00 PM</p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <a
+                    href="https://www.werribeemazda.com.au"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-gradient-to-r from-red-600 to-orange-600 text-white px-8 py-3 rounded-lg text-center font-bold hover:from-red-700 hover:to-orange-700 transition-all shadow-lg"
+                  >
+                    🌐 Visit Website
+                  </a>
+                  <a
+                    href="tel:0399745666"
+                    className="border-2 border-red-600 text-red-600 px-8 py-3 rounded-lg text-center font-bold hover:bg-red-50 transition-all"
+                  >
+                    📞 Call Now
+                  </a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Call to Action */}
       <section className="py-16 bg-gradient-to-r from-red-600 to-orange-600">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
