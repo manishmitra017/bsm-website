@@ -4,7 +4,7 @@ const nextConfig = {
   output: process.env.BUILD_STATIC === 'true' ? 'export' :
           (process.env.NODE_ENV === 'production' && (process.env.BUILD_STANDALONE === 'true' || process.env.BUILD_LAMBDA === 'true') ? 'standalone' : undefined),
   
-  // Disable static optimization for problematic pages during build
+  // Disable trailing slash for better routing
   trailingSlash: false,
   
   // Enable experimental features (Next.js 15 has server actions enabled by default)

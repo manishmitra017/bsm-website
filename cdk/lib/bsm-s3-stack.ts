@@ -37,6 +37,34 @@ export class BsmS3Stack extends cdk.Stack {
       region: 'us-east-1', // CloudFront requires certificates in us-east-1
     });
 
+    // Create CloudFront function to handle clean URLs
+    const urlRewriteFunction = new cloudfront.Function(this, 'BsmUrlRewriteFunction', {
+      code: cloudfront.FunctionCode.fromInline(`
+function handler(event) {
+    var request = event.request;
+    var uri = request.uri;
+
+    // Handle root path
+    if (uri === '/') {
+        request.uri = '/index.html';
+        return request;
+    }
+
+    // Handle paths without file extension
+    if (!uri.includes('.') && !uri.endsWith('/')) {
+        request.uri = uri + '.html';
+    }
+
+    // Handle directory paths (remove trailing slash and add .html)
+    if (uri.endsWith('/') && uri !== '/') {
+        request.uri = uri.slice(0, -1) + '.html';
+    }
+
+    return request;
+}
+      `),
+    });
+
     // Create CloudFront distribution
     const distribution = new cloudfront.Distribution(this, 'BsmDistribution', {
       defaultBehavior: {
@@ -45,6 +73,10 @@ export class BsmS3Stack extends cdk.Stack {
         allowedMethods: cloudfront.AllowedMethods.ALLOW_GET_HEAD_OPTIONS,
         cachedMethods: cloudfront.CachedMethods.CACHE_GET_HEAD_OPTIONS,
         cachePolicy: cloudfront.CachePolicy.CACHING_OPTIMIZED,
+        functionAssociations: [{
+          function: urlRewriteFunction,
+          eventType: cloudfront.FunctionEventType.VIEWER_REQUEST,
+        }],
       },
       domainNames: [domainName, `www.${domainName}`],
       certificate: certificate,
@@ -52,14 +84,14 @@ export class BsmS3Stack extends cdk.Stack {
       errorResponses: [
         {
           httpStatus: 404,
-          responseHttpStatus: 200,
-          responsePagePath: '/index.html',
+          responseHttpStatus: 404,
+          responsePagePath: '/404.html',
           ttl: cdk.Duration.minutes(5),
         },
         {
           httpStatus: 403,
-          responseHttpStatus: 200,
-          responsePagePath: '/index.html',
+          responseHttpStatus: 403,
+          responsePagePath: '/404.html',
           ttl: cdk.Duration.minutes(5),
         },
       ],
