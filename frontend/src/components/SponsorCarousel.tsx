@@ -250,8 +250,8 @@ export default function SponsorCarousel() {
         </div>
 
         {/* Carousel Container */}
-        <div 
-          className="relative h-[400px] md:h-[500px] p-8"
+        <div
+          className="relative h-[450px] md:h-[500px] p-8"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
@@ -307,7 +307,7 @@ export default function SponsorCarousel() {
                   </div>
                 )}
 
-                <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+                <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start mb-6 md:mb-0">
                   {sponsors[currentIndex].website && sponsors[currentIndex].website !== '#' && (
                     <a
                       href={sponsors[currentIndex].website}
@@ -351,7 +351,7 @@ export default function SponsorCarousel() {
         </div>
 
         {/* Dots Indicator */}
-        <div className="flex justify-center gap-2 pb-6">
+        <div className="flex justify-center gap-2 pb-6 pt-4">
           {sponsors.map((_, index) => (
             <button
               key={index}
