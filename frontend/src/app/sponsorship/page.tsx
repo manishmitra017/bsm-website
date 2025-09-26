@@ -665,7 +665,7 @@ export default function SponsorshipPage() {
 
           {/* Werribee Mazda Sponsor Card */}
           <motion.div
-            className="max-w-4xl mx-auto"
+            className="max-w-4xl mx-auto mb-8"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -742,6 +742,114 @@ export default function SponsorshipPage() {
                     className="border-2 border-red-600 text-red-600 px-8 py-3 rounded-lg text-center font-bold hover:bg-red-50 transition-all"
                   >
                     📞 Call Now
+                  </a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Werribee MG Sponsor Card */}
+          <motion.div
+            className="max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+              <div className="bg-gradient-to-r from-yellow-600 to-orange-600 p-6">
+                <h3 className="text-2xl font-bold text-white text-center">
+                  ⭐ Gold Sponsor - Community Partner
+                </h3>
+              </div>
+
+              <div className="p-8">
+                <div className="text-center mb-6">
+                  <div className="mb-4">
+                    <Image
+                      src="/sponsors/werribee-mg.png"
+                      alt="Werribee MG - Your Local MG Dealership"
+                      width={600}
+                      height={400}
+                      className="mx-auto rounded-lg shadow-lg"
+                      priority
+                    />
+                  </div>
+                  <h3 className="text-3xl font-bold text-gray-900 mb-2">Werribee MG</h3>
+                  <p className="text-gray-600">Your local MG dealership in Melbourne's South West</p>
+                </div>
+
+                <div className="prose prose-lg max-w-none text-gray-700 mb-8">
+                  <p className="mb-4">
+                    BSM is proud to welcome Werribee MG as our newest sponsor! Part of the Werribee Automotive Group, they bring quality MG vehicles and exceptional service to our community. 🚗✨
+                  </p>
+                  <p className="mb-4">
+                    Werribee MG specializes in selling the full range of MG vehicles including stylish hatchbacks and versatile SUVs, all backed by an industry-leading 10-year warranty program.
+                  </p>
+
+                  <div className="bg-yellow-50 border-2 border-yellow-500 rounded-xl p-6 my-6">
+                    <h4 className="text-xl font-bold text-yellow-700 mb-3">🎁 BSM Community Offer</h4>
+                    <p className="text-gray-800">
+                      <strong>"There's never been a better time to meet your very own MG!"</strong><br/>
+                      Special pricing and flexible finance options available for BSM community members.
+                    </p>
+                    <p className="text-sm text-gray-600 mt-2 italic">Contact the sales team and mention BSM for exclusive offers!</p>
+                  </div>
+
+                  <p className="mb-4">
+                    Whether you're looking for your first car, upgrading your family vehicle, or need professional service and maintenance, Werribee MG provides personalized service to help you find the perfect MG. 🌟
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                  <div className="bg-gray-50 rounded-lg p-4">
+                    <h4 className="font-bold text-gray-900 mb-2">📍 Visit Our Showroom</h4>
+                    <p className="text-gray-700">187-189 Old Geelong Road</p>
+                    <p className="text-gray-700">Hoppers Crossing VIC 3030</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-4">
+                    <h4 className="font-bold text-gray-900 mb-2">📞 Contact Sales</h4>
+                    <p className="text-gray-700">Phone: 0488 885 279</p>
+                    <p className="text-gray-700">Email: sales@werribeemg.com.au</p>
+                  </div>
+                </div>
+
+                <div className="bg-blue-50 rounded-lg p-4 mb-6">
+                  <h4 className="font-bold text-blue-900 mb-2">🌟 Why Choose Werribee MG?</h4>
+                  <ul className="space-y-2 text-gray-700">
+                    <li className="flex items-start">
+                      <span className="text-green-600 mr-2">✓</span>
+                      <span>Wide range of MG models to suit every lifestyle</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-600 mr-2">✓</span>
+                      <span>Industry-leading 10-year warranty on new vehicles</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-600 mr-2">✓</span>
+                      <span>Professional service and genuine parts</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-600 mr-2">✓</span>
+                      <span>Flexible finance options for private and business customers</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <a
+                    href="https://werribeemg.com.au"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-gradient-to-r from-yellow-600 to-orange-600 text-white px-8 py-3 rounded-lg text-center font-bold hover:from-yellow-700 hover:to-orange-700 transition-all shadow-lg"
+                  >
+                    🌐 Visit Website
+                  </a>
+                  <a
+                    href="tel:0488885279"
+                    className="border-2 border-yellow-600 text-yellow-700 px-8 py-3 rounded-lg text-center font-bold hover:bg-yellow-50 transition-all"
+                  >
+                    📞 Call Sales Team
                   </a>
                 </div>
               </div>

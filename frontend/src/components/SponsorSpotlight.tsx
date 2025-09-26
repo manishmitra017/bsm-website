@@ -296,6 +296,39 @@ const spotlightSponsors: SponsorSpotlight[] = [
       '📅 Convenient service bookings Mon-Fri 8:30 AM - 6:00 PM',
       '🏆 Award-winning customer service in Melbourne\'s West'
     ]
+  },
+  {
+    name: 'Werribee MG',
+    logo: '/sponsors/werribee-mg.png',
+    businessType: 'MG Vehicle Sales & Service',
+    yearEstablished: 'Part of Werribee Automotive Group',
+    specialization: [
+      'New MG Vehicle Sales',
+      'Used Vehicle Sales',
+      'Vehicle Financing',
+      'Service & Maintenance',
+      'Genuine Parts & Accessories',
+      'Test Drives',
+      '10-Year Warranty Program'
+    ],
+    whyBSM: 'Werribee MG is proud to support the Bengali Society of Melbourne and their cultural celebrations. We believe in building strong community connections and helping families find their perfect vehicle to explore Melbourne together.',
+    communityImpact: 'Serving the South West Melbourne region with quality MG vehicles and exceptional customer service, helping Bengali families access reliable and affordable transportation solutions.',
+    testimonial: '"There\'s never been a better time to meet your very own MG! We\'re honored to support BSM\'s cultural initiatives and provide special offers to community members looking for their next vehicle."',
+    contactPerson: 'Sales Team',
+    website: 'https://werribeemg.com.au',
+    phone: '0488 885 279',
+    email: 'sales@werribeemg.com.au',
+    socialMedia: {
+      facebook: 'https://facebook.com/werribeemg'
+    },
+    offers: [
+      '🚗 Wide range of MG models including hatchbacks and SUVs',
+      '🛡️ Industry-leading 10-year warranty on new vehicles',
+      '💰 Special pricing for BSM community members',
+      '📊 Flexible finance options tailored to your needs',
+      '🔧 Professional service and maintenance',
+      '🎯 Located at 187-189 Old Geelong Road, Hoppers Crossing'
+    ]
   }
 ]
 

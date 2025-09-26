@@ -190,6 +190,23 @@ const sponsors: Sponsor[] = [
       phone: '03 9974 5666',
       email: 'service@werribeemazda.com.au'
     }
+  },
+  {
+    id: 10,
+    name: 'Werribee MG',
+    logo: '/sponsors/werribee-mg.png',
+    website: 'https://werribeemg.com.au',
+    description: 'Your local MG dealership in Melbourne\'s South West - Wide range of MG vehicles with 10-year warranty and exceptional customer service',
+    tier: 'gold',
+    featured: true,
+    specialOffer: 'Special pricing and finance options for BSM community members - There\'s never been a better time to meet your very own MG!',
+    contactInfo: {
+      phone: '0488 885 279',
+      email: 'sales@werribeemg.com.au'
+    },
+    socialMedia: {
+      facebook: 'https://facebook.com/werribeemg'
+    }
   }
 ]
 

@@ -6,13 +6,40 @@ import { motion } from 'framer-motion'
 import CountdownTimer from '@/components/CountdownTimer'
 import SponsorCarousel from '@/components/SponsorCarousel'
 import SponsorSpotlight from '@/components/SponsorSpotlight'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function Home() {
   const [selectedImage, setSelectedImage] = useState<{image: string, title: string} | null>(null)
+  const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
 
   // Disable animations in Lambda environment
   const disableAnimations = process.env.NEXT_PUBLIC_DISABLE_ANIMATIONS === 'true'
+
+  // Live countdown to Durga Puja 2025 - Sept 27, 10 AM
+  useEffect(() => {
+    const targetDate = new Date('2025-09-27T10:00:00').getTime()
+
+    const updateCountdown = () => {
+      const now = new Date().getTime()
+      const distance = targetDate - now
+
+      if (distance > 0) {
+        setCountdown({
+          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((distance % (1000 * 60)) / 1000)
+        })
+      } else {
+        setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+      }
+    }
+
+    updateCountdown() // Initial call
+    const interval = setInterval(updateCountdown, 1000)
+
+    return () => clearInterval(interval)
+  }, [])
   
   const structuredData = {
     "@context": "https://schema.org",
@@ -45,7 +72,58 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      
+
+      {/* Durga Puja Countdown Marquee */}
+      <div className="bg-gradient-to-r from-red-600 to-orange-500 text-white py-2 overflow-hidden relative">
+        <div className="animate-marquee whitespace-nowrap flex items-center">
+          <span className="mx-8 text-lg font-bold flex items-center">
+            🪔 Durgotsav 2025 Countdown | দুর্গোৎসব ২০২৫ গণনা 🪔
+          </span>
+          <div className="mx-8 flex items-center space-x-6 text-sm font-medium">
+            <div className="text-center">
+              <div className="text-2xl font-bold">{countdown.days}</div>
+              <div>DAYS | দিন</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold">{countdown.hours}</div>
+              <div>HOURS | ঘন্টা</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold">{countdown.minutes}</div>
+              <div>MINUTES | মিনিট</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold">{countdown.seconds}</div>
+              <div>SECONDS | সেকেন্ড</div>
+            </div>
+          </div>
+          <span className="mx-8 text-lg font-bold flex items-center">
+            🎉 September 27-28, 2025 | ২৭-২৮ সেপ্টেম্বর ২০২৫ 🎉
+          </span>
+          <div className="mx-8 flex items-center space-x-6 text-sm font-medium">
+            <div className="text-center">
+              <div className="text-2xl font-bold">{countdown.days}</div>
+              <div>DAYS | দিন</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold">{countdown.hours}</div>
+              <div>HOURS | ঘন্টা</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold">{countdown.minutes}</div>
+              <div>MINUTES | মিনিট</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold">{countdown.seconds}</div>
+              <div>SECONDS | সেকেন্ড</div>
+            </div>
+          </div>
+          <span className="mx-8 text-lg font-bold flex items-center">
+            🪔 Join us for Melbourne's grandest Bengali celebration! | মেলবোর্নের সবচেয়ে বড় বাঙালি উৎসবে যোগ দিন! 🪔
+          </span>
+        </div>
+      </div>
+
       {/* Welcome Banner */}
       <section className="py-4 bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -320,24 +398,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Durga Puja Countdown */}
-      <section className="py-16 bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="max-w-2xl mx-auto"
-          >
-            <CountdownTimer 
-              targetDate="2025-09-27T18:00:00+10:00"
-              eventName="Durgotsav 2025"
-              eventNameBengali="দুর্গোৎসব ২০২৫"
-            />
-          </motion.div>
-        </div>
-      </section>
 
       {/* Durga Puja 2025 Itinerary - Prominent Display */}
       <section className="py-20 bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500">
@@ -664,7 +724,8 @@ export default function Home() {
                 tagline: 'Your trusted real estate partner',
                 tier: 'Platinum Partner',
                 benefits: ['Free property appraisal', 'Reduced commission rates'],
-                website: 'https://www.findmyrealestate.com.au'
+                website: 'https://www.findmyrealestate.com.au',
+                description: 'Find My Real Estate is your trusted property partner in Melbourne, providing expert guidance for residential property sales, management, and investment advisory services. With specialized support for first home buyers and over 50 Bengali families helped to find their dream homes, we combine professional expertise with genuine community understanding.'
               },
               {
                 image: '/sponsors/Ratul-Biswas-Finance-Broker.jpeg',
@@ -672,7 +733,8 @@ export default function Home() {
                 tagline: 'Expert mortgage solutions',
                 tier: 'Platinum Partner',
                 benefits: ['Free consultation', 'Exclusive rates for BSM'],
-                website: 'https://www.a-f-s.au'
+                website: 'https://www.a-f-s.au',
+                description: 'As a member of the Bengali community, Ratul Biswas provides professional finance and mortgage solutions including home loans, investment loans, refinancing, and commercial loans. With over $20 million in home loans secured for community members at competitive rates, Ratul offers personalized service with deep understanding of community needs.'
               },
               {
                 image: '/sponsors/asa-wealth-management.jpeg',
@@ -680,7 +742,8 @@ export default function Home() {
                 tagline: 'Financial planning excellence',
                 tier: 'Gold Partner',
                 benefits: ['Free portfolio review', 'Financial seminars'],
-                website: 'https://asawealth.com.au'
+                website: 'https://asawealth.com.au',
+                description: 'ASA Wealth Management provides professional wealth management and financial planning services including investment planning, superannuation advice, insurance solutions, and retirement planning. With over 200 community members benefiting from financial literacy workshops, we believe in empowering families with smart financial decisions.'
               },
               {
                 image: '/sponsors/solar-1.jpeg',
@@ -688,7 +751,8 @@ export default function Home() {
                 tagline: 'Sustainable solar energy solutions',
                 tier: 'Gold Partner',
                 benefits: ['10% discount on installations', 'Free energy consultation'],
-                website: 'https://www.cosmicrenewableenergy.com.au'
+                website: 'https://www.cosmicrenewableenergy.com.au',
+                description: 'Cosmic Renewable Energy specializes in sustainable solar energy solutions for homes and businesses, offering complete solar panel installation, battery storage systems, energy efficiency consulting, and maintenance services. With solar systems installed for 30+ community members, we help reduce energy costs by up to 70% while building a greener future.'
               },
               {
                 image: '/sponsors/choicerealesate.jpeg',
@@ -696,7 +760,8 @@ export default function Home() {
                 tagline: 'Your first choice for real estate',
                 tier: 'Silver Partner',
                 benefits: ['Special property management rates', 'Priority listings'],
-                website: 'https://choiceestateagent.com.au'
+                website: 'https://choiceestateagent.com.au',
+                description: 'Choice Estate Agent, led by Director Ali Afzal, specializes in property sales, property management, investment consultation, and rental services. As part of the community, we understand the importance of finding the right home for Bengali families and have successfully managed over 100 properties with personalized, culturally-sensitive service.'
               },
               {
                 image: '/sponsors/equitywiserealestate.jpeg',
@@ -733,61 +798,94 @@ export default function Home() {
                 benefits: ['$2000 accessories bonus on eligible vehicles', 'Exceptional service & reliable vehicles', 'Customer-first experience', 'Call 03 9974 5666'],
                 website: 'https://www.werribeemazda.com.au',
                 description: 'BSM extends its heartfelt gratitude to Werribee Mazda for their generous support of this year\'s Durga Puja celebrations. At Werribee Mazda, you\'ll find more than just cars – you\'ll discover a team dedicated to delivering exceptional service, reliable vehicles, and a customer-first experience. Right now, receive $2000 worth of accessories on eligible vehicle purchases and deliveries by 30th September 2025.'
+              },
+              {
+                image: '/sponsors/werribee-mg.png',
+                name: 'Werribee MG',
+                tagline: 'Your local MG dealership in Melbourne\'s South West',
+                tier: 'Gold Partner',
+                benefits: ['10-year warranty on new vehicles', 'Special BSM member pricing', 'Flexible finance options', 'Call 0488 885 279'],
+                website: 'https://werribeemg.com.au',
+                description: 'Werribee MG is proud to support the Bengali Society of Melbourne. Part of the Werribee Automotive Group, they offer a wide range of MG vehicles including hatchbacks and SUVs. With an industry-leading 10-year warranty and special pricing for BSM members, there\'s never been a better time to meet your very own MG! Visit their showroom at 187-189 Old Geelong Road, Hoppers Crossing.'
               }
             ].map((sponsor, index) => (
               <motion.div
                 key={index}
-                className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
+                className="group relative bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
+                whileHover={{ y: -8, scale: 1.02 }}
               >
-                <div className="relative h-48 bg-gray-50 p-4">
+                {/* Logo Section with Gradient Background */}
+                <div className="relative h-56 bg-gradient-to-br from-gray-50 via-white to-gray-50 p-6 border-b border-gray-100">
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <Image
                     src={sponsor.image}
                     alt={sponsor.name}
                     fill
-                    className="object-contain p-4"
+                    className="object-contain p-6 group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{sponsor.name}</h3>
-                  <p className="text-gray-600 mb-4">{sponsor.tagline}</p>
 
+                <div className="p-6">
+                  {/* Header with better typography */}
+                  <div className="mb-4">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors">{sponsor.name}</h3>
+                    <p className="text-gray-600 italic text-sm">{sponsor.tagline}</p>
+                  </div>
+
+                  {/* Description - show full text */}
                   {sponsor.description && (
-                    <p className="text-sm text-gray-700 mb-4 leading-relaxed">
-                      {sponsor.description}
-                    </p>
+                    <div className="mb-4">
+                      <p className="text-sm text-gray-700 leading-relaxed">
+                        {sponsor.description}
+                      </p>
+                    </div>
                   )}
 
+                  {/* Benefits with improved styling */}
                   {sponsor.benefits && (
-                    <div className="mb-4">
-                      <p className="text-sm font-semibold text-green-700 mb-2">BSM Member Benefits:</p>
-                      <ul className="text-sm text-gray-600 space-y-1">
-                        {sponsor.benefits.map((benefit, idx) => (
+                    <div className="mb-6 bg-green-50 rounded-lg p-4 border border-green-100">
+                      <p className="text-sm font-bold text-green-800 mb-3 flex items-center">
+                        <span className="mr-2">🎁</span>
+                        BSM Member Benefits:
+                      </p>
+                      <ul className="text-sm text-gray-700 space-y-2">
+                        {sponsor.benefits.slice(0, 3).map((benefit, idx) => (
                           <li key={idx} className="flex items-start">
-                            <span className="text-green-600 mr-2">✓</span>
-                            <span>{benefit}</span>
+                            <span className="text-green-600 mr-2 mt-0.5">✓</span>
+                            <span className="leading-tight">{benefit}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
                   )}
 
-                  {sponsor.website && sponsor.website !== '#' && (
-                    <a
-                      href={sponsor.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-red-700 transition-colors"
-                    >
-                      Learn More →
-                    </a>
-                  )}
+                  {/* Action Button with improved design */}
+                  <div className="flex items-center justify-between">
+                    {sponsor.website && sponsor.website !== '#' && (
+                      <a
+                        href={sponsor.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/btn flex items-center bg-gradient-to-r from-red-600 to-orange-500 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:from-red-700 hover:to-orange-600 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105"
+                      >
+                        <span>Learn More</span>
+                        <svg className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </a>
+                    )}
+                    <div className="text-xs text-gray-400 font-medium">
+                      TRUSTED PARTNER
+                    </div>
+                  </div>
                 </div>
+
+                {/* Hover Gradient Effect */}
+                <div className="absolute inset-0 bg-gradient-to-t from-red-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
               </motion.div>
             ))}
           </div>

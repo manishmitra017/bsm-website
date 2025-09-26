@@ -68,6 +68,15 @@ const sponsorBanners: SponsorBanner[] = [
     message: '🚗 Exceptional automotive service in Melbourne\'s West - Get $2000 accessories bonus on eligible vehicles!',
     ctaText: 'View Special Offer',
     bgColor: 'from-red-600 to-gray-800'
+  },
+  {
+    id: 7,
+    name: 'Werribee MG',
+    logo: '/sponsors/werribee-mg.png',
+    website: 'https://werribeemg.com.au',
+    message: '🚘 Your local MG dealership - Industry-leading 10-year warranty & special BSM member pricing!',
+    ctaText: 'Explore MG Range',
+    bgColor: 'from-yellow-600 to-orange-600'
   }
 ]
 
