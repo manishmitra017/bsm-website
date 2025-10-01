@@ -11,13 +11,38 @@ export default function Gallery() {
 
   // All photos combined for lightbox navigation
   const allPhotos = [
-    // Durga Puja photos
+    // Durga Puja 2025 photos
+    '/Durgapooja-2025/durga-pooja.jpg',
+    '/Durgapooja-2025/durga-pooja-2.jpg',
+    '/Durgapooja-2025/durga-pooja-3.jpg',
+    '/Durgapooja-2025/durga-pooja-4.jpg',
+    '/Durgapooja-2025/durga-pooja-5.jpg',
+    '/Durgapooja-2025/durga-pooja-6.jpg',
+    '/Durgapooja-2025/durga-pooja-7.jpg',
+    '/Durgapooja-2025/durga-pooja-8.jpg',
+    '/Durgapooja-2025/durga-pooja-10.jpg',
+    '/Durgapooja-2025/durga-pooja-11.jpg',
+    '/Durgapooja-2025/durga-pooja-12.jpg',
+    '/Durgapooja-2025/durga-pooja-13.jpg',
+    '/Durgapooja-2025/durga-pooja-14.jpg',
+    '/Durgapooja-2025/durga-pooja-15.jpg',
+    '/Durgapooja-2025/durga-pooja-16.jpg',
+    '/Durgapooja-2025/durga-pooja-17.jpg',
+    '/Durgapooja-2025/durga-pooja-18.jpg',
+    '/Durgapooja-2025/durga-pooja-19.jpg',
+    '/Durgapooja-2025/durga-pooja-20.jpg',
+    '/Durgapooja-2025/durga-pooja-21.jpg',
+    '/Durgapooja-2025/durga-pooja-22.jpg',
+    '/Durgapooja-2025/durga-pooja-23.jpg',
+    '/Durgapooja-2025/durga-pooja-24.jpg',
+    '/Durgapooja-2025/durga-pooja-25.jpg',
+    '/Durgapooja-2025/durga-pooja-26.jpg',
+    // Durga Puja 2023 photos
     '/durgapooja-2023/20231029_122948-768x1024.jpg',
-    '/durgapooja-2023/20231029_161210-1024x768.jpg', 
+    '/durgapooja-2023/20231029_161210-1024x768.jpg',
     '/durgapooja-2023/20231029_162550-1024x768.jpg',
     '/durgapooja-2023/2-scaled.jpg',
     '/durgapooja-2023/20231029_115058-1024x768.jpg',
-    '/upcoming-events/Durga-Puja-2025-1654-x-841-mm-Horizontal-Jul27-scaled.jpg',
     // Kali Puja photos
     '/kalipooja-2023/1-min.jpg',
     '/kalipooja-2023/2-min.jpg',
@@ -146,24 +171,90 @@ export default function Gallery() {
             </p>
           </motion.div>
 
-          {/* Durga Puja Gallery */}
-          <div className="mb-16">
-            <motion.h3 
-              className="text-2xl md:text-3xl font-bold text-red-600 mb-8 text-center"
+          {/* Durga Puja 2025 Gallery - Featured */}
+          <div className="mb-20">
+            <motion.div
+              className="text-center mb-10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              Durga Puja | দুর্গা পূজা
+              <h3 className="text-3xl md:text-4xl font-bold text-red-600 mb-4">
+                Durga Puja 2025 | দুর্গা পূজা ২০২৫
+              </h3>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Celebrating our magnificent Durga Puja festival held on September 27-28, 2025
+              </p>
+            </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+              {[
+                '/Durgapooja-2025/durga-pooja.jpg',
+                '/Durgapooja-2025/durga-pooja-2.jpg',
+                '/Durgapooja-2025/durga-pooja-3.jpg',
+                '/Durgapooja-2025/durga-pooja-4.jpg',
+                '/Durgapooja-2025/durga-pooja-5.jpg',
+                '/Durgapooja-2025/durga-pooja-6.jpg',
+                '/Durgapooja-2025/durga-pooja-7.jpg',
+                '/Durgapooja-2025/durga-pooja-8.jpg',
+                '/Durgapooja-2025/durga-pooja-10.jpg',
+                '/Durgapooja-2025/durga-pooja-11.jpg',
+                '/Durgapooja-2025/durga-pooja-12.jpg',
+                '/Durgapooja-2025/durga-pooja-13.jpg',
+                '/Durgapooja-2025/durga-pooja-14.jpg',
+                '/Durgapooja-2025/durga-pooja-15.jpg',
+                '/Durgapooja-2025/durga-pooja-16.jpg',
+                '/Durgapooja-2025/durga-pooja-17.jpg',
+                '/Durgapooja-2025/durga-pooja-18.jpg',
+                '/Durgapooja-2025/durga-pooja-19.jpg',
+                '/Durgapooja-2025/durga-pooja-20.jpg',
+                '/Durgapooja-2025/durga-pooja-21.jpg'
+              ].map((photo, index) => (
+                <motion.div
+                  key={index}
+                  className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.05 }}
+                  whileHover={{ y: -5 }}
+                  onClick={() => openLightbox(photo)}
+                >
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={photo}
+                      alt={`Durga Puja 2025 Celebration ${index + 1}`}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <span className="text-white text-3xl">🔍</span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Durga Puja 2023 Gallery */}
+          <div className="mb-16">
+            <motion.h3
+              className="text-2xl md:text-3xl font-bold text-red-500 mb-8 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              Durga Puja 2023 | দুর্গা পূজা ২০২৩
             </motion.h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {[
                 '/durgapooja-2023/20231029_122948-768x1024.jpg',
-                '/durgapooja-2023/20231029_161210-1024x768.jpg', 
+                '/durgapooja-2023/20231029_161210-1024x768.jpg',
                 '/durgapooja-2023/20231029_162550-1024x768.jpg',
                 '/durgapooja-2023/2-scaled.jpg',
-                '/upcoming-events/Durga-Puja-2025-1654-x-841-mm-Horizontal-Jul27-scaled.jpg'
+                '/durgapooja-2023/20231029_115058-1024x768.jpg'
               ].map((photo, index) => (
                 <motion.div
                   key={index}

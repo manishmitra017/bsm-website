@@ -463,10 +463,92 @@ function AnimatedDurgotsav() {
         </div>
       </section>
 
-      {/* Photo Gallery */}
+      {/* Photo Gallery - 2025 */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-red-600 mb-6">
+              Durgotsav 2025 Highlights
+              <span className="block text-orange-600 text-2xl mt-2" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                দুর্গোৎসব ২০২৫ এর আলোকচিত্র
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Relive the magnificent moments from our Durga Puja celebration held on September 27-28, 2025
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              '/Durgapooja-2025/durga-pooja.jpg',
+              '/Durgapooja-2025/durga-pooja-2.jpg',
+              '/Durgapooja-2025/durga-pooja-3.jpg',
+              '/Durgapooja-2025/durga-pooja-4.jpg',
+              '/Durgapooja-2025/durga-pooja-5.jpg',
+              '/Durgapooja-2025/durga-pooja-6.jpg',
+              '/Durgapooja-2025/durga-pooja-7.jpg',
+              '/Durgapooja-2025/durga-pooja-8.jpg',
+              '/Durgapooja-2025/durga-pooja-10.jpg',
+              '/Durgapooja-2025/durga-pooja-11.jpg',
+              '/Durgapooja-2025/durga-pooja-12.jpg',
+              '/Durgapooja-2025/durga-pooja-13.jpg',
+              '/Durgapooja-2025/durga-pooja-14.jpg',
+              '/Durgapooja-2025/durga-pooja-15.jpg',
+              '/Durgapooja-2025/durga-pooja-16.jpg',
+              '/Durgapooja-2025/durga-pooja-17.jpg'
+            ].map((photo, index) => (
+              <motion.div
+                key={index}
+                className="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: index * 0.05 }}
+                whileHover={{ y: -8 }}
+              >
+                <div className="relative h-72 overflow-hidden">
+                  <Image
+                    src={photo}
+                    alt={`Durga Puja 2025 - Moment ${index + 1}`}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-white text-4xl">🔍</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            className="text-center mt-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <Link
+              href="/gallery"
+              className="inline-flex items-center bg-red-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-red-700 transition-colors"
+            >
+              View All 2025 Photos →
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Photo Gallery - 2023 */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

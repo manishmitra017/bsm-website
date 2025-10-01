@@ -663,198 +663,388 @@ export default function SponsorshipPage() {
             </p>
           </motion.div>
 
-          {/* Werribee Mazda Sponsor Card */}
-          <motion.div
-            className="max-w-4xl mx-auto mb-8"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-              <div className="bg-gradient-to-r from-red-600 to-orange-600 p-6">
-                <h3 className="text-2xl font-bold text-white text-center">
-                  🏆 Platinum Sponsor - Durga Puja 2025
-                </h3>
+          {/* All Sponsors Grid - Concise Format */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+            {/* 1. Find My Real Estate */}
+            <motion.div
+              className="bg-white rounded-xl shadow-lg overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <div className="bg-gradient-to-r from-purple-600 to-indigo-600 p-3 text-center">
+                <p className="text-white font-bold text-sm">🏆 Platinum Sponsor</p>
               </div>
-
-              <div className="p-8">
-                <div className="text-center mb-6">
-                  <div className="mb-4">
-                    <Image
-                      src="/sponsors/weeribee-mazda.png"
-                      alt="Werribee Mazda - $2000 Accessory Bonus"
-                      width={600}
-                      height={400}
-                      className="mx-auto rounded-lg shadow-lg"
-                      priority
-                    />
-                  </div>
-                  <h3 className="text-3xl font-bold text-gray-900 mb-2">Werribee Mazda</h3>
-                  <p className="text-gray-600">Your trusted automotive partner in Melbourne's West</p>
+              <div className="p-6">
+                <div className="mb-4">
+                  <Image
+                    src="/sponsors/findmyrealestate.jpeg"
+                    alt="Find My Real Estate"
+                    width={400}
+                    height={200}
+                    className="w-full h-32 object-contain rounded-lg"
+                  />
                 </div>
-
-                <div className="prose prose-lg max-w-none text-gray-700 mb-8">
-                  <p className="mb-4">
-                    BSM extends its heartfelt gratitude to Werribee Mazda for their generous support of this year's Durga Puja celebrations. 🪔💐
-                  </p>
-                  <p className="mb-4">
-                    At Werribee Mazda, you'll find more than just cars – you'll discover a team dedicated to delivering exceptional service, reliable vehicles, and a customer-first experience. 🚗✨
-                  </p>
-
-                  <div className="bg-red-50 border-2 border-red-500 rounded-xl p-6 my-6">
-                    <h4 className="text-xl font-bold text-red-600 mb-3">🔥 Special Offer</h4>
-                    <p className="text-gray-800">
-                      Right now, Werribee Mazda is running an exclusive campaign – receive <strong>$2000 worth of accessories*</strong> on eligible vehicle purchases and deliveries by 30th September 2025.
-                    </p>
-                    <p className="text-sm text-gray-600 mt-2 italic">(*Terms & Conditions apply)</p>
-                  </div>
-
-                  <p className="mb-4">
-                    For all your motoring needs, visit the friendly team at Werribee Mazda today and experience the difference. 🌟
-                  </p>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Find My Real Estate</h3>
+                <p className="text-gray-600 text-sm mb-3">Your trusted real estate partner - Expert property advice and personalized service</p>
+                <div className="bg-purple-50 rounded-lg p-3 mb-3 text-sm">
+                  <p className="text-gray-700">📞 1300 567 424</p>
+                  <p className="text-gray-700">✉️ info@findmyrealestate.com.au</p>
                 </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <h4 className="font-bold text-gray-900 mb-2">📍 Visit Us</h4>
-                    <p className="text-gray-700">28-40 Heaths Road</p>
-                    <p className="text-gray-700">Hoppers Crossing VIC 3029</p>
-                  </div>
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <h4 className="font-bold text-gray-900 mb-2">📞 Contact</h4>
-                    <p className="text-gray-700">Phone: (03) 9974 5666</p>
-                    <p className="text-gray-700">Mon-Fri: 8:30 AM - 6:00 PM</p>
-                  </div>
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a
-                    href="https://www.werribeemazda.com.au"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-gradient-to-r from-red-600 to-orange-600 text-white px-8 py-3 rounded-lg text-center font-bold hover:from-red-700 hover:to-orange-700 transition-all shadow-lg"
-                  >
-                    🌐 Visit Website
-                  </a>
-                  <a
-                    href="tel:0399745666"
-                    className="border-2 border-red-600 text-red-600 px-8 py-3 rounded-lg text-center font-bold hover:bg-red-50 transition-all"
-                  >
-                    📞 Call Now
-                  </a>
-                </div>
+                <a
+                  href="https://www.findmyrealestate.com.au"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-center bg-purple-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-purple-700 transition-colors text-sm"
+                >
+                  Visit Website →
+                </a>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
 
-          {/* Werribee MG Sponsor Card */}
-          <motion.div
-            className="max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-              <div className="bg-gradient-to-r from-yellow-600 to-orange-600 p-6">
-                <h3 className="text-2xl font-bold text-white text-center">
-                  ⭐ Gold Sponsor - Community Partner
-                </h3>
+            {/* 2. Ratul Biswas Finance Broker */}
+            <motion.div
+              className="bg-white rounded-xl shadow-lg overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+            >
+              <div className="bg-gradient-to-r from-purple-600 to-indigo-600 p-3 text-center">
+                <p className="text-white font-bold text-sm">🏆 Platinum Sponsor</p>
               </div>
-
-              <div className="p-8">
-                <div className="text-center mb-6">
-                  <div className="mb-4">
-                    <Image
-                      src="/sponsors/werribee-mg.png"
-                      alt="Werribee MG - Your Local MG Dealership"
-                      width={600}
-                      height={400}
-                      className="mx-auto rounded-lg shadow-lg"
-                      priority
-                    />
-                  </div>
-                  <h3 className="text-3xl font-bold text-gray-900 mb-2">Werribee MG</h3>
-                  <p className="text-gray-600">Your local MG dealership in Melbourne's South West</p>
+              <div className="p-6">
+                <div className="mb-4">
+                  <Image
+                    src="/sponsors/Ratul-Biswas-Finance-Broker.jpeg"
+                    alt="Ratul Biswas Finance Broker"
+                    width={400}
+                    height={200}
+                    className="w-full h-32 object-contain rounded-lg"
+                  />
                 </div>
-
-                <div className="prose prose-lg max-w-none text-gray-700 mb-8">
-                  <p className="mb-4">
-                    BSM is proud to welcome Werribee MG as our newest sponsor! Part of the Werribee Automotive Group, they bring quality MG vehicles and exceptional service to our community. 🚗✨
-                  </p>
-                  <p className="mb-4">
-                    Werribee MG specializes in selling the full range of MG vehicles including stylish hatchbacks and versatile SUVs, all backed by an industry-leading 10-year warranty program.
-                  </p>
-
-                  <div className="bg-yellow-50 border-2 border-yellow-500 rounded-xl p-6 my-6">
-                    <h4 className="text-xl font-bold text-yellow-700 mb-3">🎁 BSM Community Offer</h4>
-                    <p className="text-gray-800">
-                      <strong>"There's never been a better time to meet your very own MG!"</strong><br/>
-                      Special pricing and flexible finance options available for BSM community members.
-                    </p>
-                    <p className="text-sm text-gray-600 mt-2 italic">Contact the sales team and mention BSM for exclusive offers!</p>
-                  </div>
-
-                  <p className="mb-4">
-                    Whether you're looking for your first car, upgrading your family vehicle, or need professional service and maintenance, Werribee MG provides personalized service to help you find the perfect MG. 🌟
-                  </p>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Ratul Biswas Finance Broker</h3>
+                <p className="text-gray-600 text-sm mb-3">Professional finance and mortgage solutions - Home loans, investment loans, refinancing</p>
+                <div className="bg-purple-50 rounded-lg p-3 mb-3 text-sm">
+                  <p className="text-gray-700">📞 0493 229 921</p>
+                  <p className="text-gray-700">🎁 Free consultation for BSM members</p>
                 </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <h4 className="font-bold text-gray-900 mb-2">📍 Visit Our Showroom</h4>
-                    <p className="text-gray-700">187-189 Old Geelong Road</p>
-                    <p className="text-gray-700">Hoppers Crossing VIC 3030</p>
-                  </div>
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <h4 className="font-bold text-gray-900 mb-2">📞 Contact Sales</h4>
-                    <p className="text-gray-700">Phone: 0488 885 279</p>
-                    <p className="text-gray-700">Email: sales@werribeemg.com.au</p>
-                  </div>
-                </div>
-
-                <div className="bg-blue-50 rounded-lg p-4 mb-6">
-                  <h4 className="font-bold text-blue-900 mb-2">🌟 Why Choose Werribee MG?</h4>
-                  <ul className="space-y-2 text-gray-700">
-                    <li className="flex items-start">
-                      <span className="text-green-600 mr-2">✓</span>
-                      <span>Wide range of MG models to suit every lifestyle</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-green-600 mr-2">✓</span>
-                      <span>Industry-leading 10-year warranty on new vehicles</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-green-600 mr-2">✓</span>
-                      <span>Professional service and genuine parts</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-green-600 mr-2">✓</span>
-                      <span>Flexible finance options for private and business customers</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a
-                    href="https://werribeemg.com.au"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-gradient-to-r from-yellow-600 to-orange-600 text-white px-8 py-3 rounded-lg text-center font-bold hover:from-yellow-700 hover:to-orange-700 transition-all shadow-lg"
-                  >
-                    🌐 Visit Website
-                  </a>
-                  <a
-                    href="tel:0488885279"
-                    className="border-2 border-yellow-600 text-yellow-700 px-8 py-3 rounded-lg text-center font-bold hover:bg-yellow-50 transition-all"
-                  >
-                    📞 Call Sales Team
-                  </a>
-                </div>
+                <a
+                  href="https://www.a-f-s.au"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-center bg-purple-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-purple-700 transition-colors text-sm"
+                >
+                  Visit Website →
+                </a>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+
+            {/* 3. ASA Wealth Management */}
+            <motion.div
+              className="bg-white rounded-xl shadow-lg overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <div className="bg-gradient-to-r from-yellow-600 to-orange-600 p-3 text-center">
+                <p className="text-white font-bold text-sm">⭐ Gold Sponsor</p>
+              </div>
+              <div className="p-6">
+                <div className="mb-4">
+                  <Image
+                    src="/sponsors/asa-wealth-management.jpeg"
+                    alt="ASA Wealth Management"
+                    width={400}
+                    height={200}
+                    className="w-full h-32 object-contain rounded-lg"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">ASA Wealth Management</h3>
+                <p className="text-gray-600 text-sm mb-3">Professional wealth management - Investment planning, superannuation, insurance</p>
+                <div className="bg-yellow-50 rounded-lg p-3 mb-3 text-sm">
+                  <p className="text-gray-700">✉️ contact@asawealth.com.au</p>
+                  <p className="text-gray-700">🎁 Free financial health check</p>
+                </div>
+                <a
+                  href="https://asawealth.com.au"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-center bg-yellow-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-yellow-700 transition-colors text-sm"
+                >
+                  Visit Website →
+                </a>
+              </div>
+            </motion.div>
+
+            {/* 4. Cosmic Renewable Energy */}
+            <motion.div
+              className="bg-white rounded-xl shadow-lg overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.25 }}
+            >
+              <div className="bg-gradient-to-r from-yellow-600 to-orange-600 p-3 text-center">
+                <p className="text-white font-bold text-sm">⭐ Gold Sponsor</p>
+              </div>
+              <div className="p-6">
+                <div className="mb-4">
+                  <Image
+                    src="/sponsors/solar-1.jpeg"
+                    alt="Cosmic Renewable Energy"
+                    width={400}
+                    height={200}
+                    className="w-full h-32 object-contain rounded-lg"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Cosmic Renewable Energy</h3>
+                <p className="text-gray-600 text-sm mb-3">Sustainable solar energy solutions - Complete solar and battery systems</p>
+                <div className="bg-yellow-50 rounded-lg p-3 mb-3 text-sm">
+                  <p className="text-gray-700">📞 1300 SOLAR</p>
+                  <p className="text-gray-700">🎁 10% discount for BSM members</p>
+                </div>
+                <a
+                  href="https://www.cosmicrenewableenergy.com.au"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-center bg-yellow-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-yellow-700 transition-colors text-sm"
+                >
+                  Visit Website →
+                </a>
+              </div>
+            </motion.div>
+
+            {/* 5. Choice Estate Agent */}
+            <motion.div
+              className="bg-white rounded-xl shadow-lg overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <div className="bg-gradient-to-r from-gray-400 to-gray-600 p-3 text-center">
+                <p className="text-white font-bold text-sm">🥈 Silver Sponsor</p>
+              </div>
+              <div className="p-6">
+                <div className="mb-4">
+                  <Image
+                    src="/sponsors/choicerealesate.jpeg"
+                    alt="Choice Estate Agent"
+                    width={400}
+                    height={200}
+                    className="w-full h-32 object-contain rounded-lg"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Choice Estate Agent</h3>
+                <p className="text-gray-600 text-sm mb-3">Your first choice for real estate - Ali Afzal, Director</p>
+                <div className="bg-gray-50 rounded-lg p-3 mb-3 text-sm">
+                  <p className="text-gray-700">📞 0430 857 642</p>
+                  <p className="text-gray-700">✉️ alia@choiceestateagent.com.au</p>
+                </div>
+                <a
+                  href="https://choiceestateagent.com.au"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-center bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-gray-700 transition-colors text-sm"
+                >
+                  Visit Website →
+                </a>
+              </div>
+            </motion.div>
+
+            {/* 6. EquityWise Real Estate */}
+            <motion.div
+              className="bg-white rounded-xl shadow-lg overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.35 }}
+            >
+              <div className="bg-gradient-to-r from-gray-400 to-gray-600 p-3 text-center">
+                <p className="text-white font-bold text-sm">🥈 Silver Sponsor</p>
+              </div>
+              <div className="p-6">
+                <div className="mb-4">
+                  <Image
+                    src="/sponsors/equitywiserealestate.jpeg"
+                    alt="EquityWise Real Estate"
+                    width={400}
+                    height={200}
+                    className="w-full h-32 object-contain rounded-lg"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">EquityWise Real Estate</h3>
+                <p className="text-gray-600 text-sm mb-3">Your trusted & local agents - Fair dealings, honest advice</p>
+                <div className="bg-gray-50 rounded-lg p-3 mb-3 text-sm">
+                  <p className="text-gray-700">📞 03 9674 5151</p>
+                  <p className="text-gray-700">✉️ sweta@equitywisere.com.au</p>
+                </div>
+                <a
+                  href="https://www.equitywisere.com.au"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-center bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-gray-700 transition-colors text-sm"
+                >
+                  Visit Website →
+                </a>
+              </div>
+            </motion.div>
+
+            {/* 7. Aussie Home Loans - Subha Saha */}
+            <motion.div
+              className="bg-white rounded-xl shadow-lg overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <div className="bg-gradient-to-r from-yellow-600 to-orange-600 p-3 text-center">
+                <p className="text-white font-bold text-sm">⭐ Gold Sponsor</p>
+              </div>
+              <div className="p-6">
+                <div className="mb-4">
+                  <Image
+                    src="/sponsors/subha-aussie-home.png"
+                    alt="Aussie Home Loans - Subha Saha"
+                    width={400}
+                    height={200}
+                    className="w-full h-32 object-contain rounded-lg"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Aussie Home Loans - Subha Saha</h3>
+                <p className="text-gray-600 text-sm mb-3">Your dedicated mortgage broker - Access 25+ lenders with expert guidance</p>
+                <div className="bg-yellow-50 rounded-lg p-3 mb-3 text-sm">
+                  <p className="text-gray-700">📞 0413 811 354</p>
+                  <p className="text-gray-700">🎁 Free consultation & loan comparison</p>
+                </div>
+                <a
+                  href="https://www.aussie.com.au/mortgage-broker/subha-saha/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-center bg-yellow-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-yellow-700 transition-colors text-sm"
+                >
+                  Visit Website →
+                </a>
+              </div>
+            </motion.div>
+
+            {/* 8. Bengal Solicitors */}
+            <motion.div
+              className="bg-white rounded-xl shadow-lg overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.45 }}
+            >
+              <div className="bg-gradient-to-r from-yellow-600 to-orange-600 p-3 text-center">
+                <p className="text-white font-bold text-sm">⭐ Gold Sponsor</p>
+              </div>
+              <div className="p-6">
+                <div className="mb-4">
+                  <Image
+                    src="/sponsors/BengalSolicitors.jpeg"
+                    alt="Bengal Solicitors"
+                    width={400}
+                    height={200}
+                    className="w-full h-32 object-contain rounded-lg"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Bengal Solicitors</h3>
+                <p className="text-gray-600 text-sm mb-3">Boutique law firm - Property law and conveyancing specialists</p>
+                <div className="bg-yellow-50 rounded-lg p-3 mb-3 text-sm">
+                  <p className="text-gray-700">📞 0430 593 124</p>
+                  <p className="text-gray-700">🎁 Free initial consultation</p>
+                </div>
+                <a
+                  href="https://www.bengalsolicitors.com.au"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-center bg-yellow-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-yellow-700 transition-colors text-sm"
+                >
+                  Visit Website →
+                </a>
+              </div>
+            </motion.div>
+
+            {/* 9. Werribee Mazda */}
+            <motion.div
+              className="bg-white rounded-xl shadow-lg overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+            >
+              <div className="bg-gradient-to-r from-purple-600 to-indigo-600 p-3 text-center">
+                <p className="text-white font-bold text-sm">🏆 Platinum Sponsor</p>
+              </div>
+              <div className="p-6">
+                <div className="mb-4">
+                  <Image
+                    src="/sponsors/weeribee-mazda.png"
+                    alt="Werribee Mazda"
+                    width={400}
+                    height={200}
+                    className="w-full h-32 object-contain rounded-lg"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Werribee Mazda</h3>
+                <p className="text-gray-600 text-sm mb-3">Your trusted automotive partner - Exceptional service & reliable vehicles</p>
+                <div className="bg-purple-50 rounded-lg p-3 mb-3 text-sm">
+                  <p className="text-gray-700">📞 03 9974 5666</p>
+                  <p className="text-gray-700">🎁 $2000 accessories offer</p>
+                </div>
+                <a
+                  href="https://www.werribeemazda.com.au"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-center bg-purple-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-purple-700 transition-colors text-sm"
+                >
+                  Visit Website →
+                </a>
+              </div>
+            </motion.div>
+
+            {/* 10. Werribee MG */}
+            <motion.div
+              className="bg-white rounded-xl shadow-lg overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.55 }}
+            >
+              <div className="bg-gradient-to-r from-yellow-600 to-orange-600 p-3 text-center">
+                <p className="text-white font-bold text-sm">⭐ Gold Sponsor</p>
+              </div>
+              <div className="p-6">
+                <div className="mb-4">
+                  <Image
+                    src="/sponsors/werribee-mg.png"
+                    alt="Werribee MG"
+                    width={400}
+                    height={200}
+                    className="w-full h-32 object-contain rounded-lg"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Werribee MG</h3>
+                <p className="text-gray-600 text-sm mb-3">Your local MG dealership - 10-year warranty & exceptional service</p>
+                <div className="bg-yellow-50 rounded-lg p-3 mb-3 text-sm">
+                  <p className="text-gray-700">📞 0488 885 279</p>
+                  <p className="text-gray-700">🎁 Special BSM member pricing</p>
+                </div>
+                <a
+                  href="https://werribeemg.com.au"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-center bg-yellow-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-yellow-700 transition-colors text-sm"
+                >
+                  Visit Website →
+                </a>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 

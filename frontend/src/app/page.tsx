@@ -15,9 +15,9 @@ export default function Home() {
   // Disable animations in Lambda environment
   const disableAnimations = process.env.NEXT_PUBLIC_DISABLE_ANIMATIONS === 'true'
 
-  // Live countdown to Durga Puja 2025 - Sept 27, 10 AM
+  // Live countdown to Kali Puja 2025 - Oct 19, 6 PM
   useEffect(() => {
-    const targetDate = new Date('2025-09-27T10:00:00').getTime()
+    const targetDate = new Date('2025-10-19T18:00:00').getTime()
 
     const updateCountdown = () => {
       const now = new Date().getTime()
@@ -73,54 +73,22 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      {/* Durga Puja Countdown Marquee */}
-      <div className="bg-gradient-to-r from-red-600 to-orange-500 text-white py-2 overflow-hidden relative">
-        <div className="animate-marquee whitespace-nowrap flex items-center">
-          <span className="mx-8 text-lg font-bold flex items-center">
-            🪔 Durgotsav 2025 Countdown | দুর্গোৎসব ২০২৫ গণনা 🪔
-          </span>
-          <div className="mx-8 flex items-center space-x-6 text-sm font-medium">
-            <div className="text-center">
-              <div className="text-2xl font-bold">{countdown.days}</div>
-              <div>DAYS | দিন</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold">{countdown.hours}</div>
-              <div>HOURS | ঘন্টা</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold">{countdown.minutes}</div>
-              <div>MINUTES | মিনিট</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold">{countdown.seconds}</div>
-              <div>SECONDS | সেকেন্ড</div>
-            </div>
+      {/* Success Banner - Static */}
+      <div className="bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500 text-white py-3 sm:py-4">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
+            <span className="text-base sm:text-lg font-bold">
+              🎉 Durgotsav 2025 - A Grand Success! 🎉
+            </span>
+            <span className="hidden sm:inline text-base">•</span>
+            <span className="text-sm sm:text-base">
+              📸 View Photos | ছবি দেখুন
+            </span>
+            <span className="hidden sm:inline text-base">•</span>
+            <span className="text-sm sm:text-base font-bold">
+              🪔 Next: Kali Puja Oct 19 | কালীপূজা ১৯ অক্টোবর
+            </span>
           </div>
-          <span className="mx-8 text-lg font-bold flex items-center">
-            🎉 September 27-28, 2025 | ২৭-২৮ সেপ্টেম্বর ২০২৫ 🎉
-          </span>
-          <div className="mx-8 flex items-center space-x-6 text-sm font-medium">
-            <div className="text-center">
-              <div className="text-2xl font-bold">{countdown.days}</div>
-              <div>DAYS | দিন</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold">{countdown.hours}</div>
-              <div>HOURS | ঘন্টা</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold">{countdown.minutes}</div>
-              <div>MINUTES | মিনিট</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold">{countdown.seconds}</div>
-              <div>SECONDS | সেকেন্ড</div>
-            </div>
-          </div>
-          <span className="mx-8 text-lg font-bold flex items-center">
-            🪔 Join us for Melbourne's grandest Bengali celebration! | মেলবোর্নের সবচেয়ে বড় বাঙালি উৎসবে যোগ দিন! 🪔
-          </span>
         </div>
       </div>
 
@@ -179,7 +147,7 @@ export default function Home() {
       <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50">
         <div className="absolute inset-0">
           <Image
-            src="/upcoming-events/Durga-Puja-2025-1654-x-841-mm-Horizontal-Jul27-scaled.jpg"
+            src="/Durgapooja-2025/durga-pooja-22.jpg"
             alt="Bengali Society of Melbourne - Durga Puja Festival Celebration"
             fill
             className="object-contain sm:object-cover opacity-30"
@@ -279,61 +247,128 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Upcoming Events Banner */}
+      {/* Recent & Upcoming Events */}
       <section className="py-12 bg-gradient-to-r from-amber-500 via-orange-500 to-red-500">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Recent Event - Durga Puja 2025 */}
           <motion.div
-            className="text-center"
+            className="text-center mb-12"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
             <div className="bg-white rounded-2xl shadow-2xl p-4 sm:p-8 max-w-4xl mx-auto">
-              <div className="mb-4">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-                  🎉 Upcoming Festivals | আসন্ন উৎসব 🎉
+              <div className="mb-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-red-600 mb-2">
+                  ✨ Durgotsav 2025 - Celebrated Successfully! | দুর্গোৎসব ২০২৫ - সফলভাবে সম্পন্ন! ✨
                 </h2>
                 <p className="text-lg text-gray-600">
-                  Join us for our traditional Bengali festivals and community celebrations!
+                  Thank you for making our Durga Puja 2025 a grand celebration!
                 </p>
               </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                <div className="relative rounded-xl overflow-hidden shadow-lg">
+
+              <div className="relative rounded-xl overflow-hidden shadow-lg mb-6">
+                <Link href="/gallery" className="block">
                   <Image
-                    src="/upcoming-events/Durga-Puja-2025-1654-x-841-mm-Horizontal-Jul27-scaled.jpg"
-                    alt="Durga Puja 2025 - Bengali Society of Melbourne"
-                    width={600}
+                    src="/Durgapooja-2025/durga-pooja.jpg"
+                    alt="Durga Puja 2025 Celebration - September 27-28"
+                    width={800}
                     height={400}
-                    className="w-full h-auto object-cover"
+                    className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
                     priority
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                   <div className="absolute bottom-4 left-4 text-white">
-                    <h3 className="text-xl font-bold">Durga Puja 2025</h3>
-                    <p className="text-sm opacity-90">September 27-28, 2025</p>
+                    <h3 className="text-2xl font-bold">Durgotsav 2025 Highlights</h3>
+                    <p className="text-base opacity-90">September 27-28, 2025 • Werribee Functions & Events Centre</p>
                   </div>
-                  <div className="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold">
-                    Sep 27-28
+                  <div className="absolute top-4 right-4 bg-green-600 text-white px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2">
+                    <span>✓</span> Completed
+                  </div>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black/20">
+                    <span className="text-white text-6xl">📸</span>
+                  </div>
+                </Link>
+              </div>
+
+              <Link
+                href="/gallery"
+                className="inline-block bg-red-600 text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-red-700 transition-colors shadow-xl"
+              >
+                View All 2025 Photos | সব ছবি দেখুন
+              </Link>
+            </div>
+          </motion.div>
+
+          {/* Kali Puja Countdown - Separate Section */}
+          <motion.div
+            className="mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="bg-gradient-to-r from-orange-600 via-red-500 to-pink-600 text-white py-8 sm:py-10 rounded-2xl shadow-2xl max-w-4xl mx-auto">
+              <div className="text-center">
+                <h3 className="text-xl sm:text-2xl font-bold mb-6">
+                  ⏰ Countdown to Kali Puja 2025 | কালীপূজা ২০২৫ এর উলটো গণনা
+                </h3>
+                <div className="flex justify-center gap-6 sm:gap-12">
+                  <div className="flex flex-col items-center">
+                    <span className="text-4xl sm:text-5xl font-bold">{countdown.days}</span>
+                    <span className="text-sm sm:text-base mt-2">Days | দিন</span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <span className="text-4xl sm:text-5xl font-bold">{countdown.hours}</span>
+                    <span className="text-sm sm:text-base mt-2">Hours | ঘণ্টা</span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <span className="text-4xl sm:text-5xl font-bold">{countdown.minutes}</span>
+                    <span className="text-sm sm:text-base mt-2">Minutes | মিনিট</span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <span className="text-4xl sm:text-5xl font-bold">{countdown.seconds}</span>
+                    <span className="text-sm sm:text-base mt-2">Seconds | সেকেন্ড</span>
                   </div>
                 </div>
-                <div className="relative rounded-xl overflow-hidden shadow-lg">
-                  <Image
-                    src="/kalipooja-2025/kaalipooja-2025.jpeg"
-                    alt="Kali Puja & Deepavali 2025 - BSM Celebration"
-                    width={600}
-                    height={400}
-                    className="w-full h-auto object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <h3 className="text-xl font-bold">Kali Puja & Deepavali</h3>
-                    <p className="text-sm opacity-90">October 19, 2025 | 6PM - 11PM</p>
-                  </div>
-                  <div className="absolute top-4 right-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-bold">
-                    Oct 19
-                  </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Upcoming Event - Kali Puja */}
+          <motion.div
+            className="text-center"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <div className="bg-white rounded-2xl shadow-2xl p-4 sm:p-8 max-w-4xl mx-auto">
+              <div className="mb-4">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+                  🎉 Upcoming Festival | আসন্ন উৎসব 🎉
+                </h2>
+                <p className="text-lg text-gray-600">
+                  Join us for our next traditional Bengali festival!
+                </p>
+              </div>
+
+              <div className="relative rounded-xl overflow-hidden shadow-lg">
+                <Image
+                  src="/kalipooja-2025/kaalipooja-2025.jpeg"
+                  alt="Kali Puja & Deepavali 2025 - BSM Celebration"
+                  width={800}
+                  height={400}
+                  className="w-full h-auto object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                <div className="absolute bottom-4 left-4 text-white">
+                  <h3 className="text-2xl font-bold">Kali Puja & Deepavali 2025</h3>
+                  <p className="text-base opacity-90">October 19, 2025 | 6:00 PM - 11:30 PM</p>
+                </div>
+                <div className="absolute top-4 right-4 bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-bold">
+                  Oct 19
                 </div>
               </div>
               
@@ -394,95 +429,6 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-          </motion.div>
-        </div>
-      </section>
-
-
-      {/* Durga Puja 2025 Itinerary - Prominent Display */}
-      <section className="py-20 bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            {/* Header */}
-            <div className="mb-12">
-              <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                🎉 Durgotsav 2025 Itinerary 🎉
-              </h2>
-              <p className="text-xl md:text-2xl text-white/90 mb-4" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
-                দুর্গোৎসব ২০২৫ কার্যক্রম
-              </p>
-              <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto">
-                Join us for Melbourne's grandest Bengali cultural celebration! Two days of traditional festivities, cultural performances, and community bonding.
-              </p>
-            </div>
-
-            {/* Itinerary Image */}
-            <motion.div
-              className="relative max-w-4xl mx-auto mb-8"
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <div 
-                className="relative bg-white rounded-2xl shadow-2xl p-4 cursor-pointer group hover:shadow-3xl transition-all duration-300"
-                onClick={() => setSelectedImage({ 
-                  image: '/durga pooja-itenary/iternary-pooja.jpeg', 
-                  title: 'Durgotsav 2025 Complete Itinerary' 
-                })}
-              >
-                <div className="relative h-[400px] md:h-[600px] lg:h-[700px] rounded-xl overflow-hidden">
-                  <Image
-                    src="/durga pooja-itenary/iternary-pooja.jpeg"
-                    alt="Durgotsav 2025 Complete Itinerary - Bengali Society of Melbourne"
-                    fill
-                    className="object-contain group-hover:scale-105 transition-transform duration-500"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute top-4 right-4 bg-red-600 text-white px-4 py-2 rounded-full text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
-                    🔍 Click to view full size
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Call to Action */}
-            <motion.div
-              className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                📅 September 27-28, 2025 | Melbourne
-              </h3>
-              <p className="text-white/90 text-lg mb-6">
-                Two days of authentic Bengali culture, delicious traditional food, mesmerizing performances, and spiritual celebrations. 
-                Don't miss Melbourne's most anticipated cultural event of the year!
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link 
-                  href="/events/durgotsav" 
-                  className="bg-white text-red-600 px-8 py-4 rounded-xl text-lg font-bold hover:bg-red-50 transition-colors shadow-lg"
-                >
-                  View Full Event Details →
-                </Link>
-                <Link 
-                  href="/membership" 
-                  className="border-2 border-white text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-white hover:text-red-600 transition-colors"
-                >
-                  Join BSM Community
-                </Link>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </section>
