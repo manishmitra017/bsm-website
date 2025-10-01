@@ -42,7 +42,7 @@ export default function Gallery() {
     '/durgapooja-2023/20231029_161210-1024x768.jpg',
     '/durgapooja-2023/20231029_162550-1024x768.jpg',
     '/durgapooja-2023/2-scaled.jpg',
-    '/durgapooja-2023/20231029_115058-1024x768.jpg',
+    '/durgapooja-2023/20231029_115058.jpg',
     // Kali Puja photos
     '/kalipooja-2023/1-min.jpg',
     '/kalipooja-2023/2-min.jpg',
@@ -254,7 +254,7 @@ export default function Gallery() {
                 '/durgapooja-2023/20231029_161210-1024x768.jpg',
                 '/durgapooja-2023/20231029_162550-1024x768.jpg',
                 '/durgapooja-2023/2-scaled.jpg',
-                '/durgapooja-2023/20231029_115058-1024x768.jpg'
+                '/durgapooja-2023/20231029_115058.jpg'
               ].map((photo, index) => (
                 <motion.div
                   key={index}
