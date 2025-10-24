@@ -68,12 +68,22 @@ package-lock.json
 # Editor/IDE specific
 .claude/
 
-# Environment Variables
-.env.local
+# Environment Variables & Secrets
+# NEVER commit files with secrets!
 .env
+.env.local
+.env.*.local
+.env.production
+.env.development
+*.env
+secrets/
+.secrets/
+*secrets.json
+credentials.json
 
-# Deployment script with secrets
+# Deployment scripts with hardcoded secrets
 deploy.sh
+*-with-secrets.sh
 
 # CDK
 cdk.out/

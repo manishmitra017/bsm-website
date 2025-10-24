@@ -1,0 +1,126 @@
+name: Deploy to AWS Production
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  AWS_REGION: ap-southeast-2
+  NODE_VERSION: '18'
+
+jobs:
+  deploy:
+    name: Deploy BSM Website
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: |
+            frontend/package-lock.json
+            cdk/package-lock.json
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Install CDK
+        run: npm install -g aws-cdk
+
+      - name: Install CDK dependencies
+        working-directory: ./cdk
+        run: npm ci
+
+      - name: CDK Bootstrap (if needed)
+        working-directory: ./cdk
+        run: |
+          ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
+          if ! aws cloudformation describe-stacks --stack-name CDKToolkit --region $AWS_REGION &> /dev/null; then
+            cdk bootstrap aws://$ACCOUNT_ID/$AWS_REGION
+          fi
+
+      - name: Deploy Auth Lambda Stack
+        working-directory: ./cdk
+        env:
+          NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+          RECAPTCHA_SECRET_KEY: ${{ secrets.RECAPTCHA_SECRET_KEY }}
+          GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
+          GOOGLE_OAUTH_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_CLIENT_SECRET }}
+        run: cdk deploy BsmAuthLambda --require-approval never
+
+      - name: Deploy Hybrid Stack
+        working-directory: ./cdk
+        run: cdk deploy BsmHybridStack --require-approval never
+
+      - name: Install frontend dependencies
+        working-directory: ./frontend
+        run: npm ci
+
+      - name: Build frontend
+        working-directory: ./frontend
+        env:
+          BUILD_STATIC: true
+          NEXT_PUBLIC_GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
+          NEXT_PUBLIC_RECAPTCHA_SITE_KEY: ${{ secrets.NEXT_PUBLIC_RECAPTCHA_SITE_KEY }}
+        run: npm run build
+
+      - name: Get S3 bucket name
+        id: get-bucket
+        run: |
+          BUCKET_NAME=$(aws cloudformation describe-stacks \
+            --stack-name BsmHybridStack \
+            --query 'Stacks[0].Outputs[?OutputKey==`WebsiteBucketName`].OutputValue' \
+            --output text \
+            --region $AWS_REGION)
+          echo "bucket_name=$BUCKET_NAME" >> $GITHUB_OUTPUT
+
+      - name: Upload to S3
+        working-directory: ./frontend
+        run: |
+          # Upload static assets with long cache
+          aws s3 sync out/ s3://${{ steps.get-bucket.outputs.bucket_name }}/ \
+            --delete \
+            --cache-control "public, max-age=31536000, immutable" \
+            --exclude "*.html" \
+            --exclude "*.json"
+
+          # Upload HTML and JSON with no cache
+          aws s3 sync out/ s3://${{ steps.get-bucket.outputs.bucket_name }}/ \
+            --exclude "*" \
+            --include "*.html" \
+            --include "*.json" \
+            --cache-control "public, max-age=0, must-revalidate"
+
+      - name: Get CloudFront distribution ID
+        id: get-distribution
+        run: |
+          DISTRIBUTION_ID=$(aws cloudformation describe-stacks \
+            --stack-name BsmHybridStack \
+            --query 'Stacks[0].Outputs[?OutputKey==`DistributionId`].OutputValue' \
+            --output text \
+            --region $AWS_REGION)
+          echo "distribution_id=$DISTRIBUTION_ID" >> $GITHUB_OUTPUT
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ steps.get-distribution.outputs.distribution_id }} \
+            --paths "/*"
+
+      - name: Deployment summary
+        run: |
+          echo "✅ Deployment successful!"
+          echo "Website URL: https://bsm.org.au"
+          echo "S3 Bucket: ${{ steps.get-bucket.outputs.bucket_name }}"
+          echo "CloudFront Distribution: ${{ steps.get-distribution.outputs.distribution_id }}"

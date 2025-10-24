@@ -37,16 +37,47 @@ fi
 echo -e "${GREEN}✅ All prerequisites met${NC}"
 echo ""
 
-# Step 2: Generate NEXTAUTH_SECRET if not exists
+# Step 2: Check required environment variables
 echo "🔐 Step 2: Checking environment variables..."
 
-if [ -z "$NEXTAUTH_SECRET" ]; then
-    echo -e "${YELLOW}⚠️  NEXTAUTH_SECRET not set, generating...${NC}"
-    export NEXTAUTH_SECRET=$(openssl rand -base64 32)
-    echo "export NEXTAUTH_SECRET=$NEXTAUTH_SECRET" >> ~/.bashrc
-    echo -e "${GREEN}✅ Generated NEXTAUTH_SECRET${NC}"
+# Required secrets
+REQUIRED_SECRETS=(
+    "NEXTAUTH_SECRET"
+    "RECAPTCHA_SECRET_KEY"
+    "GOOGLE_OAUTH_CLIENT_ID"
+    "GOOGLE_OAUTH_CLIENT_SECRET"
+)
+
+MISSING_SECRETS=()
+
+for secret in "${REQUIRED_SECRETS[@]}"; do
+    if [ -z "${!secret}" ]; then
+        MISSING_SECRETS+=("$secret")
+    fi
+done
+
+if [ ${#MISSING_SECRETS[@]} -ne 0 ]; then
+    echo -e "${RED}❌ Missing required environment variables:${NC}"
+    for secret in "${MISSING_SECRETS[@]}"; do
+        echo -e "${RED}   - $secret${NC}"
+    done
+    echo ""
+    echo -e "${YELLOW}💡 Please set these variables before deploying:${NC}"
+    echo ""
+    echo "For local testing (temporary):"
+    echo "  export NEXTAUTH_SECRET=\$(openssl rand -base64 32)"
+    echo "  export RECAPTCHA_SECRET_KEY=your-secret-key"
+    echo "  export GOOGLE_OAUTH_CLIENT_ID=your-client-id"
+    echo "  export GOOGLE_OAUTH_CLIENT_SECRET=your-client-secret"
+    echo ""
+    echo "For production (recommended):"
+    echo "  - Use GitHub Actions with secrets configured in repository settings"
+    echo "  - Or use AWS Secrets Manager"
+    echo ""
+    exit 1
 fi
 
+echo -e "${GREEN}✅ All required secrets are set${NC}"
 echo ""
 
 # Step 3: Install CDK dependencies
