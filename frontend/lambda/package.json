@@ -1,0 +1,25 @@
+{
+  "name": "bsm-lambda-functions",
+  "version": "1.0.0",
+  "description": "Lambda functions for BSM authentication API",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && npm run copy-deps",
+    "copy-deps": "cp -r node_modules dist/",
+    "package": "cd dist && zip -r ../lambda-package.zip .",
+    "deploy": "npm run build && npm run package"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.700.0",
+    "@aws-sdk/lib-dynamodb": "^3.700.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.145",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/node": "^20.11.0",
+    "typescript": "^5.7.0"
+  }
+}

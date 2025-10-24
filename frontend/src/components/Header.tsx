@@ -2,21 +2,40 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
+import { useSession, signOut } from 'next-auth/react'
+import { User, LogOut } from 'lucide-react'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
+  const { data: session, status } = useSession()
+  const userMenuRef = useRef<HTMLDivElement>(null)
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
+        setIsUserMenuOpen(false)
+      }
+    }
+
+    if (isUserMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+      return () => document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isUserMenuOpen])
 
   return (
-    <motion.header 
+    <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-white/95 backdrop-blur-md shadow-lg fixed w-full top-0 z-50"
+      className="bg-white/95 backdrop-blur-md shadow-lg fixed w-full top-0 z-50 overflow-visible"
     >
-      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 sm:h-20 w-full">
+      <nav className="container mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
+        <div className="flex justify-between items-center h-16 sm:h-20 w-full overflow-visible">
           <motion.div 
             className="flex-shrink-0 flex items-center min-w-0"
             whileHover={{ scale: 1.05 }}
@@ -41,8 +60,8 @@ export default function Header() {
             </Link>
           </motion.div>
           
-          <div className="hidden md:flex flex-1 justify-end max-w-none">
-            <div className="flex items-center space-x-3 lg:space-x-4">
+          <div className="hidden md:flex flex-1 justify-end max-w-none overflow-visible">
+            <div className="flex items-center space-x-3 lg:space-x-4 overflow-visible">
               {[
                 { href: '/about', label: 'About BSM' },
                 { href: '/events', label: 'Events' },
@@ -51,7 +70,8 @@ export default function Header() {
                 { href: '/sponsorship', label: 'Sponsorship' },
                 { href: '/membership', label: 'Membership' },
                 { href: '/donation', label: 'Donation' },
-                { href: '/contact', label: 'Contact' }
+                { href: '/contact', label: 'Contact' },
+                ...(session ? [{ href: '/member/dashboard', label: 'Dashboard' }] : [])
               ].map((item) => (
                 <motion.div
                   key={item.href}
@@ -84,18 +104,92 @@ export default function Header() {
                 </a>
               </div>
               
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex-shrink-0"
-              >
-                <Link 
-                  href="/membership" 
-                  className="bg-gradient-to-r from-red-600 to-orange-600 text-white px-4 lg:px-6 py-2 lg:py-3 rounded-full text-xs lg:text-sm font-medium hover:from-red-700 hover:to-orange-700 transition-all duration-200 shadow-lg hover:shadow-xl whitespace-nowrap inline-block"
-                >
-                  Join Us
-                </Link>
-              </motion.div>
+              {/* Auth buttons - show different UI based on login status */}
+              {status === 'loading' ? (
+                <div className="w-24 h-10 bg-gray-200 animate-pulse rounded-full"></div>
+              ) : session ? (
+                // Logged in - show user menu
+                <div ref={userMenuRef} className="relative flex-shrink-0 z-[60]">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                    className="flex items-center gap-2 px-3 lg:px-4 py-2 bg-gradient-to-r from-red-600 to-orange-600 text-white rounded-full text-xs lg:text-sm font-medium hover:from-red-700 hover:to-orange-700 transition-all duration-200 shadow-lg hover:shadow-xl whitespace-nowrap"
+                  >
+                    <User className="w-4 h-4" />
+                    <span className="hidden lg:inline">{session.user?.name?.split(' ')[0]}</span>
+                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </motion.button>
+
+                  {/* Dropdown menu */}
+                  {isUserMenuOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-[100]"
+                    >
+                      <div className="px-4 py-3 border-b border-gray-200">
+                        <p className="text-sm font-semibold text-gray-900">{session.user?.name}</p>
+                        <p className="text-xs text-gray-600 truncate">{session.user?.email}</p>
+                        <p className="text-xs text-red-600 font-medium mt-1">
+                          {session.user?.memberId}
+                        </p>
+                      </div>
+
+                      <Link
+                        href="/member/dashboard"
+                        className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors"
+                        onClick={() => setIsUserMenuOpen(false)}
+                      >
+                        <User className="w-4 h-4" />
+                        Dashboard
+                      </Link>
+
+                      <button
+                        onClick={() => {
+                          setIsUserMenuOpen(false)
+                          signOut({ callbackUrl: '/' })
+                        }}
+                        className="flex items-center gap-2 w-full px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors"
+                      >
+                        <LogOut className="w-4 h-4" />
+                        Sign Out
+                      </button>
+                    </motion.div>
+                  )}
+                </div>
+              ) : (
+                // Not logged in - show Sign In and Join Us buttons
+                <>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex-shrink-0"
+                  >
+                    <Link
+                      href="/auth/signin"
+                      className="text-gray-700 hover:text-red-600 px-3 py-2 text-xs lg:text-sm font-medium transition-colors duration-200 whitespace-nowrap"
+                    >
+                      Sign In
+                    </Link>
+                  </motion.div>
+
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex-shrink-0"
+                  >
+                    <Link
+                      href="/auth/signup"
+                      className="bg-gradient-to-r from-red-600 to-orange-600 text-white px-4 lg:px-6 py-2 lg:py-3 rounded-full text-xs lg:text-sm font-medium hover:from-red-700 hover:to-orange-700 transition-all duration-200 shadow-lg hover:shadow-xl whitespace-nowrap inline-block"
+                    >
+                      Join Us
+                    </Link>
+                  </motion.div>
+                </>
+              )}
             </div>
           </div>
           
@@ -167,20 +261,78 @@ export default function Header() {
               >
                 Donation
               </Link>
-              <Link 
-                href="/contact" 
+              <Link
+                href="/contact"
                 className="block text-gray-700 hover:text-red-600 hover:bg-red-50 px-3 py-3 text-base font-medium rounded-md transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 Contact
               </Link>
-              <Link 
-                href="/membership" 
-                className="block bg-red-600 text-white px-3 py-3 rounded-md text-base font-medium hover:bg-red-700 transition-colors mx-3 my-2 text-center"
-                onClick={() => setIsOpen(false)}
-              >
-                Join Us
-              </Link>
+
+              {/* Dashboard link for logged-in users */}
+              {session && (
+                <Link
+                  href="/member/dashboard"
+                  className="block text-gray-700 hover:text-red-600 hover:bg-red-50 px-3 py-3 text-base font-medium rounded-md transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Dashboard
+                </Link>
+              )}
+
+              {/* Mobile auth buttons */}
+              {status === 'loading' ? (
+                <div className="mx-3 my-2 h-12 bg-gray-200 animate-pulse rounded-md"></div>
+              ) : session ? (
+                // Logged in - mobile user menu
+                <div className="mx-3 my-2 space-y-2">
+                  <div className="bg-red-50 border border-red-200 rounded-md p-3">
+                    <p className="text-sm font-semibold text-gray-900">{session.user?.name}</p>
+                    <p className="text-xs text-gray-600 truncate">{session.user?.email}</p>
+                    <p className="text-xs text-red-600 font-medium mt-1">
+                      {session.user?.memberId}
+                    </p>
+                  </div>
+
+                  <Link
+                    href="/member/dashboard"
+                    className="flex items-center justify-center gap-2 border-2 border-red-600 text-red-600 px-3 py-3 rounded-md text-base font-medium hover:bg-red-50 transition-colors"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <User className="w-4 h-4" />
+                    Dashboard
+                  </Link>
+
+                  <button
+                    onClick={() => {
+                      setIsOpen(false)
+                      signOut({ callbackUrl: '/' })
+                    }}
+                    className="flex items-center justify-center gap-2 w-full bg-red-600 text-white px-3 py-3 rounded-md text-base font-medium hover:bg-red-700 transition-colors"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    Sign Out
+                  </button>
+                </div>
+              ) : (
+                // Not logged in - mobile sign in/join buttons
+                <>
+                  <Link
+                    href="/auth/signin"
+                    className="block border-2 border-red-600 text-red-600 px-3 py-3 rounded-md text-base font-medium hover:bg-red-50 transition-colors mx-3 my-2 text-center"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Sign In
+                  </Link>
+                  <Link
+                    href="/auth/signup"
+                    className="block bg-red-600 text-white px-3 py-3 rounded-md text-base font-medium hover:bg-red-700 transition-colors mx-3 my-2 text-center"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Join Us
+                  </Link>
+                </>
+              )}
               <div className="px-3 py-2 space-y-2">
                 <a 
                   href="tel:0403617375" 

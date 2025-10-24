@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  # DynamoDB Local for development
+  dynamodb-local:
+    image: amazon/dynamodb-local:latest
+    container_name: bsm-dynamodb-local
+    ports:
+      - "8000:8000"
+    # Use in-memory mode (faster, no persistence issues)
+    # Data resets on container restart - perfect for development!
+    command: "-jar DynamoDBLocal.jar -inMemory -sharedDb"
+    working_dir: /home/dynamodblocal

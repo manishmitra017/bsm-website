@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import GoogleMapsScript from "@/components/GoogleMapsScript";
+import RecaptchaScript from "@/components/RecaptchaScript";
+import { Providers } from "@/components/Providers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -66,12 +68,15 @@ export default function RootLayout({
   return (
     <html lang="en-AU">
       <body className={`${inter.className} ${bengaliFont.variable} antialiased`}>
-        <GoogleMapsScript />
-        <Header />
-        <main className="pt-16 sm:pt-20 min-h-screen" role="main">
-          {children}
-        </main>
-        <Footer />
+        <Providers>
+          <GoogleMapsScript />
+          <RecaptchaScript />
+          <Header />
+          <main className="pt-16 sm:pt-20 min-h-screen" role="main">
+            {children}
+          </main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
