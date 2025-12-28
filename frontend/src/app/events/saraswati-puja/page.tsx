@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import AddToCalendar from '@/components/AddToCalendar'
 
 export default function SaraswatiPuja() {
   return (
@@ -46,6 +47,80 @@ export default function SaraswatiPuja() {
             <p className="text-lg sm:text-xl text-orange-600 mt-2" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
               জ্ঞান, শিল্প ও শিক্ষার দেবী
             </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Event Details Banner */}
+      <section className="py-16 bg-gradient-to-r from-yellow-500 to-orange-500">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="bg-white rounded-2xl shadow-2xl overflow-hidden"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-2">
+              <div className="relative h-96 lg:h-auto">
+                <Image
+                  src="/saraswatipooja/484723908_674928888396859_4255503182297146288_n.jpg"
+                  alt="Saraswati Puja 2026 Event"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-8 lg:p-12">
+                <h3 className="text-3xl font-bold text-yellow-800 mb-6">
+                  Event Details 2026
+                  <span className="block text-orange-600 text-xl mt-2" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                    অনুষ্ঠানের বিবরণ ২০২৬
+                  </span>
+                </h3>
+                <div className="space-y-4">
+                  <div className="flex items-start">
+                    <span className="text-2xl mr-4">📅</span>
+                    <div>
+                      <p className="font-bold text-gray-900">Date</p>
+                      <p className="text-gray-700">February 1, 2026</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <span className="text-2xl mr-4">📍</span>
+                    <div>
+                      <p className="font-bold text-gray-900">Venue</p>
+                      <p className="text-gray-700">Lara Hall</p>
+                      <p className="text-gray-600">1A Flinders Ave, Lara VIC 3212</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <span className="text-2xl mr-4">📚</span>
+                    <div>
+                      <p className="font-bold text-gray-900">Activities</p>
+                      <p className="text-gray-700">Saraswati Puja, Pushpanjali, Hatey Khori, Cultural Programs, Prasad</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-8 flex flex-col sm:flex-row gap-4">
+                  <Link
+                    href="/membership"
+                    className="bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition-colors text-center"
+                  >
+                    Register Now
+                  </Link>
+                  <AddToCalendar
+                    event={{
+                      title: 'Saraswati Puja 2026 - Bengali Society of Melbourne',
+                      description: 'Celebrate the Goddess of Knowledge, Arts, and Learning. Join us for Saraswati Puja with Pushpanjali, Hatey Khori ceremony, cultural programs, and community feast.',
+                      startDate: '2026-02-01T10:00:00+11:00',
+                      endDate: '2026-02-01T18:00:00+11:00',
+                      location: 'Lara Hall, 1A Flinders Ave, Lara VIC 3212'
+                    }}
+                    buttonClassName="border-2 border-yellow-600 text-yellow-600 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-600 hover:text-white transition-colors text-center"
+                  />
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>

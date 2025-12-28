@@ -110,10 +110,10 @@ export default function Events() {
         </div>
       </section>
 
-      {/* Upcoming Events 2025 */}
-      <section className="py-20 bg-gradient-to-r from-purple-600 via-red-600 to-orange-600">
+      {/* Upcoming Events 2026 */}
+      <section className="py-20 bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -121,9 +121,9 @@ export default function Events() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Upcoming Events 2025
+              Upcoming Events 2026
               <span className="block text-yellow-200 text-2xl mt-2" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
-                আসন্ন অনুষ্ঠান ২০২৫
+                আসন্ন অনুষ্ঠান ২০২৬
               </span>
             </h2>
             <p className="text-xl text-red-100 max-w-3xl mx-auto">
@@ -132,7 +132,7 @@ export default function Events() {
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 max-w-3xl mx-auto">
-            {/* Kalipuja & Diwali 2025 */}
+            {/* Saraswati Puja 2026 */}
             <motion.div
               className="bg-white/95 backdrop-blur-lg rounded-2xl shadow-2xl"
               initial={{ opacity: 0, x: 50 }}
@@ -142,49 +142,49 @@ export default function Events() {
             >
               <div className="relative h-48 overflow-hidden">
                 <Image
-                  src="/kalipooja-2023/1-min.jpg"
-                  alt="Kalipuja & Diwali 2025 - BSM Melbourne"
+                  src="/saraswatipooja/484723908_674928888396859_4255503182297146288_n.jpg"
+                  alt="Saraswati Puja 2026 - BSM Melbourne"
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-purple-600/80 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-yellow-600/80 to-transparent"></div>
                 <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md rounded-full p-3">
-                  <span className="text-3xl">🕉️</span>
+                  <span className="text-3xl">📚</span>
                 </div>
-                <div className="absolute bottom-4 right-4 bg-purple-600 text-white px-4 py-2 rounded-full font-bold">
-                  Oct 19
+                <div className="absolute bottom-4 right-4 bg-yellow-600 text-white px-4 py-2 rounded-full font-bold">
+                  Feb 1
                 </div>
               </div>
-              
+
               <div className="p-8">
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-1">Kalipuja & Diwali 2025</h3>
-                    <p className="text-purple-600 font-medium" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
-                      কালী পূজা ও দীপাবলি ২০২৫
+                    <h3 className="text-2xl font-bold text-gray-900 mb-1">Saraswati Puja 2026</h3>
+                    <p className="text-yellow-600 font-medium" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                      সরস্বতী পূজা ২০২৬
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="text-lg font-bold text-purple-600">October 19</p>
-                    <p className="text-sm text-gray-600">6:00 PM - 11:30 PM</p>
+                    <p className="text-lg font-bold text-yellow-600">February 1</p>
+                    <p className="text-sm text-gray-600">2026</p>
                   </div>
                 </div>
 
                 <div className="space-y-4 mb-6">
                   <div className="flex items-start space-x-3">
-                    <span className="text-purple-600 text-lg">📍</span>
+                    <span className="text-yellow-600 text-lg">📍</span>
                     <div>
-                      <p className="font-semibold text-gray-900">Werribee Masonic Centre</p>
-                      <p className="text-gray-600 text-sm">223 Watton St, Werribee, VIC 3030</p>
+                      <p className="font-semibold text-gray-900">Lara Hall</p>
+                      <p className="text-gray-600 text-sm">1A Flinders Ave, Lara VIC 3212</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <span className="text-purple-600 text-lg">💫</span>
+                    <span className="text-yellow-600 text-lg">📚</span>
                     <div>
                       <p className="text-gray-700">
-                        The Festival of Light symbolizes the spiritual victory of light over darkness, 
-                        good over evil, and knowledge over ignorance. A time to destroy dark desires 
-                        and embrace goodwill.
+                        Celebrate the Goddess of Knowledge, Arts, and Learning. Saraswati Puja is a beautiful
+                        celebration dedicated to seeking blessings for wisdom, creativity, and success in
+                        academic and artistic endeavors.
                       </p>
                     </div>
                   </div>
@@ -192,20 +192,20 @@ export default function Events() {
 
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Link
-                    href="/events/kalipuja-deepavali"
-                    className="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors text-center"
+                    href="/events/saraswati-puja"
+                    className="bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition-colors text-center"
                   >
                     Learn More
                   </Link>
                   <AddToCalendar
                     event={{
-                      title: 'Kalipuja & Diwali 2025 - Bengali Society of Melbourne',
-                      description: 'The Festival of Light symbolizes the spiritual victory of light over darkness, good over evil, and knowledge over ignorance. A time to destroy dark desires and embrace goodwill.',
-                      startDate: '2025-10-20T18:00:00+11:00',
-                      endDate: '2025-10-20T23:30:00+11:00',
-                      location: 'Werribee Masonic Centre, 223 Watton St, Werribee, VIC 3030'
+                      title: 'Saraswati Puja 2026 - Bengali Society of Melbourne',
+                      description: 'Celebrate the Goddess of Knowledge, Arts, and Learning. Saraswati Puja is a beautiful celebration dedicated to seeking blessings for wisdom, creativity, and success in academic and artistic endeavors.',
+                      startDate: '2026-02-01T10:00:00+11:00',
+                      endDate: '2026-02-01T18:00:00+11:00',
+                      location: 'Lara Hall, 1A Flinders Ave, Lara VIC 3212'
                     }}
-                    buttonClassName="border-2 border-purple-600 text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-purple-50 transition-colors text-center"
+                    buttonClassName="border-2 border-yellow-600 text-yellow-600 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-50 transition-colors text-center"
                   />
                 </div>
               </div>

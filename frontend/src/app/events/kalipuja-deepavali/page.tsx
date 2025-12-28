@@ -50,7 +50,7 @@ export default function KalipujaDeepavali() {
         </div>
       </section>
 
-      {/* Event Details Banner */}
+      {/* Event Details Banner - 2025 Completed */}
       <section className="py-16 bg-gradient-to-r from-purple-600 to-pink-600">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -64,16 +64,19 @@ export default function KalipujaDeepavali() {
               <div className="relative h-96 lg:h-auto">
                 <Image
                   src="/kalipooja-2025/kaalipooja-2025.jpeg"
-                  alt="Kali Puja & Deepavali 2025 Event Flyer"
+                  alt="Kali Puja & Deepavali 2025 Event"
                   fill
                   className="object-cover"
                 />
+                <div className="absolute top-4 right-4 bg-green-600 text-white px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2">
+                  <span>✓</span> Completed
+                </div>
               </div>
               <div className="p-8 lg:p-12">
                 <h3 className="text-3xl font-bold text-purple-800 mb-6">
-                  Event Details 2025
+                  Kali Puja 2025 - Successfully Celebrated!
                   <span className="block text-pink-600 text-xl mt-2" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
-                    অনুষ্ঠানের বিবরণ ২০২৫
+                    কালীপূজা ২০২৫ - সফলভাবে সম্পন্ন!
                   </span>
                 </h3>
                 <div className="space-y-4">
@@ -107,12 +110,17 @@ export default function KalipujaDeepavali() {
                     </div>
                   </div>
                 </div>
-                <div className="mt-8 flex flex-col sm:flex-row gap-4">
+                <div className="mt-8 bg-green-50 p-4 rounded-lg border border-green-200">
+                  <p className="text-green-800 font-medium">
+                    Thank you to everyone who joined us for Kali Puja & Deepavali 2025! View photos in our gallery.
+                  </p>
+                </div>
+                <div className="mt-6 flex flex-col sm:flex-row gap-4">
                   <Link
-                    href="/membership"
+                    href="/gallery"
                     className="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors text-center"
                   >
-                    Register Now
+                    View Photos
                   </Link>
                   <Link
                     href="/events"
