@@ -15,9 +15,9 @@ export default function Home() {
   // Disable animations in Lambda environment
   const disableAnimations = process.env.NEXT_PUBLIC_DISABLE_ANIMATIONS === 'true'
 
-  // Live countdown to Kali Puja 2025 - Oct 19, 6 PM
+  // Live countdown to Saraswati Puja 2026 - Feb 1, 10 AM
   useEffect(() => {
-    const targetDate = new Date('2025-10-19T18:00:00').getTime()
+    const targetDate = new Date('2026-02-01T10:00:00').getTime()
 
     const updateCountdown = () => {
       const now = new Date().getTime()
@@ -86,7 +86,7 @@ export default function Home() {
             </span>
             <span className="hidden sm:inline text-base">•</span>
             <span className="text-sm sm:text-base font-bold">
-              🪔 Next: Kali Puja Oct 19 | কালীপূজা ১৯ অক্টোবর
+              📚 Next: Saraswati Puja Feb 1 | সরস্বতী পূজা ১ ফেব্রুয়ারি
             </span>
           </div>
         </div>
@@ -301,7 +301,57 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Kali Puja Countdown - Separate Section */}
+          {/* Kali Puja 2025 - Completed */}
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="bg-white rounded-2xl shadow-2xl p-4 sm:p-8 max-w-4xl mx-auto">
+              <div className="mb-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-purple-600 mb-2">
+                  ✨ Kali Puja & Deepavali 2025 - Celebrated Successfully! | কালীপূজা ও দীপাবলি ২০২৫ - সফলভাবে সম্পন্ন! ✨
+                </h2>
+                <p className="text-lg text-gray-600">
+                  Thank you for making our Kali Puja & Deepavali 2025 a grand celebration!
+                </p>
+              </div>
+
+              <div className="relative rounded-xl overflow-hidden shadow-lg mb-6">
+                <Link href="/gallery" className="block">
+                  <Image
+                    src="/kalipooja-2025/kaalipooja-2025.jpeg"
+                    alt="Kali Puja & Deepavali 2025 Celebration - October 19"
+                    width={800}
+                    height={400}
+                    className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <h3 className="text-2xl font-bold">Kali Puja & Deepavali 2025 Highlights</h3>
+                    <p className="text-base opacity-90">October 19, 2025 • Werribee Masonic Centre</p>
+                  </div>
+                  <div className="absolute top-4 right-4 bg-green-600 text-white px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2">
+                    <span>✓</span> Completed
+                  </div>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black/20">
+                    <span className="text-white text-6xl">📸</span>
+                  </div>
+                </Link>
+              </div>
+
+              <Link
+                href="/gallery"
+                className="inline-block bg-purple-600 text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-purple-700 transition-colors shadow-xl"
+              >
+                View Kali Puja Photos | কালীপূজার ছবি দেখুন
+              </Link>
+            </div>
+          </motion.div>
+
+          {/* Saraswati Puja Countdown - Separate Section */}
           <motion.div
             className="mb-12"
             initial={{ opacity: 0, y: 30 }}
@@ -309,10 +359,10 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="bg-gradient-to-r from-orange-600 via-red-500 to-pink-600 text-white py-8 sm:py-10 rounded-2xl shadow-2xl max-w-4xl mx-auto">
+            <div className="bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 text-white py-8 sm:py-10 rounded-2xl shadow-2xl max-w-4xl mx-auto">
               <div className="text-center">
                 <h3 className="text-xl sm:text-2xl font-bold mb-6">
-                  ⏰ Countdown to Kali Puja 2025 | কালীপূজা ২০২৫ এর উলটো গণনা
+                  ⏰ Countdown to Saraswati Puja 2026 | সরস্বতী পূজা ২০২৬ এর উলটো গণনা
                 </h3>
                 <div className="flex justify-center gap-6 sm:gap-12">
                   <div className="flex flex-col items-center">
@@ -336,7 +386,7 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Upcoming Event - Kali Puja */}
+          {/* Upcoming Event - Saraswati Puja */}
           <motion.div
             className="text-center"
             initial={{ opacity: 0, scale: 0.95 }}
@@ -356,32 +406,32 @@ export default function Home() {
 
               <div className="relative rounded-xl overflow-hidden shadow-lg">
                 <Image
-                  src="/kalipooja-2025/kaalipooja-2025.jpeg"
-                  alt="Kali Puja & Deepavali 2025 - BSM Celebration"
+                  src="/saraswatipooja/484723908_674928888396859_4255503182297146288_n.jpg"
+                  alt="Saraswati Puja 2026 - BSM Celebration"
                   width={800}
                   height={400}
                   className="w-full h-auto object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
                 <div className="absolute bottom-4 left-4 text-white">
-                  <h3 className="text-2xl font-bold">Kali Puja & Deepavali 2025</h3>
-                  <p className="text-base opacity-90">October 19, 2025 | 6:00 PM - 11:30 PM</p>
+                  <h3 className="text-2xl font-bold">Saraswati Puja 2026</h3>
+                  <p className="text-base opacity-90">February 1, 2026 | Lara Hall, Lara VIC</p>
                 </div>
-                <div className="absolute top-4 right-4 bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-bold">
-                  Oct 19
+                <div className="absolute top-4 right-4 bg-yellow-600 text-white px-4 py-2 rounded-full text-sm font-bold">
+                  Feb 1
                 </div>
               </div>
-              
+
               <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
-                <Link 
-                  href="/events" 
-                  className="bg-red-600 text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-red-700 transition-colors shadow-xl"
+                <Link
+                  href="/events/saraswati-puja"
+                  className="bg-yellow-600 text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-yellow-700 transition-colors shadow-xl"
                 >
-                  View All Events | সব অনুষ্ঠান
+                  Event Details | বিস্তারিত
                 </Link>
-                <Link 
-                  href="/membership" 
-                  className="border-2 border-red-600 text-red-600 px-8 py-4 rounded-lg text-lg font-bold hover:bg-red-600 hover:text-white transition-colors"
+                <Link
+                  href="/membership"
+                  className="border-2 border-yellow-600 text-yellow-600 px-8 py-4 rounded-lg text-lg font-bold hover:bg-yellow-600 hover:text-white transition-colors"
                 >
                   Join BSM | যোগ দিন
                 </Link>
