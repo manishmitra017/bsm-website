@@ -9,7 +9,63 @@ import { useState } from 'react'
 import Head from 'next/head'
 
 function AnimatedDurgotsav() {
-  const [selectedImage, setSelectedImage] = useState<{image: string, title: string} | null>(null)
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const [selectedIndex, setSelectedIndex] = useState<number>(0)
+
+  // All photos for lightbox navigation (itinerary + 2025 + 2023)
+  const allPhotos = [
+    // Itinerary
+    '/durga pooja-itenary/iternary-pooja.jpeg',
+    // 2025 photos
+    '/Durgapooja-2025/durga-pooja.jpg',
+    '/Durgapooja-2025/durga-pooja-2.jpg',
+    '/Durgapooja-2025/durga-pooja-3.jpg',
+    '/Durgapooja-2025/durga-pooja-4.jpg',
+    '/Durgapooja-2025/durga-pooja-5.jpg',
+    '/Durgapooja-2025/durga-pooja-6.jpg',
+    '/Durgapooja-2025/durga-pooja-7.jpg',
+    '/Durgapooja-2025/durga-pooja-8.jpg',
+    '/Durgapooja-2025/durga-pooja-10.jpg',
+    '/Durgapooja-2025/durga-pooja-11.jpg',
+    '/Durgapooja-2025/durga-pooja-12.jpg',
+    '/Durgapooja-2025/durga-pooja-13.jpg',
+    '/Durgapooja-2025/durga-pooja-14.jpg',
+    '/Durgapooja-2025/durga-pooja-15.jpg',
+    '/Durgapooja-2025/durga-pooja-16.jpg',
+    '/Durgapooja-2025/durga-pooja-17.jpg',
+    // 2023 photos
+    '/durgapooja-2023/20231029_122948-768x1024.jpg',
+    '/durgapooja-2023/20231029_161210-1024x768.jpg',
+    '/durgapooja-2023/20231029_162550-1024x768.jpg',
+    '/durgapooja-2023/Screenshot-2024-07-23-202650-1024x816.png',
+  ]
+
+  const openLightbox = (imageSrc: string) => {
+    setSelectedImage(imageSrc)
+    setSelectedIndex(allPhotos.indexOf(imageSrc))
+  }
+
+  const closeLightbox = () => {
+    setSelectedImage(null)
+  }
+
+  const nextImage = () => {
+    const nextIndex = (selectedIndex + 1) % allPhotos.length
+    setSelectedIndex(nextIndex)
+    setSelectedImage(allPhotos[nextIndex])
+  }
+
+  const prevImage = () => {
+    const prevIndex = selectedIndex === 0 ? allPhotos.length - 1 : selectedIndex - 1
+    setSelectedIndex(prevIndex)
+    setSelectedImage(allPhotos[prevIndex])
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape') closeLightbox()
+    if (e.key === 'ArrowRight') nextImage()
+    if (e.key === 'ArrowLeft') prevImage()
+  }
   // JSON-LD structured data for SEO
   const jsonLd = {
     "@context": "https://schema.org",
@@ -227,10 +283,7 @@ function AnimatedDurgotsav() {
             >
               <div 
                 className="relative bg-white rounded-2xl shadow-2xl p-6 cursor-pointer group hover:shadow-3xl transition-all duration-300"
-                onClick={() => setSelectedImage({ 
-                  image: '/durga pooja-itenary/iternary-pooja.jpeg', 
-                  title: 'Durgotsav 2025 Complete Event Itinerary' 
-                })}
+                onClick={() => openLightbox('/durga pooja-itenary/iternary-pooja.jpeg')}
               >
                 <div className="relative h-[500px] md:h-[700px] lg:h-[800px] rounded-xl overflow-hidden">
                   <Image
@@ -511,6 +564,7 @@ function AnimatedDurgotsav() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.05 }}
                 whileHover={{ y: -8 }}
+                onClick={() => openLightbox(photo)}
               >
                 <div className="relative h-72 overflow-hidden">
                   <Image
@@ -587,12 +641,13 @@ function AnimatedDurgotsav() {
             ].map((photo, index) => (
               <motion.div
                 key={index}
-                className="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500"
+                className="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 whileHover={{ y: -8 }}
+                onClick={() => openLightbox(photo.src)}
               >
                 <div className="relative h-80 overflow-hidden">
                   <Image
@@ -602,6 +657,9 @@ function AnimatedDurgotsav() {
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-white text-4xl">🔍</span>
+                  </div>
                 </div>
                 <div className="absolute inset-x-0 bottom-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                   <p className="text-sm font-medium">{photo.alt}</p>
@@ -663,42 +721,68 @@ function AnimatedDurgotsav() {
         </div>
       </section>
 
-      {/* Image Lightbox Modal */}
+      {/* Lightbox Modal */}
       {selectedImage && (
-        <div 
-          className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
+        <motion.div
+          className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center p-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={closeLightbox}
+          onKeyDown={handleKeyDown}
+          tabIndex={0}
         >
-          <motion.div
-            className="relative bg-white rounded-xl p-4 max-w-7xl max-h-[95vh] overflow-hidden"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className="relative max-w-4xl max-h-full w-full h-full flex items-center justify-center">
+            {/* Close Button */}
             <button
-              onClick={() => setSelectedImage(null)}
-              className="absolute top-4 right-4 z-10 bg-red-600 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-red-700 transition-colors text-xl font-bold shadow-lg"
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 z-10 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-70 transition-colors"
+              aria-label="Close"
             >
-              ✕
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
             </button>
-            <div className="text-center mb-4">
-              <h3 className="text-2xl font-bold text-gray-900">{selectedImage.title}</h3>
-            </div>
-            <div className="relative w-full h-[80vh] flex items-center justify-center">
+
+            {/* Previous Button */}
+            <button
+              onClick={(e) => { e.stopPropagation(); prevImage(); }}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 rounded-full p-3 hover:bg-opacity-70 transition-colors z-10"
+              aria-label="Previous image"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            {/* Next Button */}
+            <button
+              onClick={(e) => { e.stopPropagation(); nextImage(); }}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 rounded-full p-3 hover:bg-opacity-70 transition-colors z-10"
+              aria-label="Next image"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* Image */}
+            <div className="relative w-full h-full max-w-4xl max-h-full" onClick={(e) => e.stopPropagation()}>
               <Image
-                src={selectedImage.image}
-                alt={selectedImage.title}
+                src={selectedImage}
+                alt="Durgotsav"
                 fill
-                className="object-contain rounded-lg"
+                className="object-contain"
                 priority
               />
             </div>
-            <div className="text-center mt-4 text-gray-500 text-sm">
-              Click outside or press the ✕ to close
+
+            {/* Image Counter */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white bg-black bg-opacity-50 px-4 py-2 rounded-full">
+              {selectedIndex + 1} of {allPhotos.length}
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       )}
     </div>
   )

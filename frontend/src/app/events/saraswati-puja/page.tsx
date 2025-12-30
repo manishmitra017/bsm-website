@@ -3,9 +3,73 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 import AddToCalendar from '@/components/AddToCalendar'
 
 export default function SaraswatiPuja() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const [selectedIndex, setSelectedIndex] = useState<number>(0)
+
+  // All photos for lightbox navigation
+  const allPhotos = [
+    '/saraswatipooja-2025/20240218_104006.jpg',
+    '/saraswatipooja-2025/20240218_104141.jpg',
+    '/saraswatipooja-2025/20240218_104422.jpg',
+    '/saraswatipooja-2025/20240218_104430.jpg',
+    '/saraswatipooja-2025/20240218_105148.jpg',
+    '/saraswatipooja-2025/20240218_105156.jpg',
+    '/saraswatipooja-2025/20240218_110336.jpg',
+    '/saraswatipooja-2025/20240218_110340.jpg',
+    '/saraswatipooja-2025/20240218_110345.jpg',
+    '/saraswatipooja-2025/20240218_110348.jpg',
+    '/saraswatipooja-2025/20240218_110535.jpg',
+    '/saraswatipooja-2025/20240218_110620.jpg',
+    '/saraswatipooja-2025/20240218_113230.jpg',
+    '/saraswatipooja-2025/20240218_113608.jpg',
+    '/saraswatipooja-2025/20240218_114021.jpg',
+    '/saraswatipooja-2025/20240218_114024.jpg',
+    '/saraswatipooja-2025/20240218_114025.jpg',
+    '/saraswatipooja-2025/20240218_114026.jpg',
+    '/saraswatipooja-2025/20240218_114027.jpg',
+    '/saraswatipooja-2025/20240218_114516.jpg',
+    '/saraswatipooja-2025/20240218_114606.jpg',
+    '/saraswatipooja-2025/20240218_114612.jpg',
+    '/saraswatipooja-2025/20240218_115451.jpg',
+    '/saraswatipooja-2025/20240218_120100.jpg',
+    '/saraswatipooja-2025/20240218_120207.jpg',
+    '/saraswatipooja-2025/20240218_120208.jpg',
+    '/saraswatipooja-2025/20240218_120209.jpg',
+    '/saraswatipooja-2025/20240218_120455.jpg',
+    '/saraswatipooja-2025/20240218_125012.jpg',
+  ]
+
+  const openLightbox = (imageSrc: string) => {
+    setSelectedImage(imageSrc)
+    setSelectedIndex(allPhotos.indexOf(imageSrc))
+  }
+
+  const closeLightbox = () => {
+    setSelectedImage(null)
+  }
+
+  const nextImage = () => {
+    const nextIndex = (selectedIndex + 1) % allPhotos.length
+    setSelectedIndex(nextIndex)
+    setSelectedImage(allPhotos[nextIndex])
+  }
+
+  const prevImage = () => {
+    const prevIndex = selectedIndex === 0 ? allPhotos.length - 1 : selectedIndex - 1
+    setSelectedIndex(prevIndex)
+    setSelectedImage(allPhotos[prevIndex])
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape') closeLightbox()
+    if (e.key === 'ArrowRight') nextImage()
+    if (e.key === 'ArrowLeft') prevImage()
+  }
+
   return (
     <div>
       {/* Hero Section */}
@@ -64,7 +128,7 @@ export default function SaraswatiPuja() {
             <div className="grid grid-cols-1 lg:grid-cols-2">
               <div className="relative h-96 lg:h-auto">
                 <Image
-                  src="/saraswatipooja/484723908_674928888396859_4255503182297146288_n.jpg"
+                  src="/saraswatipooja-2025/484723908_674928888396859_4255503182297146288_n.jpg"
                   alt="Saraswati Puja 2026 Event"
                   fill
                   className="object-cover"
@@ -171,8 +235,8 @@ export default function SaraswatiPuja() {
             >
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/communityphotos/20231029_125732-scaled.jpg"
-                  alt="Saraswati Puja Celebration"
+                  src="/saraswatipooja-2025/20240218_113230.jpg"
+                  alt="Saraswati Puja 2025 Celebration"
                   fill
                   className="object-cover"
                 />
@@ -303,6 +367,89 @@ export default function SaraswatiPuja() {
         </div>
       </section>
 
+      {/* Photo Gallery - 2025 */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-yellow-600 mb-6">
+              Saraswati Puja 2025 Gallery
+              <span className="block text-orange-600 text-2xl mt-2" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                সরস্বতী পূজা ২০২৫ ছবির সংগ্রহ
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Glimpses from our Saraswati Puja celebration - A preview of what to expect in 2026
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              '/saraswatipooja-2025/20240218_113230.jpg',
+              '/saraswatipooja-2025/20240218_114015.jpg',
+              '/saraswatipooja-2025/20240218_115955.jpg',
+              '/saraswatipooja-2025/20240218_115958.jpg',
+              '/saraswatipooja-2025/20240218_124542.jpg',
+              '/saraswatipooja-2025/20240218_124604.jpg',
+              '/saraswatipooja-2025/20240218_124626.jpg',
+              '/saraswatipooja-2025/20240218_125107.jpg',
+              '/saraswatipooja-2025/20240218_130917.jpg',
+              '/saraswatipooja-2025/20240218_130936.jpg',
+              '/saraswatipooja-2025/20240218_133401.jpg',
+              '/saraswatipooja-2025/20240218_134822.jpg',
+              '/saraswatipooja-2025/20240218_171132.jpg',
+              '/saraswatipooja-2025/20240218_171653.jpg',
+              '/saraswatipooja-2025/20240218_172006.jpg',
+              '/saraswatipooja-2025/20240218_172342.jpg'
+            ].map((photo, index) => (
+              <motion.div
+                key={index}
+                className="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: index * 0.05 }}
+                whileHover={{ y: -8 }}
+                onClick={() => openLightbox(photo)}
+              >
+                <div className="relative h-72 overflow-hidden">
+                  <Image
+                    src={photo}
+                    alt={`Saraswati Puja 2025 - Moment ${index + 1}`}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-white text-4xl">🔍</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            className="text-center mt-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <Link
+              href="/gallery"
+              className="inline-flex items-center bg-yellow-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-yellow-700 transition-colors"
+            >
+              View All Photos →
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Call to Action */}
       <section className="py-16 bg-yellow-600">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -338,6 +485,70 @@ export default function SaraswatiPuja() {
           </motion.div>
         </div>
       </section>
+
+      {/* Lightbox Modal */}
+      {selectedImage && (
+        <motion.div
+          className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center p-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={closeLightbox}
+          onKeyDown={handleKeyDown}
+          tabIndex={0}
+        >
+          <div className="relative max-w-4xl max-h-full w-full h-full flex items-center justify-center">
+            {/* Close Button */}
+            <button
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 z-10 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-70 transition-colors"
+              aria-label="Close"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Previous Button */}
+            <button
+              onClick={(e) => { e.stopPropagation(); prevImage(); }}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 rounded-full p-3 hover:bg-opacity-70 transition-colors z-10"
+              aria-label="Previous image"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            {/* Next Button */}
+            <button
+              onClick={(e) => { e.stopPropagation(); nextImage(); }}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 rounded-full p-3 hover:bg-opacity-70 transition-colors z-10"
+              aria-label="Next image"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* Image */}
+            <div className="relative w-full h-full max-w-4xl max-h-full" onClick={(e) => e.stopPropagation()}>
+              <Image
+                src={selectedImage}
+                alt="Saraswati Puja 2025"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+
+            {/* Image Counter */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white bg-black bg-opacity-50 px-4 py-2 rounded-full">
+              {selectedIndex + 1} of {allPhotos.length}
+            </div>
+          </div>
+        </motion.div>
+      )}
     </div>
   )
 }
