@@ -43,7 +43,26 @@ export default function Gallery() {
     '/durgapooja-2023/20231029_162550-1024x768.jpg',
     '/durgapooja-2023/2-scaled.jpg',
     '/durgapooja-2023/20231029_115058.jpg',
-    // Kali Puja photos
+    // Kali Puja 2025 photos
+    '/kalipooja-2025/20251019_195953.jpg',
+    '/kalipooja-2025/20251019_200009.jpg',
+    '/kalipooja-2025/20251019_200010.jpg',
+    '/kalipooja-2025/20251019_200046.jpg',
+    '/kalipooja-2025/20251019_200127.jpg',
+    '/kalipooja-2025/20251019_200201.jpg',
+    '/kalipooja-2025/20251019_200206.jpg',
+    '/kalipooja-2025/20251019_203633.jpg',
+    '/kalipooja-2025/20251019_204046.jpg',
+    '/kalipooja-2025/20251019_212020.jpg',
+    '/kalipooja-2025/20251019_212030.jpg',
+    '/kalipooja-2025/20251019_212031.jpg',
+    '/kalipooja-2025/20251019_212212.jpg',
+    '/kalipooja-2025/20251019_221118.jpg',
+    '/kalipooja-2025/20251019_221138.jpg',
+    '/kalipooja-2025/20251019_222155.jpg',
+    '/kalipooja-2025/20251019_222158.jpg',
+    '/kalipooja-2025/kaalipooja-2025.jpeg',
+    // Kali Puja 2023 photos
     '/kalipooja-2023/1-min.jpg',
     '/kalipooja-2023/2-min.jpg',
     '/kalipooja-2023/3-min.jpg',
@@ -54,12 +73,33 @@ export default function Gallery() {
     '/kalipooja-2023/8-min-1.jpg',
     '/kalipooja-2023/9-min-1.jpg',
     '/kalipooja-2023/10-min-1.jpg',
-    // Saraswati Puja photos
-    '/saraswatipooja/484723908_674928888396859_4255503182297146288_n.jpg',
-    '/saraswatipooja/482245011_674928638396884_430187257159668509_n.jpg',
-    '/saraswatipooja/482246795_674928861730195_7681626211387078032_n.jpg',
-    '/saraswatipooja/484902584_674928981730183_4879967772399001889_n.jpg',
-    '/saraswatipooja/485008173_674928991730182_2174511964673968281_n.jpg',
+    '/kalipooja-2023/11-min-1.jpg',
+    '/kalipooja-2023/12-min-1.jpg',
+    '/kalipooja-2023/13-min.jpg',
+    '/kalipooja-2023/14-min.jpg',
+    '/kalipooja-2023/15-min.jpg',
+    '/kalipooja-2023/17-min.jpg',
+    // Saraswati Puja 2025 photos
+    '/saraswatipooja-2025/20240218_113230.jpg',
+    '/saraswatipooja-2025/20240218_114015.jpg',
+    '/saraswatipooja-2025/20240218_115955.jpg',
+    '/saraswatipooja-2025/20240218_115958.jpg',
+    '/saraswatipooja-2025/20240218_124542.jpg',
+    '/saraswatipooja-2025/20240218_124604.jpg',
+    '/saraswatipooja-2025/20240218_124626.jpg',
+    '/saraswatipooja-2025/20240218_125107.jpg',
+    '/saraswatipooja-2025/20240218_130917.jpg',
+    '/saraswatipooja-2025/20240218_130936.jpg',
+    '/saraswatipooja-2025/20240218_130937.jpg',
+    '/saraswatipooja-2025/20240218_133401.jpg',
+    '/saraswatipooja-2025/20240218_134822.jpg',
+    '/saraswatipooja-2025/20240218_134824.jpg',
+    '/saraswatipooja-2025/20240218_171132.jpg',
+    '/saraswatipooja-2025/20240218_171653.jpg',
+    '/saraswatipooja-2025/20240218_171911.jpg',
+    '/saraswatipooja-2025/20240218_172006.jpg',
+    '/saraswatipooja-2025/20240218_172342.jpg',
+    '/saraswatipooja-2025/20240218_172544.jpg',
     // Pohela Boishakh photos
     '/pahelaboishak/484347968_674863851736696_6373890908421337640_n.jpg',
     '/pahelaboishak/482987675_674770235079391_8646617153893484712_n.jpg',
@@ -283,16 +323,80 @@ export default function Gallery() {
             </div>
           </div>
 
-          {/* Kali Puja Gallery */}
-          <div className="mb-16">
-            <motion.h3 
-              className="text-2xl md:text-3xl font-bold text-purple-600 mb-8 text-center"
+          {/* Kali Puja 2025 Gallery - Featured */}
+          <div className="mb-20">
+            <motion.div
+              className="text-center mb-10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              Kali Puja & Deepavali | কালী পূজা ও দীপাবলি
+              <h3 className="text-3xl md:text-4xl font-bold text-purple-600 mb-4">
+                Kali Puja & Deepavali 2025 | কালী পূজা ও দীপাবলি ২০২৫
+              </h3>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Celebrating our Kali Puja and Deepavali festival held in October 2025
+              </p>
+            </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+              {[
+                '/kalipooja-2025/20251019_195953.jpg',
+                '/kalipooja-2025/20251019_200009.jpg',
+                '/kalipooja-2025/20251019_200010.jpg',
+                '/kalipooja-2025/20251019_200046.jpg',
+                '/kalipooja-2025/20251019_200127.jpg',
+                '/kalipooja-2025/20251019_200201.jpg',
+                '/kalipooja-2025/20251019_200206.jpg',
+                '/kalipooja-2025/20251019_203633.jpg',
+                '/kalipooja-2025/20251019_204046.jpg',
+                '/kalipooja-2025/20251019_212020.jpg',
+                '/kalipooja-2025/20251019_212030.jpg',
+                '/kalipooja-2025/20251019_212031.jpg',
+                '/kalipooja-2025/20251019_212212.jpg',
+                '/kalipooja-2025/20251019_221118.jpg',
+                '/kalipooja-2025/20251019_221138.jpg',
+                '/kalipooja-2025/20251019_222155.jpg',
+                '/kalipooja-2025/20251019_222158.jpg',
+                '/kalipooja-2025/kaalipooja-2025.jpeg'
+              ].map((photo, index) => (
+                <motion.div
+                  key={index}
+                  className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.05 }}
+                  whileHover={{ y: -5 }}
+                  onClick={() => openLightbox(photo)}
+                >
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={photo}
+                      alt={`Kali Puja 2025 Celebration ${index + 1}`}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <span className="text-white text-3xl">🔍</span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Kali Puja 2023 Gallery */}
+          <div className="mb-16">
+            <motion.h3
+              className="text-2xl md:text-3xl font-bold text-purple-500 mb-8 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              Kali Puja & Deepavali 2023 | কালী পূজা ও দীপাবলি ২০২৩
             </motion.h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
               {[
@@ -305,7 +409,13 @@ export default function Gallery() {
                 '/kalipooja-2023/7-min-1.jpg',
                 '/kalipooja-2023/8-min-1.jpg',
                 '/kalipooja-2023/9-min-1.jpg',
-                '/kalipooja-2023/10-min-1.jpg'
+                '/kalipooja-2023/10-min-1.jpg',
+                '/kalipooja-2023/11-min-1.jpg',
+                '/kalipooja-2023/12-min-1.jpg',
+                '/kalipooja-2023/13-min.jpg',
+                '/kalipooja-2023/14-min.jpg',
+                '/kalipooja-2023/15-min.jpg',
+                '/kalipooja-2023/17-min.jpg'
               ].map((photo, index) => (
                 <motion.div
                   key={index}
@@ -320,7 +430,7 @@ export default function Gallery() {
                   <div className="relative h-48 overflow-hidden">
                     <Image
                       src={photo}
-                      alt={`Kali Puja Celebration ${index + 1}`}
+                      alt={`Kali Puja 2023 Celebration ${index + 1}`}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
@@ -383,24 +493,44 @@ export default function Gallery() {
             </div>
           </div>
 
-          {/* Saraswati Puja Gallery */}
+          {/* Saraswati Puja 2025 Gallery */}
           <div className="mb-16">
-            <motion.h3 
-              className="text-2xl md:text-3xl font-bold text-yellow-600 mb-8 text-center"
+            <motion.div
+              className="text-center mb-10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              Saraswati Puja | সরস্বতী পূজা
-            </motion.h3>
+              <h3 className="text-3xl md:text-4xl font-bold text-yellow-600 mb-4">
+                Saraswati Puja 2025 | সরস্বতী পূজা ২০২৫
+              </h3>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Celebrating the goddess of knowledge and arts in February 2025
+              </p>
+            </motion.div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
               {[
-                '/saraswatipooja/484723908_674928888396859_4255503182297146288_n.jpg',
-                '/saraswatipooja/482245011_674928638396884_430187257159668509_n.jpg',
-                '/saraswatipooja/482246795_674928861730195_7681626211387078032_n.jpg',
-                '/saraswatipooja/484902584_674928981730183_4879967772399001889_n.jpg',
-                '/saraswatipooja/485008173_674928991730182_2174511964673968281_n.jpg'
+                '/saraswatipooja-2025/20240218_113230.jpg',
+                '/saraswatipooja-2025/20240218_114015.jpg',
+                '/saraswatipooja-2025/20240218_115955.jpg',
+                '/saraswatipooja-2025/20240218_115958.jpg',
+                '/saraswatipooja-2025/20240218_124542.jpg',
+                '/saraswatipooja-2025/20240218_124604.jpg',
+                '/saraswatipooja-2025/20240218_124626.jpg',
+                '/saraswatipooja-2025/20240218_125107.jpg',
+                '/saraswatipooja-2025/20240218_130917.jpg',
+                '/saraswatipooja-2025/20240218_130936.jpg',
+                '/saraswatipooja-2025/20240218_130937.jpg',
+                '/saraswatipooja-2025/20240218_133401.jpg',
+                '/saraswatipooja-2025/20240218_134822.jpg',
+                '/saraswatipooja-2025/20240218_134824.jpg',
+                '/saraswatipooja-2025/20240218_171132.jpg',
+                '/saraswatipooja-2025/20240218_171653.jpg',
+                '/saraswatipooja-2025/20240218_171911.jpg',
+                '/saraswatipooja-2025/20240218_172006.jpg',
+                '/saraswatipooja-2025/20240218_172342.jpg',
+                '/saraswatipooja-2025/20240218_172544.jpg'
               ].map((photo, index) => (
                 <motion.div
                   key={index}
@@ -408,14 +538,14 @@ export default function Gallery() {
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  transition={{ duration: 0.6, delay: index * 0.05 }}
                   whileHover={{ y: -5 }}
                   onClick={() => openLightbox(photo)}
                 >
                   <div className="relative h-48 overflow-hidden">
                     <Image
                       src={photo}
-                      alt={`Saraswati Puja Celebration ${index + 1}`}
+                      alt={`Saraswati Puja 2025 Celebration ${index + 1}`}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />

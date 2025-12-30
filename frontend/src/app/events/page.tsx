@@ -142,7 +142,7 @@ export default function Events() {
             >
               <div className="relative h-48 overflow-hidden">
                 <Image
-                  src="/saraswatipooja/484723908_674928888396859_4255503182297146288_n.jpg"
+                  src="/saraswatipooja-2025/484723908_674928888396859_4255503182297146288_n.jpg"
                   alt="Saraswati Puja 2026 - BSM Melbourne"
                   fill
                   className="object-cover"
@@ -212,6 +212,151 @@ export default function Events() {
             </motion.div>
           </div>
 
+        </div>
+      </section>
+
+      {/* Completed Events 2025 */}
+      <section className="py-20 bg-gray-100">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Completed Events 2025
+              <span className="block text-green-600 text-2xl mt-2" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                সম্পন্ন অনুষ্ঠান ২০২৫
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Thank you for making our 2025 celebrations grand! Relive the memories below.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* Durgotsav 2025 - Completed */}
+            <motion.div
+              className="bg-white rounded-2xl shadow-lg overflow-hidden relative"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="absolute top-4 right-4 z-10 bg-green-500 text-white px-4 py-2 rounded-full font-bold text-sm flex items-center">
+                ✓ Completed
+              </div>
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src="/Durgapooja-2025/durga-pooja.jpg"
+                  alt="Durgotsav 2025 - Celebrated Successfully"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-red-600/80 to-transparent"></div>
+                <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md rounded-full p-3">
+                  <span className="text-3xl">🪔</span>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-1">Durgotsav 2025</h3>
+                <p className="text-red-600 font-medium text-sm mb-3" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                  দুর্গোৎসব ২০২৫ - সফলভাবে সম্পন্ন!
+                </p>
+                <p className="text-gray-600 text-sm mb-4">
+                  September 27-28, 2025 at Werribee Functions Centre
+                </p>
+                <Link
+                  href="/events/durgotsav"
+                  className="inline-flex items-center text-red-600 font-semibold hover:text-red-700 transition-colors"
+                >
+                  View Photos & Highlights →
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Kali Puja 2025 - Completed */}
+            <motion.div
+              className="bg-white rounded-2xl shadow-lg overflow-hidden relative"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+            >
+              <div className="absolute top-4 right-4 z-10 bg-green-500 text-white px-4 py-2 rounded-full font-bold text-sm flex items-center">
+                ✓ Completed
+              </div>
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src="/kalipooja-2023/1-min.jpg"
+                  alt="Kali Puja 2025 - Celebrated Successfully"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-purple-600/80 to-transparent"></div>
+                <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md rounded-full p-3">
+                  <span className="text-3xl">🕉️</span>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-1">Kali Puja & Deepavali 2025</h3>
+                <p className="text-purple-600 font-medium text-sm mb-3" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                  কালীপূজা ও দীপাবলি ২০২৫ - সফলভাবে সম্পন্ন!
+                </p>
+                <p className="text-gray-600 text-sm mb-4">
+                  October/November 2025 - Festival of Lights
+                </p>
+                <Link
+                  href="/events/kalipuja-deepavali"
+                  className="inline-flex items-center text-purple-600 font-semibold hover:text-purple-700 transition-colors"
+                >
+                  View Photos & Highlights →
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Saraswati Puja 2025 - Completed */}
+            <motion.div
+              className="bg-white rounded-2xl shadow-lg overflow-hidden relative"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <div className="absolute top-4 right-4 z-10 bg-green-500 text-white px-4 py-2 rounded-full font-bold text-sm flex items-center">
+                ✓ Completed
+              </div>
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src="/saraswatipooja-2025/20240218_124542.jpg"
+                  alt="Saraswati Puja 2025 - Celebrated Successfully"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-yellow-600/80 to-transparent"></div>
+                <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md rounded-full p-3">
+                  <span className="text-3xl">📚</span>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-1">Saraswati Puja 2025</h3>
+                <p className="text-yellow-600 font-medium text-sm mb-3" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                  সরস্বতী পূজা ২০২৫ - সফলভাবে সম্পন্ন!
+                </p>
+                <p className="text-gray-600 text-sm mb-4">
+                  February 2025 - Goddess of Knowledge
+                </p>
+                <Link
+                  href="/events/saraswati-puja"
+                  className="inline-flex items-center text-yellow-600 font-semibold hover:text-yellow-700 transition-colors"
+                >
+                  View Photos & Highlights →
+                </Link>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 

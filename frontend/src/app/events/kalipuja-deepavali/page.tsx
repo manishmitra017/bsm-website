@@ -3,8 +3,81 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 
 export default function KalipujaDeepavali() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const [selectedIndex, setSelectedIndex] = useState<number>(0)
+
+  // All photos for lightbox navigation (2025 + 2023)
+  const allPhotos = [
+    // 2025 photos
+    '/kalipooja-2025/20251019_195953.jpg',
+    '/kalipooja-2025/20251019_200009.jpg',
+    '/kalipooja-2025/20251019_200010.jpg',
+    '/kalipooja-2025/20251019_200046.jpg',
+    '/kalipooja-2025/20251019_200127.jpg',
+    '/kalipooja-2025/20251019_200201.jpg',
+    '/kalipooja-2025/20251019_200203(0).jpg',
+    '/kalipooja-2025/20251019_200206.jpg',
+    '/kalipooja-2025/20251019_203633.jpg',
+    '/kalipooja-2025/20251019_204046.jpg',
+    '/kalipooja-2025/20251019_212020.jpg',
+    '/kalipooja-2025/20251019_212030.jpg',
+    '/kalipooja-2025/20251019_212031.jpg',
+    '/kalipooja-2025/20251019_212212.jpg',
+    '/kalipooja-2025/20251019_220859~2.jpg',
+    '/kalipooja-2025/20251019_220905~2.jpg',
+    '/kalipooja-2025/20251019_221118.jpg',
+    '/kalipooja-2025/20251019_221138.jpg',
+    '/kalipooja-2025/20251019_222155.jpg',
+    '/kalipooja-2025/20251019_222158.jpg',
+    // 2023 photos
+    '/kalipooja-2023/1-min.jpg',
+    '/kalipooja-2023/2-min.jpg',
+    '/kalipooja-2023/3-min.jpg',
+    '/kalipooja-2023/4-min-1.jpg',
+    '/kalipooja-2023/5-min-1.jpg',
+    '/kalipooja-2023/6-min.jpg',
+    '/kalipooja-2023/7-min-1.jpg',
+    '/kalipooja-2023/8-min-1.jpg',
+    '/kalipooja-2023/9-min-1.jpg',
+    '/kalipooja-2023/10-min-1.jpg',
+    '/kalipooja-2023/11-min.jpg',
+    '/kalipooja-2023/12-min.jpg',
+    '/kalipooja-2023/13-min.jpg',
+    '/kalipooja-2023/14-min.jpg',
+    '/kalipooja-2023/15-min.jpg',
+    '/kalipooja-2023/17-min.jpg',
+  ]
+
+  const openLightbox = (imageSrc: string) => {
+    setSelectedImage(imageSrc)
+    setSelectedIndex(allPhotos.indexOf(imageSrc))
+  }
+
+  const closeLightbox = () => {
+    setSelectedImage(null)
+  }
+
+  const nextImage = () => {
+    const nextIndex = (selectedIndex + 1) % allPhotos.length
+    setSelectedIndex(nextIndex)
+    setSelectedImage(allPhotos[nextIndex])
+  }
+
+  const prevImage = () => {
+    const prevIndex = selectedIndex === 0 ? allPhotos.length - 1 : selectedIndex - 1
+    setSelectedIndex(prevIndex)
+    setSelectedImage(allPhotos[prevIndex])
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape') closeLightbox()
+    if (e.key === 'ArrowRight') nextImage()
+    if (e.key === 'ArrowLeft') prevImage()
+  }
+
   return (
     <div>
       {/* Hero Section */}
@@ -313,6 +386,211 @@ export default function KalipujaDeepavali() {
         </div>
       </section>
 
+      {/* Photo Gallery - 2025 */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-purple-600 mb-6">
+              Kali Puja 2025 Gallery
+              <span className="block text-pink-600 text-2xl mt-2" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                কালীপূজা ২০২৫ ছবির সংগ্রহ
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Relive the divine moments from our Kali Puja & Deepavali 2025 celebration
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              '/kalipooja-2025/20251019_195953.jpg',
+              '/kalipooja-2025/20251019_200009.jpg',
+              '/kalipooja-2025/20251019_200010.jpg',
+              '/kalipooja-2025/20251019_200046.jpg',
+              '/kalipooja-2025/20251019_200127.jpg',
+              '/kalipooja-2025/20251019_200201.jpg',
+              '/kalipooja-2025/20251019_200203(0).jpg',
+              '/kalipooja-2025/20251019_200206.jpg',
+              '/kalipooja-2025/20251019_203633.jpg',
+              '/kalipooja-2025/20251019_204046.jpg',
+              '/kalipooja-2025/20251019_212020.jpg',
+              '/kalipooja-2025/20251019_212030.jpg',
+              '/kalipooja-2025/20251019_212031.jpg',
+              '/kalipooja-2025/20251019_212212.jpg',
+              '/kalipooja-2025/20251019_220859~2.jpg',
+              '/kalipooja-2025/20251019_220905~2.jpg',
+              '/kalipooja-2025/20251019_221118.jpg',
+              '/kalipooja-2025/20251019_221138.jpg',
+              '/kalipooja-2025/20251019_222155.jpg',
+              '/kalipooja-2025/20251019_222158.jpg',
+            ].map((photo, index) => (
+              <motion.div
+                key={index}
+                className="relative group overflow-hidden rounded-2xl shadow-lg cursor-pointer"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                onClick={() => openLightbox(photo)}
+              >
+                <div className="relative h-72 overflow-hidden">
+                  <Image
+                    src={photo}
+                    alt={`Kali Puja 2025 - Moment ${index + 1}`}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-purple-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-white text-4xl">🔍</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Video Gallery - 2025 */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-purple-600 mb-6">
+              Kali Puja 2025 Videos
+              <span className="block text-pink-600 text-2xl mt-2" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                কালীপূজা ২০২৫ ভিডিও
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Watch the highlights from our celebration
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <motion.div
+              className="rounded-2xl overflow-hidden shadow-lg"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <video
+                controls
+                className="w-full h-auto"
+                poster="/kalipooja-2025/20251019_212020.jpg"
+              >
+                <source src="/kalipooja-2025/20251019_213841.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <div className="p-4 bg-purple-50">
+                <h3 className="font-bold text-purple-800">Kali Puja Rituals</h3>
+                <p className="text-gray-600 text-sm">Divine moments from the puja ceremony</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="rounded-2xl overflow-hidden shadow-lg"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <video
+                controls
+                className="w-full h-auto"
+                poster="/kalipooja-2025/20251019_222155.jpg"
+              >
+                <source src="/kalipooja-2025/20251019_222137.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <div className="p-4 bg-purple-50">
+                <h3 className="font-bold text-purple-800">Celebration Highlights</h3>
+                <p className="text-gray-600 text-sm">Community celebration and festivities</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Photo Gallery - 2023 */}
+      <section className="py-20 bg-gray-100">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-purple-600 mb-6">
+              Kali Puja 2023 Gallery
+              <span className="block text-pink-600 text-2xl mt-2" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                কালীপূজা ২০২৩ ছবির সংগ্রহ
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Memories from our Kali Puja & Deepavali 2023 celebration
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              '/kalipooja-2023/1-min.jpg',
+              '/kalipooja-2023/2-min.jpg',
+              '/kalipooja-2023/3-min.jpg',
+              '/kalipooja-2023/4-min-1.jpg',
+              '/kalipooja-2023/5-min-1.jpg',
+              '/kalipooja-2023/6-min.jpg',
+              '/kalipooja-2023/7-min-1.jpg',
+              '/kalipooja-2023/8-min-1.jpg',
+              '/kalipooja-2023/9-min-1.jpg',
+              '/kalipooja-2023/10-min-1.jpg',
+              '/kalipooja-2023/11-min-1.jpg',
+              '/kalipooja-2023/12-min-1.jpg',
+              '/kalipooja-2023/13-min.jpg',
+              '/kalipooja-2023/14-min.jpg',
+              '/kalipooja-2023/15-min.jpg',
+              '/kalipooja-2023/17-min.jpg',
+            ].map((photo, index) => (
+              <motion.div
+                key={index}
+                className="relative group overflow-hidden rounded-2xl shadow-lg cursor-pointer"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                onClick={() => openLightbox(photo)}
+              >
+                <div className="relative h-72 overflow-hidden">
+                  <Image
+                    src={photo}
+                    alt={`Kali Puja 2023 - Moment ${index + 1}`}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-purple-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-white text-4xl">🔍</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Call to Action */}
       <section className="py-16 bg-purple-600">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -348,6 +626,70 @@ export default function KalipujaDeepavali() {
           </motion.div>
         </div>
       </section>
+
+      {/* Lightbox Modal */}
+      {selectedImage && (
+        <motion.div
+          className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center p-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={closeLightbox}
+          onKeyDown={handleKeyDown}
+          tabIndex={0}
+        >
+          <div className="relative max-w-4xl max-h-full w-full h-full flex items-center justify-center">
+            {/* Close Button */}
+            <button
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 z-10 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-70 transition-colors"
+              aria-label="Close"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Previous Button */}
+            <button
+              onClick={(e) => { e.stopPropagation(); prevImage(); }}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 rounded-full p-3 hover:bg-opacity-70 transition-colors z-10"
+              aria-label="Previous image"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            {/* Next Button */}
+            <button
+              onClick={(e) => { e.stopPropagation(); nextImage(); }}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 rounded-full p-3 hover:bg-opacity-70 transition-colors z-10"
+              aria-label="Next image"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* Image */}
+            <div className="relative w-full h-full max-w-4xl max-h-full" onClick={(e) => e.stopPropagation()}>
+              <Image
+                src={selectedImage}
+                alt="Kali Puja & Deepavali"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+
+            {/* Image Counter */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white bg-black bg-opacity-50 px-4 py-2 rounded-full">
+              {selectedIndex + 1} of {allPhotos.length}
+            </div>
+          </div>
+        </motion.div>
+      )}
     </div>
   )
 }

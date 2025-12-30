@@ -9,8 +9,44 @@ import SponsorSpotlight from '@/components/SponsorSpotlight'
 import { useState, useEffect } from 'react'
 
 export default function Home() {
-  const [selectedImage, setSelectedImage] = useState<{image: string, title: string} | null>(null)
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const [selectedIndex, setSelectedIndex] = useState<number>(0)
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+
+  // Community Gallery photos for lightbox navigation
+  const communityPhotos = [
+    '/communityphotos/20221008_131557-scaled.jpg',
+    '/communityphotos/20221008_1438212-scaled.jpg',
+    '/communityphotos/PA094485-scaled.jpg',
+    '/communityphotos/IMG-1544.jpg'
+  ]
+
+  const openLightbox = (imageSrc: string) => {
+    setSelectedImage(imageSrc)
+    setSelectedIndex(communityPhotos.indexOf(imageSrc))
+  }
+
+  const closeLightbox = () => {
+    setSelectedImage(null)
+  }
+
+  const nextImage = () => {
+    const nextIndex = (selectedIndex + 1) % communityPhotos.length
+    setSelectedIndex(nextIndex)
+    setSelectedImage(communityPhotos[nextIndex])
+  }
+
+  const prevImage = () => {
+    const prevIndex = selectedIndex === 0 ? communityPhotos.length - 1 : selectedIndex - 1
+    setSelectedIndex(prevIndex)
+    setSelectedImage(communityPhotos[prevIndex])
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape') closeLightbox()
+    if (e.key === 'ArrowRight') nextImage()
+    if (e.key === 'ArrowLeft') prevImage()
+  }
 
   // Disable animations in Lambda environment
   const disableAnimations = process.env.NEXT_PUBLIC_DISABLE_ANIMATIONS === 'true'
@@ -73,21 +109,21 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      {/* Success Banner - Static */}
-      <div className="bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500 text-white py-3 sm:py-4">
+      {/* Next Event Banner - Static */}
+      <div className="bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 text-white py-3 sm:py-4">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
             <span className="text-base sm:text-lg font-bold">
-              🎉 Durgotsav 2025 - A Grand Success! 🎉
-            </span>
-            <span className="hidden sm:inline text-base">•</span>
-            <span className="text-sm sm:text-base">
-              📸 View Photos | ছবি দেখুন
+              📚 Next Event: Saraswati Puja 2026 | সরস্বতী পূজা ২০২৬
             </span>
             <span className="hidden sm:inline text-base">•</span>
             <span className="text-sm sm:text-base font-bold">
-              📚 Next: Saraswati Puja Feb 1 | সরস্বতী পূজা ১ ফেব্রুয়ারি
+              📅 February 1, 2026 | ১ ফেব্রুয়ারি ২০২৬
             </span>
+            <span className="hidden sm:inline text-base">•</span>
+            <Link href="/events" className="text-sm sm:text-base underline hover:text-yellow-200">
+              View All Events →
+            </Link>
           </div>
         </div>
       </div>
@@ -250,107 +286,6 @@ export default function Home() {
       {/* Recent & Upcoming Events */}
       <section className="py-12 bg-gradient-to-r from-amber-500 via-orange-500 to-red-500">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Recent Event - Durga Puja 2025 */}
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="bg-white rounded-2xl shadow-2xl p-4 sm:p-8 max-w-4xl mx-auto">
-              <div className="mb-6">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-red-600 mb-2">
-                  ✨ Durgotsav 2025 - Celebrated Successfully! | দুর্গোৎসব ২০২৫ - সফলভাবে সম্পন্ন! ✨
-                </h2>
-                <p className="text-lg text-gray-600">
-                  Thank you for making our Durga Puja 2025 a grand celebration!
-                </p>
-              </div>
-
-              <div className="relative rounded-xl overflow-hidden shadow-lg mb-6">
-                <Link href="/gallery" className="block">
-                  <Image
-                    src="/Durgapooja-2025/durga-pooja.jpg"
-                    alt="Durga Puja 2025 Celebration - September 27-28"
-                    width={800}
-                    height={400}
-                    className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <h3 className="text-2xl font-bold">Durgotsav 2025 Highlights</h3>
-                    <p className="text-base opacity-90">September 27-28, 2025 • Werribee Functions & Events Centre</p>
-                  </div>
-                  <div className="absolute top-4 right-4 bg-green-600 text-white px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2">
-                    <span>✓</span> Completed
-                  </div>
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black/20">
-                    <span className="text-white text-6xl">📸</span>
-                  </div>
-                </Link>
-              </div>
-
-              <Link
-                href="/gallery"
-                className="inline-block bg-red-600 text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-red-700 transition-colors shadow-xl"
-              >
-                View All 2025 Photos | সব ছবি দেখুন
-              </Link>
-            </div>
-          </motion.div>
-
-          {/* Kali Puja 2025 - Completed */}
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="bg-white rounded-2xl shadow-2xl p-4 sm:p-8 max-w-4xl mx-auto">
-              <div className="mb-6">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-purple-600 mb-2">
-                  ✨ Kali Puja & Deepavali 2025 - Celebrated Successfully! | কালীপূজা ও দীপাবলি ২০২৫ - সফলভাবে সম্পন্ন! ✨
-                </h2>
-                <p className="text-lg text-gray-600">
-                  Thank you for making our Kali Puja & Deepavali 2025 a grand celebration!
-                </p>
-              </div>
-
-              <div className="relative rounded-xl overflow-hidden shadow-lg mb-6">
-                <Link href="/gallery" className="block">
-                  <Image
-                    src="/kalipooja-2025/kaalipooja-2025.jpeg"
-                    alt="Kali Puja & Deepavali 2025 Celebration - October 19"
-                    width={800}
-                    height={400}
-                    className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <h3 className="text-2xl font-bold">Kali Puja & Deepavali 2025 Highlights</h3>
-                    <p className="text-base opacity-90">October 19, 2025 • Werribee Masonic Centre</p>
-                  </div>
-                  <div className="absolute top-4 right-4 bg-green-600 text-white px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2">
-                    <span>✓</span> Completed
-                  </div>
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black/20">
-                    <span className="text-white text-6xl">📸</span>
-                  </div>
-                </Link>
-              </div>
-
-              <Link
-                href="/gallery"
-                className="inline-block bg-purple-600 text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-purple-700 transition-colors shadow-xl"
-              >
-                View Kali Puja Photos | কালীপূজার ছবি দেখুন
-              </Link>
-            </div>
-          </motion.div>
-
           {/* Saraswati Puja Countdown - Separate Section */}
           <motion.div
             className="mb-12"
@@ -406,7 +341,7 @@ export default function Home() {
 
               <div className="relative rounded-xl overflow-hidden shadow-lg">
                 <Image
-                  src="/saraswatipooja/484723908_674928888396859_4255503182297146288_n.jpg"
+                  src="/saraswatipooja-2025/484723908_674928888396859_4255503182297146288_n.jpg"
                   alt="Saraswati Puja 2026 - BSM Celebration"
                   width={800}
                   height={400}
@@ -524,7 +459,7 @@ export default function Home() {
                 titleBengali: 'সরস্বতী পূজা',
                 icon: '📚',
                 description: 'Worship of the Goddess of Knowledge, Arts, and Learning',
-                image: '/saraswatipooja/484723908_674928888396859_4255503182297146288_n.jpg',
+                image: '/saraswatipooja-2025/484723908_674928888396859_4255503182297146288_n.jpg',
                 href: '/events/saraswati-puja'
               },
               {
@@ -605,12 +540,7 @@ export default function Home() {
           </motion.div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { image: '/communityphotos/20221008_131557-scaled.jpg', title: 'Durga Puja 2022' },
-              { image: '/communityphotos/20221008_1438212-scaled.jpg', title: 'Cultural Performance' },
-              { image: '/communityphotos/PA094485-scaled.jpg', title: 'Community Gathering' },
-              { image: '/communityphotos/IMG-1544.jpg', title: 'Festival Celebration' }
-            ].map((photo, index) => (
+            {communityPhotos.map((photo, index) => (
               <motion.div
                 key={index}
                 className="group relative aspect-square rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
@@ -619,20 +549,17 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
-                onClick={() => setSelectedImage({ image: photo.image, title: photo.title })}
+                onClick={() => openLightbox(photo)}
               >
                 <Image
-                  src={photo.image}
-                  alt={photo.title}
+                  src={photo}
+                  alt={`Community Photo ${index + 1}`}
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="absolute bottom-2 left-2 right-2 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <p className="text-sm font-medium">{photo.title}</p>
-                </div>
-                <div className="absolute top-2 right-2 bg-white/90 text-gray-800 px-2 py-1 rounded-full text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  🔍 Click to view
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="text-white text-3xl">🔍</span>
                 </div>
               </motion.div>
             ))}
@@ -1048,40 +975,66 @@ export default function Home() {
 
       {/* Image Lightbox Modal */}
       {selectedImage && (
-        <div 
-          className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
+        <motion.div
+          className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center p-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={closeLightbox}
+          onKeyDown={handleKeyDown}
+          tabIndex={0}
         >
-          <motion.div
-            className="relative bg-white rounded-xl p-4 max-w-6xl max-h-[95vh] overflow-hidden"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className="relative max-w-4xl max-h-full w-full h-full flex items-center justify-center">
+            {/* Close Button */}
             <button
-              onClick={() => setSelectedImage(null)}
-              className="absolute top-4 right-4 z-10 bg-red-600 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-red-700 transition-colors text-xl font-bold shadow-lg"
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 z-10 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-70 transition-colors"
+              aria-label="Close"
             >
-              ✕
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
             </button>
-            <div className="text-center mb-4">
-              <h3 className="text-2xl font-bold text-gray-900">{selectedImage.title}</h3>
-            </div>
-            <div className="relative w-full h-[70vh] flex items-center justify-center">
+
+            {/* Previous Button */}
+            <button
+              onClick={(e) => { e.stopPropagation(); prevImage(); }}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 rounded-full p-3 hover:bg-opacity-70 transition-colors z-10"
+              aria-label="Previous image"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            {/* Next Button */}
+            <button
+              onClick={(e) => { e.stopPropagation(); nextImage(); }}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 rounded-full p-3 hover:bg-opacity-70 transition-colors z-10"
+              aria-label="Next image"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* Image */}
+            <div className="relative w-full h-full max-w-4xl max-h-full" onClick={(e) => e.stopPropagation()}>
               <Image
-                src={selectedImage.image}
-                alt={selectedImage.title}
+                src={selectedImage}
+                alt="Community photo"
                 fill
-                className="object-contain rounded-lg"
+                className="object-contain"
                 priority
               />
             </div>
-            <div className="text-center mt-4 text-gray-500 text-sm">
-              Click outside or press the ✕ to close
+
+            {/* Image Counter */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white bg-black bg-opacity-50 px-4 py-2 rounded-full">
+              {selectedIndex + 1} of {communityPhotos.length}
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       )}
     </div>
   )
