@@ -341,7 +341,7 @@ export default function Home() {
 
               <div className="relative rounded-xl overflow-hidden shadow-lg">
                 <Image
-                  src="/saraswatipooja-2025/484723908_674928888396859_4255503182297146288_n.jpg"
+                  src="/saraswati-pooja-2026/Flyer - Join Us for Saraswati Puja 2026 up.jpg"
                   alt="Saraswati Puja 2026 - BSM Celebration"
                   width={800}
                   height={400}
@@ -459,7 +459,7 @@ export default function Home() {
                 titleBengali: 'সরস্বতী পূজা',
                 icon: '📚',
                 description: 'Worship of the Goddess of Knowledge, Arts, and Learning',
-                image: '/saraswatipooja-2025/484723908_674928888396859_4255503182297146288_n.jpg',
+                image: '/saraswati-pooja-2026/Flyer - Join Us for Saraswati Puja 2026 up.jpg',
                 href: '/events/saraswati-puja'
               },
               {
