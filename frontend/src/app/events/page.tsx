@@ -142,7 +142,7 @@ export default function Events() {
             >
               <div className="relative h-48 overflow-hidden">
                 <Image
-                  src="/saraswatipooja-2025/484723908_674928888396859_4255503182297146288_n.jpg"
+                  src="/saraswati-pooja-2026/Flyer - Join Us for Saraswati Puja 2026 up.jpg"
                   alt="Saraswati Puja 2026 - BSM Melbourne"
                   fill
                   className="object-cover"
@@ -202,7 +202,7 @@ export default function Events() {
                       title: 'Saraswati Puja 2026 - Bengali Society of Melbourne',
                       description: 'Celebrate the Goddess of Knowledge, Arts, and Learning. Saraswati Puja is a beautiful celebration dedicated to seeking blessings for wisdom, creativity, and success in academic and artistic endeavors.',
                       startDate: '2026-02-01T10:00:00+11:00',
-                      endDate: '2026-02-01T18:00:00+11:00',
+                      endDate: '2026-02-01T17:00:00+11:00',
                       location: 'Lara Hall, 1A Flinders Ave, Lara VIC 3212'
                     }}
                     buttonClassName="border-2 border-yellow-600 text-yellow-600 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-50 transition-colors text-center"
