@@ -128,7 +128,7 @@ export default function SaraswatiPuja() {
             <div className="grid grid-cols-1 lg:grid-cols-2">
               <div className="relative h-96 lg:h-auto">
                 <Image
-                  src="/saraswatipooja-2025/484723908_674928888396859_4255503182297146288_n.jpg"
+                  src="/saraswati-pooja-2026/Flyer - Join Us for Saraswati Puja 2026 up.jpg"
                   alt="Saraswati Puja 2026 Event"
                   fill
                   className="object-cover"
@@ -158,10 +158,17 @@ export default function SaraswatiPuja() {
                     </div>
                   </div>
                   <div className="flex items-start">
+                    <span className="text-2xl mr-4">⏰</span>
+                    <div>
+                      <p className="font-bold text-gray-900">Time</p>
+                      <p className="text-gray-700">10:00 AM - 5:00 PM</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
                     <span className="text-2xl mr-4">📚</span>
                     <div>
                       <p className="font-bold text-gray-900">Activities</p>
-                      <p className="text-gray-700">Saraswati Puja, Pushpanjali, Hatey Khori, Cultural Programs, Prasad</p>
+                      <p className="text-gray-700">Inauguration, Puja Rituals, Anjali, Chalk in Hand (হাতে খড়ি), Lunch, Academic Recognition, Cultural Program, Tea & Snacks</p>
                     </div>
                   </div>
                 </div>
@@ -175,9 +182,9 @@ export default function SaraswatiPuja() {
                   <AddToCalendar
                     event={{
                       title: 'Saraswati Puja 2026 - Bengali Society of Melbourne',
-                      description: 'Celebrate the Goddess of Knowledge, Arts, and Learning. Join us for Saraswati Puja with Pushpanjali, Hatey Khori ceremony, cultural programs, and community feast.',
+                      description: 'Celebrate the Goddess of Knowledge, Arts, and Learning. Join us for Saraswati Puja with Anjali, Hatey Khori ceremony, cultural programs, academic recognition, and community feast.',
                       startDate: '2026-02-01T10:00:00+11:00',
-                      endDate: '2026-02-01T18:00:00+11:00',
+                      endDate: '2026-02-01T17:00:00+11:00',
                       location: 'Lara Hall, 1A Flinders Ave, Lara VIC 3212'
                     }}
                     buttonClassName="border-2 border-yellow-600 text-yellow-600 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-600 hover:text-white transition-colors text-center"
