@@ -339,7 +339,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="relative rounded-xl overflow-hidden shadow-lg">
+              <div className="rounded-xl overflow-hidden shadow-lg">
                 <Image
                   src="/saraswati-pooja-2026/Flyer - Join Us for Saraswati Puja 2026 up.jpg"
                   alt="Saraswati Puja 2026 - BSM Celebration"
@@ -347,14 +347,6 @@ export default function Home() {
                   height={400}
                   className="w-full h-auto object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-                <div className="absolute bottom-4 left-4 text-white">
-                  <h3 className="text-2xl font-bold">Saraswati Puja 2026</h3>
-                  <p className="text-base opacity-90">February 1, 2026 | Lara Hall, Lara VIC</p>
-                </div>
-                <div className="absolute top-4 right-4 bg-yellow-600 text-white px-4 py-2 rounded-full text-sm font-bold">
-                  Feb 1
-                </div>
               </div>
 
               <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
