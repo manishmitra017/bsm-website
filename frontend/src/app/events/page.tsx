@@ -97,7 +97,7 @@ export default function Events() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-red-800 mb-4 sm:mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-red-800 mb-4 sm:mb-6 leading-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
               Our Events & Festivals
               <span className="block text-orange-600 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
                 আমাদের অনুষ্ঠান ও উৎসব
@@ -111,8 +111,12 @@ export default function Events() {
       </section>
 
       {/* Upcoming Events 2026 */}
-      <section className="py-20 bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-gradient-to-br from-green-600 via-teal-600 to-emerald-700 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 right-10 w-80 h-80 bg-yellow-300 rounded-full blur-3xl"></div>
+        </div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -120,71 +124,81 @@ export default function Events() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <div className="inline-block bg-white/15 backdrop-blur-sm px-6 py-2 rounded-full mb-6">
+              <span className="text-white font-semibold tracking-wide uppercase text-sm">Up Next</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
               Upcoming Events 2026
-              <span className="block text-yellow-200 text-2xl mt-2" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+              <span className="block text-green-200 text-2xl mt-3 font-normal" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
                 আসন্ন অনুষ্ঠান ২০২৬
               </span>
             </h2>
-            <p className="text-xl text-red-100 max-w-3xl mx-auto">
+            <p className="text-xl text-green-100 max-w-3xl mx-auto leading-relaxed">
               Mark your calendars! Join us for Melbourne's most spectacular Bengali cultural celebrations
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 max-w-3xl mx-auto">
-            {/* Saraswati Puja 2026 */}
+            {/* Pohela Boishakh 2026 */}
             <motion.div
-              className="bg-white/95 backdrop-blur-lg rounded-2xl shadow-2xl"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              className="bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl overflow-hidden"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-56 overflow-hidden">
                 <Image
-                  src="/saraswati-pooja-2026/Flyer - Join Us for Saraswati Puja 2026 up.jpg"
-                  alt="Saraswati Puja 2026 - BSM Melbourne"
+                  src="/pahelaboishak/484347968_674863851736696_6373890908421337640_n.jpg"
+                  alt="Pohela Boishakh 2026 - BSM Melbourne Bengali New Year"
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-yellow-600/80 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-green-700/80 via-green-600/30 to-transparent"></div>
                 <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md rounded-full p-3">
-                  <span className="text-3xl">📚</span>
+                  <span className="text-3xl">🌸</span>
                 </div>
-                <div className="absolute bottom-4 right-4 bg-yellow-600 text-white px-4 py-2 rounded-full font-bold">
-                  Feb 1
+                <div className="absolute bottom-4 right-4 bg-green-600 text-white px-5 py-2 rounded-full font-bold text-sm tracking-wide">
+                  April 2026
+                </div>
+                <div className="absolute bottom-4 left-4">
+                  <span className="text-white text-2xl font-bold drop-shadow-lg" style={{ fontFamily: 'Playfair Display, serif' }}>
+                    Bengali New Year 1433
+                  </span>
                 </div>
               </div>
 
               <div className="p-8">
-                <div className="flex items-start justify-between mb-4">
+                <div className="flex items-start justify-between mb-6">
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-1">Saraswati Puja 2026</h3>
-                    <p className="text-yellow-600 font-medium" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
-                      সরস্বতী পূজা ২০২৬
+                    <h3 className="text-2xl font-bold text-gray-900 mb-1" style={{ fontFamily: 'Playfair Display, serif' }}>
+                      Pohela Boishakh 2026
+                    </h3>
+                    <p className="text-green-600 font-medium text-lg" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                      পহেলা বৈশাখ ১৪৩৩
                     </p>
                   </div>
-                  <div className="text-right">
-                    <p className="text-lg font-bold text-yellow-600">February 1</p>
-                    <p className="text-sm text-gray-600">2026</p>
+                  <div className="text-right bg-green-50 rounded-xl px-4 py-2">
+                    <p className="text-lg font-bold text-green-700">April 14</p>
+                    <p className="text-sm text-green-600">2026</p>
                   </div>
                 </div>
 
                 <div className="space-y-4 mb-6">
                   <div className="flex items-start space-x-3">
-                    <span className="text-yellow-600 text-lg">📍</span>
+                    <span className="text-green-600 text-lg mt-0.5">📍</span>
                     <div>
-                      <p className="font-semibold text-gray-900">Lara Hall</p>
-                      <p className="text-gray-600 text-sm">1A Flinders Ave, Lara VIC 3212</p>
+                      <p className="font-semibold text-gray-900">Venue to be announced</p>
+                      <p className="text-gray-500 text-sm">Melbourne, VIC</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <span className="text-yellow-600 text-lg">📚</span>
+                    <span className="text-green-600 text-lg mt-0.5">🌸</span>
                     <div>
-                      <p className="text-gray-700">
-                        Celebrate the Goddess of Knowledge, Arts, and Learning. Saraswati Puja is a beautiful
-                        celebration dedicated to seeking blessings for wisdom, creativity, and success in
-                        academic and artistic endeavors.
+                      <p className="text-gray-700 leading-relaxed">
+                        Welcome the Bengali New Year with vibrant celebrations! Pohela Boishakh marks the
+                        first day of the Bengali calendar - a time for fresh beginnings, cultural performances,
+                        traditional music, dance, and the sharing of authentic Bengali cuisine with our Melbourne community.
                       </p>
                     </div>
                   </div>
@@ -192,20 +206,20 @@ export default function Events() {
 
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Link
-                    href="/events/saraswati-puja"
-                    className="bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition-colors text-center"
+                    href="/events/pohela-boishakh"
+                    className="bg-green-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-green-700 transition-all duration-200 text-center shadow-lg hover:shadow-xl"
                   >
                     Learn More
                   </Link>
                   <AddToCalendar
                     event={{
-                      title: 'Saraswati Puja 2026 - Bengali Society of Melbourne',
-                      description: 'Celebrate the Goddess of Knowledge, Arts, and Learning. Saraswati Puja is a beautiful celebration dedicated to seeking blessings for wisdom, creativity, and success in academic and artistic endeavors.',
-                      startDate: '2026-02-01T10:00:00+11:00',
-                      endDate: '2026-02-01T17:00:00+11:00',
-                      location: 'Lara Hall, 1A Flinders Ave, Lara VIC 3212'
+                      title: 'Pohela Boishakh 2026 - Bengali Society of Melbourne',
+                      description: 'Welcome the Bengali New Year 1433! Join us for traditional music, dance, cultural performances and authentic Bengali cuisine.',
+                      startDate: '2026-04-14T10:00:00+10:00',
+                      endDate: '2026-04-14T18:00:00+10:00',
+                      location: 'Melbourne, VIC (Venue TBA)'
                     }}
-                    buttonClassName="border-2 border-yellow-600 text-yellow-600 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-50 transition-colors text-center"
+                    buttonClassName="border-2 border-green-600 text-green-600 px-6 py-3 rounded-xl font-semibold hover:bg-green-50 transition-all duration-200 text-center"
                   />
                 </div>
               </div>
@@ -215,8 +229,8 @@ export default function Events() {
         </div>
       </section>
 
-      {/* Completed Events 2025 */}
-      <section className="py-20 bg-gray-100">
+      {/* Completed Events */}
+      <section className="py-20 bg-gradient-to-b from-gray-50 to-gray-100">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-16"
@@ -225,52 +239,94 @@ export default function Events() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Completed Events 2025
-              <span className="block text-green-600 text-2xl mt-2" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
-                সম্পন্ন অনুষ্ঠান ২০২৫
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
+              Completed Events
+              <span className="block text-green-600 text-2xl mt-3 font-normal" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                সম্পন্ন অনুষ্ঠান
               </span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Thank you for making our 2025 celebrations grand! Relive the memories below.
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Thank you for making our celebrations grand! Relive the memories below.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Durgotsav 2025 - Completed */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            {/* Saraswati Puja 2026 - Completed */}
             <motion.div
-              className="bg-white rounded-2xl shadow-lg overflow-hidden relative"
+              className="bg-white rounded-2xl shadow-lg overflow-hidden relative group hover:shadow-xl transition-all duration-300"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
+              whileHover={{ y: -4 }}
             >
-              <div className="absolute top-4 right-4 z-10 bg-green-500 text-white px-4 py-2 rounded-full font-bold text-sm flex items-center">
+              <div className="absolute top-4 right-4 z-10 bg-green-500 text-white px-3 py-1.5 rounded-full font-bold text-xs flex items-center shadow-md">
                 ✓ Completed
               </div>
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-44 overflow-hidden">
+                <Image
+                  src="/saraswati-pooja-2026/Flyer - Join Us for Saraswati Puja 2026 up.jpg"
+                  alt="Saraswati Puja 2026 - Celebrated Successfully"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-yellow-600/80 to-transparent"></div>
+                <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md rounded-full p-2.5">
+                  <span className="text-2xl">📚</span>
+                </div>
+              </div>
+              <div className="p-5">
+                <h3 className="text-lg font-bold text-gray-900 mb-1" style={{ fontFamily: 'Playfair Display, serif' }}>Saraswati Puja 2026</h3>
+                <p className="text-yellow-600 font-medium text-sm mb-2" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                  সরস্বতী পূজা ২০২৬ - সফলভাবে সম্পন্ন!
+                </p>
+                <p className="text-gray-500 text-sm mb-3">
+                  February 1, 2026 at Lara Hall
+                </p>
+                <Link
+                  href="/events/saraswati-puja"
+                  className="inline-flex items-center text-yellow-600 font-semibold text-sm hover:text-yellow-700 transition-colors group-hover:translate-x-1 duration-200"
+                >
+                  View Photos & Highlights →
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Durgotsav 2025 - Completed */}
+            <motion.div
+              className="bg-white rounded-2xl shadow-lg overflow-hidden relative group hover:shadow-xl transition-all duration-300"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              whileHover={{ y: -4 }}
+            >
+              <div className="absolute top-4 right-4 z-10 bg-green-500 text-white px-3 py-1.5 rounded-full font-bold text-xs flex items-center shadow-md">
+                ✓ Completed
+              </div>
+              <div className="relative h-44 overflow-hidden">
                 <Image
                   src="/Durgapooja-2025/durga-pooja.jpg"
                   alt="Durgotsav 2025 - Celebrated Successfully"
                   fill
-                  className="object-cover"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-red-600/80 to-transparent"></div>
-                <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md rounded-full p-3">
-                  <span className="text-3xl">🪔</span>
+                <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md rounded-full p-2.5">
+                  <span className="text-2xl">🪔</span>
                 </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-1">Durgotsav 2025</h3>
-                <p className="text-red-600 font-medium text-sm mb-3" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+              <div className="p-5">
+                <h3 className="text-lg font-bold text-gray-900 mb-1" style={{ fontFamily: 'Playfair Display, serif' }}>Durgotsav 2025</h3>
+                <p className="text-red-600 font-medium text-sm mb-2" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
                   দুর্গোৎসব ২০২৫ - সফলভাবে সম্পন্ন!
                 </p>
-                <p className="text-gray-600 text-sm mb-4">
+                <p className="text-gray-500 text-sm mb-3">
                   September 27-28, 2025 at Werribee Functions Centre
                 </p>
                 <Link
                   href="/events/durgotsav"
-                  className="inline-flex items-center text-red-600 font-semibold hover:text-red-700 transition-colors"
+                  className="inline-flex items-center text-red-600 font-semibold text-sm hover:text-red-700 transition-colors group-hover:translate-x-1 duration-200"
                 >
                   View Photos & Highlights →
                 </Link>
@@ -279,38 +335,39 @@ export default function Events() {
 
             {/* Kali Puja 2025 - Completed */}
             <motion.div
-              className="bg-white rounded-2xl shadow-lg overflow-hidden relative"
+              className="bg-white rounded-2xl shadow-lg overflow-hidden relative group hover:shadow-xl transition-all duration-300"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              whileHover={{ y: -4 }}
             >
-              <div className="absolute top-4 right-4 z-10 bg-green-500 text-white px-4 py-2 rounded-full font-bold text-sm flex items-center">
+              <div className="absolute top-4 right-4 z-10 bg-green-500 text-white px-3 py-1.5 rounded-full font-bold text-xs flex items-center shadow-md">
                 ✓ Completed
               </div>
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-44 overflow-hidden">
                 <Image
                   src="/kalipooja-2023/1-min.jpg"
                   alt="Kali Puja 2025 - Celebrated Successfully"
                   fill
-                  className="object-cover"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-purple-600/80 to-transparent"></div>
-                <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md rounded-full p-3">
-                  <span className="text-3xl">🕉️</span>
+                <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md rounded-full p-2.5">
+                  <span className="text-2xl">🕉️</span>
                 </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-1">Kali Puja & Deepavali 2025</h3>
-                <p className="text-purple-600 font-medium text-sm mb-3" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+              <div className="p-5">
+                <h3 className="text-lg font-bold text-gray-900 mb-1" style={{ fontFamily: 'Playfair Display, serif' }}>Kali Puja & Deepavali 2025</h3>
+                <p className="text-purple-600 font-medium text-sm mb-2" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
                   কালীপূজা ও দীপাবলি ২০২৫ - সফলভাবে সম্পন্ন!
                 </p>
-                <p className="text-gray-600 text-sm mb-4">
+                <p className="text-gray-500 text-sm mb-3">
                   October/November 2025 - Festival of Lights
                 </p>
                 <Link
                   href="/events/kalipuja-deepavali"
-                  className="inline-flex items-center text-purple-600 font-semibold hover:text-purple-700 transition-colors"
+                  className="inline-flex items-center text-purple-600 font-semibold text-sm hover:text-purple-700 transition-colors group-hover:translate-x-1 duration-200"
                 >
                   View Photos & Highlights →
                 </Link>
@@ -319,38 +376,39 @@ export default function Events() {
 
             {/* Saraswati Puja 2025 - Completed */}
             <motion.div
-              className="bg-white rounded-2xl shadow-lg overflow-hidden relative"
+              className="bg-white rounded-2xl shadow-lg overflow-hidden relative group hover:shadow-xl transition-all duration-300"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              whileHover={{ y: -4 }}
             >
-              <div className="absolute top-4 right-4 z-10 bg-green-500 text-white px-4 py-2 rounded-full font-bold text-sm flex items-center">
+              <div className="absolute top-4 right-4 z-10 bg-green-500 text-white px-3 py-1.5 rounded-full font-bold text-xs flex items-center shadow-md">
                 ✓ Completed
               </div>
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-44 overflow-hidden">
                 <Image
                   src="/saraswatipooja-2025/20240218_124542.jpg"
                   alt="Saraswati Puja 2025 - Celebrated Successfully"
                   fill
-                  className="object-cover"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-yellow-600/80 to-transparent"></div>
-                <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md rounded-full p-3">
-                  <span className="text-3xl">📚</span>
+                <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md rounded-full p-2.5">
+                  <span className="text-2xl">📚</span>
                 </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-1">Saraswati Puja 2025</h3>
-                <p className="text-yellow-600 font-medium text-sm mb-3" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+              <div className="p-5">
+                <h3 className="text-lg font-bold text-gray-900 mb-1" style={{ fontFamily: 'Playfair Display, serif' }}>Saraswati Puja 2025</h3>
+                <p className="text-yellow-600 font-medium text-sm mb-2" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
                   সরস্বতী পূজা ২০২৫ - সফলভাবে সম্পন্ন!
                 </p>
-                <p className="text-gray-600 text-sm mb-4">
+                <p className="text-gray-500 text-sm mb-3">
                   February 2025 - Goddess of Knowledge
                 </p>
                 <Link
                   href="/events/saraswati-puja"
-                  className="inline-flex items-center text-yellow-600 font-semibold hover:text-yellow-700 transition-colors"
+                  className="inline-flex items-center text-yellow-600 font-semibold text-sm hover:text-yellow-700 transition-colors group-hover:translate-x-1 duration-200"
                 >
                   View Photos & Highlights →
                 </Link>
@@ -370,9 +428,9 @@ export default function Events() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
               What to Expect
-              <span className="block text-orange-600 text-2xl mt-2" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+              <span className="block text-orange-600 text-2xl mt-3 font-normal" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
                 আপনার প্রত্যাশা
               </span>
             </h2>
@@ -437,8 +495,8 @@ export default function Events() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Bengali Festivals | বাংলা উৎসব
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
+              Bengali Festivals | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>বাংলা উৎসব</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Traditional celebrations that connect us to our rich cultural heritage and bring our community together
@@ -501,8 +559,8 @@ export default function Events() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Community Activities | কমিউনিটি কার্যক্রম
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
+              Community Activities | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>কমিউনিটি কার্যক্রম</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Beyond festivals, we actively engage in community service and cultural programs
@@ -555,8 +613,8 @@ export default function Events() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Our Memories | আমাদের স্মৃতি
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
+              Our Memories | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>আমাদের স্মৃতি</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
               Explore our vibrant community celebrations through photos and memories
@@ -608,8 +666,8 @@ export default function Events() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Join Our Celebrations | আমাদের উৎসবে যোগ দিন
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
+              Join Our Celebrations | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>আমাদের উৎসবে যোগ দিন</span>
             </h2>
             <p className="text-xl text-red-100 mb-8 max-w-2xl mx-auto">
               Stay connected with our community and never miss our traditional Bengali festivals and cultural events

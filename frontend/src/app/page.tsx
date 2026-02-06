@@ -51,9 +51,9 @@ export default function Home() {
   // Disable animations in Lambda environment
   const disableAnimations = process.env.NEXT_PUBLIC_DISABLE_ANIMATIONS === 'true'
 
-  // Live countdown to Saraswati Puja 2026 - Feb 1, 10 AM
+  // Live countdown to Pohela Boishakh 2026 - April 14, 10 AM
   useEffect(() => {
-    const targetDate = new Date('2026-02-01T10:00:00').getTime()
+    const targetDate = new Date('2026-04-14T10:00:00').getTime()
 
     const updateCountdown = () => {
       const now = new Date().getTime()
@@ -110,18 +110,18 @@ export default function Home() {
       />
 
       {/* Next Event Banner - Static */}
-      <div className="bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 text-white py-3 sm:py-4">
+      <div className="bg-gradient-to-r from-green-600 via-teal-600 to-emerald-600 text-white py-3 sm:py-4">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
             <span className="text-base sm:text-lg font-bold">
-              📚 Next Event: Saraswati Puja 2026 | সরস্বতী পূজা ২০২৬
+              🌸 Next Event: Pohela Boishakh 2026 | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>পহেলা বৈশাখ ১৪৩৩</span>
             </span>
             <span className="hidden sm:inline text-base">•</span>
             <span className="text-sm sm:text-base font-bold">
-              📅 February 1, 2026 | ১ ফেব্রুয়ারি ২০২৬
+              📅 April 14, 2026 | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>১৪ এপ্রিল ২০২৬</span>
             </span>
             <span className="hidden sm:inline text-base">•</span>
-            <Link href="/events" className="text-sm sm:text-base underline hover:text-yellow-200">
+            <Link href="/events" className="text-sm sm:text-base underline hover:text-green-200">
               View All Events →
             </Link>
           </div>
@@ -195,6 +195,7 @@ export default function Home() {
           <div className="max-w-4xl">
             <motion.h1
               className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-red-800 mb-4 sm:mb-6 leading-tight"
+              style={{ fontFamily: 'Playfair Display, serif' }}
               initial={disableAnimations ? false : { opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: disableAnimations ? 0 : 0.8 }}
@@ -284,9 +285,13 @@ export default function Home() {
       </section>
 
       {/* Recent & Upcoming Events */}
-      <section className="py-12 bg-gradient-to-r from-amber-500 via-orange-500 to-red-500">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Saraswati Puja Countdown - Separate Section */}
+      <section className="py-16 bg-gradient-to-br from-green-600 via-teal-600 to-emerald-700 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 right-10 w-80 h-80 bg-yellow-300 rounded-full blur-3xl"></div>
+        </div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Pohela Boishakh Countdown */}
           <motion.div
             className="mb-12"
             initial={{ opacity: 0, y: 30 }}
@@ -294,34 +299,34 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 text-white py-8 sm:py-10 rounded-2xl shadow-2xl max-w-4xl mx-auto">
+            <div className="bg-white/10 backdrop-blur-md text-white py-8 sm:py-10 rounded-3xl shadow-2xl max-w-4xl mx-auto border border-white/20">
               <div className="text-center">
-                <h3 className="text-xl sm:text-2xl font-bold mb-6">
-                  ⏰ Countdown to Saraswati Puja 2026 | সরস্বতী পূজা ২০২৬ এর উলটো গণনা
+                <h3 className="text-xl sm:text-2xl font-bold mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
+                  🌸 Countdown to Pohela Boishakh 2026 | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>পহেলা বৈশাখ ১৪৩৩</span>
                 </h3>
-                <div className="flex justify-center gap-6 sm:gap-12">
-                  <div className="flex flex-col items-center">
-                    <span className="text-4xl sm:text-5xl font-bold">{countdown.days}</span>
-                    <span className="text-sm sm:text-base mt-2">Days | দিন</span>
+                <div className="flex justify-center gap-4 sm:gap-10">
+                  <div className="flex flex-col items-center bg-white/10 rounded-2xl px-4 sm:px-6 py-3">
+                    <span className="text-3xl sm:text-5xl font-bold">{countdown.days}</span>
+                    <span className="text-xs sm:text-sm mt-2 opacity-90">Days | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>দিন</span></span>
                   </div>
-                  <div className="flex flex-col items-center">
-                    <span className="text-4xl sm:text-5xl font-bold">{countdown.hours}</span>
-                    <span className="text-sm sm:text-base mt-2">Hours | ঘণ্টা</span>
+                  <div className="flex flex-col items-center bg-white/10 rounded-2xl px-4 sm:px-6 py-3">
+                    <span className="text-3xl sm:text-5xl font-bold">{countdown.hours}</span>
+                    <span className="text-xs sm:text-sm mt-2 opacity-90">Hours | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>ঘণ্টা</span></span>
                   </div>
-                  <div className="flex flex-col items-center">
-                    <span className="text-4xl sm:text-5xl font-bold">{countdown.minutes}</span>
-                    <span className="text-sm sm:text-base mt-2">Minutes | মিনিট</span>
+                  <div className="flex flex-col items-center bg-white/10 rounded-2xl px-4 sm:px-6 py-3">
+                    <span className="text-3xl sm:text-5xl font-bold">{countdown.minutes}</span>
+                    <span className="text-xs sm:text-sm mt-2 opacity-90">Min | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>মিনিট</span></span>
                   </div>
-                  <div className="flex flex-col items-center">
-                    <span className="text-4xl sm:text-5xl font-bold">{countdown.seconds}</span>
-                    <span className="text-sm sm:text-base mt-2">Seconds | সেকেন্ড</span>
+                  <div className="flex flex-col items-center bg-white/10 rounded-2xl px-4 sm:px-6 py-3">
+                    <span className="text-3xl sm:text-5xl font-bold">{countdown.seconds}</span>
+                    <span className="text-xs sm:text-sm mt-2 opacity-90">Sec | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>সেকেন্ড</span></span>
                   </div>
                 </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Upcoming Event - Saraswati Puja */}
+          {/* Upcoming Event - Pohela Boishakh */}
           <motion.div
             className="text-center"
             initial={{ opacity: 0, scale: 0.95 }}
@@ -329,38 +334,44 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="bg-white rounded-2xl shadow-2xl p-4 sm:p-8 max-w-4xl mx-auto">
-              <div className="mb-4">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-                  🎉 Upcoming Festival | আসন্ন উৎসব 🎉
+            <div className="bg-white rounded-3xl shadow-2xl p-4 sm:p-8 max-w-4xl mx-auto">
+              <div className="mb-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>
+                  🌸 Upcoming Festival | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>আসন্ন উৎসব</span> 🌸
                 </h2>
                 <p className="text-lg text-gray-600">
-                  Join us for our next traditional Bengali festival!
+                  Welcome the Bengali New Year with us!
                 </p>
               </div>
 
-              <div className="rounded-xl overflow-hidden shadow-lg">
+              <div className="rounded-2xl overflow-hidden shadow-lg relative">
                 <Image
-                  src="/saraswati-pooja-2026/Flyer - Join Us for Saraswati Puja 2026 up.jpg"
-                  alt="Saraswati Puja 2026 - BSM Celebration"
+                  src="/pahelaboishak/484347968_674863851736696_6373890908421337640_n.jpg"
+                  alt="Pohela Boishakh 2026 - Bengali New Year BSM Celebration"
                   width={800}
                   height={400}
                   className="w-full h-auto object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-green-900/60 to-transparent flex items-end justify-center pb-6">
+                  <div className="text-white text-center">
+                    <h3 className="text-2xl sm:text-3xl font-bold drop-shadow-lg" style={{ fontFamily: 'Playfair Display, serif' }}>Pohela Boishakh 2026</h3>
+                    <p className="text-lg opacity-90 drop-shadow-md" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>পহেলা বৈশাখ ১৪৩৩ - বাংলা নববর্ষ</p>
+                  </div>
+                </div>
               </div>
 
               <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
-                  href="/events/saraswati-puja"
-                  className="bg-yellow-600 text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-yellow-700 transition-colors shadow-xl"
+                  href="/events/pohela-boishakh"
+                  className="bg-green-600 text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-green-700 transition-all duration-200 shadow-xl hover:shadow-2xl"
                 >
-                  Event Details | বিস্তারিত
+                  Event Details | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>বিস্তারিত</span>
                 </Link>
                 <Link
                   href="/membership"
-                  className="border-2 border-yellow-600 text-yellow-600 px-8 py-4 rounded-lg text-lg font-bold hover:bg-yellow-600 hover:text-white transition-colors"
+                  className="border-2 border-green-600 text-green-600 px-8 py-4 rounded-xl text-lg font-bold hover:bg-green-600 hover:text-white transition-all duration-200"
                 >
-                  Join BSM | যোগ দিন
+                  Join BSM | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>যোগ দিন</span>
                 </Link>
               </div>
             </div>
@@ -379,8 +390,8 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              About BSM | আমাদের সম্পর্কে
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
+              About BSM | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>আমাদের সম্পর্কে</span>
             </h2>
             <p className="text-xl text-red-100 mb-8 max-w-3xl mx-auto">
               Bengali Society of Melbourne (BSM), a not-for-profit organisation, is a platform of Bengali community mostly from the sub-continent. Since its inception in 2012, we set forth with the aim to make our newer generations familiar with our rich cultural heritage.
@@ -420,8 +431,8 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Our Festivals | আমাদের উৎসব
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
+              Our Festivals | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>আমাদের উৎসব</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Traditional Bengali festivals celebrating our rich cultural heritage throughout the year.
@@ -523,8 +534,8 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Community Gallery | কমিউনিটি গ্যালারি
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
+              Community Gallery | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>কমিউনিটি গ্যালারি</span>
             </h2>
             <p className="text-xl text-gray-600">
               Memories from our cultural celebrations and community events
@@ -622,8 +633,8 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
-              Our Valued Partners | আমাদের মূল্যবান অংশীদার
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8" style={{ fontFamily: 'Playfair Display, serif' }}>
+              Our Valued Partners | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>আমাদের মূল্যবান অংশীদার</span>
             </h2>
             <p className="text-xl text-gray-600 mb-6 max-w-4xl mx-auto leading-relaxed">
               These businesses don't just sponsor events - they invest in our community's future. Their partnership enables us to keep our cultural traditions alive while building a stronger, more connected Bengali community in Melbourne.
@@ -873,8 +884,8 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Follow Us on Facebook | ফেসবুকে আমাদের ফলো করুন
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
+              Follow Us on Facebook | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>ফেসবুকে আমাদের ফলো করুন</span>
             </h2>
             <p className="text-xl text-gray-600">
               Stay updated with our latest events, photos, and community news
@@ -941,8 +952,8 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Join Our Cultural Community | আমাদের সাংস্কৃতিক সম্প্রদায়ে যোগ দিন
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
+              Join Our Cultural Community | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>আমাদের সাংস্কৃতিক সম্প্রদায়ে যোগ দিন</span>
             </h2>
             <p className="text-xl text-red-100 mb-8 max-w-2xl mx-auto">
               Be part of Melbourne's vibrant Bengali community. Experience traditional festivals, cultural events, and meaningful connections.
