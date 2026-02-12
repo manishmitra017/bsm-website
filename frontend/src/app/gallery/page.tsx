@@ -79,6 +79,23 @@ export default function Gallery() {
     '/kalipooja-2023/14-min.jpg',
     '/kalipooja-2023/15-min.jpg',
     '/kalipooja-2023/17-min.jpg',
+    // Saraswati Puja 2026 photos
+    '/saraswati-pooja-2026/20260201_122304.jpg',
+    '/saraswati-pooja-2026/20260201_124450.jpg',
+    '/saraswati-pooja-2026/20260201_124452.jpg',
+    '/saraswati-pooja-2026/20260201_124454.jpg',
+    '/saraswati-pooja-2026/20260201_124518.jpg',
+    '/saraswati-pooja-2026/20260201_124520.jpg',
+    '/saraswati-pooja-2026/20260201_124659.jpg',
+    '/saraswati-pooja-2026/20260201_124703.jpg',
+    '/saraswati-pooja-2026/20260201_124705.jpg',
+    '/saraswati-pooja-2026/20260201_124719.jpg',
+    '/saraswati-pooja-2026/20260201_124730.jpg',
+    '/saraswati-pooja-2026/20260201_125724.jpg',
+    '/saraswati-pooja-2026/20260201_151524.jpg',
+    '/saraswati-pooja-2026/20260201_164345.jpg',
+    '/saraswati-pooja-2026/20260201_164527.jpg',
+    '/saraswati-pooja-2026/20260201_164529.jpg',
     // Saraswati Puja 2025 photos
     '/saraswatipooja-2025/20240218_113230.jpg',
     '/saraswatipooja-2025/20240218_114015.jpg',
@@ -486,6 +503,68 @@ export default function Gallery() {
                     <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <span className="text-white text-4xl">🔍</span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Saraswati Puja 2026 Gallery */}
+          <div className="mb-20">
+            <motion.div
+              className="text-center mb-10"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h3 className="text-3xl md:text-4xl font-bold text-yellow-600 mb-4">
+                Saraswati Puja 2026 | সরস্বতী পূজা ২০২৬
+              </h3>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Celebrating the goddess of knowledge and arts on February 1, 2026 at Lara Hall
+              </p>
+            </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {[
+                '/saraswati-pooja-2026/20260201_122304.jpg',
+                '/saraswati-pooja-2026/20260201_124450.jpg',
+                '/saraswati-pooja-2026/20260201_124452.jpg',
+                '/saraswati-pooja-2026/20260201_124454.jpg',
+                '/saraswati-pooja-2026/20260201_124518.jpg',
+                '/saraswati-pooja-2026/20260201_124520.jpg',
+                '/saraswati-pooja-2026/20260201_124659.jpg',
+                '/saraswati-pooja-2026/20260201_124703.jpg',
+                '/saraswati-pooja-2026/20260201_124705.jpg',
+                '/saraswati-pooja-2026/20260201_124719.jpg',
+                '/saraswati-pooja-2026/20260201_124730.jpg',
+                '/saraswati-pooja-2026/20260201_125724.jpg',
+                '/saraswati-pooja-2026/20260201_151524.jpg',
+                '/saraswati-pooja-2026/20260201_164345.jpg',
+                '/saraswati-pooja-2026/20260201_164527.jpg',
+                '/saraswati-pooja-2026/20260201_164529.jpg'
+              ].map((photo, index) => (
+                <motion.div
+                  key={index}
+                  className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.05 }}
+                  whileHover={{ y: -5 }}
+                  onClick={() => openLightbox(photo)}
+                >
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={photo}
+                      alt={`Saraswati Puja 2026 Celebration ${index + 1}`}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <span className="text-white text-3xl">🔍</span>
                     </div>
                   </div>
                 </motion.div>
