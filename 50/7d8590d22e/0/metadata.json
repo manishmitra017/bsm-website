@@ -1,0 +1,30 @@
+{
+  "cli_version": "0.4.2",
+  "checkpoint_id": "507d8590d22e",
+  "session_id": "cadd9b24-76aa-4831-bfbb-5edf254cf855",
+  "strategy": "manual-commit",
+  "created_at": "2026-02-12T18:12:43.549719Z",
+  "branch": "feature/saraswati-puja-2026-photos",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "frontend/src/app/events/saraswati-puja/page.tsx",
+    "frontend/src/app/gallery/page.tsx"
+  ],
+  "agent": "Claude Code",
+  "token_usage": {
+    "input_tokens": 19,
+    "cache_creation_tokens": 81264,
+    "cache_read_tokens": 1233748,
+    "output_tokens": 2361,
+    "api_call_count": 16
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-02-12T18:12:43.481472Z",
+    "agent_lines": 167,
+    "human_added": 541,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 708,
+    "agent_percentage": 23.587570621468927
+  }
+}
