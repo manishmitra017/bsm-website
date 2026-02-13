@@ -28,10 +28,10 @@ export default function DurgaArticle() {
           >
             <div className="flex items-center mb-6">
               <Link
-                href="/articles"
+                href="/stories"
                 className="text-red-600 hover:text-red-700 font-medium mr-4 flex items-center"
               >
-                &larr; Back to Articles
+                &larr; Back to Stories
               </Link>
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-red-800 mb-4 sm:mb-6 leading-tight">
@@ -295,10 +295,10 @@ export default function DurgaArticle() {
                 View Durgotsav Event
               </Link>
               <Link
-                href="/articles"
+                href="/stories"
                 className="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-red-600 transition-colors inline-block"
               >
-                More Articles
+                More Stories
               </Link>
             </div>
           </motion.div>

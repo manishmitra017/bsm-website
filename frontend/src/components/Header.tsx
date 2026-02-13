@@ -47,7 +47,7 @@ export default function Header() {
                 { href: '/about', label: 'About BSM' },
                 { href: '/events', label: 'Events' },
                 { href: '/gallery', label: 'Gallery' },
-                { href: '/articles', label: 'Articles' },
+                { href: '/stories', label: 'Stories' },
                 { href: '/volunteering', label: 'Volunteering' },
                 { href: '/sponsorship', label: 'Sponsorship' },
                 { href: '/membership', label: 'Membership' },
@@ -141,11 +141,11 @@ export default function Header() {
                 Gallery
               </Link>
               <Link
-                href="/articles"
+                href="/stories"
                 className="block text-gray-700 hover:text-red-600 hover:bg-red-50 px-3 py-3 text-base font-medium rounded-md transition-colors"
                 onClick={() => setIsOpen(false)}
               >
-                Articles
+                Stories
               </Link>
               <Link
                 href="/volunteering"

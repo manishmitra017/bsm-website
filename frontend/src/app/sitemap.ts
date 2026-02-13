@@ -4,7 +4,25 @@ export const dynamic = 'force-static'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://bsm.org.au'
-  
+
+  const storySlugs = [
+    'mahishasur-bodh',
+    'umar-agomoni',
+    'durgar-dosh-ostro',
+    'saraswatir-binadan',
+    'hatekhari',
+    'saraswati-o-ondhokar',
+    'ganesher-gajanon',
+    'prithivi-prodokshin',
+    'ganesher-mahabharot-lekha',
+    'kartikayer-jonmo',
+    'kartiker-moyur-bahon',
+    'gonesh-kartik-bibad',
+    'durga-slays-mahishasura',
+    'goddess-saraswati',
+    'kali-mata',
+  ]
+
   return [
     {
       url: baseUrl,
@@ -61,6 +79,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/stories`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    },
+    ...storySlugs.map((slug) => ({
+      url: `${baseUrl}/stories/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
     {
       url: `${baseUrl}/membership`,
       lastModified: new Date(),
