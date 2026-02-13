@@ -1,0 +1,33 @@
+{
+  "cli_version": "0.4.2",
+  "checkpoint_id": "f43eefb2006b",
+  "strategy": "manual-commit",
+  "branch": "feature/articles-section",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "frontend/src/app/articles/durga-slays-mahishasura/page.tsx",
+    "frontend/src/app/articles/goddess-saraswati/page.tsx",
+    "frontend/src/app/articles/kali-mata/page.tsx",
+    "frontend/src/app/articles/page.tsx",
+    "frontend/src/app/events/saraswati-puja/page.tsx",
+    "frontend/src/app/gallery/page.tsx",
+    "frontend/src/components/Footer.tsx",
+    "frontend/src/components/Header.tsx"
+  ],
+  "sessions": [
+    {
+      "metadata": "/f4/3eefb2006b/0/metadata.json",
+      "transcript": "/f4/3eefb2006b/0/full.jsonl",
+      "context": "/f4/3eefb2006b/0/context.md",
+      "content_hash": "/f4/3eefb2006b/0/content_hash.txt",
+      "prompt": "/f4/3eefb2006b/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 25,
+    "cache_creation_tokens": 183642,
+    "cache_read_tokens": 2185148,
+    "output_tokens": 20959,
+    "api_call_count": 19
+  }
+}
