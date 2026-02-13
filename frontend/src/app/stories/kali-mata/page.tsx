@@ -28,10 +28,10 @@ export default function KaliMataArticle() {
           >
             <div className="flex items-center mb-6">
               <Link
-                href="/articles"
+                href="/stories"
                 className="text-purple-600 hover:text-purple-700 font-medium mr-4 flex items-center"
               >
-                &larr; Back to Articles
+                &larr; Back to Stories
               </Link>
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-purple-800 mb-4 sm:mb-6 leading-tight">
@@ -311,10 +311,10 @@ export default function KaliMataArticle() {
                 View Kali Puja Event
               </Link>
               <Link
-                href="/articles"
+                href="/stories"
                 className="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-purple-600 transition-colors inline-block"
               >
-                More Articles
+                More Stories
               </Link>
             </div>
           </motion.div>
