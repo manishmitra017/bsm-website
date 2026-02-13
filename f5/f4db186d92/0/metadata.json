@@ -1,0 +1,41 @@
+{
+  "cli_version": "0.4.2",
+  "checkpoint_id": "f5f4db186d92",
+  "session_id": "c944cf4a-4819-4525-b4fa-50ed1f49ba85",
+  "strategy": "manual-commit",
+  "created_at": "2026-02-13T18:18:41.073049Z",
+  "branch": "feature/children-stories-section",
+  "checkpoints_count": 4,
+  "files_touched": [
+    "frontend/src/app/articles/durga-slays-mahishasura/page.tsx",
+    "frontend/src/app/articles/goddess-saraswati/page.tsx",
+    "frontend/src/app/articles/kali-mata/page.tsx",
+    "frontend/src/app/articles/page.tsx",
+    "frontend/src/app/sitemap.ts",
+    "frontend/src/app/stories/durga-slays-mahishasura/page.tsx",
+    "frontend/src/app/stories/goddess-saraswati/page.tsx",
+    "frontend/src/app/stories/kali-mata/page.tsx",
+    "frontend/src/app/stories/page.tsx",
+    "frontend/src/app/stories/storyData.ts",
+    "frontend/src/components/Footer.tsx",
+    "frontend/src/components/Header.tsx",
+    "frontend/src/components/StoryPageLayout.tsx"
+  ],
+  "agent": "Claude Code",
+  "token_usage": {
+    "input_tokens": 58,
+    "cache_creation_tokens": 221667,
+    "cache_read_tokens": 4999518,
+    "output_tokens": 5994,
+    "api_call_count": 42
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-02-13T18:18:40.942999Z",
+    "agent_lines": 2143,
+    "human_added": 96,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 2239,
+    "agent_percentage": 95.71237159446181
+  }
+}

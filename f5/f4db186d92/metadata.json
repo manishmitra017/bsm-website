@@ -1,0 +1,38 @@
+{
+  "cli_version": "0.4.2",
+  "checkpoint_id": "f5f4db186d92",
+  "strategy": "manual-commit",
+  "branch": "feature/children-stories-section",
+  "checkpoints_count": 4,
+  "files_touched": [
+    "frontend/src/app/articles/durga-slays-mahishasura/page.tsx",
+    "frontend/src/app/articles/goddess-saraswati/page.tsx",
+    "frontend/src/app/articles/kali-mata/page.tsx",
+    "frontend/src/app/articles/page.tsx",
+    "frontend/src/app/sitemap.ts",
+    "frontend/src/app/stories/durga-slays-mahishasura/page.tsx",
+    "frontend/src/app/stories/goddess-saraswati/page.tsx",
+    "frontend/src/app/stories/kali-mata/page.tsx",
+    "frontend/src/app/stories/page.tsx",
+    "frontend/src/app/stories/storyData.ts",
+    "frontend/src/components/Footer.tsx",
+    "frontend/src/components/Header.tsx",
+    "frontend/src/components/StoryPageLayout.tsx"
+  ],
+  "sessions": [
+    {
+      "metadata": "/f5/f4db186d92/0/metadata.json",
+      "transcript": "/f5/f4db186d92/0/full.jsonl",
+      "context": "/f5/f4db186d92/0/context.md",
+      "content_hash": "/f5/f4db186d92/0/content_hash.txt",
+      "prompt": "/f5/f4db186d92/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 58,
+    "cache_creation_tokens": 221667,
+    "cache_read_tokens": 4999518,
+    "output_tokens": 5994,
+    "api_call_count": 42
+  }
+}

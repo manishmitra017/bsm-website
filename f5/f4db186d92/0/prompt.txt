@@ -1,0 +1,566 @@
+Implement the following plan:
+
+# Plan: Children's Stories Section for BSM Website
+
+## Context
+The BSM website has an `/articles` section (3 deity articles) recently merged to main. Instead of having separate `/articles` and `/stories` sections (too noisy), we'll **merge everything into one `/stories` section** -- 12 new children's stories at the top, existing 3 articles moved below as "Articles / Deep Reads".
+
+## What Changes
+
+### Move existing articles into `/stories` (3 files moved)
+| From | To |
+|------|-----|
+| `articles/durga-slays-mahishasura/page.tsx` | `stories/durga-slays-mahishasura/page.tsx` |
+| `articles/goddess-saraswati/page.tsx` | `stories/goddess-saraswati/page.tsx` |
+| `articles/kali-mata/page.tsx` | `stories/kali-mata/page.tsx` |
+
+Update internal links in these files: `← Back to Articles` -> `← Back to Stories`, `href="/articles"` -> `href="/stories"`
+
+### Delete old articles directory
+| File | Action |
+|------|--------|
+| `frontend/src/app/articles/page.tsx` | Delete (replaced by `/stories/page.tsx`) |
+| `frontend/src/app/articles/` directory | Delete entirely after moving files |
+
+### Create new files (15 files)
+| File | Purpose |
+|------|---------|
+| `frontend/src/app/stories/storyData.ts` | Types + 12 story metadata + 3 article metadata + helpers |
+| `frontend/src/components/StoryPageLayout.tsx` | Shared layout for children's story pages |
+| `frontend/src/app/stories/page.tsx` | Combined listing: children's stories (top) + articles (bottom) |
+
+**12 children's story pages:**
+
+| # | File | Story | Color |
+|---|------|-------|-------|
+| 1 | `stories/mahishasur-bodh/page.tsx` | The Slaying of Mahishasura (মহিষাসুর বধ) | Red |
+| 2 | `stories/umar-agomoni/page.tsx` | Uma's Homecoming (উমার আগমনী) | Red |
+| 3 | `stories/durgar-dosh-ostro/page.tsx` | How Durga Got Her Ten Weapons (দুর্গার দশ অস্ত্র) | Red |
+| 4 | `stories/saraswatir-binadan/page.tsx` | The Gift of Music and Speech (সরস্বতীর বীণাদান) | Yellow |
+| 5 | `stories/hatekhari/page.tsx` | The First Writing Lesson (হাতেখড়ি) | Yellow |
+| 6 | `stories/saraswati-o-ondhokar/page.tsx` | Saraswati's Light Against Darkness (সরস্বতী ও অন্ধকার) | Yellow |
+| 7 | `stories/ganesher-gajanon/page.tsx` | How Ganesh Got His Elephant Head (গণেশের গজানন কাহিনী) | Orange |
+| 8 | `stories/prithivi-prodokshin/page.tsx` | The Race Around the World (পৃথিবী প্রদক্ষিণ) | Orange |
+| 9 | `stories/ganesher-mahabharot-lekha/page.tsx` | Ganesh Writes the Mahabharata (গণেশের মহাভারত লেখা) | Orange |
+| 10 | `stories/kartikayer-jonmo/page.tsx` | Birth of Kartikeya (কার্তিকেয়ের জন্ম) | Blue |
+| 11 | `stories/kartiker-moyur-bahon/page.tsx` | How Kartikeya Got His Peacock (কার্তিকের ময়ূর-বাহন) | Blue |
+| 12 | `stories/gonesh-kartik-bibad/page.tsx` | The Great Sibling Rivalry (গণেশ-কার্তিক বিবাদ) | Blue |
+
+### Modify existing files (3 files)
+| File | Change |
+|------|--------|
+| `Header.tsx` | Replace `'/articles'` -> `'/stories'` in nav array + mobile menu |
+| `Footer.tsx` | Replace articles link -> stories link |
+| `sitemap.ts` | Remove `/articles` URLs, add `/stories` + all 15 story/article URLs |
+
+## Listing Page Layout (`/stories/page.tsx`)
+1. **Hero** -- "Stories & Articles / গল্প ও প্রবন্ধ"
+2. **Divine Family intro** -- Brief section about the Durga-Ganesh-Kartikeya-Saraswati family
+3. **Children's Stories** -- 4 deity sections (Durga, Saraswati, Ganesh, Kartikeya), 3 cards each
+4. **Articles** -- "Articles / Deep Reads" section with the 3 existing article cards below
+
+## Children's Story Page Structure
+1. Hero with deity-colored gradient + optional puja photo
+2. 3-4 narrative sections (alternating white/gray bg), English prose + Bengali callouts
+3. Moral/Lesson callout section
+4. Related stories from same deity
+5. Prev/Next navigation + "All Stories" button
+
+## Implementation Order
+1. Create feature branch from main
+2. Create `storyData.ts` + `StoryPageLayout.tsx`
+3. Create `stories/page.tsx` (combined listing)
+4. Move 3 article pages from `articles/` to `stories/`, update internal links
+5. Delete `articles/` directory
+6. Create 12 children's story pages
+7. Update Header.tsx, Footer.tsx, sitemap.ts
+8. Build + verify
+
+## Verification
+1. `npm run build` -- no errors
+2. Manual check: `/stories` shows 12 story cards + 3 article cards
+3. All 15 individual pages render correctly
+4. Header/Footer links point to `/stories`
+5. Mobile responsive layout works
+6. Old `/articles` URLs return 404 (expected -- content moved to `/stories`)
+
+
+If you need specific details from before exiting plan mode (like exact code snippets, error messages, or content you generated), read the full transcript at: /Users/manishmitra/.REDACTED.jsonl
+
+---
+
+<task-notification>
+<task-id>ad41a14</task-id>
+<status>completed</status>
+<summary>Agent "Explore codebase structure" completed</summary>
+<result>Perfect! Now let me create a comprehensive analysis document:
+
+## BSM Website Codebase Analysis
+
+I've completed a thorough exploration of the BSM website codebase. Here's the comprehensive analysis:
+
+---
+
+### PROJECT OVERVIEW
+
+**Technology Stack:**
+- **Framework**: Next.js 15.5.0 with React 19.1.0
+- **Styling**: Tailwind CSS 4 with `@tailwindcss/postcss`
+- **Animation**: Framer Motion 12.23.19
+- **Fonts**: Inter (English), Noto Sans Bengali, Playfair Display, JetBrains Mono
+- **Icons**: Lucide React 0.544.0
+- **Deployment**: AWS (SST 3.0.0)
+- **Other**: Nodemailer for email, Next.js Image optimization
+
+---
+
+### DIRECTORY STRUCTURE
+
+```
+/Users/manishmitra/Documents/projects/bsm/frontend/
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx              # Root layout with Header/Footer
+│   │   ├── page.tsx                # Homepage
+│   │   ├── globals.css             # Global styles & Tailwind
+│   │   ├── sitemap.ts              # SEO sitemap
+│   │   ├── articles/
+│   │   │   ├── page.tsx            # Articles listing page
+│   │   │   ├── durga-slays-mahishasura/
+│   │   │   │   └── page.tsx        # Durga article
+│   │   │   ├── goddess-saraswati/
+│   │   │   │   └── page.tsx        # Saraswati article
+│   │   │   └── kali-mata/
+│   │   │       └── page.tsx        # Kali article
+│   │   ├── events/                 # Event pages (durgotsav, kalipuja, saraswati-puja, pohela-boishakh, christmas-new-year)
+│   │   ├── gallery/                # Photo gallery
+│   │   ├── about/                  # About BSM
+│   │   ├── contact/                # Contact page
+│   │   ├── donation/               # Donation page
+│   │   ├── membership/             # Membership page
+│   │   ├── sponsorship/            # Sponsorship page
+│   │   ├── volunteering/           # Volunteering page
+│   │   └── api/                    # API routes
+│   └── components/
+│       ├── Header.tsx              # Navigation header
+│       ├── Footer.tsx              # Footer
+│       ├── AddToCalendar.tsx       # Calendar integration
+│       ├── CountdownTimer.tsx      # Event countdown
+│       ├── GoogleMap.tsx           # Google Maps integration
+│       ├── GoogleMapsScript.tsx    # Maps script loader
+│       ├── SponsorBanner.tsx       # Sponsor banner
+│       ├── SponsorCarousel.tsx     # Sponsor carousel
+│       ├── SponsorModal.tsx        # Sponsor modal
+│       ├── SponsorSpotlight.tsx    # Featured sponsors
+│       └── home/                   # Home page components
+├── package.json
+└── tsconfig.json
+```
+
+---
+
+### ARTICLES SECTION - COMPLETE OVERVIEW
+
+#### **Articles Landing Page** (`/articles/page.tsx`)
+
+**Structure:**
+1. **Hero Section**
+   - Gradient background (red → orange → yellow)
+   - Background image with overlay
+   - Bilingual h1 title and description
+
+2. **Sacred Stories Section**
+   - Grid layout: 1 column (mobile) → 2 columns (tablet) → 3 columns (desktop)
+   - Article cards with:
+     - Image overlay with gradient and emoji icon
+     - Title, Bengali name
+     - Description, Bengali description
+     - Color-coded badge system
+     - Hover effects (scale, shadow)
+
+3. **Call-to-Action Section**
+   - Gradient background (red → orange)
+   - Bilingual text
+   - Links to events and membership
+
+**Article Data Structure:**
+```tsx
+{
+  name: 'English Title',
+  nameBengali: 'বাংলা শিরোনাম',
+  slug: 'url-slug',
+  description: 'English description',
+  descriptionBengali: 'বাংলা বর্ণনা',
+  icon: '🪔',
+  color: 'from-red-500 to-orange-500',    // Tailwind gradient
+  textColor: 'text-red-600',              // Accent color
+  image: '/path/to/image.jpg'
+}
+```
+
+**Color Coding:**
+- **Durga**: Red → Orange (🪔 lamp)
+- **Kali**: Purple → Pink (🕉️ om symbol)
+- **Saraswati**: Yellow → Orange (📚 books)
+
+---
+
+### INDIVIDUAL ARTICLE PAGES
+
+#### **1. Durga Article** (`/articles/durga-slays-mahishasura/page.tsx`)
+
+**Sections:**
+1. **Hero** - Red/orange gradient with "Back to Articles" link
+2. **The Story** (Bilingual)
+   - 2-column layout (English left, Bengali right)
+   - Subsections:
+     - The Tyranny of Mahishasura
+     - The Birth of Goddess Durga
+     - The Ten Arms and Divine Weapons
+     - The Great Battle
+     - The Victory — Vijaya Dashami
+3. **Why We Celebrate** (Bilingual)
+   - Cultural significance
+   - BSM's Durgotsav celebration
+4. **CTA** - Links to Durgotsav event and more articles
+
+**Styling:**
+- English: White background, `prose prose-lg` class
+- Bengali: Soft red background (`bg-red-50`), same prose styling
+- Language labels: Colored badges (red for English, orange for Bengali)
+
+---
+
+#### **2. Saraswati Article** (`/articles/goddess-saraswati/page.tsx`)
+
+**Sections:**
+1. **Hero** - Yellow/orange gradient with back link
+2. **The Goddess of Wisdom** (Bilingual)
+   - 2-column layout
+   - Subsections:
+     - The River of Knowledge
+     - The Divine Iconography
+     - The Swan and the Peacock
+     - Beyond Religion: A Universal Symbol
+3. **Saraswati Puja in Bengali Culture** (Bilingual)
+   - Basant Panchami celebration
+   - Hatey Khori tradition
+   - BSM's celebration
+4. **CTA** - Links to Saraswati Puja event
+
+**Color Scheme:**
+- Yellow accents and gradients
+- Language badges: Yellow (English), orange (Bengali)
+- Background: Yellow-50 for Bengali text
+
+---
+
+#### **3. Kali Article** (`/articles/kali-mata/page.tsx`)
+
+**Sections:**
+1. **Hero** - Purple/pink gradient with back link
+2. **The Origin & Mythology** (Bilingual)
+   - 2-column layout
+   - Subsections:
+     - Born from Durga's Fury
+     - The Destroyer of Evil
+     - The Sacred Symbolism
+     - Kali and Shiva
+     - The Compassionate Mother
+3. **Kali Puja in Bengali Culture** (Bilingual)
+   - Kartik new moon celebration
+   - Deepavali comparison
+   - BSM's celebration significance
+4. **CTA** - Links to Kali Puja event
+
+**Color Scheme:**
+- Purple/pink accents
+- Language badges: Purple (English), pink (Bengali)
+- Background: Purple-50 for Bengali text
+
+---
+
+### STYLING PATTERNS & APPROACH
+
+#### **Tailwind CSS Utility-First:**
+- **Spacing**: `px-4 sm:px-6 lg:px-8` (responsive padding)
+- **Typography**: `text-3xl sm:text-4xl md:text-5xl lg:text-6xl` (responsive sizes)
+- **Colors**: Predefined gradient system (red, orange, yellow, purple, pink)
+- **Shadows**: `shadow-lg hover:shadow-2xl` (depth)
+- **Transitions**: `transition-all duration-500` (smooth animations)
+- **Responsive**: Mobile-first approach with `sm:`, `md:`, `lg:` breakpoints
+
+#### **Framer Motion Animations:**
+```tsx
+<motion.div
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}          // On mount
+  whileInView={{ opacity: 1, y: 0 }}      // On scroll into view
+  transition={{ duration: 0.8, delay: index * 0.15 }}
+>
+```
+
+#### **Bilingual Support:**
+- **Bengali Font**: `style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}`
+- **Language Badges**: Inline text with language identifiers
+- **Layout**: Two-column for content, color-coded backgrounds
+- **Text Alignment**: RTL support not explicitly used (both LTR)
+
+---
+
+### HEADER COMPONENT (`/components/Header.tsx`)
+
+**Features:**
+- Fixed, sticky navigation with backdrop blur
+- Logo + organization name (bilingual)
+- Navigation links: About, Events, Gallery, **Articles**, Volunteering, Sponsorship, Membership, Donation, Contact
+- Social media: Facebook, Instagram
+- Mobile hamburger menu (hidden on `md:` and up)
+- Join Us CTA button (gradient red-to-orange)
+- Mobile dropdown with contact numbers (phone/email)
+
+**Styling:**
+- `bg-white/95 backdrop-blur-md` - Modern glass effect
+- `fixed w-full top-0 z-50` - Sticky positioning
+- Smooth `motion.header` entrance animation
+
+---
+
+### FOOTER COMPONENT (`/components/Footer.tsx`)
+
+**Structure (4-column grid on desktop):**
+
+1. **About Section** (spans 2 columns on desktop)
+   - Organization name and bilingual subtitle
+   - Description
+   - Social media links
+   - Contact info
+
+2. **Our Festivals Column**
+   - Links to all 5 major events
+   - Bilingual festival names
+
+3. **Community Column**
+   - About, Membership, Gallery
+   - **Articles**, Volunteering, Donation, Contact
+
+4. **Footer Bottom**
+   - Copyright 2012-2025
+   - "Not-for-profit multicultural organization" tagline
+
+**Colors:**
+- Dark gray background (`bg-gray-800`)
+- Red/orange accents for text (`text-red-400`, `text-orange-400`)
+- Hover effects: `hover:text-red-400`
+
+---
+
+### SITEMAP (`/sitemap.ts`)
+
+**Priority System:**
+- Home: 1.0 (highest)
+- Events hub: 0.95
+- Durgotsav: 0.95
+- Other events: 0.85-0.9
+- Gallery: 0.8
+- Membership: 0.8
+- Other pages: 0.7-0.75
+
+**Change Frequency:**
+- Weekly: Home, Events pages
+- Monthly: About, Membership, etc.
+
+**Note**: Articles are NOT in the sitemap (opportunity to add them!)
+
+---
+
+### LAYOUT & METADATA (`/app/layout.tsx`)
+
+**Root Layout Features:**
+- Header/Footer wrapper
+- Google Maps script injection
+- `pt-16 sm:pt-20` padding for fixed header
+- Bilingual font support (Inter + Noto Sans Bengali)
+
+**Global Metadata:**
+- Title: "Bengali Society of Melbourne | BSM | Durga Puja Melbourne 2025"
+- Keywords: Extensive bilingual SEO keywords
+- OpenGraph + Twitter cards
+- Canonical URL: `https://bsm.org.au`
+- Mobile-friendly (`en-AU` locale)
+
+---
+
+### GLOBAL STYLING (`/globals.css`)
+
+**Key Features:**
+1. **Font Imports**: Inter, Playfair Display, JetBrains Mono, Noto Sans Bengali
+2. **CSS Variables**:
+   - `--background`, `--foreground`
+   - `--accent`, `--muted`, `--border`
+   - Font family, size, and line-height scales
+
+3. **Modern Utilities**:
+   - Glass morphism effect (`.glass`)
+   - Gradient text (`.gradient-text`)
+   - Neo-brutalism (`.neo-brutal`)
+   - Line clamping (`.line-clamp-1`, `.line-clamp-2`)
+   - Marquee animation (`.animate-marquee`)
+
+4. **Mobile Optimizations**:
+   - 44px minimum touch targets
+   - 16px font-size to prevent zoom
+   - Smooth scrolling
+   - Scrollbar hiding utilities
+
+---
+
+### RECURRING DESIGN PATTERNS
+
+#### **Section Structure:**
+```tsx
+<section className="py-20 bg-{color}">
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <motion.div className="text-center mb-16">
+      <h2>Title</h2>
+      <p>Subtitle</p>
+    </motion.div>
+    
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {/* Content */}
+    </div>
+  </div>
+</section>
+```
+
+#### **Content Card:**
+```tsx
+<motion.div className="bg-white rounded-2xl shadow-lg p-8">
+  <div className="prose prose-lg text-gray-700 space-y-5">
+    {/* Text content */}
+  </div>
+</motion.div>
+```
+
+#### **CTA Section:**
+```tsx
+<section className="py-16 bg-gradient-to-r from-{color1} to-{color2}">
+  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+    <Link className="bg-white text-{color} px-8 py-4">
+      Primary CTA
+    </Link>
+    <Link className="border-2 border-white text-white px-8 py-4">
+      Secondary CTA
+    </Link>
+  </div>
+</section>
+```
+
+---
+
+### CONTENT PATTERNS
+
+#### **Bilingual Text Handling:**
+- **Headers**: English + Bengali subtitle on separate lines
+- **Paragraphs**: Full parallel columns with language badges
+- **Inline**: Bilingual names like "Durga Puja Melbourne | দুর্গা পূজা মেলবোর্ন"
+
+#### **Image Strategy:**
+- Next.js `Image` component with optimization
+- `fill` prop for background images with `object-cover`
+- Opacity overlays for readability
+- Fallback images in articles
+
+#### **Typography Classes:**
+- `prose prose-lg` - Rich text styling from Tailwind
+- `text-{color}-{shade}` - Semantic color system
+- `font-bold`, `font-semibold` - Weight hierarchy
+- `leading-tight`, `leading-relaxed` - Line height control
+
+---
+
+### KEY OBSERVATIONS
+
+1. **Consistency**: The three article pages follow nearly identical structure/styling patterns
+2. **Bilingual-First Design**: Bengali text is equal priority, not an afterthought
+3. **Accessibility**: Semantic HTML, proper contrast ratios, alt text on images
+4. **Performance**: Next.js Image optimization, lazy loading via Framer Motion
+5. **SEO Gap**: Articles are not listed in sitemap - should be added
+6. **Responsive Design**: Mobile-first, tested from xs (340px) to xl+ screens
+7. **Motion Design**: Subtle animations enhance but don't distract
+8. **Color System**: 5 deity-specific color palettes (red, purple, yellow, etc.)
+9. **Component Reusability**: Header, Footer, sections follow DRY principles
+10. **Modern Tooling**: Turbopack for dev, SST for AWS deployment
+
+---
+
+### ABSOLUTE FILE PATHS REFERENCE
+
+- **Articles Index**: `/Users/manishmitra/Documents/projects/bsm/frontend/src/app/articles/page.tsx`
+- **Durga Article**: `/Users/manishmitra/Documents/projects/bsm/frontend/src/app/articles/durga-slays-mahishasura/page.tsx`
+- **Saraswati Article**: `/Users/manishmitra/Documents/projects/bsm/frontend/src/app/articles/goddess-saraswati/page.tsx`
+- **Kali Article**: `/Users/manishmitra/Documents/projects/bsm/frontend/src/app/articles/kali-mata/page.tsx`
+- **Header**: `/Users/manishmitra/Documents/projects/bsm/frontend/src/components/Header.tsx`
+- **Footer**: `/Users/manishmitra/Documents/projects/bsm/frontend/src/components/Footer.tsx`
+- **Layout**: `/Users/manishmitra/Documents/projects/bsm/frontend/src/app/layout.tsx`
+- **Global Styles**: `/Users/manishmitra/Documents/projects/bsm/frontend/src/app/globals.css`
+- **Sitemap**: `/Users/manishmitra/Documents/projects/bsm/frontend/src/app/sitemap.ts`
+
+This comprehensive codebase demonstrates production-grade Next.js development with thoughtful bilingual design, modern animations, and proper SEO/accessibility considerations.</result>
+<usage>total_tokens: 105624
+tool_uses: 19
+duration_ms: 61629</usage>
+</task-notification>
+Full transcript available at: /private/tmp/claude-501/-Users-manishmitra-Documents-projects-bsm/tasks/ad41a14.output
+
+---
+
+<task-notification>
+<task-id>a4018f3</task-id>
+<status>completed</status>
+<summary>Agent "Create 6 Durga+Saraswati story pages" completed</summary>
+<result>All 6 story page files have been created. Here is a summary of what was produced:
+
+| # | File | Slug | Function Name |
+|---|------|------|---------------|
+| 1 | `/Users/manishmitra/Documents/projects/bsm/frontend/src/app/stories/mahishasur-bodh/page.tsx` | `mahishasur-bodh` | `MahishasurBodhStory` |
+| 2 | `/Users/manishmitra/Documents/projects/bsm/frontend/src/app/stories/umar-agomoni/page.tsx` | `umar-agomoni` | `UmarAgomoniStory` |
+| 3 | `/Users/manishmitra/Documents/projects/bsm/frontend/src/app/stories/durgar-dosh-ostro/page.tsx` | `durgar-dosh-ostro` | `DurgarDoshOstroStory` |
+| 4 | `/Users/manishmitra/Documents/projects/bsm/frontend/src/app/stories/saraswatir-binadan/page.tsx` | `saraswatir-binadan` | `SaraswatirBinadanStory` |
+| 5 | `/Users/manishmitra/Documents/projects/bsm/frontend/src/app/stories/hatekhari/page.tsx` | `hatekhari` | `HatekhariStory` |
+| 6 | `/Users/manishmitra/Documents/projects/bsm/frontend/src/app/stories/saraswati-o-ondhokar/page.tsx` | `saraswati-o-ondhokar` | `SaraswatiOOndhokarStory` |
+
+Each file follows the exact template: imports `StoryPageLayout` from `@/components/StoryPageLayout`, imports `getStoryBySlug` from `../storyData`, looks up the story by its slug, returns `null` if not found, and otherwise renders the shared `StoryPageLayout` component. All are server components (no `'use client'` directive).</result>
+<usage>total_tokens: 38011
+tool_uses: 7
+duration_ms: 22763</usage>
+</task-notification>
+Full transcript available at: REDACTED.output
+
+---
+
+<task-notification>
+<task-id>ac3f1e7</task-id>
+<status>completed</status>
+<summary>Agent "Create 6 Ganesh+Kartikeya story pages" completed</summary>
+<result>All 6 story page files have been created. Here is a summary of what was created:
+
+| # | File | Slug | Function Name |
+|---|------|------|---------------|
+| 1 | `/Users/manishmitra/Documents/projects/bsm/frontend/src/app/stories/ganesher-gajanon/page.tsx` | `ganesher-gajanon` | `GanesherGajanonStory` |
+| 2 | `/Users/manishmitra/Documents/projects/bsm/frontend/src/app/stories/prithivi-prodokshin/page.tsx` | `prithivi-prodokshin` | `PrithiviProdokshinStory` |
+| 3 | `/Users/manishmitra/Documents/projects/bsm/frontend/src/app/stories/ganesher-mahabharot-lekha/page.tsx` | `ganesher-mahabharot-lekha` | `GanesherMahabharotLekhaStory` |
+| 4 | `/Users/manishmitra/Documents/projects/bsm/frontend/src/app/stories/kartikayer-jonmo/page.tsx` | `kartikayer-jonmo` | `KartikayerJonmoStory` |
+| 5 | `/Users/manishmitra/Documents/projects/bsm/frontend/src/app/stories/kartiker-moyur-bahon/page.tsx` | `kartiker-moyur-bahon` | `KartikerMoyurBahonStory` |
+| 6 | `/Users/manishmitra/Documents/projects/bsm/frontend/src/app/stories/gonesh-kartik-bibad/page.tsx` | `gonesh-kartik-bibad` | `GoneshKartikBibadStory` |
+
+Each file follows the exact template: imports `StoryPageLayout` from `@/components/StoryPageLayout`, imports `getStoryBySlug` from `../storyData`, looks up the story by its slug, returns `null` if not found, and otherwise renders via the shared `StoryPageLayout` component. All are server components (no `'use client'` directive).</result>
+<usage>total_tokens: 38094
+tool_uses: 7
+duration_ms: 22602</usage>
+</task-notification>
+Full transcript available at: /private/tmp/claude-501/-Users-manishmitra-Documents-projects-bsm/tasks/ac3f1e7.output
+
+---
+
+yeah open a pr
