@@ -95,6 +95,16 @@ export default function StoryPageLayout({ story }: { story: Story }) {
                 ))}
               </div>
 
+              {section.contentBengali && (
+                <div className={`mt-6 ${theme.lightBg} rounded-xl p-6`}>
+                  <div className="prose prose-lg text-gray-600 leading-relaxed" style={bengaliFont}>
+                    {section.contentBengali.split('\n\n').map((para, i) => (
+                      <p key={i}>{para}</p>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {section.bengaliCallout && (
                 <div className={`mt-8 ${theme.lightBg} ${theme.border} border-l-4 rounded-r-xl p-5`}>
                   <p className={`${theme.text} text-lg leading-relaxed`} style={bengaliFont}>
