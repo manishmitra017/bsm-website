@@ -16,7 +16,11 @@ export default function Membership() {
     email: '',
     phone: '',
     adultMembers: '',
-    children: ''
+    children: '',
+    reference1Name: '',
+    reference1Phone: '',
+    reference2Name: '',
+    reference2Phone: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitMessage, setSubmitMessage] = useState('')
@@ -52,6 +56,14 @@ export default function Membership() {
       formDataToSend.append('membershipType', membershipType)
       formDataToSend.append('adultMembers', formData.adultMembers)
       formDataToSend.append('children', formData.children)
+      if (formData.reference1Name) {
+        formDataToSend.append('reference1Name', formData.reference1Name)
+        formDataToSend.append('reference1Phone', formData.reference1Phone)
+      }
+      if (formData.reference2Name) {
+        formDataToSend.append('reference2Name', formData.reference2Name)
+        formDataToSend.append('reference2Phone', formData.reference2Phone)
+      }
       formDataToSend.append('subject', `New Membership Application - ${formData.fullName} (${membershipType})`)
 
       const response = await fetch('https://api.web3forms.com/submit', {
@@ -66,7 +78,11 @@ export default function Membership() {
           email: '',
           phone: '',
           adultMembers: '',
-          children: ''
+          children: '',
+          reference1Name: '',
+          reference1Phone: '',
+          reference2Name: '',
+          reference2Phone: ''
         })
         // Clear the address
         setSelectedAddress('')
@@ -479,6 +495,87 @@ export default function Membership() {
                   </div>
                 )}
 
+                {/* Reference Section */}
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                  <h3 className="font-semibold text-blue-800 mb-1">
+                    References from Existing Members
+                  </h3>
+                  <p className="text-sm text-blue-600 mb-4" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                    বিদ্যমান সদস্যদের রেফারেন্স
+                  </p>
+                  <p className="text-sm text-gray-600 mb-4">
+                    Please provide details of two existing BSM members who can vouch for your membership application. (Optional for now)
+                  </p>
+                  <div className="space-y-4">
+                    <div>
+                      <p className="text-sm font-medium text-blue-700 mb-2">Reference 1</p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                          <label htmlFor="reference1Name" className="block text-sm font-medium text-gray-700 mb-1">
+                            Full Name
+                          </label>
+                          <input
+                            type="text"
+                            id="reference1Name"
+                            name="reference1Name"
+                            value={formData.reference1Name}
+                            onChange={handleInputChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 placeholder-gray-500"
+                            placeholder="Name of existing BSM member"
+                          />
+                        </div>
+                        <div>
+                          <label htmlFor="reference1Phone" className="block text-sm font-medium text-gray-700 mb-1">
+                            Phone/Mobile
+                          </label>
+                          <input
+                            type="tel"
+                            id="reference1Phone"
+                            name="reference1Phone"
+                            value={formData.reference1Phone}
+                            onChange={handleInputChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 placeholder-gray-500"
+                            placeholder="Phone number of the member"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-blue-700 mb-2">Reference 2</p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                          <label htmlFor="reference2Name" className="block text-sm font-medium text-gray-700 mb-1">
+                            Full Name
+                          </label>
+                          <input
+                            type="text"
+                            id="reference2Name"
+                            name="reference2Name"
+                            value={formData.reference2Name}
+                            onChange={handleInputChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 placeholder-gray-500"
+                            placeholder="Name of existing BSM member"
+                          />
+                        </div>
+                        <div>
+                          <label htmlFor="reference2Phone" className="block text-sm font-medium text-gray-700 mb-1">
+                            Phone/Mobile
+                          </label>
+                          <input
+                            type="tel"
+                            id="reference2Phone"
+                            name="reference2Phone"
+                            value={formData.reference2Phone}
+                            onChange={handleInputChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 placeholder-gray-500"
+                            placeholder="Phone number of the member"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="bg-red-50 border border-red-200 rounded-lg p-6">
                   <h3 className="font-semibold text-red-800 mb-4">Payment Information</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
@@ -520,7 +617,11 @@ export default function Membership() {
                         email: '',
                         phone: '',
                         adultMembers: '',
-                        children: ''
+                        children: '',
+                        reference1Name: '',
+                        reference1Phone: '',
+                        reference2Name: '',
+                        reference2Phone: ''
                       })
                       setSelectedAddress('')
                       setMembershipType('single')
