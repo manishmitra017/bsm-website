@@ -1,0 +1,26 @@
+{
+  "cli_version": "0.4.2",
+  "checkpoint_id": "7fc1f06f76c7",
+  "strategy": "manual-commit",
+  "branch": "feature/membership-reference-verification-note",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "frontend/src/app/membership/page.tsx"
+  ],
+  "sessions": [
+    {
+      "metadata": "/7f/c1f06f76c7/0/metadata.json",
+      "transcript": "/7f/c1f06f76c7/0/full.jsonl",
+      "context": "/7f/c1f06f76c7/0/context.md",
+      "content_hash": "/7f/c1f06f76c7/0/content_hash.txt",
+      "prompt": "/7f/c1f06f76c7/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 13,
+    "cache_creation_tokens": 56194,
+    "cache_read_tokens": 537240,
+    "output_tokens": 997,
+    "api_call_count": 11
+  }
+}
