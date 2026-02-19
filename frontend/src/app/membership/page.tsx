@@ -503,8 +503,11 @@ export default function Membership() {
                   <p className="text-sm text-blue-600 mb-4" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
                     বিদ্যমান সদস্যদের রেফারেন্স
                   </p>
-                  <p className="text-sm text-gray-600 mb-4">
+                  <p className="text-sm text-gray-600 mb-2">
                     Please provide details of two existing BSM members who can vouch for your membership application. (Optional for now)
+                  </p>
+                  <p className="text-sm text-gray-500 italic mb-4">
+                    BSM may verify your reference details with your referees.
                   </p>
                   <div className="space-y-4">
                     <div>
