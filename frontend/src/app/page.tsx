@@ -51,9 +51,9 @@ export default function Home() {
   // Disable animations in Lambda environment
   const disableAnimations = process.env.NEXT_PUBLIC_DISABLE_ANIMATIONS === 'true'
 
-  // Live countdown to Pohela Boishakh 2026 - April 14, 10 AM
+  // Live countdown to Pohela Boishakh 2026 - April 25, 5 PM
   useEffect(() => {
-    const targetDate = new Date('2026-04-14T10:00:00').getTime()
+    const targetDate = new Date('2026-04-25T17:00:00').getTime()
 
     const updateCountdown = () => {
       const now = new Date().getTime()
@@ -114,11 +114,11 @@ export default function Home() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
             <span className="text-base sm:text-lg font-bold">
-              🌸 Next Event: Pohela Boishakh 2026 | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>পহেলা বৈশাখ ১৪৩৩</span>
+              🌸 Next Event: Pohela Boishakh 2026 (Members Only) | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>পহেলা বৈশাখ ১৪৩৩</span>
             </span>
             <span className="hidden sm:inline text-base">•</span>
             <span className="text-sm sm:text-base font-bold">
-              📅 April 14, 2026 | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>১৪ এপ্রিল ২০২৬</span>
+              📅 April 25, 2026 | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>২৫ এপ্রিল ২০২৬</span>
             </span>
             <span className="hidden sm:inline text-base">•</span>
             <Link href="/events" className="text-sm sm:text-base underline hover:text-green-200">

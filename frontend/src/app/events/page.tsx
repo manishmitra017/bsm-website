@@ -158,8 +158,11 @@ export default function Events() {
                 <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md rounded-full p-3">
                   <span className="text-3xl">🌸</span>
                 </div>
+                <div className="absolute top-4 right-4 bg-amber-500 text-white px-3 py-1 rounded-full font-bold text-xs tracking-wide">
+                  Members Only
+                </div>
                 <div className="absolute bottom-4 right-4 bg-green-600 text-white px-5 py-2 rounded-full font-bold text-sm tracking-wide">
-                  April 2026
+                  25 April 2026
                 </div>
                 <div className="absolute bottom-4 left-4">
                   <span className="text-white text-2xl font-bold drop-shadow-lg" style={{ fontFamily: 'Playfair Display, serif' }}>
@@ -179,7 +182,7 @@ export default function Events() {
                     </p>
                   </div>
                   <div className="text-right bg-green-50 rounded-xl px-4 py-2">
-                    <p className="text-lg font-bold text-green-700">April 14</p>
+                    <p className="text-lg font-bold text-green-700">April 25</p>
                     <p className="text-sm text-green-600">2026</p>
                   </div>
                 </div>
@@ -188,8 +191,8 @@ export default function Events() {
                   <div className="flex items-start space-x-3">
                     <span className="text-green-600 text-lg mt-0.5">📍</span>
                     <div>
-                      <p className="font-semibold text-gray-900">Venue to be announced</p>
-                      <p className="text-gray-500 text-sm">Melbourne, VIC</p>
+                      <p className="font-semibold text-gray-900">Lara Hall</p>
+                      <p className="text-gray-500 text-sm">1A Flinders Avenue, Lara VIC 3212</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
@@ -215,9 +218,9 @@ export default function Events() {
                     event={{
                       title: 'Pohela Boishakh 2026 - Bengali Society of Melbourne',
                       description: 'Welcome the Bengali New Year 1433! Join us for traditional music, dance, cultural performances and authentic Bengali cuisine.',
-                      startDate: '2026-04-14T10:00:00+10:00',
-                      endDate: '2026-04-14T18:00:00+10:00',
-                      location: 'Melbourne, VIC (Venue TBA)'
+                      startDate: '2026-04-25T17:00:00+10:00',
+                      endDate: '2026-04-25T22:00:00+10:00',
+                      location: 'Lara Hall, 1A Flinders Avenue, Lara VIC 3212'
                     }}
                     buttonClassName="border-2 border-green-600 text-green-600 px-6 py-3 rounded-xl font-semibold hover:bg-green-50 transition-all duration-200 text-center"
                   />
