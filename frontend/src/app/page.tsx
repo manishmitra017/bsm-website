@@ -109,25 +109,6 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      {/* Next Event Banner - Static */}
-      <div className="bg-gradient-to-r from-green-600 via-teal-600 to-emerald-600 text-white py-3 sm:py-4">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
-            <span className="text-base sm:text-lg font-bold">
-              🌸 Next Event: Pohela Boishakh 2026 (Members Only) | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>পহেলা বৈশাখ ১৪৩৩</span>
-            </span>
-            <span className="hidden sm:inline text-base">•</span>
-            <span className="text-sm sm:text-base font-bold">
-              📅 April 25, 2026 | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>২৫ এপ্রিল ২০২৬</span>
-            </span>
-            <span className="hidden sm:inline text-base">•</span>
-            <Link href="/events" className="text-sm sm:text-base underline hover:text-green-200">
-              View All Events →
-            </Link>
-          </div>
-        </div>
-      </div>
-
       {/* Welcome Banner */}
       <section className="py-4 bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
