@@ -1,0 +1,25 @@
+{
+  "cli_version": "0.5.3",
+  "checkpoint_id": "58482e7e0659",
+  "strategy": "manual-commit",
+  "branch": "fix/remove-pohela-boishakh-banner",
+  "checkpoints_count": 0,
+  "files_touched": [
+    "frontend/src/app/page.tsx"
+  ],
+  "sessions": [
+    {
+      "metadata": "/58/482e7e0659/0/metadata.json",
+      "transcript": "/58/482e7e0659/0/full.jsonl",
+      "content_hash": "/58/482e7e0659/0/content_hash.txt",
+      "prompt": "/58/482e7e0659/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 10,
+    "cache_creation_tokens": 6272,
+    "cache_read_tokens": 775614,
+    "output_tokens": 1313,
+    "api_call_count": 8
+  }
+}
