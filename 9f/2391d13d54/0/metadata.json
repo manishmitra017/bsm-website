@@ -1,0 +1,39 @@
+{
+  "cli_version": "0.5.3",
+  "checkpoint_id": "9f2391d13d54",
+  "session_id": "039994e0-6e21-4b35-a210-86530256e19e",
+  "strategy": "manual-commit",
+  "created_at": "2026-05-01T13:27:18.28297Z",
+  "branch": "fix/remove-pohela-boishakh-event-details",
+  "checkpoints_count": 0,
+  "files_touched": [
+    "frontend/src/app/events/pohela-boishakh/page.tsx"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-opus-4-6[1m][1m]",
+  "turn_id": "8998c03cca29",
+  "checkpoint_transcript_start": 367,
+  "transcript_lines_at_start": 367,
+  "token_usage": {
+    "input_tokens": 10,
+    "cache_creation_tokens": 7805,
+    "cache_read_tokens": 905520,
+    "output_tokens": 2805,
+    "api_call_count": 8
+  },
+  "session_metrics": {
+    "turn_count": 5
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-05-01T13:27:17.385686Z",
+    "agent_lines": 0,
+    "agent_removed": 75,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 0,
+    "total_lines_changed": 75,
+    "agent_percentage": 100,
+    "metric_version": 2
+  }
+}
