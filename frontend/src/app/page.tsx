@@ -3,15 +3,13 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import CountdownTimer from '@/components/CountdownTimer'
 import SponsorCarousel from '@/components/SponsorCarousel'
 import SponsorSpotlight from '@/components/SponsorSpotlight'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 export default function Home() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [selectedIndex, setSelectedIndex] = useState<number>(0)
-  const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
 
   // Community Gallery photos for lightbox navigation
   const communityPhotos = [
@@ -51,31 +49,6 @@ export default function Home() {
   // Disable animations in Lambda environment
   const disableAnimations = process.env.NEXT_PUBLIC_DISABLE_ANIMATIONS === 'true'
 
-  // Live countdown to Pohela Boishakh 2026 - April 25, 5 PM
-  useEffect(() => {
-    const targetDate = new Date('2026-04-25T17:00:00').getTime()
-
-    const updateCountdown = () => {
-      const now = new Date().getTime()
-      const distance = targetDate - now
-
-      if (distance > 0) {
-        setCountdown({
-          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((distance % (1000 * 60)) / 1000)
-        })
-      } else {
-        setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 })
-      }
-    }
-
-    updateCountdown() // Initial call
-    const interval = setInterval(updateCountdown, 1000)
-
-    return () => clearInterval(interval)
-  }, [])
   
   const structuredData = {
     "@context": "https://schema.org",
@@ -272,42 +245,7 @@ export default function Home() {
           <div className="absolute bottom-10 right-10 w-80 h-80 bg-yellow-300 rounded-full blur-3xl"></div>
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Pohela Boishakh Countdown */}
-          <motion.div
-            className="mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="bg-white/10 backdrop-blur-md text-white py-8 sm:py-10 rounded-3xl shadow-2xl max-w-4xl mx-auto border border-white/20">
-              <div className="text-center">
-                <h3 className="text-xl sm:text-2xl font-bold mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
-                  🌸 Countdown to Pohela Boishakh 2026 | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>পহেলা বৈশাখ ১৪৩৩</span>
-                </h3>
-                <div className="flex justify-center gap-4 sm:gap-10">
-                  <div className="flex flex-col items-center bg-white/10 rounded-2xl px-4 sm:px-6 py-3">
-                    <span className="text-3xl sm:text-5xl font-bold">{countdown.days}</span>
-                    <span className="text-xs sm:text-sm mt-2 opacity-90">Days | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>দিন</span></span>
-                  </div>
-                  <div className="flex flex-col items-center bg-white/10 rounded-2xl px-4 sm:px-6 py-3">
-                    <span className="text-3xl sm:text-5xl font-bold">{countdown.hours}</span>
-                    <span className="text-xs sm:text-sm mt-2 opacity-90">Hours | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>ঘণ্টা</span></span>
-                  </div>
-                  <div className="flex flex-col items-center bg-white/10 rounded-2xl px-4 sm:px-6 py-3">
-                    <span className="text-3xl sm:text-5xl font-bold">{countdown.minutes}</span>
-                    <span className="text-xs sm:text-sm mt-2 opacity-90">Min | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>মিনিট</span></span>
-                  </div>
-                  <div className="flex flex-col items-center bg-white/10 rounded-2xl px-4 sm:px-6 py-3">
-                    <span className="text-3xl sm:text-5xl font-bold">{countdown.seconds}</span>
-                    <span className="text-xs sm:text-sm mt-2 opacity-90">Sec | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>সেকেন্ড</span></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Upcoming Event - Pohela Boishakh */}
+          {/* Recent Event - Pohela Boishakh */}
           <motion.div
             className="text-center"
             initial={{ opacity: 0, scale: 0.95 }}
