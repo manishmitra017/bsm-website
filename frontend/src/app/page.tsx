@@ -337,16 +337,16 @@ export default function Home() {
             <div className="bg-white rounded-3xl shadow-2xl p-4 sm:p-8 max-w-4xl mx-auto">
               <div className="mb-6">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>
-                  🌸 Upcoming Festival | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>আসন্ন উৎসব</span> 🌸
+                  🌸 Recent Celebration | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>সাম্প্রতিক উৎসব</span> 🌸
                 </h2>
                 <p className="text-lg text-gray-600">
-                  Welcome the Bengali New Year with us!
+                  Relive the magic of our Bengali New Year celebration!
                 </p>
               </div>
 
               <div className="rounded-2xl overflow-hidden shadow-lg relative">
                 <Image
-                  src="/pahelaboishak/484347968_674863851736696_6373890908421337640_n.jpg"
+                  src="/pohela-boishakh-2026/IMG_2225.JPG"
                   alt="Pohela Boishakh 2026 - Bengali New Year BSM Celebration"
                   width={800}
                   height={400}
@@ -365,7 +365,7 @@ export default function Home() {
                   href="/events/pohela-boishakh"
                   className="bg-green-600 text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-green-700 transition-all duration-200 shadow-xl hover:shadow-2xl"
                 >
-                  Event Details | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>বিস্তারিত</span>
+                  View Photos & Highlights | <span style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>ছবি ও বিস্তারিত</span>
                 </Link>
                 <Link
                   href="/membership"
@@ -470,7 +470,7 @@ export default function Home() {
                 titleBengali: 'পহেলা বৈশাখ',
                 icon: '🌸',
                 description: 'Bengali New Year - Celebrating new beginnings and cultural heritage',
-                image: '/pahelaboishak/484347968_674863851736696_6373890908421337640_n.jpg',
+                image: '/pohela-boishakh-2026/IMG_2225.JPG',
                 href: '/events/pohela-boishakh'
               },
               {

@@ -117,6 +117,19 @@ export default function Gallery() {
     '/saraswatipooja-2025/20240218_172006.jpg',
     '/saraswatipooja-2025/20240218_172342.jpg',
     '/saraswatipooja-2025/20240218_172544.jpg',
+    // Pohela Boishakh 2026 photos
+    '/pohela-boishakh-2026/IMG_2225.JPG',
+    '/pohela-boishakh-2026/IMG_2245.JPG',
+    '/pohela-boishakh-2026/IMG_2344.JPG',
+    '/pohela-boishakh-2026/IMG_2360.JPG',
+    '/pohela-boishakh-2026/IMG_2393.JPG',
+    '/pohela-boishakh-2026/IMG_2401.JPG',
+    '/pohela-boishakh-2026/IMG_2412.JPG',
+    '/pohela-boishakh-2026/IMG_2422.JPG',
+    '/pohela-boishakh-2026/IMG_2429.JPG',
+    '/pohela-boishakh-2026/IMG_2442.JPG',
+    '/pohela-boishakh-2026/IMG_2443.JPG',
+    '/pohela-boishakh-2026/IMG_2495.JPG',
     // Pohela Boishakh photos
     '/pahelaboishak/484347968_674863851736696_6373890908421337640_n.jpg',
     '/pahelaboishak/482987675_674770235079391_8646617153893484712_n.jpg',
@@ -638,16 +651,74 @@ export default function Gallery() {
             </div>
           </div>
 
-          {/* Pohela Boishakh Gallery */}
+          {/* Pohela Boishakh 2026 Gallery - Featured */}
+          <div className="mb-20">
+            <motion.div
+              className="text-center mb-10"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h3 className="text-3xl md:text-4xl font-bold text-green-600 mb-4">
+                Pohela Boishakh 2026 | পহেলা বৈশাখ ১৪৩৩
+              </h3>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Celebrating Bengali New Year on April 25, 2026 at Lara Hall
+              </p>
+            </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {[
+                '/pohela-boishakh-2026/IMG_2225.JPG',
+                '/pohela-boishakh-2026/IMG_2245.JPG',
+                '/pohela-boishakh-2026/IMG_2344.JPG',
+                '/pohela-boishakh-2026/IMG_2360.JPG',
+                '/pohela-boishakh-2026/IMG_2393.JPG',
+                '/pohela-boishakh-2026/IMG_2401.JPG',
+                '/pohela-boishakh-2026/IMG_2412.JPG',
+                '/pohela-boishakh-2026/IMG_2422.JPG',
+                '/pohela-boishakh-2026/IMG_2429.JPG',
+                '/pohela-boishakh-2026/IMG_2442.JPG',
+                '/pohela-boishakh-2026/IMG_2443.JPG',
+                '/pohela-boishakh-2026/IMG_2495.JPG'
+              ].map((photo, index) => (
+                <motion.div
+                  key={index}
+                  className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.05 }}
+                  whileHover={{ y: -5 }}
+                  onClick={() => openLightbox(photo)}
+                >
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={photo}
+                      alt={`Pohela Boishakh 2026 Celebration ${index + 1}`}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <span className="text-white text-3xl">🔍</span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Pohela Boishakh (Previous) Gallery */}
           <div className="mb-16">
-            <motion.h3 
+            <motion.h3
               className="text-2xl md:text-3xl font-bold text-pink-600 mb-8 text-center"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              Pohela Boishakh | পহেলা বৈশাখ
+              Pohela Boishakh (Previous) | পহেলা বৈশাখ (পূর্ববর্তী)
             </motion.h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
               {[

@@ -138,95 +138,10 @@ export default function Events() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 max-w-3xl mx-auto">
-            {/* Pohela Boishakh 2026 */}
-            <motion.div
-              className="bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl overflow-hidden"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="relative h-56 overflow-hidden">
-                <Image
-                  src="/pahelaboishak/484347968_674863851736696_6373890908421337640_n.jpg"
-                  alt="Pohela Boishakh 2026 - BSM Melbourne Bengali New Year"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-green-700/80 via-green-600/30 to-transparent"></div>
-                <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md rounded-full p-3">
-                  <span className="text-3xl">🌸</span>
-                </div>
-                <div className="absolute top-4 right-4 bg-amber-500 text-white px-3 py-1 rounded-full font-bold text-xs tracking-wide">
-                  Members Only
-                </div>
-                <div className="absolute bottom-4 right-4 bg-green-600 text-white px-5 py-2 rounded-full font-bold text-sm tracking-wide">
-                  25 April 2026
-                </div>
-                <div className="absolute bottom-4 left-4">
-                  <span className="text-white text-2xl font-bold drop-shadow-lg" style={{ fontFamily: 'Playfair Display, serif' }}>
-                    Bengali New Year 1433
-                  </span>
-                </div>
-              </div>
-
-              <div className="p-8">
-                <div className="flex items-start justify-between mb-6">
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-1" style={{ fontFamily: 'Playfair Display, serif' }}>
-                      Pohela Boishakh 2026
-                    </h3>
-                    <p className="text-green-600 font-medium text-lg" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
-                      পহেলা বৈশাখ ১৪৩৩
-                    </p>
-                  </div>
-                  <div className="text-right bg-green-50 rounded-xl px-4 py-2">
-                    <p className="text-lg font-bold text-green-700">April 25</p>
-                    <p className="text-sm text-green-600">2026</p>
-                  </div>
-                </div>
-
-                <div className="space-y-4 mb-6">
-                  <div className="flex items-start space-x-3">
-                    <span className="text-green-600 text-lg mt-0.5">📍</span>
-                    <div>
-                      <p className="font-semibold text-gray-900">Lara Hall</p>
-                      <p className="text-gray-500 text-sm">1A Flinders Avenue, Lara VIC 3212</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <span className="text-green-600 text-lg mt-0.5">🌸</span>
-                    <div>
-                      <p className="text-gray-700 leading-relaxed">
-                        Welcome the Bengali New Year with vibrant celebrations! Pohela Boishakh marks the
-                        first day of the Bengali calendar - a time for fresh beginnings, cultural performances,
-                        traditional music, dance, and the sharing of authentic Bengali cuisine with our Melbourne community.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Link
-                    href="/events/pohela-boishakh"
-                    className="bg-green-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-green-700 transition-all duration-200 text-center shadow-lg hover:shadow-xl"
-                  >
-                    Learn More
-                  </Link>
-                  <AddToCalendar
-                    event={{
-                      title: 'Pohela Boishakh 2026 - Bengali Society of Melbourne',
-                      description: 'Welcome the Bengali New Year 1433! Join us for traditional music, dance, cultural performances and authentic Bengali cuisine.',
-                      startDate: '2026-04-25T17:00:00+10:00',
-                      endDate: '2026-04-25T22:00:00+10:00',
-                      location: 'Lara Hall, 1A Flinders Avenue, Lara VIC 3212'
-                    }}
-                    buttonClassName="border-2 border-green-600 text-green-600 px-6 py-3 rounded-xl font-semibold hover:bg-green-50 transition-all duration-200 text-center"
-                  />
-                </div>
-              </div>
-            </motion.div>
+          <div className="text-center">
+            <p className="text-xl text-green-100">
+              Stay tuned for upcoming events! Check back soon for new announcements.
+            </p>
           </div>
 
         </div>
@@ -254,6 +169,47 @@ export default function Events() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            {/* Pohela Boishakh 2026 - Completed */}
+            <motion.div
+              className="bg-white rounded-2xl shadow-lg overflow-hidden relative group hover:shadow-xl transition-all duration-300"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              whileHover={{ y: -4 }}
+            >
+              <div className="absolute top-4 right-4 z-10 bg-green-500 text-white px-3 py-1.5 rounded-full font-bold text-xs flex items-center shadow-md">
+                ✓ Completed
+              </div>
+              <div className="relative h-44 overflow-hidden">
+                <Image
+                  src="/pohela-boishakh-2026/IMG_2225.JPG"
+                  alt="Pohela Boishakh 2026 - Celebrated Successfully"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-green-600/80 to-transparent"></div>
+                <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md rounded-full p-2.5">
+                  <span className="text-2xl">🌸</span>
+                </div>
+              </div>
+              <div className="p-5">
+                <h3 className="text-lg font-bold text-gray-900 mb-1" style={{ fontFamily: 'Playfair Display, serif' }}>Pohela Boishakh 2026</h3>
+                <p className="text-green-600 font-medium text-sm mb-2" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                  পহেলা বৈশাখ ১৪৩৩ - সফলভাবে সম্পন্ন!
+                </p>
+                <p className="text-gray-500 text-sm mb-3">
+                  April 25, 2026 at Lara Hall
+                </p>
+                <Link
+                  href="/events/pohela-boishakh"
+                  className="inline-flex items-center text-green-600 font-semibold text-sm hover:text-green-700 transition-colors group-hover:translate-x-1 duration-200"
+                >
+                  View Photos & Highlights →
+                </Link>
+              </div>
+            </motion.div>
+
             {/* Saraswati Puja 2026 - Completed */}
             <motion.div
               className="bg-white rounded-2xl shadow-lg overflow-hidden relative group hover:shadow-xl transition-all duration-300"
