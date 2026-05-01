@@ -3,16 +3,60 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 
 export default function PohelaBoishakh() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const [selectedIndex, setSelectedIndex] = useState<number>(0)
+
+  const photos2026 = [
+    '/pohela-boishakh-2026/IMG_2225.JPG',
+    '/pohela-boishakh-2026/IMG_2245.JPG',
+    '/pohela-boishakh-2026/IMG_2344.JPG',
+    '/pohela-boishakh-2026/IMG_2360.JPG',
+    '/pohela-boishakh-2026/IMG_2393.JPG',
+    '/pohela-boishakh-2026/IMG_2401.JPG',
+    '/pohela-boishakh-2026/IMG_2412.JPG',
+    '/pohela-boishakh-2026/IMG_2422.JPG',
+    '/pohela-boishakh-2026/IMG_2429.JPG',
+    '/pohela-boishakh-2026/IMG_2442.JPG',
+    '/pohela-boishakh-2026/IMG_2443.JPG',
+    '/pohela-boishakh-2026/IMG_2495.JPG',
+  ]
+
+  const openLightbox = (src: string) => {
+    setSelectedImage(src)
+    setSelectedIndex(photos2026.indexOf(src))
+  }
+
+  const closeLightbox = () => setSelectedImage(null)
+
+  const nextImage = () => {
+    const next = (selectedIndex + 1) % photos2026.length
+    setSelectedIndex(next)
+    setSelectedImage(photos2026[next])
+  }
+
+  const prevImage = () => {
+    const prev = selectedIndex === 0 ? photos2026.length - 1 : selectedIndex - 1
+    setSelectedIndex(prev)
+    setSelectedImage(photos2026[prev])
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape') closeLightbox()
+    if (e.key === 'ArrowRight') nextImage()
+    if (e.key === 'ArrowLeft') prevImage()
+  }
+
   return (
     <div>
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-gradient-to-br from-green-50 via-teal-50 to-emerald-50">
         <div className="absolute inset-0">
           <Image
-            src="/communityphotos/IMG-1305-scaled.jpg"
-            alt="Pohela Boishakh - Bengali Society of Melbourne"
+            src="/pohela-boishakh-2026/IMG_2225.JPG"
+            alt="Pohela Boishakh 2026 - Bengali Society of Melbourne"
             fill
             className="object-contain sm:object-cover opacity-40"
             priority
@@ -171,8 +215,8 @@ export default function PohelaBoishakh() {
             >
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/communityphotos/IMG-1305-scaled.jpg"
-                  alt="Pohela Boishakh Celebration"
+                  src="/pohela-boishakh-2026/IMG_2245.JPG"
+                  alt="Pohela Boishakh 2026 - Cultural Performance"
                   fill
                   className="object-cover"
                 />
@@ -301,6 +345,127 @@ export default function PohelaBoishakh() {
           </div>
         </div>
       </section>
+
+      {/* Photo Gallery - Pohela Boishakh 2026 */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Pohela Boishakh 2026 Photos
+              <span className="block text-green-600 text-2xl mt-2" style={{ fontFamily: 'Noto Sans Bengali, sans-serif' }}>
+                পহেলা বৈশাখ ১৪৩৩ - ছবি
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Relive the moments from our Bengali New Year celebration on April 25, 2026 at Lara Hall
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {photos2026.map((photo, index) => (
+              <motion.div
+                key={index}
+                className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.05 }}
+                whileHover={{ y: -5 }}
+                onClick={() => openLightbox(photo)}
+              >
+                <div className="relative h-48 overflow-hidden">
+                  <Image
+                    src={photo}
+                    alt={`Pohela Boishakh 2026 Celebration ${index + 1}`}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-white text-3xl">🔍</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            className="text-center mt-10"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <Link
+              href="/gallery"
+              className="inline-flex items-center bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors"
+            >
+              View Full Gallery →
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Lightbox Modal */}
+      {selectedImage && (
+        <motion.div
+          className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center p-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={closeLightbox}
+          onKeyDown={handleKeyDown}
+          tabIndex={0}
+        >
+          <div className="relative max-w-4xl max-h-full w-full h-full flex items-center justify-center">
+            <button
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 z-10 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-70 transition-colors"
+              aria-label="Close"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <button
+              onClick={(e) => { e.stopPropagation(); prevImage(); }}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 rounded-full p-3 hover:bg-opacity-70 transition-colors z-10"
+              aria-label="Previous image"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              onClick={(e) => { e.stopPropagation(); nextImage(); }}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 rounded-full p-3 hover:bg-opacity-70 transition-colors z-10"
+              aria-label="Next image"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+            <div className="relative w-full h-full max-w-4xl max-h-full" onClick={(e) => e.stopPropagation()}>
+              <Image
+                src={selectedImage}
+                alt="Enlarged gallery image"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white bg-black bg-opacity-50 px-4 py-2 rounded-full">
+              {selectedIndex + 1} of {photos2026.length}
+            </div>
+          </div>
+        </motion.div>
+      )}
 
       {/* Call to Action */}
       <section className="py-16 bg-green-600">
